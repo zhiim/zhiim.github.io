@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://zhiim.top/friends/index.html</loc>
+    <loc>https://www.zhiim.top/friends/index.html</loc>
     
     <lastmod>2021-04-02</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhiim.top/about/index.html</loc>
+    <loc>https://www.zhiim.top/about/index.html</loc>
     
     <lastmod>2021-04-02</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhiim.top/2021/04/01/outside-sunset-summer-wind/</loc>
+    <loc>https://www.zhiim.top/2021/04/01/outside-sunset-summer-wind/</loc>
     
     <lastmod>2021-04-02</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhiim.top/tags/index.html</loc>
+    <loc>https://www.zhiim.top/tags/index.html</loc>
     
     <lastmod>2021-03-31</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhiim.top/2021/03/31/reading-note-gone-with-the-wind/</loc>
+    <loc>https://www.zhiim.top/2021/03/31/reading-note-gone-with-the-wind/</loc>
     
     <lastmod>2021-03-31</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhiim.top/search/index.html</loc>
+    <loc>https://www.zhiim.top/search/index.html</loc>
     
     <lastmod>2021-03-31</lastmod>
     
@@ -45,7 +45,7 @@
   
 
   <url>
-    <loc>http://zhiim.top/</loc>
+    <loc>https://www.zhiim.top/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -53,14 +53,14 @@
 
   
   <url>
-    <loc>http://zhiim.top/tags/%E9%98%85%E8%AF%BB/</loc>
+    <loc>https://www.zhiim.top/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zhiim.top/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://www.zhiim.top/tags/%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2021-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
