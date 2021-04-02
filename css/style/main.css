@@ -137,6 +137,13 @@ s {
   font-smoothing: antialiased;
   osx-font-smoothing: grayscale;
 }
+.post__content a:not(.article-anchor) {
+  transition: opacity 0.2s;
+  background-color: initial;
+  color: currentColor !important;
+  border-bottom: 2px solid #0faaff;
+  text-decoration: none !important;
+}
 a {
   color: var(--main-color);
   cursor: pointer;
