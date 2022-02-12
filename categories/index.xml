@@ -6,31 +6,31 @@
     <description>Recent content in Categories on Zhiim&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://zhiim.vercel.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://zhiim.vercel.app/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
-      <link>https://zhiim.vercel.app/categories/test/</link>
-      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <title>Tech</title>
+      <link>https://zhiim.vercel.app/categories/tech/</link>
+      <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
       
-      <guid>https://zhiim.vercel.app/categories/test/</guid>
+      <guid>https://zhiim.vercel.app/categories/tech/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>测试</title>
-      <link>https://zhiim.vercel.app/categories/%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+      <title>书影音</title>
+      <link>https://zhiim.vercel.app/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.vercel.app/categories/%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://zhiim.vercel.app/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Test with whitespaces</title>
-      <link>https://zhiim.vercel.app/categories/test-with-whitespaces/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>随记</title>
+      <link>https://zhiim.vercel.app/categories/%E9%9A%8F%E8%AE%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.vercel.app/categories/test-with-whitespaces/</guid>
+      <guid>https://zhiim.vercel.app/categories/%E9%9A%8F%E8%AE%B0/</guid>
       <description></description>
     </item>
     
