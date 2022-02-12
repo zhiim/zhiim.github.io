@@ -2,24 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://zhiim.github.io/about/</loc>
+    <loc>https://zhiim.vercel.app/about/</loc>
     <lastmod>2022-02-11T17:10:13+08:00</lastmod>
   </url><url>
-    <loc>https://zhiim.github.io/page/</loc>
+    <loc>https://zhiim.vercel.app/page/</loc>
     <lastmod>2022-02-11T17:10:13+08:00</lastmod>
   </url><url>
-    <loc>https://zhiim.github.io/</loc>
+    <loc>https://zhiim.vercel.app/</loc>
     <lastmod>2022-02-11T17:10:13+08:00</lastmod>
   </url><url>
-    <loc>https://zhiim.github.io/archives/</loc>
+    <loc>https://zhiim.vercel.app/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://zhiim.github.io/categories/</loc>
+    <loc>https://zhiim.vercel.app/categories/</loc>
   </url><url>
-    <loc>https://zhiim.github.io/links/</loc>
+    <loc>https://zhiim.vercel.app/links/</loc>
   </url><url>
-    <loc>https://zhiim.github.io/search/</loc>
+    <loc>https://zhiim.vercel.app/search/</loc>
   </url><url>
-    <loc>https://zhiim.github.io/tags/</loc>
+    <loc>https://zhiim.vercel.app/tags/</loc>
   </url>
 </urlset>

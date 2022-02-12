@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on Zhiim</title>
-    <link>https://zhiim.github.io/page/</link>
-    <description>Recent content in Pages on Zhiim</description>
+    <title>Pages on Zhiim&#39;s Blog</title>
+    <link>https://zhiim.vercel.app/page/</link>
+    <description>Recent content in Pages on Zhiim&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 11 Feb 2022 17:10:13 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Feb 2022 17:10:13 +0800</lastBuildDate><atom:link href="https://zhiim.vercel.app/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://zhiim.github.io/about/</link>
+      <link>https://zhiim.vercel.app/about/</link>
       <pubDate>Fri, 11 Feb 2022 17:10:13 +0800</pubDate>
       
-      <guid>https://zhiim.github.io/about/</guid>
+      <guid>https://zhiim.vercel.app/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Archives</title>
-      <link>https://zhiim.github.io/archives/</link>
+      <link>https://zhiim.vercel.app/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.github.io/archives/</guid>
+      <guid>https://zhiim.vercel.app/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Links</title>
-      <link>https://zhiim.github.io/links/</link>
+      <link>https://zhiim.vercel.app/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.github.io/links/</guid>
+      <guid>https://zhiim.vercel.app/links/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://zhiim.github.io/search/</link>
+      <link>https://zhiim.vercel.app/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.github.io/search/</guid>
+      <guid>https://zhiim.vercel.app/search/</guid>
       <description></description>
     </item>
     
