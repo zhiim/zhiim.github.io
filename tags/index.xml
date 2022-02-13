@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Zhiim&#39;s Blog</title>
-    <link>https://zhiim.vercel.app/tags/</link>
+    <link>https://xland.cyou/tags/</link>
     <description>Recent content in Tags on Zhiim&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://zhiim.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
-      <link>https://zhiim.vercel.app/tags/hugo/</link>
+      <link>https://xland.cyou/tags/hugo/</link>
       <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
       
-      <guid>https://zhiim.vercel.app/tags/hugo/</guid>
+      <guid>https://xland.cyou/tags/hugo/</guid>
       <description></description>
     </item>
     

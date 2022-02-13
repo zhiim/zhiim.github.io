@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Zhiim&#39;s Blog</title>
-    <link>https://zhiim.vercel.app/post/</link>
+    <link>https://xland.cyou/post/</link>
     <description>Recent content in Posts on Zhiim&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://zhiim.vercel.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://xland.cyou/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo部署到Github</title>
-      <link>https://zhiim.vercel.app/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</link>
+      <link>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</link>
       <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
       
-      <guid>https://zhiim.vercel.app/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</guid>
+      <guid>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</guid>
       <description>关于Hugo Hugo只需用户编辑markdown文档，Hugo自动完成将markdown文档转换为网页。用户编辑的markdown文件存放于</description>
     </item>
     

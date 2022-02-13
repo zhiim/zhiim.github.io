@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Zhiim&#39;s Blog</title>
-    <link>https://zhiim.vercel.app/page/</link>
+    <link>https://xland.cyou/page/</link>
     <description>Recent content in Pages on Zhiim&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 11 Feb 2022 17:10:13 +0800</lastBuildDate><atom:link href="https://zhiim.vercel.app/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Feb 2022 17:10:13 +0800</lastBuildDate><atom:link href="https://xland.cyou/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://zhiim.vercel.app/about/</link>
+      <link>https://xland.cyou/about/</link>
       <pubDate>Fri, 11 Feb 2022 17:10:13 +0800</pubDate>
       
-      <guid>https://zhiim.vercel.app/about/</guid>
+      <guid>https://xland.cyou/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Archives</title>
-      <link>https://zhiim.vercel.app/archives/</link>
+      <link>https://xland.cyou/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.vercel.app/archives/</guid>
+      <guid>https://xland.cyou/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Links</title>
-      <link>https://zhiim.vercel.app/links/</link>
+      <link>https://xland.cyou/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.vercel.app/links/</guid>
-      <description>交换友链请留言或者Telegram联系，友链格式： 1 2 3 4 title: GitHub description: GitHub is the world&amp;#39;s largest software development platform. website: https://github.com image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png 本站信息： 1 2 3 4 title: Zhiim&amp;#39;s Blog description: “迷途的羔羊”||“时间，</description>
+      <guid>https://xland.cyou/links/</guid>
+      <description>交换友链请留言或者Telegram联系，友链格式请参考本站信息： 1 2 3 4 title: Zhiim&amp;#39;s Blog description: “迷途的羔羊”||“时间，记忆与自我欺骗” website: https://zhiim.vercel.app image: https://zhiim.vercel.app/img/avatar.png</description>
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://zhiim.vercel.app/search/</link>
+      <link>https://xland.cyou/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhiim.vercel.app/search/</guid>
+      <guid>https://xland.cyou/search/</guid>
       <description></description>
     </item>
     
