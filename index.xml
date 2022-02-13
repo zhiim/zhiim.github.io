@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://xland.cyou/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo部署到Github</title>
-        <link>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</link>
+        <link>https://xland.cyou/p/deploy-hugo-to-github-pages/</link>
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</guid>
-        <description>&lt;img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F64cede36-a9df-4585-bae8-56a12d2bc4fe%2Fpawel-czerwinski-Y52vAByM-Sw-unsplash_(1).jpg?table=block&id=d8386169-2afb-4a57-8506-285d4b41ab04&spaceId=298e2f6e-6c5b-4721-995b-d1ce15e88adf&width=2000&userId=a3596d12-55c5-4290-ae2a-001dcf0f555a&cache=v2" alt="Featured image of post Hugo部署到Github" /&gt;&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
+        <guid>https://xland.cyou/p/deploy-hugo-to-github-pages/</guid>
+        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
 &lt;p&gt;Hugo只需用户编辑markdown文档，Hugo自动完成将markdown文档转换为网页。用户编辑的markdown文件存放于content文件夹，生成的网页源文件存放于public文件夹。&lt;/p&gt;
 &lt;p&gt;将Hugo生成的网页部署到Github只需将public文件夹推送到GitHub仓库。&lt;/p&gt;
 &lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
@@ -30,55 +30,15 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;用于个人的仓库必须被用户（而不是组织）所有，并命名为&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6238a361-9929-4664-9a42-32934db4b78b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100421Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=a1b070c401e50eb7d784b8f3aa9fa90de2733f1c060b716fd254241babaeaf0a&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;仓库命名&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;个人页面的源文件放置于仓库的默认分支中&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;免费创建的页面仓库必须设置为Public&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/fb7c1f65-85e2-4bd4-be7e-f51db2714846/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100555Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=7581fc0824a9ad195d56296897947cf89be6d9dd35997d9c7de68154ecfdd3f7&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;仓库权限&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;p&gt;选择 &lt;strong&gt;Initialize this repository with a README&lt;/strong&gt; ，完成仓库创建&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/257f7af1-466d-405b-95e7-de3b6744f0ca/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100640Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=1d36d02c81a5f2a0a2f68b0751127bba62526f96138d1f2f417c36344777305d&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;完成&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库&lt;/h2&gt;
 &lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/35a6df82-9e6f-4fa5-8008-2cc7ae906826/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100723Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=1f6c3b02760470516d7b72a29d4b910d1819b80c821a9486932d6a3e8367c106&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;复制地址&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;p&gt;在Hugo生成的文件夹下，在终端中输入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -101,27 +61,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此时GitHub仓库中有了main和master两个分支，main分支是创建仓库是自动生成的默认分支，mater分支由本地推送&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/11a3788b-5dd1-4c59-96f7-f06acfee65c0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100811Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=6154e102196b130387a20980f03bfe985ac0f74c7fb088885ed08ddd039b84a1&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;仓库分支&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;p&gt;由于GitHub Pages的个人页面从默认分支提取网页源文件，需在仓库的&lt;code&gt;settings-pages-source&lt;/code&gt;中将分支改为master&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://s3.us-west-2.amazonaws.com/secure.notion-static.com/924f8f25-f127-4aba-987c-515e776dfed6/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;amp;X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&amp;amp;X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220212%2Fus-west-2%2Fs3%2Faws4_request&amp;amp;X-Amz-Date=20220212T100834Z&amp;amp;X-Amz-Expires=86400&amp;amp;X-Amz-Signature=ddfaac308e563292ef2ee5a2c6f5050fc2382e23a5a6118a69a3edf135ba44f5&amp;amp;X-Amz-SignedHeaders=host&amp;amp;response-content-disposition=filename%20%3D%22Untitled.png%22&amp;amp;x-id=GetObject&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;更改源文件分支&#34;
-	
-	
-&gt;&lt;/p&gt;
 &lt;p&gt;之后即可通过&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;访问网页&lt;/p&gt;
 </description>
         </item>

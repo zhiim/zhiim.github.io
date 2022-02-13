@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 12 Feb 2022 19:34:01 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo部署到Github</title>
-      <link>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</link>
+      <link>https://xland.cyou/p/deploy-hugo-to-github-pages/</link>
       <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
       
-      <guid>https://xland.cyou/p/hugo%E9%83%A8%E7%BD%B2%E5%88%B0github/</guid>
+      <guid>https://xland.cyou/p/deploy-hugo-to-github-pages/</guid>
       <description>关于Hugo Hugo只需用户编辑markdown文档，Hugo自动完成将markdown文档转换为网页。用户编辑的markdown文件存放于</description>
     </item>
     
