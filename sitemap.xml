@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xland.cyou/about/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/page/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xland.cyou/categories/</loc>
     <lastmod>2022-02-12T19:34:01+08:00</lastmod>
   </url><url>
@@ -17,17 +26,8 @@
     <loc>https://xland.cyou/categories/tech/</loc>
     <lastmod>2022-02-12T19:34:01+08:00</lastmod>
   </url><url>
-    <loc>https://xland.cyou/</loc>
-    <lastmod>2022-02-12T19:34:01+08:00</lastmod>
-  </url><url>
     <loc>https://xland.cyou/p/deploy-hugo-to-github-pages/</loc>
     <lastmod>2022-02-12T19:34:01+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/about/</loc>
-    <lastmod>2022-02-11T17:10:13+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/page/</loc>
-    <lastmod>2022-02-11T17:10:13+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
