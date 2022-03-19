@@ -12,19 +12,19 @@ if (!doNotTrack) {
 }
 </script>
 <meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用Github Pages部署Hugo生成的静态博客页面'><title>将Hugo博客部署到Github Pages</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'><title>完全卸载VMware Workstation</title>
 
-<link rel='canonical' href='https://xland.cyou/p/deploy-hugo-to-github-pages/'>
+<link rel='canonical' href='https://xland.cyou/p/uninstall-vmware/'>
 
-<link rel="stylesheet" href="/scss/style.min.5767c713e6f03b09977eb9fbf336d34520dd522a3e68e28924d89b20670b473a.css"><meta property='og:title' content='将Hugo博客部署到Github Pages'>
-<meta property='og:description' content='利用Github Pages部署Hugo生成的静态博客页面'>
-<meta property='og:url' content='https://xland.cyou/p/deploy-hugo-to-github-pages/'>
+<link rel="stylesheet" href="/scss/style.min.5767c713e6f03b09977eb9fbf336d34520dd522a3e68e28924d89b20670b473a.css"><meta property='og:title' content='完全卸载VMware Workstation'>
+<meta property='og:description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'>
+<meta property='og:url' content='https://xland.cyou/p/uninstall-vmware/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:published_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='article:modified_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='og:image' content='https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VMware' /><meta property='article:published_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='article:modified_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='og:image' content='https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="将Hugo博客部署到Github Pages">
-<meta name="twitter:description" content="利用Github Pages部署Hugo生成的静态博客页面"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg' />
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="完全卸载VMware Workstation">
+<meta name="twitter:description" content="VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
     </head>
@@ -76,9 +76,9 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/deploy-hugo-to-github-pages/">
+            <a href="/p/uninstall-vmware/">
                 
-                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg" loading="lazy" alt="Featured image of post 将Hugo博客部署到Github Pages" />
+                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg" loading="lazy" alt="Featured image of post 完全卸载VMware Workstation" />
                 
             </a>
         </div>
@@ -96,12 +96,12 @@ if (!doNotTrack) {
     
 
     <h2 class="article-title">
-        <a href="/p/deploy-hugo-to-github-pages/">将Hugo博客部署到Github Pages</a>
+        <a href="/p/uninstall-vmware/">完全卸载VMware Workstation</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        利用Github Pages部署Hugo生成的静态博客页面
+        VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留
     </h3>
     
 
@@ -118,7 +118,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 12, 2022</time>
+                <time class="article-time--published">Mar 19, 2022</time>
             </div>
         
 
@@ -145,82 +145,89 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="关于hugo">关于Hugo</h2>
-<p>Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。</p>
-<p>将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。</p>
-<h2 id="关于github-pages">关于Github Pages</h2>
-<p>官方文档定义：</p>
-<blockquote>
-<p>GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.</p>
-</blockquote>
-<p><a class="link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages"  target="_blank" rel="noopener"
-    >Github Pages</a> 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>访问个人博客，应当设置成个人页面。</p>
-<ul>
-<li>User/Organization Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>)</li>
-<li>Project Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/&lt;PROJECT&gt;/</code>)</li>
-</ul>
-<h2 id="创建user-page">创建User Page</h2>
-<p>在Github新建仓库时，个人页面的创建和项目页面不同：</p>
-<ul>
-<li>
-<p>用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为<code>&lt;username&gt;.github.io</code></p>
-</li>
-<li>
-<p>个人页面的源文件放置于仓库的默认分支中，项目页面需存放在特定分支</p>
-</li>
-</ul>
-<p>创建仓库时需要注意，免费用户创建的页面仓库必须设置为Public</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214110340.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<p>选择 <strong>Initialize this repository with a README</strong> ，完成仓库创建</p>
-<h2 id="将源文件推送到仓库">将源文件推送到仓库</h2>
-<p>在创建的仓库中复制远程仓库地址</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<p>在Hugo生成的文件夹中，在终端中输入</p>
+    <p>之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。</p>
+<h3 id="通过workstation安装程序自动清理">通过Workstation安装程序自动清理</h3>
+<p>下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">hugo</span>  <span class="c">#生成网页源文件</span>
-<span class="nb">cd </span><span class="n">public</span>  <span class="c">#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中</span>
-<span class="n">git</span> <span class="n">init</span>  <span class="c">#git初始化</span>
-<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="p">&lt;</span><span class="n">username</span><span class="p">&gt;/&lt;</span><span class="n">username</span><span class="p">&gt;.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">git</span>  <span class="c">#关联远程仓库</span>
-<span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>  <span class="c">#在本地提交更改</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">master</span>  <span class="c">#将更改推送到远程仓库</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">VMware-workstation</span><span class="n">-full-xxx-xxx</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">clean</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>此时GitHub仓库中拥有main和master两个分支，其中main分支是创建仓库是自动生成的默认分支，mater分支由本地推送，即博客的网页源文件</p>
-<p>GitHub Pages的个人页面默认从main分支提取网页源文件，所以还需要在仓库的<code>settings-pages-source</code>中将分支改为master分支</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111729.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<p>之后即可通过<code>&lt;username&gt;.github.io</code>访问博客页面</p>
+</div><h3 id="停止vmware相关的服务">停止VMware相关的服务</h3>
+<p>在Windows搜索框搜索<code>services.msc</code>，打开“服务”，停止所有VMware相关的服务。</p>
+<ul>
+<li>VMware Authorization Service</li>
+<li>VMware Authentication Service</li>
+<li>VMware Registration Service</li>
+<li>VMware DHCP Service</li>
+<li>VMware NAT Service</li>
+<li>VMware USB Arbitration Service</li>
+<li>VMware Workstation Server</li>
+<li>VMware WSX Service</li>
+</ul>
+<h3 id="删除vmware-network-bridge-adapter">删除VMware network bridge adapter</h3>
+<ol>
+<li>打开<code>控制面板\网络和 Internet\网络连接</code></li>
+<li>右键，属性，选择VMware Bridge Protocol，卸载</li>
+</ol>
+<h3 id="删除vmware相关的网络适配器">删除VMware相关的网络适配器</h3>
+<ol>
+<li>打开<code>控制面板\硬件和声音\设备管理器</code></li>
+<li>在“查看”工具栏勾选上“显示隐藏的设备”</li>
+<li>点击“网络适配器”，卸载名字包含VMware的适配器</li>
+</ol>
+<h3 id="删除和vmware有关的文件夹">删除和VMware有关的文件夹</h3>
+<ul>
+<li>程序安装目录</li>
+<li>数据目录<br>
+默认路径<code>C:\Program Files(X86)\VMware\</code></li>
+<li>开始菜单中的VMware<br>
+路径<code>C:\ProgramData\VMware</code></li>
+<li>快捷方式</li>
+<li>其他文件
+<ul>
+<li><code>C:\Windows\system32\vmnat.exe</code></li>
+<li><code>C:\Windows\system32\vmnetbridge.exe</code></li>
+<li><code>C:\Windows\system32\VMNetDHCP.exe</code></li>
+<li><code>C:\Windows\system32\vmnetdhcp.leases</code></li>
+<li><code>C:\Windows\system32\vmxw2ksetup.dll</code></li>
+<li><code>C:\Windows\system32\vnetprobe.exe</code></li>
+<li><code>C:\Windows\system32\vnetprobelib.dll</code></li>
+<li><code>C:\Windows\system32\vnetinst.dll</code></li>
+<li><code>C:\Windows\system32\vnetlib.dll</code></li>
+<li><code>C:\Windows\system32\vnetlib.exe</code></li>
+<li><code>C:\Windows\system32\drivers\vmnet.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmnetx.sys</code></li>
+<li><code>C:\Windows\system32\drivers\VMparport.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmx86.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmnetadapter.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmnetbridge.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmnetuserif.sys</code></li>
+<li><code>C:\Windows\system32\drivers\hcmon.sys</code></li>
+<li><code>C:\Windows\system32\drivers\vmusb.sys</code></li>
+</ul>
+</li>
+<li>注册表<br>
+打开注册表管理器，删除以下注册表
+<ul>
+<li><code>HKEY_CLASSES_ROOT\Installer\Features\A57F49D06AE015943BFA1B54AFE9506C</code></li>
+<li><code>HKEY_CLASSES_ROOT\Installer\Products\A57F49D06AE015943BFA1B54AFE9506C</code></li>
+<li><code>HKEY_CLASSES_ROOT\Installer\UpgradeCodes\3F935F414A4C79542AD9C8D157A3CC39</code></li>
+<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{0D94F75A-0EA6-4951-B3AF-B145FA9E05C6}</code></li>
+<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\VMware Workstation</code></li>
+<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\Installer\VMware Workstation</code></li>
+<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\vmware.exe</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="删除环境变量">删除环境变量</h3>
+<p>打开系统环境变量设置，删除VMware Workstation的执行路径<br>
+重启电脑，就完成了VMware Workstation的完全卸载。<br>
+各版本路径存在一些不同，具体参考<a class="link" href="https://kb.vmware.com/s/article/1308"  target="_blank" rel="noopener"
+    >官方文档</a>。</p>
 
 </section>
 
@@ -229,7 +236,7 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/hugo/">Hugo</a>
+            <a href="/tags/vmware/">VMware</a>
         
     </section>
 
@@ -286,18 +293,18 @@ if (!doNotTrack) {
                 
                     
 <article class="has-image">
-    <a href="/p/uninstall-vmware/">
+    <a href="/p/deploy-hugo-to-github-pages/">
         
         
             <div class="article-image">
                 
-                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg" loading="lazy" data-key="uninstall-vmware" data-hash="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg"/>
+                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg" loading="lazy" data-key="deploy-hugo-to-github-pages" data-hash="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">完全卸载VMware Workstation</h2>
+            <h2 class="article-title">将Hugo博客部署到Github Pages</h2>
         </div>
     </a>
 </article>
@@ -442,10 +449,16 @@ if (!doNotTrack) {
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#关于hugo">关于Hugo</a></li>
-    <li><a href="#关于github-pages">关于Github Pages</a></li>
-    <li><a href="#创建user-page">创建User Page</a></li>
-    <li><a href="#将源文件推送到仓库">将源文件推送到仓库</a></li>
+    <li>
+      <ol>
+        <li><a href="#通过workstation安装程序自动清理">通过Workstation安装程序自动清理</a></li>
+        <li><a href="#停止vmware相关的服务">停止VMware相关的服务</a></li>
+        <li><a href="#删除vmware-network-bridge-adapter">删除VMware network bridge adapter</a></li>
+        <li><a href="#删除vmware相关的网络适配器">删除VMware相关的网络适配器</a></li>
+        <li><a href="#删除和vmware有关的文件夹">删除和VMware有关的文件夹</a></li>
+        <li><a href="#删除环境变量">删除环境变量</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
                 </div>
