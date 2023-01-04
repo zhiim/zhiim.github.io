@@ -20,8 +20,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;VMware-workstation&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-full-xxx-xxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;VMware-workstation&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-full-xxx-xxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;停止vmware相关的服务&#34;&gt;停止VMware相关的服务&lt;/h3&gt;
 &lt;p&gt;在Windows搜索框搜索&lt;code&gt;services.msc&lt;/code&gt;，打开“服务”，停止所有VMware相关的服务。&lt;/p&gt;
@@ -98,6 +98,22 @@
 </description>
         </item>
         <item>
+        <title>About</title>
+        <link>https://xland.cyou/about/</link>
+        <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://xland.cyou/about/</guid>
+        <description>&lt;p&gt;之前的博客久未更新，这次换了Hugo重新搭建，索性推倒重来，换了新域名，以前的博文也全数删除。&lt;br&gt;
+&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
+出自夏目漱石的《三四郎》&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;“时间，记忆与自我欺骗”&lt;/strong&gt;&lt;br&gt;
+出自石黑一雄的《长日将尽》，书中的史蒂文斯，遮遮掩掩，而后又总陷于回忆和幻想。我想我即是如此。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>将Hugo博客部署到Github Pages</title>
         <link>https://xland.cyou/p/deploy-hugo-to-github-pages/</link>
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
@@ -159,14 +175,14 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成网页源文件&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#git初始化&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remote&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;git&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;@github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;/&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#关联远程仓库&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;commit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-m&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;first commit&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#在本地提交更改&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;push&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-u&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;master&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#将更改推送到远程仓库&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成网页源文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#git初始化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remote&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;git&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;@github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;/&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;git&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#关联远程仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;commit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-m&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;first commit&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#在本地提交更改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;push&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-u&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;master&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#将更改推送到远程仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此时GitHub仓库中拥有main和master两个分支，其中main分支是创建仓库是自动生成的默认分支，mater分支由本地推送，即博客的网页源文件&lt;/p&gt;
 &lt;p&gt;GitHub Pages的个人页面默认从main分支提取网页源文件，所以还需要在仓库的&lt;code&gt;settings-pages-source&lt;/code&gt;中将分支改为master分支&lt;/p&gt;
@@ -180,6 +196,46 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;之后即可通过&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;访问博客页面&lt;/p&gt;
 </description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>https://xland.cyou/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://xland.cyou/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Links</title>
+        <link>https://xland.cyou/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://xland.cyou/links/</guid>
+        <description>&lt;p&gt;交换友链请留言或者&lt;a class=&#34;link&#34; href=&#34;https://t.me/zhiim_0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegram&lt;/a&gt;联系，友链格式请参考本站信息：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: Zhiim&amp;#39;s Blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;description: “迷途的羔羊”||“时间，记忆与自我欺骗”
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;website: https://xland.cyou
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;image: https://xland.cyou/img/avatar.png
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://xland.cyou/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://xland.cyou/search/</guid>
+        <description></description>
         </item>
         
     </channel>
