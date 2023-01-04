@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='交换友链请留言或者Telegram联系，友链格式请参考本站信息： 1 2 3 4 title: Zhiim&amp;#39;s Blog description: “迷途的羔羊”||“时间，记忆与自我欺骗” website: https://xland.cyou image: https://xland.cyou/img/avatar.png'>
-<title>Links</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用Github Pages部署Hugo生成的静态博客页面'>
+<title>将Hugo博客部署到Github Pages</title>
 
-<link rel='canonical' href='https://xland.cyou/links/'>
+<link rel='canonical' href='https://xland.cyou/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/'>
 
-<link rel="stylesheet" href="/scss/style.min.0144f7e9fdb326fdf3b0d1a3ae832d3aa690977d8850f4bfd9c37d7fbbeecc74.css"><meta property='og:title' content='Links'>
-<meta property='og:description' content='交换友链请留言或者Telegram联系，友链格式请参考本站信息： 1 2 3 4 title: Zhiim&amp;#39;s Blog description: “迷途的羔羊”||“时间，记忆与自我欺骗” website: https://xland.cyou image: https://xland.cyou/img/avatar.png'>
-<meta property='og:url' content='https://xland.cyou/links/'>
+<link rel="stylesheet" href="/scss/style.min.0144f7e9fdb326fdf3b0d1a3ae832d3aa690977d8850f4bfd9c37d7fbbeecc74.css"><meta property='og:title' content='将Hugo博客部署到Github Pages'>
+<meta property='og:description' content='利用Github Pages部署Hugo生成的静态博客页面'>
+<meta property='og:url' content='https://xland.cyou/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:published_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='article:modified_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='og:image' content='https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Links">
-<meta name="twitter:description" content="交换友链请留言或者Telegram联系，友链格式请参考本站信息： 1 2 3 4 title: Zhiim&amp;#39;s Blog description: “迷途的羔羊”||“时间，记忆与自我欺骗” website: https://xland.cyou image: https://xland.cyou/img/avatar.png">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="将Hugo博客部署到Github Pages">
+<meta name="twitter:description" content="利用Github Pages部署Hugo生成的静态博客页面"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -302,20 +303,74 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#关于hugo">关于Hugo</a></li>
+    <li><a href="#关于github-pages">关于Github Pages</a></li>
+    <li><a href="#创建user-page">创建User Page</a></li>
+    <li><a href="#将源文件推送到仓库">将源文件推送到仓库</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/">
+                
+                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg" loading="lazy" alt="Featured image of post 将Hugo博客部署到Github Pages" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tech/" style="background-color: #eee574; color: #000;">
+                Tech
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/links/">Links</a>
+            <a href="/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/">将Hugo博客部署到Github Pages</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            利用Github Pages部署Hugo生成的静态博客页面
+        </h3>
         
     </div>
 
@@ -324,6 +379,19 @@ if (!doNotTrack) {
     
     
     <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 12, 2022</time>
+            </div>
         
 
         
@@ -337,7 +405,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -352,28 +420,94 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>交换友链请留言或者<a class="link" href="https://t.me/zhiim_0"  target="_blank" rel="noopener"
-    >Telegram</a>联系，友链格式请参考本站信息：</p>
+    <h2 id="关于hugo">关于Hugo</h2>
+<p>Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。</p>
+<p>将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。</p>
+<h2 id="关于github-pages">关于Github Pages</h2>
+<p>官方文档定义：</p>
+<blockquote>
+<p>GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.</p>
+</blockquote>
+<p><a class="link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages"  target="_blank" rel="noopener"
+    >Github Pages</a> 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>访问个人博客，应当设置成个人页面。</p>
+<ul>
+<li>User/Organization Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>)</li>
+<li>Project Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/&lt;PROJECT&gt;/</code>)</li>
+</ul>
+<h2 id="创建user-page">创建User Page</h2>
+<p>在Github新建仓库时，个人页面的创建和项目页面不同：</p>
+<ul>
+<li>
+<p>用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为<code>&lt;username&gt;.github.io</code></p>
+</li>
+<li>
+<p>个人页面的源文件放置于仓库的默认分支中，项目页面需存放在特定分支</p>
+</li>
+</ul>
+<p>创建仓库时需要注意，免费用户创建的页面仓库必须设置为Public</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214110340.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>选择 <strong>Initialize this repository with a README</strong> ，完成仓库创建</p>
+<h2 id="将源文件推送到仓库">将源文件推送到仓库</h2>
+<p>在创建的仓库中复制远程仓库地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>在Hugo生成的文件夹中，在终端中输入</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">title: Zhiim&#39;s Blog
-</span></span><span class="line"><span class="cl">description: “迷途的羔羊”||“时间，记忆与自我欺骗”
-</span></span><span class="line"><span class="cl">website: https://xland.cyou
-</span></span><span class="line"><span class="cl">image: https://xland.cyou/img/avatar.png
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span>  <span class="c">#生成网页源文件</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">public</span>  <span class="c">#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>  <span class="c">#git初始化</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="p">&lt;</span><span class="n">username</span><span class="p">&gt;/&lt;</span><span class="n">username</span><span class="p">&gt;.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">git</span>  <span class="c">#关联远程仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>  <span class="c">#在本地提交更改</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">master</span>  <span class="c">#将更改推送到远程仓库</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><p>此时GitHub仓库中拥有main和master两个分支，其中main分支是创建仓库是自动生成的默认分支，mater分支由本地推送，即博客的网页源文件</p>
+<p>GitHub Pages的个人页面默认从main分支提取网页源文件，所以还需要在仓库的<code>settings-pages-source</code>中将分支改为master分支</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111729.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>之后即可通过<code>&lt;username&gt;.github.io</code>访问博客页面</p>
+
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/hugo/">Hugo</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -417,50 +551,36 @@ if (!doNotTrack) {
 </article>
 
     
-        <div class="article-list--compact links">
-    
-        <article>
-            <a href="https://kurumit3.top" target="_blank" rel="noopener">
-                <div class="article-details">
-                    <h2 class="article-title">绎梦机</h2>
-                    <footer class="article-time">
-                        
-                            有限的记忆，无限的梦
-                        
-                    </footer>
-                </div>
-        
-                
-                    <div class="article-image">
-                        <img src="https://rmt.dogedoge.com/fetch/kurumit3/storage/avatar.jpg?fmt=webp" loading="lazy">
-                    </div>
-                
-            </a>
-        </article>
-    
-        <article>
-            <a href="https://zhiim.notion.site/Zhiim-s-Blog-a17453e9c1e5495b95b65f5c247ac8a0" target="_blank" rel="noopener">
-                <div class="article-details">
-                    <h2 class="article-title">Zhiim&#39;s Blog</h2>
-                    <footer class="article-time">
-                        
-                            Notion版
-                        
-                    </footer>
-                </div>
-        
-                
-                    <div class="article-image">
-                        <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8070356e-38d3-400a-bf1f-747a012e075c%2Ffavicon.png?table=block&amp;id=a17453e9-c1e5-495b-95b6-5f5c247ac8a0&amp;spaceId=298e2f6e-6c5b-4721-995b-d1ce15e88adf&amp;width=250&amp;userId=a3596d12-55c5-4290-ae2a-001dcf0f555a&amp;cache=v2" loading="lazy">
-                    </div>
-                
-            </a>
-        </article>
-    
-</div>
-    
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/uninstall-vmware/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg" loading="lazy" data-key="uninstall-vmware" data-hash="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">完全卸载VMware Workstation</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
