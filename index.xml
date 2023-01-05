@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <lastBuildDate>Sat, 19 Mar 2022 12:05:03 +0800</lastBuildDate><atom:link href="https://xland.cyou/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>完全卸载VMware Workstation</title>
-        <link>https://xland.cyou/p/uninstall-vmware/</link>
+        <link>https://xland.cyou/p/uninstall_vmware/</link>
         <pubDate>Sat, 19 Mar 2022 12:05:03 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/uninstall-vmware/</guid>
-        <description>&lt;img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan-wilkinson-bMZDtKEFkLQ-unsplash.jpg" alt="Featured image of post 完全卸载VMware Workstation" /&gt;&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
+        <guid>https://xland.cyou/p/uninstall_vmware/</guid>
+        <description>&lt;img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/susan.webp" alt="Featured image of post 完全卸载VMware Workstation" /&gt;&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
 &lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理&lt;/h3&gt;
 &lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -115,11 +115,11 @@
         </item>
         <item>
         <title>将Hugo博客部署到Github Pages</title>
-        <link>https://xland.cyou/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/</link>
+        <link>https://xland.cyou/p/hugo_blog/</link>
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/%E4%BD%BF%E7%94%A8-github-pages-%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2/</guid>
-        <description>&lt;img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel-czerwinski-Y52vAByM-Sw-unsplash.jpg" alt="Featured image of post 将Hugo博客部署到Github Pages" /&gt;&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
+        <guid>https://xland.cyou/p/hugo_blog/</guid>
+        <description>&lt;img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel.webp" alt="Featured image of post 将Hugo博客部署到Github Pages" /&gt;&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
 &lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
 &lt;p&gt;将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。&lt;/p&gt;
 &lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
