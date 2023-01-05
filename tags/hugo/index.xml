@@ -12,7 +12,7 @@
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
         
         <guid>https://xland.cyou/p/hugo_blog/</guid>
-        <description>&lt;img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/pawel.webp" alt="Featured image of post 将Hugo博客部署到Github Pages" /&gt;&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
 &lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
 &lt;p&gt;将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。&lt;/p&gt;
 &lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
