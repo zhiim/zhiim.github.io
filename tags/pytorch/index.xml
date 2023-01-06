@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tech on Zhiim&#39;s Blog</title>
-        <link>https://xland.cyou/categories/tech/</link>
-        <description>Recent content in Tech on Zhiim&#39;s Blog</description>
+        <title>Pytorch on Zhiim&#39;s Blog</title>
+        <link>https://xland.cyou/tags/pytorch/</link>
+        <description>Recent content in Pytorch on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 06 Jan 2023 17:12:03 +0800</lastBuildDate><atom:link href="https://xland.cyou/categories/tech/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 06 Jan 2023 17:12:03 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/pytorch/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Pytorch基础（一）：张量 Tensors</title>
         <link>https://xland.cyou/p/pytorch_tensor/</link>
         <pubDate>Fri, 06 Jan 2023 17:12:03 +0800</pubDate>
@@ -269,181 +269,6 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>完全卸载VMware Workstation</title>
-        <link>https://xland.cyou/p/uninstall_vmware/</link>
-        <pubDate>Sat, 19 Mar 2022 12:05:03 +0800</pubDate>
-        
-        <guid>https://xland.cyou/p/uninstall_vmware/</guid>
-        <description>&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
-&lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理&lt;/h3&gt;
-&lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;VMware-workstation&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-full-xxx-xxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;停止vmware相关的服务&#34;&gt;停止VMware相关的服务&lt;/h3&gt;
-&lt;p&gt;在Windows搜索框搜索&lt;code&gt;services.msc&lt;/code&gt;，打开“服务”，停止所有VMware相关的服务。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;VMware Authorization Service&lt;/li&gt;
-&lt;li&gt;VMware Authentication Service&lt;/li&gt;
-&lt;li&gt;VMware Registration Service&lt;/li&gt;
-&lt;li&gt;VMware DHCP Service&lt;/li&gt;
-&lt;li&gt;VMware NAT Service&lt;/li&gt;
-&lt;li&gt;VMware USB Arbitration Service&lt;/li&gt;
-&lt;li&gt;VMware Workstation Server&lt;/li&gt;
-&lt;li&gt;VMware WSX Service&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;删除vmware-network-bridge-adapter&#34;&gt;删除VMware network bridge adapter&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;打开&lt;code&gt;控制面板\网络和 Internet\网络连接&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;右键，属性，选择VMware Bridge Protocol，卸载&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;删除vmware相关的网络适配器&#34;&gt;删除VMware相关的网络适配器&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;打开&lt;code&gt;控制面板\硬件和声音\设备管理器&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;在“查看”工具栏勾选上“显示隐藏的设备”&lt;/li&gt;
-&lt;li&gt;点击“网络适配器”，卸载名字包含VMware的适配器&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;删除和vmware有关的文件夹&#34;&gt;删除和VMware有关的文件夹&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;程序安装目录&lt;/li&gt;
-&lt;li&gt;数据目录&lt;br&gt;
-默认路径&lt;code&gt;C:\Program Files(X86)\VMware\&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;开始菜单中的VMware&lt;br&gt;
-路径&lt;code&gt;C:\ProgramData\VMware&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;快捷方式&lt;/li&gt;
-&lt;li&gt;其他文件
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vmnat.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vmnetbridge.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\VMNetDHCP.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vmnetdhcp.leases&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vmxw2ksetup.dll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vnetprobe.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vnetprobelib.dll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vnetinst.dll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vnetlib.dll&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\vnetlib.exe&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmnet.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmnetx.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\VMparport.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmx86.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmnetadapter.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmnetbridge.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmnetuserif.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\hcmon.sys&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;C:\Windows\system32\drivers\vmusb.sys&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;注册表&lt;br&gt;
-打开注册表管理器，删除以下注册表
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;HKEY_CLASSES_ROOT\Installer\Features\A57F49D06AE015943BFA1B54AFE9506C&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_CLASSES_ROOT\Installer\Products\A57F49D06AE015943BFA1B54AFE9506C&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_CLASSES_ROOT\Installer\UpgradeCodes\3F935F414A4C79542AD9C8D157A3CC39&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{0D94F75A-0EA6-4951-B3AF-B145FA9E05C6}&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\VMware Workstation&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\Installer\VMware Workstation&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\vmware.exe&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;删除环境变量&#34;&gt;删除环境变量&lt;/h3&gt;
-&lt;p&gt;打开系统环境变量设置，删除VMware Workstation的执行路径&lt;br&gt;
-重启电脑，就完成了VMware Workstation的完全卸载。&lt;br&gt;
-各版本路径存在一些不同，具体参考&lt;a class=&#34;link&#34; href=&#34;https://kb.vmware.com/s/article/1308&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;官方文档&lt;/a&gt;。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>将Hugo博客部署到Github Pages</title>
-        <link>https://xland.cyou/p/hugo_blog/</link>
-        <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
-        
-        <guid>https://xland.cyou/p/hugo_blog/</guid>
-        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
-&lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
-&lt;p&gt;将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。&lt;/p&gt;
-&lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
-&lt;p&gt;官方文档定义：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Github Pages&lt;/a&gt; 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;访问个人博客，应当设置成个人页面。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;User/Organization Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Project Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&amp;lt;PROJECT&amp;gt;/&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;创建user-page&#34;&gt;创建User Page&lt;/h2&gt;
-&lt;p&gt;在Github新建仓库时，个人页面的创建和项目页面不同：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;个人页面的源文件放置于仓库的默认分支中，项目页面需存放在特定分支&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;创建仓库时需要注意，免费用户创建的页面仓库必须设置为Public&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214110340.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;选择 &lt;strong&gt;Initialize this repository with a README&lt;/strong&gt; ，完成仓库创建&lt;/p&gt;
-&lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库&lt;/h2&gt;
-&lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;在Hugo生成的文件夹中，在终端中输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成网页源文件&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;public&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#git初始化&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remote&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;git&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;@github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;/&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;git&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#关联远程仓库&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;commit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-m&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;first commit&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#在本地提交更改&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;git&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;push&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-u&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;origin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;master&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;#将更改推送到远程仓库&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;此时GitHub仓库中拥有main和master两个分支，其中main分支是创建仓库是自动生成的默认分支，mater分支由本地推送，即博客的网页源文件&lt;/p&gt;
-&lt;p&gt;GitHub Pages的个人页面默认从main分支提取网页源文件，所以还需要在仓库的&lt;code&gt;settings-pages-source&lt;/code&gt;中将分支改为master分支&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111729.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;之后即可通过&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;访问博客页面&lt;/p&gt;
-</description>
         </item>
         
     </channel>
