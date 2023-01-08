@@ -6,14 +6,15 @@
 
 <link rel='canonical' href='https://xland.cyou/p/pytorch-dataset/'>
 
-<link rel="stylesheet" href="/scss/style.min.0144f7e9fdb326fdf3b0d1a3ae832d3aa690977d8850f4bfd9c37d7fbbeecc74.css"><meta property='og:title' content='Pytorch基础 Dataset和DataLoader'>
+<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='Pytorch基础 Dataset和DataLoader'>
 <meta property='og:description' content='Pytorch基础，Dataset和DataLoader'>
 <meta property='og:url' content='https://xland.cyou/p/pytorch-dataset/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Pytorch' /><meta property='article:published_time' content='2023-01-07T11:13:45&#43;08:00'/><meta property='article:modified_time' content='2023-01-07T11:13:45&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Pytorch' /><meta property='article:published_time' content='2023-01-07T11:13:45&#43;08:00'/><meta property='article:modified_time' content='2023-01-07T11:13:45&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Pytorch基础 Dataset和DataLoader">
-<meta name="twitter:description" content="Pytorch基础，Dataset和DataLoader">
+<meta name="twitter:description" content="Pytorch基础，Dataset和DataLoader"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -70,7 +71,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/avatar_hud8c60c095806b0b2166cb4ebdca25a9a_21980_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu09812e00f2e026ec2db142bbfe2df1aa_20268_300x0_resize_q75_h2_box_2.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -84,7 +85,7 @@ if (!doNotTrack) {
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Zhiim&#39;s Blog</a></h1>
-            <h2 class="site-description">“迷途的羔羊”||“时间，记忆与自我欺骗”</h2>
+            <h2 class="site-description">总有想不明白的事</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -199,25 +200,6 @@ if (!doNotTrack) {
         
         
         <li >
-            <a href='/about' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
-        
-        <li >
             <a href='/archives/' >
                 
                 
@@ -233,6 +215,25 @@ if (!doNotTrack) {
 
                 
                 <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
             </a>
         </li>
         
@@ -302,7 +303,45 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#loading-a-dataset">loading a dataset</a></li>
+    <li><a href="#iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</a></li>
+    <li><a href="#training-with-dataloaders">Training with DataLoaders</a></li>
+    <li><a href="#normalizatioin">Normalizatioin</a>
+      <ol>
+        <li><a href="#transforms">Transforms</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -379,8 +418,8 @@ if (!doNotTrack) {
     
     <p>PyTorch provides two data primitives: <code>torch.utils.data.DataLoader</code>and <code>torch.utils.data.Dataset</code> that allow you to use pre-loaded datasets as well as your own data.
 <code>Dataset</code>stores the samples and their corresponding labels, and <code>DataLoader</code> wraps an iterable around the <code>Dataset</code> to enable easy access to the samples.</p>
-<h1 id="loading-a-dataset">loading a dataset</h1>
-<p>load the <em><strong>Fashion-MNIST</strong></em> dataset from TorchVision.
+<h2 id="loading-a-dataset">loading a dataset</h2>
+<p>load the <strong>Fashion-MNIST</strong> dataset from TorchVision.
 The <a class="link" href="https://pytorch.org/vision/stable/index.html#module-torchvision"  target="_blank" rel="noopener"
     >torchvision</a> package consists of popular datasets, model architectures, and common image transformations for computer vision.</p>
 <div class="highlight"><div class="chroma">
@@ -429,7 +468,7 @@ The <a class="link" href="https://pytorch.org/vision/stable/index.html#module-t
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</h1>
+</div><h2 id="iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -480,7 +519,7 @@ The <a class="link" href="https://pytorch.org/vision/stable/index.html#module-t
 </span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="training-with-dataloaders">Training with DataLoaders</h1>
+</div><h2 id="training-with-dataloaders">Training with DataLoaders</h2>
 <p>While training a model, we use <code>DataLoader</code> to pass samples in &ldquo;<strong>minibatches</strong>&rdquo;, reshuffle the data at every <strong>epoch</strong> to reduce model overfitting, and use Python&rsquo;s multiprocessing to speed up data retrieval.
 To use <code>DataLoader</code>, we need to set the followings paraments:</p>
 <ul>
@@ -536,9 +575,9 @@ To use <code>DataLoader</code>, we need to set the followings paraments:</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>iter(object[, sentinel])</code> 用于生成迭代器，传入参数object必须为支持迭代的对象，<code>next()</code> 返回迭代器下一项。</p>
-<h1 id="normalizatioin">Normalizatioin</h1>
+<h2 id="normalizatioin">Normalizatioin</h2>
 <p>Normalization is a common data pre-processing technique that is applied to scale or transform the data to make sure there&rsquo;s an equal learning contribution from each feature.</p>
-<h2 id="transforms">Transforms</h2>
+<h3 id="transforms">Transforms</h3>
 <p>We use <strong>transforms</strong> to perform some manipulation of the data and make it suitable for training.
 <code>transform</code> to modify the features and <code>target_transform</code> to modify the labels.
 <code>ToTensor</code> converts a PIL image or NumPy <code>ndarray</code> into a <code>FloatTensor</code> and scales the image&rsquo;s pixel intensity values in the range [0., 1.]</p>
@@ -610,35 +649,18 @@ To use <code>DataLoader</code>, we need to set the followings paraments:</p>
     <a href="/p/pytorch-tensor/">
         
         
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post Pytorch基础 Tensors"
+                    data-key="pytorch-tensor" 
+                    >
+            </div>
+        
 
         <div class="article-details">
             <h2 class="article-title">Pytorch基础 Tensors</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/uninstall_vmware/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">完全卸载VMware Workstation</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/hugo_blog/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">将Hugo博客部署到Github Pages</h2>
         </div>
     </a>
 </article>

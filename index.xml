@@ -14,8 +14,8 @@
         <guid>https://xland.cyou/p/pytorch-dataset/</guid>
         <description>&lt;p&gt;PyTorch provides two data primitives: &lt;code&gt;torch.utils.data.DataLoader&lt;/code&gt;and &lt;code&gt;torch.utils.data.Dataset&lt;/code&gt; that allow you to use pre-loaded datasets as well as your own data.
 &lt;code&gt;Dataset&lt;/code&gt;stores the samples and their corresponding labels, and &lt;code&gt;DataLoader&lt;/code&gt; wraps an iterable around the &lt;code&gt;Dataset&lt;/code&gt; to enable easy access to the samples.&lt;/p&gt;
-&lt;h1 id=&#34;loading-a-dataset&#34;&gt;loading a dataset&lt;/h1&gt;
-&lt;p&gt;load the &lt;em&gt;&lt;strong&gt;Fashion-MNIST&lt;/strong&gt;&lt;/em&gt; dataset from TorchVision.
+&lt;h2 id=&#34;loading-a-dataset&#34;&gt;loading a dataset&lt;/h2&gt;
+&lt;p&gt;load the &lt;strong&gt;Fashion-MNIST&lt;/strong&gt; dataset from TorchVision.
 The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/index.html#module-torchvision&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;torchvision&lt;/a&gt; package consists of popular datasets, model architectures, and common image transformations for computer vision.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -64,7 +64,7 @@ The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/inde
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;iterating-and-visualizing-the-dataset&#34;&gt;Iterating and Visualizing the Dataset&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;iterating-and-visualizing-the-dataset&#34;&gt;Iterating and Visualizing the Dataset&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -115,7 +115,7 @@ The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/inde
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;training-with-dataloaders&#34;&gt;Training with DataLoaders&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;training-with-dataloaders&#34;&gt;Training with DataLoaders&lt;/h2&gt;
 &lt;p&gt;While training a model, we use &lt;code&gt;DataLoader&lt;/code&gt; to pass samples in &amp;ldquo;&lt;strong&gt;minibatches&lt;/strong&gt;&amp;rdquo;, reshuffle the data at every &lt;strong&gt;epoch&lt;/strong&gt; to reduce model overfitting, and use Python&amp;rsquo;s multiprocessing to speed up data retrieval.
 To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings paraments:&lt;/p&gt;
 &lt;ul&gt;
@@ -171,9 +171,9 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;iter(object[, sentinel])&lt;/code&gt; 用于生成迭代器，传入参数object必须为支持迭代的对象，&lt;code&gt;next()&lt;/code&gt; 返回迭代器下一项。&lt;/p&gt;
-&lt;h1 id=&#34;normalizatioin&#34;&gt;Normalizatioin&lt;/h1&gt;
+&lt;h2 id=&#34;normalizatioin&#34;&gt;Normalizatioin&lt;/h2&gt;
 &lt;p&gt;Normalization is a common data pre-processing technique that is applied to scale or transform the data to make sure there&amp;rsquo;s an equal learning contribution from each feature.&lt;/p&gt;
-&lt;h2 id=&#34;transforms&#34;&gt;Transforms&lt;/h2&gt;
+&lt;h3 id=&#34;transforms&#34;&gt;Transforms&lt;/h3&gt;
 &lt;p&gt;We use &lt;strong&gt;transforms&lt;/strong&gt; to perform some manipulation of the data and make it suitable for training.
 &lt;code&gt;transform&lt;/code&gt; to modify the features and &lt;code&gt;target_transform&lt;/code&gt; to modify the labels.
 &lt;code&gt;ToTensor&lt;/code&gt; converts a PIL image or NumPy &lt;code&gt;ndarray&lt;/code&gt; into a &lt;code&gt;FloatTensor&lt;/code&gt; and scales the image&amp;rsquo;s pixel intensity values in the range [0., 1.]&lt;/p&gt;
@@ -185,7 +185,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
         <pubDate>Fri, 06 Jan 2023 17:12:03 +0800</pubDate>
         
         <guid>https://xland.cyou/p/pytorch-tensor/</guid>
-        <description>&lt;p&gt;张量（tensor）是一种类似于数组和矩阵的特殊数据结构。tensor类似于NumPy中的ndarray，两者也可以使用相同的内存地址。
+        <description>&lt;p&gt;张量（tensor）是一种类似于数组和矩阵的特殊数据结构。tensor类似于NumPy中的ndarray，两者也可以使用相同的内存地址。&lt;br&gt;
 &lt;img src=&#34;https://xland.cyou/p/pytorch-tensor/tensor.webp&#34;
 	width=&#34;636&#34;
 	height=&#34;276&#34;
@@ -200,8 +200,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 		data-flex-basis=&#34;553px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;创建tensor&#34;&gt;创建Tensor&lt;/h1&gt;
-&lt;h2 id=&#34;直接使用数据创建&#34;&gt;直接使用数据创建&lt;/h2&gt;
+&lt;h2 id=&#34;创建tensor&#34;&gt;创建Tensor&lt;/h2&gt;
+&lt;h3 id=&#34;直接使用数据创建&#34;&gt;直接使用数据创建&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -218,7 +218,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_data&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;使用numpy-array创建&#34;&gt;使用NumPy array创建&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用numpy-array创建&#34;&gt;使用NumPy array创建&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -246,7 +246,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由于&lt;code&gt;np_array&lt;/code&gt;和&lt;code&gt;x_np&lt;/code&gt;使用相同的内存地址，两者的值会同时改变&lt;/p&gt;
-&lt;h2 id=&#34;使用其他tensor创建&#34;&gt;使用其他tensor创建&lt;/h2&gt;
+&lt;h3 id=&#34;使用其他tensor创建&#34;&gt;使用其他tensor创建&lt;/h3&gt;
 &lt;p&gt;tensor可以使用其他tensor的属性（包括tensor的shape，dtype）进行初始化&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -268,7 +268,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Random Tensor: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_rand&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;使用随机数或常数创建&#34;&gt;使用随机数或常数创建&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用随机数或常数创建&#34;&gt;使用随机数或常数创建&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -291,7 +291,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Zeros Tensor: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros_tensor&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;tensor的属性&#34;&gt;Tensor的属性&lt;/h1&gt;
+&lt;/div&gt;&lt;h2 id=&#34;tensor的属性&#34;&gt;Tensor的属性&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -309,7 +309,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;tensor的属性包括维度shape，数据类型dtype，和存储的设备类型device&lt;/p&gt;
-&lt;h1 id=&#34;tensor的操作&#34;&gt;Tensor的操作&lt;/h1&gt;
+&lt;h2 id=&#34;tensor的操作&#34;&gt;Tensor的操作&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/docs/stable/torch.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;tensor的参考文档&lt;/a&gt;
 tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要使用&lt;code&gt;.to&lt;/code&gt;设置&lt;/p&gt;
@@ -325,7 +325,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cuda&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;tensor索引&#34;&gt;Tensor索引&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor索引&#34;&gt;Tensor索引&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -344,7 +344,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;tensor合并&#34;&gt;Tensor合并&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor合并&#34;&gt;Tensor合并&lt;/h3&gt;
 &lt;p&gt;tensor的合并有两种方法&lt;code&gt;torch.cat&lt;/code&gt;和&lt;code&gt;torch.stack&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -356,7 +356,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;tensor的数学运算&#34;&gt;Tensor的数学运算&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor的数学运算&#34;&gt;Tensor的数学运算&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -389,7 +389,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mul&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;单元素的tensor&#34;&gt;单元素的tensor&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;单元素的tensor&#34;&gt;单元素的tensor&lt;/h3&gt;
 &lt;p&gt;单元素的tensor可以使用&lt;code&gt;item()&lt;/code&gt;转变为Python中的数值量&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -403,7 +403,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg_item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;err&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg_item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;自动赋值运算&#34;&gt;自动赋值运算&lt;/h2&gt;
+&lt;/div&gt;&lt;h3 id=&#34;自动赋值运算&#34;&gt;自动赋值运算&lt;/h3&gt;
 &lt;p&gt;自动赋值运算通常在方法后有 &lt;code&gt;_&lt;/code&gt; 作为后缀，在运算中会直接改变运算量&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -417,8 +417,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;tensor和numpy&#34;&gt;Tensor和NumPy&lt;/h2&gt;
-&lt;h3 id=&#34;tensor转为numpy-array&#34;&gt;Tensor转为NumPy array&lt;/h3&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor和numpy&#34;&gt;Tensor和NumPy&lt;/h3&gt;
+&lt;h4 id=&#34;tensor转为numpy-array&#34;&gt;Tensor转为NumPy array&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -434,7 +434,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;tensor和NumPy array共享内存，两者会同时改变&lt;/p&gt;
-&lt;h3 id=&#34;numpy-array转为tensor&#34;&gt;NumPy array转为Tensor&lt;/h3&gt;
+&lt;h4 id=&#34;numpy-array转为tensor&#34;&gt;NumPy array转为Tensor&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -544,14 +544,19 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
         <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>https://xland.cyou/about/</guid>
-        <description>&lt;p&gt;之前的博客久未更新，这次换了Hugo重新搭建，索性推倒重来，换了新域名，以前的博文也全数删除。&lt;br&gt;
-&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
-出自夏目漱石的《三四郎》&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
+在夏目漱石的《三四郎》里&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;“时间，记忆与自我欺骗”&lt;/strong&gt;&lt;br&gt;
-出自石黑一雄的《长日将尽》，书中的史蒂文斯，遮遮掩掩，而后又总陷于回忆和幻想。我想我即是如此。&lt;/p&gt;
+出自石黑一雄的《长日将尽》，书中的史蒂文斯，总在遮遮掩掩，又总在回忆和幻想中自我欺骗。我想我即是如此。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;为什么，史蒂文斯先生，为什么，为什么，为什么你总是要去假装呢？”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;的确——我又何必再遮遮掩掩？——在那一刻，我的心都碎了。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -662,10 +667,10 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: Zhiim&amp;#39;s Blog
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;description: “迷途的羔羊”||“时间，记忆与自我欺骗”
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;website: https://xland.cyou
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;image: https://xland.cyou/img/avatar.png
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;名称: Zhiim&amp;#39;s Blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;简介: 总有想不明白的事
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;博客地址: https://xland.cyou
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;头像: https://xland.cyou/img/avatar.webp
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>

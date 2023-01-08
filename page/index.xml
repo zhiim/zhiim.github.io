@@ -12,14 +12,19 @@
         <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>https://xland.cyou/about/</guid>
-        <description>&lt;p&gt;之前的博客久未更新，这次换了Hugo重新搭建，索性推倒重来，换了新域名，以前的博文也全数删除。&lt;br&gt;
-&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
-出自夏目漱石的《三四郎》&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
+在夏目漱石的《三四郎》里&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;“时间，记忆与自我欺骗”&lt;/strong&gt;&lt;br&gt;
-出自石黑一雄的《长日将尽》，书中的史蒂文斯，遮遮掩掩，而后又总陷于回忆和幻想。我想我即是如此。&lt;/p&gt;
+出自石黑一雄的《长日将尽》，书中的史蒂文斯，总在遮遮掩掩，又总在回忆和幻想中自我欺骗。我想我即是如此。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;为什么，史蒂文斯先生，为什么，为什么，为什么你总是要去假装呢？”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;的确——我又何必再遮遮掩掩？——在那一刻，我的心都碎了。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -46,10 +51,10 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: Zhiim&amp;#39;s Blog
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;description: “迷途的羔羊”||“时间，记忆与自我欺骗”
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;website: https://xland.cyou
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;image: https://xland.cyou/img/avatar.png
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;名称: Zhiim&amp;#39;s Blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;简介: 总有想不明白的事
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;博客地址: https://xland.cyou
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;头像: https://xland.cyou/img/avatar.webp
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
