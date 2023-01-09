@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='PyTorch基础，Dataset和DataLoader'>
-<title>PyTorch基础 Dataset和DataLoader</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='在PyTorch中建立神经网络模型，初始化和查看模型参数'>
+<title>PyTorch基础 网络模型</title>
 
-<link rel='canonical' href='https://xland.cyou/p/pytorch-dataset/'>
+<link rel='canonical' href='https://xland.cyou/p/pytorch-model/'>
 
-<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='PyTorch基础 Dataset和DataLoader'>
-<meta property='og:description' content='PyTorch基础，Dataset和DataLoader'>
-<meta property='og:url' content='https://xland.cyou/p/pytorch-dataset/'>
+<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='PyTorch基础 网络模型'>
+<meta property='og:description' content='在PyTorch中建立神经网络模型，初始化和查看模型参数'>
+<meta property='og:url' content='https://xland.cyou/p/pytorch-model/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PyTorch' /><meta property='article:published_time' content='2023-01-07T11:13:45&#43;08:00'/><meta property='article:modified_time' content='2023-01-07T11:13:45&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PyTorch' /><meta property='article:published_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='article:modified_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="PyTorch基础 Dataset和DataLoader">
-<meta name="twitter:description" content="PyTorch基础，Dataset和DataLoader"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="PyTorch基础 网络模型">
+<meta name="twitter:description" content="在PyTorch中建立神经网络模型，初始化和查看模型参数"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -325,14 +325,20 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#loading-a-dataset">loading a dataset</a></li>
-    <li><a href="#iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</a></li>
-    <li><a href="#training-with-dataloaders">Training with DataLoaders</a></li>
-    <li><a href="#normalizatioin">Normalizatioin</a>
+    <li><a href="#神经网络-neural-network">神经网络 neural network</a>
       <ol>
-        <li><a href="#transforms">Transforms</a></li>
+        <li><a href="#神经网络的组成">神经网络的组成</a></li>
       </ol>
     </li>
+    <li><a href="#在pytorch中建立神经网络">在PyTorch中建立神经网络</a>
+      <ol>
+        <li><a href="#nnlinear">nn.Linear</a></li>
+        <li><a href="#nnflatten">nn.Flatten</a></li>
+        <li><a href="#nnsequential">nn.Sequential</a></li>
+        <li><a href="#nnrelu">nn.ReLU</a></li>
+      </ol>
+    </li>
+    <li><a href="#模型参数">模型参数</a></li>
   </ol>
 </nav>
         </div>
@@ -360,12 +366,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/pytorch-dataset/">PyTorch基础 Dataset和DataLoader</a>
+            <a href="/p/pytorch-model/">PyTorch基础 网络模型</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            PyTorch基础，Dataset和DataLoader
+            在PyTorch中建立神经网络模型，初始化和查看模型参数
         </h3>
         
     </div>
@@ -386,7 +392,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 07, 2023</time>
+                <time class="article-time--published">Jan 09, 2023</time>
             </div>
         
 
@@ -416,59 +422,81 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>PyTorch provides two data primitives: <code>torch.utils.data.DataLoader</code>and <code>torch.utils.data.Dataset</code> that allow you to use pre-loaded datasets as well as your own data.
-<code>Dataset</code>stores the samples and their corresponding labels, and <code>DataLoader</code> wraps an iterable around the <code>Dataset</code> to enable easy access to the samples.</p>
-<h2 id="loading-a-dataset">loading a dataset</h2>
-<p>load the <strong>Fashion-MNIST</strong> dataset from TorchVision.
-The <a class="link" href="https://pytorch.org/vision/stable/index.html#module-torchvision"  target="_blank" rel="noopener"
-    >torchvision</a> package consists of popular datasets, model architectures, and common image transformations for computer vision.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">ToTensor</span><span class="p">,</span> <span class="n">Lambda</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">training_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">root</span><span class="o">=</span><span class="s2">&#34;data&#34;</span><span class="p">,</span> <span class="c1"># data storage path</span>
-</span></span><span class="line"><span class="cl">    <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># load training data</span>
-</span></span><span class="line"><span class="cl">    <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># download data from internet to root if data don&#39;t found at root</span>
-</span></span><span class="line"><span class="cl">    <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">()</span> <span class="c1"># data to tensor</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">test_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">FashionMNIST</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">root</span><span class="o">=</span><span class="s2">&#34;data&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># load test data</span>
-</span></span><span class="line"><span class="cl">    <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="iterating-and-visualizing-the-dataset">Iterating and Visualizing the Dataset</h2>
+    <h2 id="神经网络-neural-network">神经网络 neural network</h2>
+<p>神经网络由多个神经元互相连接组成，每个神经元是一个计算单元，位于同一层级的多个神经元组成一个网络层。一般的神经网络一般由三种网络层组成：输入层，隐藏层和输出层。</p>
+<p><img src="/p/pytorch-model/neutral-network.webp"
+	width="820"
+	height="415"
+	
+	loading="lazy"
+	
+		alt="神经网络"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="197"
+		data-flex-basis="474px"
+	
+></p>
+<h3 id="神经网络的组成">神经网络的组成</h3>
+<ul>
+<li>
+<p><strong>激活函数 Activatioin Functioin</strong></p>
+<p>神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。</p>
+<ul>
+<li>
+<p><em>Binary</em> 输入为正数时神经元输出1，输入为负数时神经元输出0</p>
+<p>$$
+f(x)= \small\begin{cases} 0, &amp; \text{if } x &lt; 0 \newline 1, &amp; \text{if } x\geq 0 \end{cases}
+$$</p>
+</li>
+<li>
+<p><em>Sigmod</em> 由输入值得到0和1之间的连续输出值</p>
+<p>$$
+f(x) = {\large \frac{1}{1+e^{-x}}}
+$$</p>
+</li>
+<li>
+<p><em>Tanh</em> 由输入值得到-1和1之间的连续输出值</p>
+<p>$$
+f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
+$$</p>
+</li>
+<li>
+<p><em>ReLU</em> 当输入为负数时输出为0，输入为正数时保持输入值</p>
+<p>$$
+f(x)= \small \begin{cases} 0, &amp; \text{if } x &lt; 0\newline x, &amp; \text{if } x\geq 0 \end{cases}
+$$</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>权重 Weights</strong></p>
+<p>由前一神经元输出到下一神经元输入的加权</p>
+</li>
+<li>
+<p><strong>偏置 Bias</strong></p>
+</li>
+</ul>
+<p><img src="/p/pytorch-model/neuron.webp"
+	width="1240"
+	height="677"
+	
+	loading="lazy"
+	
+		alt="神经元模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<p>$$
+output=activation function(\sum{(weights * inputs) + bias})
+$$</p>
+<h2 id="在pytorch中建立神经网络">在PyTorch中建立神经网络</h2>
+<p><code>torch.nn</code>提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是<code>nn.Module</code>的子类。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -493,55 +521,67 @@ The <a class="link" href="https://pytorch.org/vision/stable/index.html#module-t
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">labels_map</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">0</span><span class="p">:</span> <span class="s2">&#34;T-Shirt&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="p">:</span> <span class="s2">&#34;Trouser&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="p">:</span> <span class="s2">&#34;Pullover&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="p">:</span> <span class="s2">&#34;Dress&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="p">:</span> <span class="s2">&#34;Coat&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">5</span><span class="p">:</span> <span class="s2">&#34;Sandal&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">6</span><span class="p">:</span> <span class="s2">&#34;Shirt&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">7</span><span class="p">:</span> <span class="s2">&#34;Sneaker&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">8</span><span class="p">:</span> <span class="s2">&#34;Bag&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="mi">9</span><span class="p">:</span> <span class="s2">&#34;Ankle Boot&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">figure</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">cols</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cols</span> <span class="o">*</span> <span class="n">rows</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">sample_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">img</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[</span><span class="n">sample_idx</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="n">figure</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">labels_map</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&#34;off&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using </span><span class="si">{}</span><span class="s1"> device&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NeuralNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">NeuralNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">logits</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">NeuralNetwork</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="training-with-dataloaders">Training with DataLoaders</h2>
-<p>While training a model, we use <code>DataLoader</code> to pass samples in &ldquo;<strong>minibatches</strong>&rdquo;, reshuffle the data at every <strong>epoch</strong> to reduce model overfitting, and use Python&rsquo;s multiprocessing to speed up data retrieval.
-To use <code>DataLoader</code>, we need to set the followings paraments:</p>
-<ul>
-<li><strong>dataset</strong>-dataset from which to load the data</li>
-<li><strong>batch_size</strong>-how many samples per batch to load</li>
-<li><strong>shuffle</strong>-set to True to have the data reshuffled at every epoch (default: False)</li>
-</ul>
+</div><p>通过向模型传递输入数据，模型会自动调用forward()，并返回模型输出。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># 生成模型输入数据</span>
+</span></span><span class="line"><span class="cl"><span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># 向模型传递输入数据，model.forward()自动执行，得到输出logits</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred_probab</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">logits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">pred_probab</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Predicted class: </span><span class="si">{</span><span class="n">y_pred</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>We have loaded that dataset into the <code>Dataloader</code> and can iterate through the dataset as needed. Each iteration below returns a batch of <code>train_features</code> and <code>train_labels</code>(containing <code>batch_size=64</code> features and labels respectively). Because we specified <code>shuffle=True</code>, after we iterate over all batches the data is shuffled (for finer-grained control over the data loading order.</p>
+</div><h3 id="nnlinear">nn.Linear</h3>
+<p><code>nn.Linear</code>随机初始化每层的权重和偏置，并储存在tensors中</p>
+<h3 id="nnflatten">nn.Flatten</h3>
+<p><code>nn.Flatten</code>将28x28的图片转换为一个784维的输入向量</p>
+<h3 id="nnsequential">nn.Sequential</h3>
+<p><code>nn.Sequential</code>是一个module的容器，数据经过<code>nn.Sequential</code>后，会按照定义时的顺序，依次进行运算。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -554,34 +594,39 @@ To use <code>DataLoader</code>, we need to set the followings paraments:</p>
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Display image and label.</span>
-</span></span><span class="line"><span class="cl"><span class="n">train_features</span><span class="p">,</span> <span class="n">train_labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 得到batch_size=64的训练数据</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Feature batch shape: </span><span class="si">{</span><span class="n">train_features</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># output: Feature batch shape: torch.Size([64, 1, 28, 28])</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># batch_size为64，训练数据的每一项是一个28x28的图片</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Labels batch shape: </span><span class="si">{</span><span class="n">train_labels</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 绘制训练数据batch中第一个图像</span>
-</span></span><span class="line"><span class="cl"><span class="n">img</span> <span class="o">=</span> <span class="n">train_features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">label</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;gray&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># x输入linear_relu_stack后，依次经过module nn.Linear(28*28, 512)，</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># nn.ReLU()，nn.Linear(512, 512)，nn.ReLU()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>iter(object[, sentinel])</code> 用于生成迭代器，传入参数object必须为支持迭代的对象，<code>next()</code> 返回迭代器下一项。</p>
-<h2 id="normalizatioin">Normalizatioin</h2>
-<p>Normalization is a common data pre-processing technique that is applied to scale or transform the data to make sure there&rsquo;s an equal learning contribution from each feature.</p>
-<h3 id="transforms">Transforms</h3>
-<p>We use <strong>transforms</strong> to perform some manipulation of the data and make it suitable for training.
-<code>transform</code> to modify the features and <code>target_transform</code> to modify the labels.
-<code>ToTensor</code> converts a PIL image or NumPy <code>ndarray</code> into a <code>FloatTensor</code> and scales the image&rsquo;s pixel intensity values in the range [0., 1.]</p>
-
+</div><h3 id="nnrelu">nn.ReLU</h3>
+<p>激活函数ReLU</p>
+<h2 id="模型参数">模型参数</h2>
+<p>神经网络的参数包括每一个网络层的weight和bais，通过模型的<code>parameters()</code>或<code>named_parameters()</code>可以获取模型中的所有参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model structure: &#34;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Layer: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> | Size: </span><span class="si">{</span><span class="n">param</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> | Values : </span><span class="si">{</span><span class="n">param</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -646,21 +691,21 @@ To use <code>DataLoader</code>, we need to set the followings paraments:</p>
             
                 
 <article class="">
-    <a href="/p/pytorch-model/">
+    <a href="/p/pytorch-dataset/">
         
         
             
             <div class="article-image">
                 <img src="/img/default.webp" 
                     loading="lazy"
-                    alt="Featured image of post PyTorch基础 网络模型"
-                    data-key="pytorch-model" 
+                    alt="Featured image of post PyTorch基础 Dataset和DataLoader"
+                    data-key="pytorch-dataset" 
                     >
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">PyTorch基础 网络模型</h2>
+            <h2 class="article-title">PyTorch基础 Dataset和DataLoader</h2>
         </div>
     </a>
 </article>
