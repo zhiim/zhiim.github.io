@@ -217,7 +217,7 @@
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>PyTorch基础 网络模型</title>
+        <title>PyTorch基础 （三）网络模型</title>
         <link>https://xland.cyou/p/pytorch-model/</link>
         <pubDate>Mon, 09 Jan 2023 15:14:55 +0800</pubDate>
         
@@ -429,7 +429,7 @@ $$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>PyTorch基础 Dataset和DataLoader</title>
+        <title>PyTorch基础 （二）Dataset和DataLoader</title>
         <link>https://xland.cyou/p/pytorch-dataset/</link>
         <pubDate>Sat, 07 Jan 2023 11:13:45 +0800</pubDate>
         
@@ -602,7 +602,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 </description>
         </item>
         <item>
-        <title>PyTorch基础 Tensors</title>
+        <title>PyTorch基础 （一）Tensors</title>
         <link>https://xland.cyou/p/pytorch-tensor/</link>
         <pubDate>Fri, 06 Jan 2023 17:12:03 +0800</pubDate>
         
@@ -1098,7 +1098,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;名称: Zhiim&amp;#39;s Blog
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;简介: 总有想不明白的事
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;博客地址: https://xland.cyou
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;头像: https://xland.cyou/img/avatar.webp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;头像: https://xland.cyou/img/avatar.png
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
