@@ -43,6 +43,8 @@
 	
 	loading=&#34;lazy&#34;
 	
+		alt=&#34;新建仓库&#34;
+	
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;选择 &lt;strong&gt;Initialize this repository with a README&lt;/strong&gt; ，完成仓库创建&lt;/p&gt;
@@ -53,6 +55,8 @@
 	
 	
 	loading=&#34;lazy&#34;
+	
+		alt=&#34;仓库地址&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -84,6 +88,8 @@
 	
 	
 	loading=&#34;lazy&#34;
+	
+		alt=&#34;设置页面分支&#34;
 	
 	
 &gt;&lt;/p&gt;

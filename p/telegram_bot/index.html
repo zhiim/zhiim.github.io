@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用Github Pages部署Hugo生成的静态博客页面'>
-<title>将Hugo博客部署到Github Pages</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用'>
+<title>Telegram Bot （一）基础</title>
 
-<link rel='canonical' href='https://xland.cyou/p/hugo_blog/'>
+<link rel='canonical' href='https://xland.cyou/p/telegram_bot/'>
 
-<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='将Hugo博客部署到Github Pages'>
-<meta property='og:description' content='利用Github Pages部署Hugo生成的静态博客页面'>
-<meta property='og:url' content='https://xland.cyou/p/hugo_blog/'>
+<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='Telegram Bot （一）基础'>
+<meta property='og:description' content='Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用'>
+<meta property='og:url' content='https://xland.cyou/p/telegram_bot/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Hugo' /><meta property='article:published_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='article:modified_time' content='2022-02-12T19:34:01&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Telegram Bot' /><meta property='article:tag' content='pyTelegramBotAPI' /><meta property='article:published_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='article:modified_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="将Hugo博客部署到Github Pages">
-<meta name="twitter:description" content="利用Github Pages部署Hugo生成的静态博客页面"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Telegram Bot （一）基础">
+<meta name="twitter:description" content="Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -325,10 +325,20 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#关于hugo">关于Hugo</a></li>
-    <li><a href="#关于github-pages">关于Github Pages</a></li>
-    <li><a href="#创建user-page">创建User Page</a></li>
-    <li><a href="#将源文件推送到仓库">将源文件推送到仓库</a></li>
+    <li><a href="#准备">准备</a>
+      <ol>
+        <li><a href="#创建bot">创建Bot</a></li>
+        <li><a href="#安装pytelegrambotapi">安装pyTelegramBotAPI</a></li>
+      </ol>
+    </li>
+    <li><a href="#bot的运行原理">Bot的运行原理</a></li>
+    <li><a href="#pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用</a>
+      <ol>
+        <li><a href="#新建bot对象">新建bot对象</a></li>
+        <li><a href="#message对象">message对象</a></li>
+        <li><a href="#message-handler">message handler</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -356,12 +366,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/hugo_blog/">将Hugo博客部署到Github Pages</a>
+            <a href="/p/telegram_bot/">Telegram Bot （一）基础</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            利用Github Pages部署Hugo生成的静态博客页面
+            Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用
         </h3>
         
     </div>
@@ -382,7 +392,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 12, 2022</time>
+                <time class="article-time--published">Jan 10, 2023</time>
             </div>
         
 
@@ -397,7 +407,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -412,89 +422,209 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="关于hugo">关于Hugo</h2>
-<p>Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。</p>
-<p>将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。</p>
-<h2 id="关于github-pages">关于Github Pages</h2>
-<p>官方文档定义：</p>
-<blockquote>
-<p>GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.</p>
-</blockquote>
-<p><a class="link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages"  target="_blank" rel="noopener"
-    >Github Pages</a> 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>访问个人博客，应当设置成个人页面。</p>
-<ul>
-<li>User/Organization Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/</code>)</li>
-<li>Project Pages (<code>https://&lt;USERNAME|ORGANIZATION&gt;.github.io/&lt;PROJECT&gt;/</code>)</li>
-</ul>
-<h2 id="创建user-page">创建User Page</h2>
-<p>在Github新建仓库时，个人页面的创建和项目页面不同：</p>
-<ul>
-<li>
-<p>用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为<code>&lt;username&gt;.github.io</code></p>
-</li>
-<li>
-<p>个人页面的源文件放置于仓库的默认分支中，项目页面需存放在特定分支</p>
-</li>
-</ul>
-<p>创建仓库时需要注意，免费用户创建的页面仓库必须设置为Public</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214110340.png"
-	
-	
+    <p>基于Python的Telegram Bot，使用<a class="link" href="https://github.com/eternnoir/pyTelegramBotAPI"  target="_blank" rel="noopener"
+    >pyTelegramBotAPI</a>库。</p>
+<h2 id="准备">准备</h2>
+<h3 id="创建bot">创建Bot</h3>
+<p>点击START私聊<a class="link" href="https://t.me/botfather"  target="_blank" rel="noopener"
+    >@BotFather</a>，输入/newbot开始创建Bot。</p>
+<p><img src="/p/telegram_bot/newBot.webp"
+	width="835"
+	height="635"
 	
 	loading="lazy"
 	
-		alt="新建仓库"
+		alt="新建Bot"
 	
 	
-></p>
-<p>选择 <strong>Initialize this repository with a README</strong> ，完成仓库创建</p>
-<h2 id="将源文件推送到仓库">将源文件推送到仓库</h2>
-<p>在创建的仓库中复制远程仓库地址</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="仓库地址"
-	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="315px"
 	
 ></p>
-<p>在Hugo生成的文件夹中，在终端中输入</p>
+<p>等到BotFather回复后输入想要创建的Bot名称，BotFather再次回复后输入Bot的username，注意username必须以_bot结尾。</p>
+<p>创建完Bot后就可以获取到Bot的token，Telegram Bot API的调用必须提供token。</p>
+<h3 id="安装pytelegrambotapi">安装pyTelegramBotAPI</h3>
+<p>使用pip安装pyTelegramBotAPI。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">pyTelegramBotAPI</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="bot的运行原理">Bot的运行原理</h2>
+<p>Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。</p>
+<p>pyTelegramBotAPI是一个Python库，对Telegram Bot API进行了封装。使得开发者不用对API直接调用，使用pyTelegramBotAPI提供的函数和类就可以实现Telegram Bot API的各种功能。</p>
+<h2 id="pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用</h2>
+<h3 id="新建bot对象">新建bot对象</h3>
+<p>pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span>  <span class="c">#生成网页源文件</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">public</span>  <span class="c">#生成的源文件存放在public文件夹中，只需将该文件夹推送到所创建的仓库中</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>  <span class="c">#git初始化</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="p">&lt;</span><span class="n">username</span><span class="p">&gt;/&lt;</span><span class="n">username</span><span class="p">&gt;.</span><span class="py">github</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">git</span>  <span class="c">#关联远程仓库</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;first commit&#34;</span>  <span class="c">#在本地提交更改</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">master</span>  <span class="c">#将更改推送到远程仓库</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">,</span> <span class="n">parse_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># You can set parse_mode by default. HTML or MARKDOWN</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>此时GitHub仓库中拥有main和master两个分支，其中main分支是创建仓库是自动生成的默认分支，mater分支由本地推送，即博客的网页源文件</p>
-<p>GitHub Pages的个人页面默认从main分支提取网页源文件，所以还需要在仓库的<code>settings-pages-source</code>中将分支改为master分支</p>
-<p><img src="https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111729.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="设置页面分支"
-	
-	
-></p>
-<p>之后即可通过<code>&lt;username&gt;.github.io</code>访问博客页面</p>
-
+</div><p>TeleBot类中的函数和Telegram Bot API提供的method同名，但是更改了命名规则，例如API中的<code>getMe</code>在TeleBot类对应于<code>get_me</code>，API中的<code>sendMessage</code>被命名为<code>send_message</code>。</p>
+<p>Bot提供给用户的回复是通过handler实现的，对于用户发送给Bot的消息，使用message handler进行处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_welcome</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;Howdy, how are you doing?&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码中表示对于用户发送给Bot的消息，定义一个<code>message_handler</code>，这个<code>message_handler</code>在用户发送了指令/start或/help时执行<code>send_welcome</code>函数，产生对用户的回复”Howdy, how are you doing?“。</p>
+<h3 id="message对象">message对象</h3>
+<p>用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为<a class="link" href="https://core.telegram.org/bots/api#message"  target="_blank" rel="noopener"
+    >message</a>的JSON对象，包含了消息内容，用户id等相关信息，详情可参考Telegram官方文档。</p>
+<p>在上述给出的<code>message_handler</code>示例代码中，<code>send_welcome</code>函数传入参数message对象，<code>reply_to</code>通过message中包含的属性<code>chat.id</code>等获取用户id，从而向用户发送回复信息。</p>
+<p>需要注意的是，由于<code>from</code>是Python中的保留字，在pyTelegramBotAPI中，<code>message</code>的属性名<code>from</code>被替换为<code>from_user</code>。</p>
+<h3 id="message-handler">message handler</h3>
+<p>message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;This is a message handler&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在message handler的一般形式中，<code>filters</code>用来对message进行筛选，使该<code>message_handler</code>只对特定类型的message进行响应。<code>filters</code>的一般格式为<code>name=argument</code>，name表示筛选类型，argument代表筛选范围。例如<code>commands=['start', 'help']</code>表示只对命令/start和/help做出反应。</p>
+<p>官方给出的filters支持的类型如下：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>argument</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content_types</td>
+<td>list of strings (default [&rsquo;text&rsquo;])</td>
+<td>True if message.content_type is in the list of strings.</td>
+</tr>
+<tr>
+<td>regexp</td>
+<td>a regular expression as a string</td>
+<td>True if re.search(regexp_arg) returns True and message.content_type == &rsquo;text&rsquo; (See https://docs.python.org/2/library/re.html)</td>
+</tr>
+<tr>
+<td>commands</td>
+<td>list of strings</td>
+<td>True if message.content_type == &rsquo;text&rsquo; and message.text starts with a command that is in the list of strings.</td>
+</tr>
+<tr>
+<td>chat_types</td>
+<td>list of chat types</td>
+<td>True if message.chat.type in your filter</td>
+</tr>
+<tr>
+<td>func</td>
+<td>a function (lambda or function reference)</td>
+<td>True if the lambda or function reference returns True</td>
+</tr>
+</tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
+</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只处理命令 &#39;/start&#39; 和 &#39;/help&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_start_help</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只处理用户发送内容为“文件”和“音频”的message</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">,</span> <span class="s1">&#39;audio&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_docs_audio</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handles all text messages that match the regular expression</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">regexp</span><span class="o">=</span><span class="s2">&#34;SOME_REGEXP&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handles all messages for which the lambda returns True</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">message</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Which could also be defined as:</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">test_message</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handlers can be stacked to create a function which will be called if either message_handler is eligible</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># This handler will be called if the message starts with &#39;/hello&#39; OR is some emoji</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="n">SOME_FANCY_EMOJI</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_something</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -502,7 +632,9 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/hugo/">Hugo</a>
+            <a href="/tags/telegram-bot/">Telegram Bot</a>
+        
+            <a href="/tags/pytelegrambotapi/">pyTelegramBotAPI</a>
         
     </section>
 
