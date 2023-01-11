@@ -8,17 +8,17 @@
         <language>zh-cn</language>
         <lastBuildDate>Tue, 10 Jan 2023 19:39:43 +0800</lastBuildDate><atom:link href="https://xland.cyou/categories/tech/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Telegram Bot （一）基础</title>
-        <link>https://xland.cyou/p/telegram_bot/</link>
+        <link>https://xland.cyou/p/telegram-bot/</link>
         <pubDate>Tue, 10 Jan 2023 19:39:43 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/telegram_bot/</guid>
-        <description>&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://xland.cyou/p/telegram-bot/</guid>
+        <description>&lt;img src="https://xland.cyou/p/telegram-bot/caleb-jack-QcH_2Q3fyec-unsplash.webp" alt="Featured image of post Telegram Bot （一）基础" /&gt;&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyTelegramBotAPI&lt;/a&gt;库。&lt;/p&gt;
 &lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
 &lt;h3 id=&#34;创建bot&#34;&gt;创建Bot&lt;/h3&gt;
 &lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@BotFather&lt;/a&gt;，输入/newbot开始创建Bot。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram_bot/newBot.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram-bot/newBot.webp&#34;
 	width=&#34;835&#34;
 	height=&#34;635&#34;
 	
@@ -222,7 +222,7 @@
         <pubDate>Mon, 09 Jan 2023 15:14:55 +0800</pubDate>
         
         <guid>https://xland.cyou/p/pytorch-model/</guid>
-        <description>&lt;h2 id=&#34;神经网络-neural-network&#34;&gt;神经网络 neural network&lt;/h2&gt;
+        <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （三）网络模型" /&gt;&lt;h2 id=&#34;神经网络-neural-network&#34;&gt;神经网络 neural network&lt;/h2&gt;
 &lt;p&gt;神经网络由多个神经元互相连接组成，每个神经元是一个计算单元，位于同一层级的多个神经元组成一个网络层。一般的神经网络一般由三种网络层组成：输入层，隐藏层和输出层。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/pytorch-model/neutral-network.webp&#34;
 	width=&#34;820&#34;
@@ -434,7 +434,7 @@ $$&lt;/p&gt;
         <pubDate>Sat, 07 Jan 2023 11:13:45 +0800</pubDate>
         
         <guid>https://xland.cyou/p/pytorch-dataset/</guid>
-        <description>&lt;p&gt;PyTorch provides two data primitives: &lt;code&gt;torch.utils.data.DataLoader&lt;/code&gt;and &lt;code&gt;torch.utils.data.Dataset&lt;/code&gt; that allow you to use pre-loaded datasets as well as your own data.
+        <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （二）Dataset和DataLoader" /&gt;&lt;p&gt;PyTorch provides two data primitives: &lt;code&gt;torch.utils.data.DataLoader&lt;/code&gt;and &lt;code&gt;torch.utils.data.Dataset&lt;/code&gt; that allow you to use pre-loaded datasets as well as your own data.
 &lt;code&gt;Dataset&lt;/code&gt;stores the samples and their corresponding labels, and &lt;code&gt;DataLoader&lt;/code&gt; wraps an iterable around the &lt;code&gt;Dataset&lt;/code&gt; to enable easy access to the samples.&lt;/p&gt;
 &lt;h2 id=&#34;loading-a-dataset&#34;&gt;loading a dataset&lt;/h2&gt;
 &lt;p&gt;load the &lt;strong&gt;Fashion-MNIST&lt;/strong&gt; dataset from TorchVision.
@@ -607,7 +607,7 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
         <pubDate>Fri, 06 Jan 2023 17:12:03 +0800</pubDate>
         
         <guid>https://xland.cyou/p/pytorch-tensor/</guid>
-        <description>&lt;p&gt;张量（tensor）是一种类似于数组和矩阵的特殊数据结构。tensor类似于NumPy中的ndarray，两者也可以使用相同的内存地址。&lt;/p&gt;
+        <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （一）Tensors" /&gt;&lt;p&gt;张量（tensor）是一种类似于数组和矩阵的特殊数据结构。tensor类似于NumPy中的ndarray，两者也可以使用相同的内存地址。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/pytorch-tensor/tensor.webp&#34;
 	width=&#34;636&#34;
 	height=&#34;276&#34;
@@ -871,10 +871,10 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
         </item>
         <item>
         <title>完全卸载VMware Workstation</title>
-        <link>https://xland.cyou/p/uninstall_vmware/</link>
+        <link>https://xland.cyou/p/uninstall-vmware/</link>
         <pubDate>Sat, 19 Mar 2022 12:05:03 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/uninstall_vmware/</guid>
+        <guid>https://xland.cyou/p/uninstall-vmware/</guid>
         <description>&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
 &lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理&lt;/h3&gt;
 &lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;

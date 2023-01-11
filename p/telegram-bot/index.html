@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'>
-<title>完全卸载VMware Workstation</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用'>
+<title>Telegram Bot （一）基础</title>
 
-<link rel='canonical' href='https://xland.cyou/p/uninstall_vmware/'>
+<link rel='canonical' href='https://xland.cyou/p/telegram-bot/'>
 
-<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='完全卸载VMware Workstation'>
-<meta property='og:description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'>
-<meta property='og:url' content='https://xland.cyou/p/uninstall_vmware/'>
+<link rel="stylesheet" href="/scss/style.min.960f7040029561aef59e8ccd75f64676bca995b0d3a14289ea55a2e29507d706.css"><meta property='og:title' content='Telegram Bot （一）基础'>
+<meta property='og:description' content='Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用'>
+<meta property='og:url' content='https://xland.cyou/p/telegram-bot/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VMware' /><meta property='article:published_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='article:modified_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Telegram Bot' /><meta property='article:tag' content='pyTelegramBotAPI' /><meta property='article:published_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='article:modified_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/telegram-bot/caleb-jack-QcH_2Q3fyec-unsplash.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="完全卸载VMware Workstation">
-<meta name="twitter:description" content="VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Telegram Bot （一）基础">
+<meta name="twitter:description" content="Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://xland.cyou/p/telegram-bot/caleb-jack-QcH_2Q3fyec-unsplash.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -325,14 +325,18 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#准备">准备</a>
       <ol>
-        <li><a href="#通过workstation安装程序自动清理">通过Workstation安装程序自动清理</a></li>
-        <li><a href="#停止vmware相关的服务">停止VMware相关的服务</a></li>
-        <li><a href="#删除vmware-network-bridge-adapter">删除VMware network bridge adapter</a></li>
-        <li><a href="#删除vmware相关的网络适配器">删除VMware相关的网络适配器</a></li>
-        <li><a href="#删除和vmware有关的文件夹">删除和VMware有关的文件夹</a></li>
-        <li><a href="#删除环境变量">删除环境变量</a></li>
+        <li><a href="#创建bot">创建Bot</a></li>
+        <li><a href="#安装pytelegrambotapi">安装pyTelegramBotAPI</a></li>
+      </ol>
+    </li>
+    <li><a href="#bot的运行原理">Bot的运行原理</a></li>
+    <li><a href="#pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用</a>
+      <ol>
+        <li><a href="#新建bot对象">新建bot对象</a></li>
+        <li><a href="#message对象">message对象</a></li>
+        <li><a href="#message-handler">message handler</a></li>
       </ol>
     </li>
   </ol>
@@ -346,8 +350,20 @@ if (!doNotTrack) {
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/telegram-bot/">
+                <img src="/p/telegram-bot/caleb-jack-QcH_2Q3fyec-unsplash.webp"
+                        
+                        width="1152" 
+                        height="768" 
+                        loading="lazy"
+                        alt="Featured image of post Telegram Bot （一）基础" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -362,12 +378,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/uninstall_vmware/">完全卸载VMware Workstation</a>
+            <a href="/p/telegram-bot/">Telegram Bot （一）基础</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留
+            Telegram Bot的基本原理和Python库pyTelegramBotAPI的使用
         </h3>
         
     </div>
@@ -388,7 +404,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 19, 2022</time>
+                <time class="article-time--published">Jan 10, 2023</time>
             </div>
         
 
@@ -403,7 +419,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -418,90 +434,209 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。</p>
-<h3 id="通过workstation安装程序自动清理">通过Workstation安装程序自动清理</h3>
-<p>下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入</p>
+    <p>基于Python的Telegram Bot，使用<a class="link" href="https://github.com/eternnoir/pyTelegramBotAPI"  target="_blank" rel="noopener"
+    >pyTelegramBotAPI</a>库。</p>
+<h2 id="准备">准备</h2>
+<h3 id="创建bot">创建Bot</h3>
+<p>点击START私聊<a class="link" href="https://t.me/botfather"  target="_blank" rel="noopener"
+    >@BotFather</a>，输入/newbot开始创建Bot。</p>
+<p><img src="/p/telegram-bot/newBot.webp"
+	width="835"
+	height="635"
+	
+	loading="lazy"
+	
+		alt="新建Bot"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="315px"
+	
+></p>
+<p>等到BotFather回复后输入想要创建的Bot名称，BotFather再次回复后输入Bot的username，注意username必须以_bot结尾。</p>
+<p>创建完Bot后就可以获取到Bot的token，Telegram Bot API的调用必须提供token。</p>
+<h3 id="安装pytelegrambotapi">安装pyTelegramBotAPI</h3>
+<p>使用pip安装pyTelegramBotAPI。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">VMware-workstation</span><span class="n">-full-xxx-xxx</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">clean</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">pyTelegramBotAPI</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="停止vmware相关的服务">停止VMware相关的服务</h3>
-<p>在Windows搜索框搜索<code>services.msc</code>，打开“服务”，停止所有VMware相关的服务。</p>
-<ul>
-<li>VMware Authorization Service</li>
-<li>VMware Authentication Service</li>
-<li>VMware Registration Service</li>
-<li>VMware DHCP Service</li>
-<li>VMware NAT Service</li>
-<li>VMware USB Arbitration Service</li>
-<li>VMware Workstation Server</li>
-<li>VMware WSX Service</li>
-</ul>
-<h3 id="删除vmware-network-bridge-adapter">删除VMware network bridge adapter</h3>
-<ol>
-<li>打开<code>控制面板\网络和 Internet\网络连接</code></li>
-<li>右键，属性，选择VMware Bridge Protocol，卸载</li>
-</ol>
-<h3 id="删除vmware相关的网络适配器">删除VMware相关的网络适配器</h3>
-<ol>
-<li>打开<code>控制面板\硬件和声音\设备管理器</code></li>
-<li>在“查看”工具栏勾选上“显示隐藏的设备”</li>
-<li>点击“网络适配器”，卸载名字包含VMware的适配器</li>
-</ol>
-<h3 id="删除和vmware有关的文件夹">删除和VMware有关的文件夹</h3>
-<ul>
-<li>程序安装目录</li>
-<li>数据目录<br>
-默认路径<code>C:\Program Files(X86)\VMware\</code></li>
-<li>开始菜单中的VMware<br>
-路径<code>C:\ProgramData\VMware</code></li>
-<li>快捷方式</li>
-<li>其他文件
-<ul>
-<li><code>C:\Windows\system32\vmnat.exe</code></li>
-<li><code>C:\Windows\system32\vmnetbridge.exe</code></li>
-<li><code>C:\Windows\system32\VMNetDHCP.exe</code></li>
-<li><code>C:\Windows\system32\vmnetdhcp.leases</code></li>
-<li><code>C:\Windows\system32\vmxw2ksetup.dll</code></li>
-<li><code>C:\Windows\system32\vnetprobe.exe</code></li>
-<li><code>C:\Windows\system32\vnetprobelib.dll</code></li>
-<li><code>C:\Windows\system32\vnetinst.dll</code></li>
-<li><code>C:\Windows\system32\vnetlib.dll</code></li>
-<li><code>C:\Windows\system32\vnetlib.exe</code></li>
-<li><code>C:\Windows\system32\drivers\vmnet.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetx.sys</code></li>
-<li><code>C:\Windows\system32\drivers\VMparport.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmx86.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetadapter.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetbridge.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetuserif.sys</code></li>
-<li><code>C:\Windows\system32\drivers\hcmon.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmusb.sys</code></li>
-</ul>
-</li>
-<li>注册表<br>
-打开注册表管理器，删除以下注册表
-<ul>
-<li><code>HKEY_CLASSES_ROOT\Installer\Features\A57F49D06AE015943BFA1B54AFE9506C</code></li>
-<li><code>HKEY_CLASSES_ROOT\Installer\Products\A57F49D06AE015943BFA1B54AFE9506C</code></li>
-<li><code>HKEY_CLASSES_ROOT\Installer\UpgradeCodes\3F935F414A4C79542AD9C8D157A3CC39</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{0D94F75A-0EA6-4951-B3AF-B145FA9E05C6}</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\VMware Workstation</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\Installer\VMware Workstation</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\vmware.exe</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="删除环境变量">删除环境变量</h3>
-<p>打开系统环境变量设置，删除VMware Workstation的执行路径<br>
-重启电脑，就完成了VMware Workstation的完全卸载。<br>
-各版本路径存在一些不同，具体参考<a class="link" href="https://kb.vmware.com/s/article/1308"  target="_blank" rel="noopener"
-    >官方文档</a>。</p>
-
+</div><h2 id="bot的运行原理">Bot的运行原理</h2>
+<p>Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。</p>
+<p>pyTelegramBotAPI是一个Python库，对Telegram Bot API进行了封装。使得开发者不用对API直接调用，使用pyTelegramBotAPI提供的函数和类就可以实现Telegram Bot API的各种功能。</p>
+<h2 id="pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用</h2>
+<h3 id="新建bot对象">新建bot对象</h3>
+<p>pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">,</span> <span class="n">parse_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># You can set parse_mode by default. HTML or MARKDOWN</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>TeleBot类中的函数和Telegram Bot API提供的method同名，但是更改了命名规则，例如API中的<code>getMe</code>在TeleBot类对应于<code>get_me</code>，API中的<code>sendMessage</code>被命名为<code>send_message</code>。</p>
+<p>Bot提供给用户的回复是通过handler实现的，对于用户发送给Bot的消息，使用message handler进行处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_welcome</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;Howdy, how are you doing?&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码中表示对于用户发送给Bot的消息，定义一个<code>message_handler</code>，这个<code>message_handler</code>在用户发送了指令/start或/help时执行<code>send_welcome</code>函数，产生对用户的回复”Howdy, how are you doing?“。</p>
+<h3 id="message对象">message对象</h3>
+<p>用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为<a class="link" href="https://core.telegram.org/bots/api#message"  target="_blank" rel="noopener"
+    >message</a>的JSON对象，包含了消息内容，用户id等相关信息，详情可参考Telegram官方文档。</p>
+<p>在上述给出的<code>message_handler</code>示例代码中，<code>send_welcome</code>函数传入参数message对象，<code>reply_to</code>通过message中包含的属性<code>chat.id</code>等获取用户id，从而向用户发送回复信息。</p>
+<p>需要注意的是，由于<code>from</code>是Python中的保留字，在pyTelegramBotAPI中，<code>message</code>的属性名<code>from</code>被替换为<code>from_user</code>。</p>
+<h3 id="message-handler">message handler</h3>
+<p>message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;This is a message handler&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在message handler的一般形式中，<code>filters</code>用来对message进行筛选，使该<code>message_handler</code>只对特定类型的message进行响应。<code>filters</code>的一般格式为<code>name=argument</code>，name表示筛选类型，argument代表筛选范围。例如<code>commands=['start', 'help']</code>表示只对命令/start和/help做出反应。</p>
+<p>官方给出的filters支持的类型如下：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>name</th>
+<th>argument</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content_types</td>
+<td>list of strings (default [&rsquo;text&rsquo;])</td>
+<td>True if message.content_type is in the list of strings.</td>
+</tr>
+<tr>
+<td>regexp</td>
+<td>a regular expression as a string</td>
+<td>True if re.search(regexp_arg) returns True and message.content_type == &rsquo;text&rsquo; (See https://docs.python.org/2/library/re.html)</td>
+</tr>
+<tr>
+<td>commands</td>
+<td>list of strings</td>
+<td>True if message.content_type == &rsquo;text&rsquo; and message.text starts with a command that is in the list of strings.</td>
+</tr>
+<tr>
+<td>chat_types</td>
+<td>list of chat types</td>
+<td>True if message.chat.type in your filter</td>
+</tr>
+<tr>
+<td>func</td>
+<td>a function (lambda or function reference)</td>
+<td>True if the lambda or function reference returns True</td>
+</tr>
+</tbody>
+</table></div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
+</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只处理命令 &#39;/start&#39; 和 &#39;/help&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_start_help</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只处理用户发送内容为“文件”和“音频”的message</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">,</span> <span class="s1">&#39;audio&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_docs_audio</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handles all text messages that match the regular expression</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">regexp</span><span class="o">=</span><span class="s2">&#34;SOME_REGEXP&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handles all messages for which the lambda returns True</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">message</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Which could also be defined as:</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">test_message</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Handlers can be stacked to create a function which will be called if either message_handler is eligible</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># This handler will be called if the message starts with &#39;/hello&#39; OR is some emoji</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="n">SOME_FANCY_EMOJI</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_something</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -509,7 +644,9 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/vmware/">VMware</a>
+            <a href="/tags/telegram-bot/">Telegram Bot</a>
+        
+            <a href="/tags/pytelegrambotapi/">pyTelegramBotAPI</a>
         
     </section>
 

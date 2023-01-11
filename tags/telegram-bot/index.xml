@@ -8,17 +8,17 @@
         <language>zh-cn</language>
         <lastBuildDate>Tue, 10 Jan 2023 19:39:43 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/telegram-bot/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Telegram Bot （一）基础</title>
-        <link>https://xland.cyou/p/telegram_bot/</link>
+        <link>https://xland.cyou/p/telegram-bot/</link>
         <pubDate>Tue, 10 Jan 2023 19:39:43 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/telegram_bot/</guid>
-        <description>&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://xland.cyou/p/telegram-bot/</guid>
+        <description>&lt;img src="https://xland.cyou/p/telegram-bot/caleb-jack-QcH_2Q3fyec-unsplash.webp" alt="Featured image of post Telegram Bot （一）基础" /&gt;&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyTelegramBotAPI&lt;/a&gt;库。&lt;/p&gt;
 &lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
 &lt;h3 id=&#34;创建bot&#34;&gt;创建Bot&lt;/h3&gt;
 &lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@BotFather&lt;/a&gt;，输入/newbot开始创建Bot。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram_bot/newBot.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram-bot/newBot.webp&#34;
 	width=&#34;835&#34;
 	height=&#34;635&#34;
 	
