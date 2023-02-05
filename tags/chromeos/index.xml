@@ -12,7 +12,7 @@
         <pubDate>Sun, 05 Feb 2023 11:02:40 +0800</pubDate>
         
         <guid>https://xland.cyou/p/chromeos-usb-boot/</guid>
-        <description>&lt;p&gt;ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch/blob/main/README.md#supported-hardware&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;brunch&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;brunch能够利用ChromeOS的recovery文件，生成可用的系统镜像文件，从而在非Chromebook上安装原生ChromeOS。&lt;/p&gt;
 &lt;h2 id=&#34;硬件要求&#34;&gt;硬件要求&lt;/h2&gt;
@@ -46,6 +46,15 @@
 &lt;p&gt;我选择的是Lenovo Yoga C630 Chromebook，codename为pantheon，下载发行版本为109的recovery文件。&lt;/p&gt;
 &lt;p&gt;如果不知道应该下载哪个recovery，brunch的项目文档里也给了&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch/blob/main/install-with-windows.md#recoveries&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;推荐的recovery&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel
+&lt;ul&gt;
+&lt;li&gt;1代-9代：选择codename为rammus的设备对应的recovery&lt;/li&gt;
+&lt;li&gt;10代和11代：选择codename为volteer的设备对应的recovery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AMD Ryzen：选择codename为zork的设备对应的recovery&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;下载brunch的release文件&lt;/p&gt;
@@ -128,8 +137,9 @@
 &lt;/div&gt;&lt;p&gt;把命令中的&lt;code&gt;chromeos_filename.bin&lt;/code&gt;用从recovery中解压得到的文件名替代，size用一个数字替代，定义了分配给ChromeOS磁盘空间，不小于14并且为4的倍数（单位GB）。&lt;/p&gt;
 &lt;p&gt;等待脚本执行完成后输入&lt;code&gt;dualboot&lt;/code&gt;然后键入ENTER。&lt;/p&gt;
 &lt;p&gt;下一步可以安装&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/grub2win/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Grub2Win&lt;/a&gt;，配置开机时选择进入的系统。本人未作尝试，具体步骤可以参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch/blob/main/install-with-windows.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;brunch的官方安装教程&lt;/a&gt;。&lt;/p&gt;
+    &gt;Grub2Win&lt;/a&gt;，实现在开机时选择想要进入的系统。本人未作尝试，具体步骤可以参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch/blob/main/install-with-windows.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;brunch的官方安装教程&lt;/a&gt;。&lt;br&gt;
+安装Grub2Win后，依次点击&lt;code&gt;Manage Boot Menu-Add A New Entry-Type&lt;/code&gt;，选择“Create user section”。此时为自动用记事本新建一个文本文件，在之前设置的&lt;code&gt;/mnt/d/brunch&lt;/code&gt;文件夹中打开“chromeos.grub.txt”，将该文件中的内容复制到新建的空文本中。保存Grub2Win的更改，重启电脑，选择ChromeOS进入系统。&lt;/p&gt;
 </description>
         </item>
         
