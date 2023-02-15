@@ -7,11 +7,11 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sun, 05 Feb 2023 11:02:40 +0800</lastBuildDate><atom:link href="https://xland.cyou/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>安装ChromeOS的U盘启动盘</title>
-        <link>https://xland.cyou/p/chromeos-usb-boot/</link>
+        <title>Windows下安装ChromeOS</title>
+        <link>https://xland.cyou/p/windows-install-chromeos/</link>
         <pubDate>Sun, 05 Feb 2023 11:02:40 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/chromeos-usb-boot/</guid>
+        <guid>https://xland.cyou/p/windows-install-chromeos/</guid>
         <description>&lt;p&gt;ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;brunch&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;brunch能够利用ChromeOS的recovery文件，生成可用的系统镜像文件，从而在非Chromebook上安装原生ChromeOS。&lt;/p&gt;
@@ -29,7 +29,7 @@
 &lt;p&gt;下载ChromeOS recovery文件。&lt;/p&gt;
 &lt;p&gt;参考自己的CPU型号，选择一个和自己电脑配置接近的chrome设备，在&lt;a class=&#34;link&#34; href=&#34;https://chromiumdash.appspot.com/serving-builds?deviceCategory=Chrome%20OS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Chromium Dash&lt;/a&gt;下载该设备的recovery文件，一般选择最新的发行版本即可。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/chromeos-usb-boot/recovery.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/windows-install-chromeos/recovery.webp&#34;
 	width=&#34;1311&#34;
 	height=&#34;292&#34;
 	
@@ -60,7 +60,7 @@
 &lt;p&gt;下载brunch的release文件&lt;/p&gt;
 &lt;p&gt;在brunch的&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;release&lt;/a&gt;页面下载和recovery版本号对应的文件，例如下载的recovery为109，则下载Brunch r109。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/chromeos-usb-boot/release.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/windows-install-chromeos/release.webp&#34;
 	width=&#34;1138&#34;
 	height=&#34;558&#34;
 	
@@ -107,7 +107,7 @@
 &lt;p&gt;进入ChromeOS&lt;/p&gt;
 &lt;p&gt;重启电脑，进入BIOS设置界面，关闭secure boot，设置优先从USB启动。&lt;/p&gt;
 &lt;p&gt;保存并退出BIOS设置，电脑会自动重启并从U盘启动系统，第一次进入系统时需要等待较长时间。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/chromeos-usb-boot/chromeos.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/windows-install-chromeos/chromeos.webp&#34;
 	width=&#34;1920&#34;
 	height=&#34;1080&#34;
 	
@@ -143,7 +143,7 @@
 </description>
         </item>
         <item>
-        <title>Telegram Bot （一）基础</title>
+        <title>Telegram Bot（一）Python库pyTelegramBotAPI的使用</title>
         <link>https://xland.cyou/p/telegram-bot/</link>
         <pubDate>Tue, 10 Jan 2023 19:39:43 +0800</pubDate>
         
