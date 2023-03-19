@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速'>
+<title>Manjaro Linux 安装 MATLAB</title>
+
+<link rel='canonical' href='https://xland.cyou/p/manjaro-linux-matlab/'>
+
+<link rel="stylesheet" href="/scss/style.min.564453e5ee6d422198efe709f1bdca3c6739c3db36dcad8cc71534b50bf28ccc.css"><meta property='og:title' content='Manjaro Linux 安装 MATLAB'>
+<meta property='og:description' content='Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速'>
+<meta property='og:url' content='https://xland.cyou/p/manjaro-linux-matlab/'>
+<meta property='og:site_name' content='Zhiim&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-03-19T18:40:57&#43;08:00'/><meta property='article:modified_time' content='2023-03-19T18:40:57&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta name="twitter:site" content="@zhiim_0">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Manjaro Linux 安装 MATLAB">
+<meta name="twitter:description" content="Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-D132QYJBV0', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hudedeeb5aacf2bac0ca9893239364ccb5_12388_300x0_resize_q75_h2_box_2.webp" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Zhiim&#39;s Blog</a></h1>
+            <h2 class="site-description">总有想不明白的事</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://t.me/zhiim_0'
+                        target="_blank"
+                        title="Telegram"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-telegram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/zhiim'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.douban.com/people/zhiim'
+                        target="_blank"
+                        title="Douban"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-douban" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 20h16" />
+  <path d="M5 4h14" />
+  <path d="M8 8h8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" />
+  <path d="M16 14l-2 6" />
+  <path d="M8 17l1 3" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://xland.cyou/index.xml'
+                        target="_blank"
+                        title="Rss"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>首页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#matlab安装报错">MATLAB安装报错</a></li>
+    <li><a href="#matlab界面内中文无法显示">MATLAB界面内中文无法显示</a></li>
+    <li><a href="#matlab的设置无法保存">MATLAB的设置无法保存</a></li>
+    <li><a href="#matlab无法打开文本编辑器">MATLAB无法打开文本编辑器</a></li>
+    <li><a href="#matlab界面缩放过小">MATLAB界面缩放过小</a></li>
+    <li><a href="#matlab无法使用opengl加速">MATLAB无法使用OpenGL加速</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tech/" style="background-color: #eee574; color: #000;">
+                Tech
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/manjaro-linux-matlab/">Manjaro Linux 安装 MATLAB</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 19, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>最近从Windows换到了Manjaro，日常离不开MATLAB，虽然MATLAB官方提供了Linux版本，但是没有对Manjaro做适配，所以在安装MATLAB的过程中遇到了各种问题，以此记录。任何其他问题建议查阅<a class="link" href="wiki.archlinux.org" >ArchWiki</a>。</p>
+<h2 id="matlab安装报错">MATLAB安装报错</h2>
+<p>最初安装的时候，我下载的是MATLAB 2020b的iso镜像，即使按照ArchWiki的指导，移除了<code>libfreetype.so*</code>还是会继续报错。后来换成MATLAB 2022a的镜像才成功安装。<br>
+进入MATLAB 2022a安装文件所处的文件夹，运行<code>./install</code>，出现报错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">terminate called after throwing an instance of <span class="s1">&#39;std::runtime_error&#39;</span>
+</span></span><span class="line"><span class="cl">  what<span class="o">()</span>:  Failed to launch web window with error: Unable to launch the MATLABWindow application. The <span class="nb">exit</span> code was: <span class="m">127</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>    IOT instruction <span class="o">(</span>core dumped<span class="o">)</span>  ./install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时可以运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./bin/glnxa64/MATLABWindow 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>应该会出现报错信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bin/glnxa64/MATLABWindow: symbol lookup error: /usr/lib/libcairo.so.2: undefined symbol: FT_Get_Color_Glyph_Layer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>FT_Get_Color_Glyph_Layer</code>是freetype2里的一个符号，只要删除MATLAB安装文件夹里的<code>libfreetype.so*</code>，执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm ./bin/glnxa64/libfreetype.so*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者也可以添加环境变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LD_PRELOAD</span><span class="o">=</span>/lib64/libfreetype.so
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时再执行<code>./install</code>就可以成功打开MATLAB安装引导。<br>
+解决方案来源：<a class="link" href="https://wiki.archlinux.org/title/MATLAB#Unable_to_launch_the_MATLABWindow_application"  target="_blank" rel="noopener"
+    >ArchWiki-MATLAB</a></p>
+<h2 id="matlab界面内中文无法显示">MATLAB界面内中文无法显示</h2>
+<p>安装完成，打开MATLAB却发现中文乱码，所有的中文都是方块。MATLAB的界面是用JAVA开发的，中文无法显示是因为JAVA的中文字体配置问题。<br>
+此时进入MATLAB的安装路径下的jre目录，我的MATLAB安装在<code>/usr/local/MATLAB/R2022a</code>，进入该文件夹</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在此目录下新建<code>fallback</code>文件夹</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir fallback
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将中文字体移动到fallback文件夹，我使用的字体是NotoSansCJK-Regular.ttc，想要获取改字体可以先运行<code>sudo pacman noto-fonts-cjk</code>，然后在<code>/usr/share/fonts/noto-cjk</code>就可找到字体文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc /usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts/fallback
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>复制完字体文件后，在<code>fallback</code>文件夹内，运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkfontscale
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时会生成<code>fonts.scale</code>，打开<code>fonts.scale</code>，将其中内容复制到上级目录<code>/usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts</code>中的<code>fonts.dir</code><br>
+注意<code>fonts.dir</code>没有可写权限，需要先授予可写权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod <span class="m">6</span> fonts.dir
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时进入MATLAB就可以正常显示中文了。<br>
+解决方案来源：<a class="link" href="https://developer.aliyun.com/article/398395"  target="_blank" rel="noopener"
+    >Linux下Matlab的安装和中文显示支持</a>。<br>
+如果MATLAB的终端无法显示中文，可以在MATLAB内<code>主页-预设-字体</code>下的两个字体选项里选择中文字体（如果设置无法保存请参考下节）。</p>
+<h2 id="matlab的设置无法保存">MATLAB的设置无法保存</h2>
+<p>在MATLAB的设置界面更改设置选项，发现退出MATLAB后在重新打开，所有的设置会恢复默认值，这是因为MATLAB无法使用/tmp文件夹。新建文件夹</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/.cache/matlab-tmp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在<code>/home/xuq/.local/share/applications</code>为MATLAB建立一个启动方式<code>matlab.desktop</code>，文件内容为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>Desktop Entry<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Type</span><span class="o">=</span>Application
+</span></span><span class="line"><span class="cl"><span class="nv">Version</span><span class="o">=</span>R2022b
+</span></span><span class="line"><span class="cl"><span class="nv">Name</span><span class="o">=</span>MATLAB
+</span></span><span class="line"><span class="cl"><span class="nv">Comment</span><span class="o">=</span>Scientific computing software
+</span></span><span class="line"><span class="cl"><span class="nv">Icon</span><span class="o">=</span>/home/&lt;username&gt;/.local/share/applications/matlab_logo.png
+</span></span><span class="line"><span class="cl"><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&#34;export TMPDIR=/home/&lt;username&gt;/.cache/matlab-tmp; /usr/local/MATLAB/R2022a/bin/glnxa64/MATLAB -desktop; rm -r </span><span class="nv">$TMPDIR</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Terminal</span><span class="o">=</span>False
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意替换MATLAB可执行文件的路径，以及MATLAB的Icon路径。<br>
+解决方案来源：<a class="link" href="https://ww2.mathworks.cn/matlabcentral/answers/1806255-why-aren-t-my-matlab-preferences-saved-on-linux"  target="_blank" rel="noopener"
+    >Why aren&rsquo;t my MATLAB preferences saved on Linux?</a>。</p>
+<h2 id="matlab无法打开文本编辑器">MATLAB无法打开文本编辑器</h2>
+<p>在MATLAB中新建脚本或者打开脚本时，出现报错<code>Unable to open this file in the current system configuration</code>，终端输出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Exception in thread <span class="s2">&#34;AWT-EventQueue-0&#34;</span>: java.lang.NullPointerException
+</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop.updateTemplate<span class="o">(</span>MLDesktop.java:3665<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop.access<span class="nv">$2000</span><span class="o">(</span>MLDesktop.java:225<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop<span class="nv">$NewMFileAction</span>.actionPerformed<span class="o">(</span>MLDesktop.java:2853<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at com.mathworks.mwswing.ChildAction.actionPerformed<span class="o">(</span>ChildAction.java:214<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at javax.swing.AbstractButton.fireActionPerformed<span class="o">(</span>AbstractButton.java:2022<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at javax.swing.AbstractButton<span class="nv">$Handler</span>.actionPerformed<span class="o">(</span>AbstractButton.java:2348<span class="o">)</span>
+</span></span><span class="line"><span class="cl">	at javax.swing.DefaultButtonModel.fireActionPerformed<span class="o">(</span>DefaultButtonModel.java:402<span class="o">)</span>
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时只需要进入MATLAB的安装路径，去除<code>libfreetype.so.6</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/bin/glnxa64
+</span></span><span class="line"><span class="cl">mv libfreetype.so.6 libfreetype.so.6.old
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解决方案来源：<a class="link" href="https://bbs.archlinux.org/viewtopic.php?id=275084"  target="_blank" rel="noopener"
+    >MATLAB cannot create or open script files</a>。</p>
+<h2 id="matlab界面缩放过小">MATLAB界面缩放过小</h2>
+<p>MATLAB的界面、字体和图标在Linux下很小，无法随着系统缩放而改变。
+以MATLAB界面放大1.25倍为例，在MATLAB终端输入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt;&gt; <span class="nv">s</span> <span class="o">=</span> settings<span class="p">;</span>s.matlab.desktop.DisplayScaleFactor
+</span></span><span class="line"><span class="cl">&gt;&gt; s.matlab.desktop.DisplayScaleFactor.PersonalValue <span class="o">=</span> 1.25
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解决方案来源：<a class="link" href="https://ww2.mathworks.cn/matlabcentral/answers/406956-does-matlab-support-high-dpi-screens-on-linux"  target="_blank" rel="noopener"
+    >Does MATLAB support High DPI screens on Linux?</a>。</p>
+<h2 id="matlab无法使用opengl加速">MATLAB无法使用OpenGL加速</h2>
+<p>MATLAB绘图时终端输出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Warning: MATLAB previously crashed due to a low-level graphics error. 
+</span></span><span class="line"><span class="cl">To prevent another crash in this session, MATLAB is using software OpenGL instead of using your graphics hardware. 
+</span></span><span class="line"><span class="cl">To save this setting <span class="k">for</span> future sessions, use the opengl<span class="o">(</span><span class="s1">&#39;save&#39;</span>, <span class="s1">&#39;software&#39;</span><span class="o">)</span> command. 
+</span></span><span class="line"><span class="cl">For more information, see Resolving Low-Level Graphics Issues.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>设置由于MATLAB无法使用OpenGL硬件加速，导致图形渲染能力下降，在3D绘图时可能出错。<br>
+进入MATLAB可执行文件所在的路径</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/bin/glnxa64
+</span></span><span class="line"><span class="cl">MATLAB -nodesktop -nosplash -r <span class="s2">&#34;opengl info; exit&#34;</span> <span class="p">|</span> grep Software
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果终端中输出的<code>software rendering</code>值不是<code>false</code>（0也不行）,说明此时未启用硬件加速。查看系统的OpenGL配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">glxinfo <span class="p">|</span> grep <span class="s2">&#34;direct rendering&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果<code>direct rendering</code>的值为<code>yes</code>说明配置正确，否则先要解决OpenGL的系统配置。如果系统的OpenGL配置正确，更改先前创建的MATLAB启动方式，在<code>/home/xuq/.local/share/applications</code>打开<code>matlab.desktop</code>，在Exec项添加MATLAB运行时的环境变量，将其更改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&#34;export TMPDIR=/home/xuq/.config/matlab-temp; export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/dri/; /usr/local/MATLAB/R2022a/bin/glnxa64/MATLAB -desktop; rm -r </span><span class="nv">$TMPDIR</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在MATLAB可执行文件所在的路径下新建文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch /usr/local/MATLAB/R2022a/bin/glnxa64/java.opts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在<code>java.opts</code>中写入<code>-Djogl.disable.openglarbcontext=1</code>。
+解决方案来源：<a class="link" href="https://wiki.archlinux.org/title/MATLAB#OpenGL_acceleration"  target="_blank" rel="noopener"
+    >ArchWiki-MATLAB</a>。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/linux/">Linux</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <link rel="stylesheet" href="/scss/partials/comments/disqusjs.min.css">
+
+<div class="disqus-container">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript">
+        let disqusjs;
+        function loadDisqusJS() {
+            disqusjs = new DisqusJS({
+                shortname: "zhiim",
+                siteName: "Zhiim's Blog",
+                apikey: "zISoMc3WnXMqUN9voGP2jQHZTwaUqeSTS6RBa7Zw0jX4MgGGRu5zwWjhMNoEnWdi",
+                api: "https://disqus.xland.cyou/",
+                
+                
+            });
+        }
+
+        function lazyLoadDisqusJS() {
+            if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+                return;
+            }
+
+            let d = document.createElement('script');
+            d.src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3/dist/disqus.js';
+            d.async = false;
+            document.body.appendChild(d);
+            d.onload = () => {
+                loadDisqusJS();
+                window.addEventListener('onColorSchemeChange', (e) => {
+                    if (disqusjs) {
+                        loadDisqusJS();
+                    }
+                })
+            }
+        }
+
+        let runningOnBrowser = typeof window !== "undefined";
+        let isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        let supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+        if (!isBot && supportsIntersectionObserver) {
+            let disqus_observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    lazyLoadDisqusJS();
+                    disqus_observer.disconnect();
+                }
+            });
+            disqus_observer.observe(document.getElementById('disqus_thread'));
+        } else {
+            lazyLoadDisqusJS();
+        }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2023 Zhiim&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
