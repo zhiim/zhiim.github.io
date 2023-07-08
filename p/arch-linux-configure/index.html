@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速'>
-<title>Manjaro Linux 安装 MATLAB</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置'>
+<title>Arch Linux 配置</title>
 
-<link rel='canonical' href='https://xland.cyou/p/manjaro-linux-matlab/'>
+<link rel='canonical' href='https://xland.cyou/p/arch-linux-configure/'>
 
-<link rel="stylesheet" href="/scss/style.min.20d278306654cf6af9785c96df2e3b109d26dfbbf51a6df29ab0633d49df0176.css"><meta property='og:title' content='Manjaro Linux 安装 MATLAB'>
-<meta property='og:description' content='Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速'>
-<meta property='og:url' content='https://xland.cyou/p/manjaro-linux-matlab/'>
+<link rel="stylesheet" href="/scss/style.min.20d278306654cf6af9785c96df2e3b109d26dfbbf51a6df29ab0633d49df0176.css"><meta property='og:title' content='Arch Linux 配置'>
+<meta property='og:description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置'>
+<meta property='og:url' content='https://xland.cyou/p/arch-linux-configure/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-03-19T18:40:57&#43;08:00'/><meta property='article:modified_time' content='2023-03-19T18:40:57&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/arch-linux-configure/arch.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Manjaro Linux 安装 MATLAB">
-<meta name="twitter:description" content="Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Arch Linux 配置">
+<meta name="twitter:description" content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://xland.cyou/p/arch-linux-configure/arch.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -325,12 +325,18 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#matlab安装报错">MATLAB安装报错</a></li>
-    <li><a href="#matlab界面内中文无法显示">MATLAB界面内中文无法显示</a></li>
-    <li><a href="#matlab的设置无法保存">MATLAB的设置无法保存</a></li>
-    <li><a href="#matlab无法打开文本编辑器">MATLAB无法打开文本编辑器</a></li>
-    <li><a href="#matlab界面缩放过小">MATLAB界面缩放过小</a></li>
-    <li><a href="#matlab无法使用opengl加速">MATLAB无法使用OpenGL加速</a></li>
+    <li><a href="#arch-linux安装">Arch Linux安装</a></li>
+    <li><a href="#安装显卡驱动">安装显卡驱动</a>
+      <ol>
+        <li><a href="#intel-驱动">Intel 驱动</a></li>
+        <li><a href="#nvidia-驱动">Nvidia 驱动</a></li>
+        <li><a href="#核显和独显动态切换">核显和独显动态切换</a></li>
+      </ol>
+    </li>
+    <li><a href="#启用视频硬件加速">启用视频硬件加速</a></li>
+    <li><a href="#windows-和-linux-共用蓝牙">Windows 和 Linux 共用蓝牙</a></li>
+    <li><a href="#使用refind引导系统">使用rEFInd引导系统</a></li>
+    <li><a href="#安装matlab">安装MATLAB</a></li>
   </ol>
 </nav>
         </div>
@@ -342,8 +348,20 @@ if (!doNotTrack) {
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/arch-linux-configure/">
+                <img src="/p/arch-linux-configure/arch.webp"
+                        
+                        width="4838" 
+                        height="2067" 
+                        loading="lazy"
+                        alt="Featured image of post Arch Linux 配置" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -358,12 +376,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/manjaro-linux-matlab/">Manjaro Linux 安装 MATLAB</a>
+            <a href="/p/arch-linux-configure/">Arch Linux 配置</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Manjaro Linux安装MATLAB时遇到的各种问题，包括无法启动安装程序、无法显示中文、无法保存设置、无法打开文本编辑器、界面过小、无法使用硬件加速
+            本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置
         </h3>
         
     </div>
@@ -384,7 +402,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 19, 2023</time>
+                <time class="article-time--published">Jul 08, 2023</time>
             </div>
         
 
@@ -399,7 +417,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 5 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -414,10 +432,315 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>最近从Windows换到了Manjaro，日常离不开MATLAB，虽然MATLAB官方提供了Linux版本，但是没有对Manjaro做适配，所以在安装MATLAB的过程中遇到了各种问题，以此记录。任何其他问题建议查阅<a class="link" href="wiki.archlinux.org" >ArchWiki</a>。</p>
-<h2 id="matlab安装报错">MATLAB安装报错</h2>
-<p>最初安装的时候，我下载的是MATLAB 2020b的iso镜像，即使按照ArchWiki的指导，移除了<code>libfreetype.so*</code>还是会继续报错。后来换成MATLAB 2022a的镜像才成功安装。<br>
-进入MATLAB 2022a安装文件所处的文件夹，运行<code>./install</code>，出现报错</p>
+    <p>最近趁着假期把Manjaro换成了Arch Linux，本文记录了我安装Arch Linux中的一些配置。</p>
+<h2 id="arch-linux安装">Arch Linux安装</h2>
+<p>安装教程参考<a class="link" href="https://arch.icekylin.online/"  target="_blank" rel="noopener"
+    >archlinux 简明指南</a>和<a class="link" href="https://wiki.archlinux.org/title/Installation_guide"  target="_blank" rel="noopener"
+    >ArchWiki</a>。</p>
+<h2 id="安装显卡驱动">安装显卡驱动</h2>
+<p>本人电脑是联想小新Air13 IWL，有一个Intel核显和一个Nvidia独显。</p>
+<p>运行<code>lspci -k | grep -A 2 -E &quot;(VGA|3D)&quot;</code>可以查看显卡信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">00:02.0 VGA compatible controller: Intel Corporation WhiskeyLake-U GT2 <span class="o">[</span>UHD Graphics 620<span class="o">]</span>
+</span></span><span class="line"><span class="cl">       Subsystem: Lenovo WhiskeyLake-U GT2 <span class="o">[</span>UHD Graphics 620<span class="o">]</span>
+</span></span><span class="line"><span class="cl">       Kernel driver in use: i915
+</span></span><span class="line"><span class="cl">--
+</span></span><span class="line"><span class="cl">03:00.0 3D controller: NVIDIA Corporation GP108M <span class="o">[</span>GeForce MX150<span class="o">]</span> <span class="o">(</span>rev a1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">       Subsystem: Lenovo GP108M <span class="o">[</span>GeForce MX150<span class="o">]</span>
+</span></span><span class="line"><span class="cl">       Kernel driver in use: nvidia
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="intel-驱动">Intel 驱动</h3>
+<p>参考<a class="link" href="https://wiki.archlinux.org/title/Intel_graphics#Installation"  target="_blank" rel="noopener"
+    >ArchWiki-Intel graphics</a>。</p>
+<p>首先安装<code>mesa</code>，它提供了用于3D加速得DRI驱动。对于Intel 8代以及更新的硬件选择软件包<code>mesa</code>，对于7代以及更老的芯片选择<code>mesa-amber</code>。</p>
+<p>为了支持32位程序，同时安装对应的<code>lib32-mesa</code>或者<code>lib32-mesa-amber</code>。 为了Vulkan支持，还需要安装<code>vulkan-intel</code>，以及32位支持包<code>lib32-vulkan-intel</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="nvidia-驱动">Nvidia 驱动</h3>
+<p>建议对照<a class="link" href="https://wiki.archlinux.org/title/NVIDIA#Installation"  target="_blank" rel="noopener"
+    >ArchWiki-NVIDIA</a>安装，官方教程更加准确并且可能有更新。</p>
+<ul>
+<li>对于新于 <a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NV160"  target="_blank" rel="noopener"
+    >Turing (NV160/TU_XXX_)</a>系列的显卡，如果系统使用l<code>inux</code>内核则安装<code>nvidia-open</code>，如果使用其他内核则安装<code>nvidia-open-dkms</code>。</li>
+<li>对于较旧且新于 <a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NV110"  target="_blank" rel="noopener"
+    >Maxwell (NV110/GM_XXX_)</a>系列的显卡，如果使用<code>linux</code>内核则安装<code>nvidia</code>，如果使用<code>linux-lts</code>内核则安装<code>nvidia-lts</code>，其他内核则安装<code>nvidia-dkms</code>。</li>
+<li><a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NVE0"  target="_blank" rel="noopener"
+    >Kepler (NVE0/GK_XXX_)</a>系列显卡，安装<code>nvidia-470xx-dkms</code>。</li>
+<li>更旧的显卡安装开源驱动<code>nouveau</code>。</li>
+</ul>
+<p>如果需要32位应用支持，还需安装<code>lib32-nvidia-utils</code>。同时可以安装<code>nvidia-settings</code>用来对nvidia驱动进行一些配置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S nvidia nvidia-settings lib32-nvidia-utils
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不同型号的显卡对应的软件包选择可以参考<a class="link" href="https://arch.icekylin.online/guide/rookie/graphic-driver.html#%E7%8B%AC%E7%AB%8B%E6%98%BE%E5%8D%A1"  target="_blank" rel="noopener"
+    >archlinux 简明指南-显卡驱动</a>，最好同时对照ArchWiki选择。</p>
+<p>安装好驱动后，编辑<code>/etc/mkinitcpio.conf</code>，删去<code>HOOKS</code>那一项中得<code>kms</code>，阻止内核启动时加载<code>nouveau</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HOOKS=(base udev autodetect modconf keyboard keymap kms consolefont block filesystems fsck)  # 更改前</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HOOKS</span><span class="o">=(</span>base udev autodetect modconf keyboard keymap consolefont block filesystems fsck<span class="o">)</span>  <span class="c1"># 更改后</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更改后重新生成<code>initramfs</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkinitcpio -P
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启系统，打开<code>nvidia-settings</code>如果可以看到显卡的各种详细信息，则说明安装成功。</p>
+<h3 id="核显和独显动态切换">核显和独显动态切换</h3>
+<p>参考<a class="link" href="https://arch.icekylin.online/guide/rookie/graphic-driver.html#%E5%8F%8C%E6%98%BE%E5%8D%A1-%E6%A0%B8%E6%98%BE-%E7%8B%AC%E6%98%BE"  target="_blank" rel="noopener"
+    >双显卡（核显 + 独显）</a> 。</p>
+<p>安装<code>optimus-manager</code>，它提供了双显卡下切换仅用核显、仅用独显和动态切换三种模式，<code>optimus-manager-qt</code>则提供了模式切换的图形界面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S optimus-manager optimus-manager-qt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="启用视频硬件加速">启用视频硬件加速</h2>
+<p>参考<a class="link" href="https://wiki.archlinux.org/title/Hardware_video_acceleration"  target="_blank" rel="noopener"
+    >ArchWiki-Hardware video acceleration</a>。</p>
+<p>首先安装驱动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S intel-media-driver
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不同型号的显卡需要安装的驱动包不同，具体要求可以查看ArchWiki。</p>
+<p>此时可以使用MPV播放视频检验硬件加速是否启用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ mpv --hwdec<span class="o">=</span>auto test.mp4
+</span></span><span class="line"><span class="cl"> <span class="o">(</span>+<span class="o">)</span> Video --vid<span class="o">=</span><span class="m">1</span> <span class="o">(</span>*<span class="o">)</span> <span class="o">(</span>h264 1920x1080 29.970fps<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> <span class="o">(</span>+<span class="o">)</span> Audio --aid<span class="o">=</span><span class="m">1</span> <span class="o">(</span>*<span class="o">)</span> <span class="o">(</span>aac 2ch 44100Hz<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Using hardware decoding <span class="o">(</span>vaapi<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">AO: <span class="o">[</span>pulse<span class="o">]</span> 44100Hz stereo 2ch float
+</span></span><span class="line"><span class="cl">VO: <span class="o">[</span>gpu<span class="o">]</span> 1920x1080 vaapi<span class="o">[</span>nv12<span class="o">]</span>
+</span></span><span class="line"><span class="cl">AV: 00:00:02 / 00:03:49 <span class="o">(</span>1%<span class="o">)</span> A-V:  0.000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从终端输出可以看到，此时硬件解码是正常的。</p>
+<p>在浏览器中启用视频硬件加速参考<a class="link" href="https://forum.manjaro.org/t/howto-enable-hardware-video-acceleration-video-decode-in-google-chrome-brave-vivaldi-and-opera-browsers/51895"  target="_blank" rel="noopener"
+    >[HowTo] Enable Hardware Video Acceleration / Video Decode In Google Chrome, Brave, Vivaldi And Opera Browsers</a>。以我使用的Vivaldi浏览器为例，只需要新建文件<code>~/.config/vivaldi-stable.conf</code>，在其中写入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">--use-gl<span class="o">=</span>angle
+</span></span><span class="line"><span class="cl">--ignore-gpu-blocklist
+</span></span><span class="line"><span class="cl">--enable-features<span class="o">=</span>VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization
+</span></span><span class="line"><span class="cl">--disable-features<span class="o">=</span>UseChromeOSDirectVideoDecoder,UseSkiaRenderer
+</span></span><span class="line"><span class="cl">--disable-gpu-driver-workarounds
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时在浏览器中进入<code>vivaldi:gpu</code>，已经正常启用了硬件加速。</p>
+<p><img src="/p/arch-linux-configure/vivaldi-gpu.webp"
+	width="765"
+	height="446"
+	
+	loading="lazy"
+	
+		alt="Vivaldi Graphics Feature Status"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="171"
+		data-flex-basis="411px"
+	
+></p>
+<h2 id="windows-和-linux-共用蓝牙">Windows 和 Linux 共用蓝牙</h2>
+<p>安装双系统后，每次切换系统都需要重新配对蓝牙设备。但是可以通过改变Linux系统中蓝牙设备的配对参数，实现两个系统共用一个蓝牙配对，这些切换系统后旧不用重新配对，直接可以自动连接蓝牙了。</p>
+<p>首先在Linux里配对蓝牙设备，然后重启进入Windows重新配对蓝牙。</p>
+<p>下载<a class="link" href="https://learn.microsoft.com/en-us/sysinternals/downloads/psexec"  target="_blank" rel="noopener"
+    >PSEXEC</a>，以管理员身份启动终端，进入PSEXEC解压后的文件夹，运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./psexec.exe -s -i regedit
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在打开的页面中展开<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys</code>，里面有一个以Windows蓝牙控制器的MAC地址命名的文件夹，打开该文件夹，里面的文件夹名对应的是蓝牙设备的MAC地址，记下蓝牙设备的MAC地址和里面注册表的值。</p>
+<p><img src="/p/arch-linux-configure/windows-bluetooth.webp"
+	width="1168"
+	height="467"
+	
+	loading="lazy"
+	
+		alt="Windows 蓝牙"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="600px"
+	
+></p>
+<p>重启进入Linux，进入<code>/var/lib/bluetooth</code>，其中有一个以Linux蓝牙管理器MAC地址命名的文件夹，进入该文件夹，里面的文件夹以蓝牙设备的MAC地址命令，把这个文件夹重命名为和Windows中相同的MAC地址值。例如在我的电脑中，Windows中MAC地址为<code>ffa68a9feeb2</code>，在Linux中就改为<code>FF:A6:8A:9F:EE:B2</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">F8:A2:D6:C9:7C:10  <span class="c1"># Linux蓝牙管理器MAC地址</span>
+</span></span><span class="line"><span class="cl">├── cache
+</span></span><span class="line"><span class="cl">│   └── FF:A6:8A:9F:EE:B2
+</span></span><span class="line"><span class="cl">├── FF:A6:8A:9F:EE:B2  <span class="c1"># 蓝牙设备MAC地址，改成和Windows相同的值</span>
+</span></span><span class="line"><span class="cl">│   ├── attributes
+</span></span><span class="line"><span class="cl">│   └── info
+</span></span><span class="line"><span class="cl">└── settings
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后编辑<code>FF:A6:8A:9F:EE:B2</code>中的info文件，将相关的蓝牙配对参数改为和Windows相同，需要更改的值如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>LocalSignatureKey<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Key</span><span class="o">=</span>E03086C6AAAB88CF623E57F2361E6488  <span class="c1"># 和Windows中CSRK相同</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Counter</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Authenticated</span><span class="o">=</span><span class="nb">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>LongTermKey<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Key</span><span class="o">=</span>4BA30A70E71C729CC23D12EF29B8C889  <span class="c1"># 和Windows中LTK相同</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Authenticated</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">EncSize</span><span class="o">=</span><span class="m">16</span>
+</span></span><span class="line"><span class="cl"><span class="nv">EDiv</span><span class="o">=</span><span class="m">11107</span>  <span class="c1"># 和Windows中EDIV相同</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Rand</span><span class="o">=</span><span class="m">12409689061704920446</span>  <span class="c1"># 和Windows中Rand相同</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用refind引导系统">使用rEFInd引导系统</h2>
+<p>rEFInd是一个适用于UEFI的Boot Manager，支持自定义主题，可以替代界面简陋的GRUB，用来引导Linux和Windows双系统。 rEFInd和GRUB的关系可以参考<a class="link" href="https://neucrack.com/p/330"  target="_blank" rel="noopener"
+    >这里</a>。首先安装rEFInd软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S refind
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将rEFInd引导文件安装到ESP分区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">refind-install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>配置rEFInd主题，我选择的主题是<a class="link" href="https://github.com/bobafetthotmail/refind-theme-regular"  target="_blank" rel="noopener"
+    >refind-theme-regular</a>，自动安装命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>官方默认安装主题到<code>/boot/efi/EFI/refind/themes/refind-theme-regular/theme.conf</code>，如果在安装Arch时选择将ESP分区挂在在<code>/efi</code>的话，需要按照官方的手动安装指导将主题安装到<code>/efi/EFI/refind/themes/refind-theme-regular/theme.conf</code>。 最终的主题效果如下</p>
+<p><img src="/p/arch-linux-configure/refind.webp"
+	width="854"
+	height="480"
+	
+	loading="lazy"
+	
+		alt="rEFInd 引导界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="427px"
+	
+></p>
+<p>如果引导页面有多余项的话，可以按键盘上的Delete键隐藏该启动项。如果未出现rEFInd引导页，可以在电脑的BIOS设置界面将rEFInd启动项置顶。</p>
+<h2 id="安装matlab">安装MATLAB</h2>
+<p>我在安装时采用的是MATLAB 2022a安装包，在终端运行安装脚本，出现报错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/home/xu/Downloads/R2022a_Linux/bin/glnxa64/MathWorksProductInstaller: error <span class="k">while</span> loading shared libraries: libcrypt.so.1: cannot open shared object file: No such file or directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是由于系统缺少<code>libxcrypt</code>，使用pacman安装相应软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S libxcrypt-compat
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次运行安装脚本，出现报错信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -427,248 +750,53 @@ if (!doNotTrack) {
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">terminate called after throwing an instance of <span class="s1">&#39;std::runtime_error&#39;</span>
 </span></span><span class="line"><span class="cl">  what<span class="o">()</span>:  Failed to launch web window with error: Unable to launch the MATLABWindow application. The <span class="nb">exit</span> code was: <span class="m">127</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>    IOT instruction <span class="o">(</span>core dumped<span class="o">)</span>  ./install
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>    <span class="m">3019</span> IOT instruction <span class="o">(</span>core dumped<span class="o">)</span>  ./install
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>此时可以运行</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./bin/glnxa64/MATLABWindow 
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>应该会出现报错信息</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bin/glnxa64/MATLABWindow: symbol lookup error: /usr/lib/libcairo.so.2: undefined symbol: FT_Get_Color_Glyph_Layer
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><code>FT_Get_Color_Glyph_Layer</code>是freetype2里的一个符号，只要删除MATLAB安装文件夹里的<code>libfreetype.so*</code>，执行</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm ./bin/glnxa64/libfreetype.so*
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>或者也可以添加环境变量</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LD_PRELOAD</span><span class="o">=</span>/lib64/libfreetype.so
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此时再执行<code>./install</code>就可以成功打开MATLAB安装引导。<br>
-解决方案来源：<a class="link" href="https://wiki.archlinux.org/title/MATLAB#Unable_to_launch_the_MATLABWindow_application"  target="_blank" rel="noopener"
-    >ArchWiki-MATLAB</a></p>
-<h2 id="matlab界面内中文无法显示">MATLAB界面内中文无法显示</h2>
-<p>安装完成，打开MATLAB却发现中文乱码，所有的中文都是方块。MATLAB的界面是用JAVA开发的，中文无法显示是因为JAVA的中文字体配置问题。<br>
-此时进入MATLAB的安装路径下的jre目录，我的MATLAB安装在<code>/usr/local/MATLAB/R2022a</code>，进入该文件夹</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在此目录下新建<code>fallback</code>文件夹</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir fallback
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>将中文字体移动到fallback文件夹，我使用的字体是NotoSansCJK-Regular.ttc，想要获取改字体可以先运行<code>sudo pacman noto-fonts-cjk</code>，然后在<code>/usr/share/fonts/noto-cjk</code>就可找到字体文件。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp /usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc /usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts/fallback
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>复制完字体文件后，在<code>fallback</code>文件夹内，运行</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkfontscale
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此时会生成<code>fonts.scale</code>，打开<code>fonts.scale</code>，将其中内容复制到上级目录<code>/usr/local/MATLAB/R2022a/sys/java/jre/glnxa64/jre/lib/fonts</code>中的<code>fonts.dir</code><br>
-注意<code>fonts.dir</code>没有可写权限，需要先授予可写权限</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod <span class="m">6</span> fonts.dir
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此时进入MATLAB就可以正常显示中文了。<br>
-解决方案来源：<a class="link" href="https://developer.aliyun.com/article/398395"  target="_blank" rel="noopener"
-    >Linux下Matlab的安装和中文显示支持</a>。<br>
-如果MATLAB的终端无法显示中文，可以在MATLAB内<code>主页-预设-字体</code>下的两个字体选项里选择中文字体（如果设置无法保存请参考下节）。</p>
-<h2 id="matlab的设置无法保存">MATLAB的设置无法保存</h2>
-<p>在MATLAB的设置界面更改设置选项，发现退出MATLAB后在重新打开，所有的设置会恢复默认值，这是因为MATLAB无法使用/tmp文件夹。新建文件夹</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/.cache/matlab-tmp
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在<code>/home/xuq/.local/share/applications</code>为MATLAB建立一个启动方式<code>matlab.desktop</code>，文件内容为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>Desktop Entry<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="nv">Type</span><span class="o">=</span>Application
-</span></span><span class="line"><span class="cl"><span class="nv">Version</span><span class="o">=</span>R2022b
-</span></span><span class="line"><span class="cl"><span class="nv">Name</span><span class="o">=</span>MATLAB
-</span></span><span class="line"><span class="cl"><span class="nv">Comment</span><span class="o">=</span>Scientific computing software
-</span></span><span class="line"><span class="cl"><span class="nv">Icon</span><span class="o">=</span>/home/&lt;username&gt;/.local/share/applications/matlab_logo.png
-</span></span><span class="line"><span class="cl"><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&#34;export TMPDIR=/home/&lt;username&gt;/.cache/matlab-tmp; /usr/local/MATLAB/R2022a/bin/glnxa64/MATLAB -desktop; rm -r </span><span class="nv">$TMPDIR</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">Terminal</span><span class="o">=</span>False
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>注意替换MATLAB可执行文件的路径，以及MATLAB的Icon路径。<br>
-解决方案来源：<a class="link" href="https://ww2.mathworks.cn/matlabcentral/answers/1806255-why-aren-t-my-matlab-preferences-saved-on-linux"  target="_blank" rel="noopener"
-    >Why aren&rsquo;t my MATLAB preferences saved on Linux?</a>。</p>
-<h2 id="matlab无法打开文本编辑器">MATLAB无法打开文本编辑器</h2>
-<p>在MATLAB中新建脚本或者打开脚本时，出现报错<code>Unable to open this file in the current system configuration</code>，终端输出</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Exception in thread <span class="s2">&#34;AWT-EventQueue-0&#34;</span>: java.lang.NullPointerException
-</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop.updateTemplate<span class="o">(</span>MLDesktop.java:3665<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop.access<span class="nv">$2000</span><span class="o">(</span>MLDesktop.java:225<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at com.mathworks.mde.desk.MLDesktop<span class="nv">$NewMFileAction</span>.actionPerformed<span class="o">(</span>MLDesktop.java:2853<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at com.mathworks.mwswing.ChildAction.actionPerformed<span class="o">(</span>ChildAction.java:214<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at javax.swing.AbstractButton.fireActionPerformed<span class="o">(</span>AbstractButton.java:2022<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at javax.swing.AbstractButton<span class="nv">$Handler</span>.actionPerformed<span class="o">(</span>AbstractButton.java:2348<span class="o">)</span>
-</span></span><span class="line"><span class="cl">	at javax.swing.DefaultButtonModel.fireActionPerformed<span class="o">(</span>DefaultButtonModel.java:402<span class="o">)</span>
-</span></span><span class="line"><span class="cl">......
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此时只需要进入MATLAB的安装路径，去除<code>libfreetype.so.6</code></p>
+</div><p>此时可以按照<a class="link" href="https://wiki.archlinux.org/title/MATLAB#Unable_to_launch_the_MATLABWindow_application"  target="_blank" rel="noopener"
+    >ArchWiki-MATLAB</a>中的指导进行排查错误来源，为了找出为何MATLABWindow无法加载，在MATLAB安装文件中执行以下命令，查看输出的报错信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/bin/glnxa64
-</span></span><span class="line"><span class="cl">mv libfreetype.so.6 libfreetype.so.6.old
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./bin/glnxa64/MATLABWindow
+</span></span><span class="line"><span class="cl">./bin/glnxa64/MATLABWindow: error <span class="k">while</span> loading shared libraries: libgtk-x11-2.0.so.0: cannot open shared object file: No such file or directory
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>解决方案来源：<a class="link" href="https://bbs.archlinux.org/viewtopic.php?id=275084"  target="_blank" rel="noopener"
-    >MATLAB cannot create or open script files</a>。</p>
-<h2 id="matlab界面缩放过小">MATLAB界面缩放过小</h2>
-<p>MATLAB的界面、字体和图标在Linux下很小，无法随着系统缩放而改变。
-以MATLAB界面放大1.25倍为例，在MATLAB终端输入</p>
+</div><p>可以看到系统中无法找到<code>libgtk-x11-2.0.so.0</code>，安装缺失的软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman gtk2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次运行<code>./bin/glnxa64/MATLABWindow</code>，出现错误信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./bin/glnxa64/MATLABWindow: symbol lookup error: /usr/lib/libharfbuzz.so.0: undefined symbol: FT_Get_Color_Glyph_Layer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时的报错信息已经和ArchWiki一致，按照说明添加环境变量，再次运行安装脚本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt;&gt; <span class="nv">s</span> <span class="o">=</span> settings<span class="p">;</span>s.matlab.desktop.DisplayScaleFactor
-</span></span><span class="line"><span class="cl">&gt;&gt; s.matlab.desktop.DisplayScaleFactor.PersonalValue <span class="o">=</span> 1.25
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_PRELOAD</span><span class="o">=</span>/lib64/libfreetype.so
+</span></span><span class="line"><span class="cl">./install
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>解决方案来源：<a class="link" href="https://ww2.mathworks.cn/matlabcentral/answers/406956-does-matlab-support-high-dpi-screens-on-linux"  target="_blank" rel="noopener"
-    >Does MATLAB support High DPI screens on Linux?</a>。</p>
-<h2 id="matlab无法使用opengl加速">MATLAB无法使用OpenGL加速</h2>
-<p>MATLAB绘图时终端输出</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Warning: MATLAB previously crashed due to a low-level graphics error. 
-</span></span><span class="line"><span class="cl">To prevent another crash in this session, MATLAB is using software OpenGL instead of using your graphics hardware. 
-</span></span><span class="line"><span class="cl">To save this setting <span class="k">for</span> future sessions, use the opengl<span class="o">(</span><span class="s1">&#39;save&#39;</span>, <span class="s1">&#39;software&#39;</span><span class="o">)</span> command. 
-</span></span><span class="line"><span class="cl">For more information, see Resolving Low-Level Graphics Issues.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>设置由于MATLAB无法使用OpenGL硬件加速，导致图形渲染能力下降，在3D绘图时可能出错。<br>
-进入MATLAB可执行文件所在的路径</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/MATLAB/R2022a/bin/glnxa64
-</span></span><span class="line"><span class="cl">MATLAB -nodesktop -nosplash -r <span class="s2">&#34;opengl info; exit&#34;</span> <span class="p">|</span> grep Software
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果终端中输出的<code>software rendering</code>值不是<code>false</code>（0也不行）,说明此时未启用硬件加速。查看系统的OpenGL配置</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">glxinfo <span class="p">|</span> grep <span class="s2">&#34;direct rendering&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>如果<code>direct rendering</code>的值为<code>yes</code>说明配置正确，否则先要解决OpenGL的系统配置。如果系统的OpenGL配置正确，更改先前创建的MATLAB启动方式，在<code>/home/xuq/.local/share/applications</code>打开<code>matlab.desktop</code>，在Exec项添加MATLAB运行时的环境变量，将其更改为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">Exec</span><span class="o">=</span>bash -c <span class="s2">&#34;export TMPDIR=/home/xuq/.config/matlab-temp; export LD_PRELOAD=/usr/lib/libstdc++.so; export LD_LIBRARY_PATH=/usr/lib/dri/; /usr/local/MATLAB/R2022a/bin/glnxa64/MATLAB -desktop; rm -r </span><span class="nv">$TMPDIR</span><span class="s2">&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后在MATLAB可执行文件所在的路径下新建文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch /usr/local/MATLAB/R2022a/bin/glnxa64/java.opts
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在<code>java.opts</code>中写入<code>-Djogl.disable.openglarbcontext=1</code>。
-解决方案来源：<a class="link" href="https://wiki.archlinux.org/title/MATLAB#OpenGL_acceleration"  target="_blank" rel="noopener"
-    >ArchWiki-MATLAB</a>。</p>
+</div><p>这时MATLAB安装界面可以正常运行，正常安装即可。</p>
+<p>如果在MATLAB运行时碰到问题，可以参考我之前写的<a class="link" href="https://xland.cyou/p/manjaro-linux-matlab/"  target="_blank" rel="noopener"
+    >Manjaro Linux 安装 MATLAB</a>，里面记录了诸如设置无法保存、无法开启OpenGL加速等各种问题。</p>
 
 </section>
 
@@ -734,24 +862,22 @@ if (!doNotTrack) {
         <div class="flex article-list--tile">
             
                 
-<article class="has-image">
-    <a href="/p/arch-linux-configure/">
+<article class="">
+    <a href="/p/manjaro-linux-matlab/">
         
         
+            
             <div class="article-image">
-                <img src="/p/arch-linux-configure/arch.0434590804c2a9cfa641e4ba9302bb60.webp" 
-                        width="4838" 
-                        height="2067" 
-                        loading="lazy"
-                        alt="Featured image of post Arch Linux 配置"
-                        data-key="arch-linux-configure" 
-                        data-hash="md5-BDRZCATCqc&#43;mQeS6kwK7YA==">
-                
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post Manjaro Linux 安装 MATLAB"
+                    data-key="manjaro-linux-matlab" 
+                    >
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">Arch Linux 配置</h2>
+            <h2 class="article-title">Manjaro Linux 安装 MATLAB</h2>
         </div>
     </a>
 </article>
