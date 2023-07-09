@@ -325,12 +325,9 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#安装linux-lts内核">安装linux-lts内核</a>
-      <ol>
-        <li><a href="#grub">GRUB</a></li>
-        <li><a href="#refind">rEFInd</a></li>
-      </ol>
-    </li>
+    <li><a href="#安装linux-lts内核">安装linux-lts内核</a></li>
+    <li><a href="#配置grub">配置GRUB</a></li>
+    <li><a href="#配置refind">配置rEFInd</a></li>
   </ol>
 </nav>
         </div>
@@ -436,7 +433,7 @@ if (!doNotTrack) {
 </div><p>此时重启如果使用GRUB引导系统的话，会出现“Advanced Options for Arch Linxu”，选择这一项就会进入选择启动linux内核或者linux-lts内核的自选单。</p>
 <p>如果使用rEFInd引导系统的话，此时选择进入Arch Linux会默认加载最后安装的内核即linux-lts，选中Arch Linux图标在按F2键的话就会进入选择加载不同内核的选单。</p>
 <p>为了更加方便地在Boot Loader界面选择想要加载的内核，我们可以分别对GRUB和rEFInd进行一些配置。</p>
-<h3 id="grub">GRUB</h3>
+<h2 id="配置grub">配置GRUB</h2>
 <p>我们想要的是在进入GRUB界面后，直接列出了加载不同内核的选项，而不需要先进入子选单再选择内核。编辑<code>/etc/default/grub</code>，取消注释</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -457,7 +454,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="nv">GRUB_SAVEDEFAULT</span><span class="o">=</span><span class="nb">true</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="refind">rEFInd</h3>
+</div><h2 id="配置refind">配置rEFInd</h2>
 <p>rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。</p>
 <p>通过更改rEFInd配置文件，我们可以实现默认加载进入linux内核，然后通过子选单选择加载linux-lts内核。同时我们也可以选择附加内核参数，使得每次加载内核的同时加载微码，防止出现一些意外奔溃。</p>
 <p>为了让rEFInd支持Btrfs子卷，需要为rEFInd安装驱动</p>
