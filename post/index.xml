@@ -6,13 +6,182 @@
         <description>Recent content in Posts on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 08 Jul 2023 17:40:07 +0800</lastBuildDate><atom:link href="https://xland.cyou/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Arch Linux 配置</title>
-        <link>https://xland.cyou/p/arch-linux-configure/</link>
+        <lastBuildDate>Sun, 09 Jul 2023 14:10:06 +0800</lastBuildDate><atom:link href="https://xland.cyou/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Arch Linux 配置 -- 安装linux-lts备用内核</title>
+        <link>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</link>
+        <pubDate>Sun, 09 Jul 2023 14:10:06 +0800</pubDate>
+        
+        <guid>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</guid>
+        <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 -- 安装linux-lts备用内核" /&gt;&lt;p&gt;由于滚动更新的机制，Arch Linux采用的linux内核更新较频繁，难免会碰到由于内核更新无法进入系统。为了解决由于内核更新导致的系统故障，我们可以同时安装更新周期更长的linux-lts内核，如果linux内核更新后无法进入系统，此时就可以选择加载linux-lts内核进入系统，回退linux内核或者等待修复。&lt;/p&gt;
+&lt;h2 id=&#34;安装linux-lts内核&#34;&gt;安装linux-lts内核&lt;/h2&gt;
+&lt;p&gt;首先安装linux-lts内核&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman linux-lts linux-lts-headers
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此时重启如果使用GRUB引导系统的话，会出现“Advanced Options for Arch Linxu”，选择这一项就会进入选择启动linux内核或者linux-lts内核的自选单。&lt;/p&gt;
+&lt;p&gt;如果使用rEFInd引导系统的话，此时选择进入Arch Linux会默认加载最后安装的内核即linux-lts，选中Arch Linux图标在按F2键的话就会进入选择加载不同内核的选单。&lt;/p&gt;
+&lt;p&gt;为了更加方便地在Boot Loader界面选择想要加载的内核，我们可以分别对GRUB和rEFInd进行一些配置。&lt;/p&gt;
+&lt;h3 id=&#34;grub&#34;&gt;GRUB&lt;/h3&gt;
+&lt;p&gt;我们想要的是在进入GRUB界面后，直接列出了加载不同内核的选项，而不需要先进入子选单再选择内核。编辑&lt;code&gt;/etc/default/grub&lt;/code&gt;，取消注释&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;GRUB_DISABLE_SUBMENU&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果使用的文件系统不是btrfs，还可以配置GRUB自动选中上一次选择加载的选项，这样可以免除每次重新选择。同样编辑&lt;code&gt;/etc/default/grub&lt;/code&gt;，对下面几项进行更改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;GRUB_DEFAULT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;saved
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;GRUB_SAVEDEFAULT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;refind&#34;&gt;rEFInd&lt;/h3&gt;
+&lt;p&gt;rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。&lt;/p&gt;
+&lt;p&gt;通过更改rEFInd配置文件，我们可以实现默认加载进入linux内核，然后通过子选单选择加载linux-lts内核。同时我们也可以选择附加内核参数，使得每次加载内核的同时加载微码，防止出现一些意外奔溃。&lt;/p&gt;
+&lt;p&gt;为了让rEFInd支持Btrfs子卷，需要为rEFInd安装驱动&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 我的ESP分区挂载在/efi下&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo cp /usr/share/refind/drivers_x64/btrfs_x64.efi /efi/EFI/refind/drivers_x64/btrfs_x64.efi
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;编辑rEFInd配置文件&lt;code&gt;/efi/EFI/refind/refind.conf&lt;/code&gt;，我的ESP分区挂载在&lt;code&gt;/efi&lt;/code&gt;，如果ESP分区挂载在/boot下的话配置文件路径为&lt;code&gt;/boot/efi/EFI/refind/refind.conf&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;让rEFInd能够匹配Arch Linux的不同内核&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;extra_kernel_version_strings linux-hardened,linux-zen,linux-lts,linux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;让rEFInd能够在Btrfs子卷下自动扫描内核&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;also_scan_dirs boot,ESP2:EFI/linux/kernels,@/boot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;为了实现rEFInd默认加载linux内核，修改配置文件&lt;code&gt;/efi/EFI/refind/refind.conf&lt;/code&gt;，手动添加启动项&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 我使用的是Btrfs文件系统，请更加自己的文件系统和内核位置更改路径选项&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;menuentry &lt;span class=&#34;s2&#34;&gt;&amp;#34;Arch Linux&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    icon     /EFI/refind/themes/refind-theme-regular/icons/128-48/os_arch.png
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    volume   &lt;span class=&#34;s2&#34;&gt;&amp;#34;arch&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Arch 文件系统所在卷对应的标签（Label）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    loader   /@/boot/vmlinuz-linux  &lt;span class=&#34;c1&#34;&gt;# 默认加载linux内核&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    initrd   /@/boot/initramfs-linux.img  &lt;span class=&#34;c1&#34;&gt;# linux内核对应的initramfs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# options选项需要更据GRUB配置文件中的内核参数更改&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;c1&#34;&gt;# options的最后一项设定加载Intel微码，需要确定微码的路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    options  &lt;span class=&#34;s2&#34;&gt;&amp;#34;root=UUID=d26ed334-68d4-481d-894f-838783fa4f88 rw rootflags=subvol=@ loglevel=5 nowatchdog initrd=@\boot\intel-ucode.img&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;c1&#34;&gt;# 子选单定义，用于加载备用initramfs和linux-lts内核&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    submenuentry &lt;span class=&#34;s2&#34;&gt;&amp;#34;Boot using fallback initramfs&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        initrd /@/boot/initramfs-linux-fallback.img  &lt;span class=&#34;c1&#34;&gt;# linux内核的备用initramfs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    submenuentry &lt;span class=&#34;s2&#34;&gt;&amp;#34;Boot to linux-lts&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    	  loader /@/boot/vmlinuz-linux-lts  &lt;span class=&#34;c1&#34;&gt;# 加载linux-lts内核&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        initrd /@/boot/initramfs-linux-lts.img  &lt;span class=&#34;c1&#34;&gt;# linux-lts内核对应的initramfs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    submenuentry &lt;span class=&#34;s2&#34;&gt;&amp;#34;Boot to linux-lts using fallback initramfs&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    	  loader /@/boot/vmlinuz-linux-lts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        initrd /@/boot/initramfs-linux-lts-fallback.img  &lt;span class=&#34;c1&#34;&gt;# linux-lts的备用initramfs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    submenuentry &lt;span class=&#34;s2&#34;&gt;&amp;#34;Boot to terminal&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        add_options &lt;span class=&#34;s2&#34;&gt;&amp;#34;systemd.unit=multi-user.target&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 进入终端&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# disabled  # 注释掉disable才会生效&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;设定启动选项时需要在&lt;code&gt;volume&lt;/code&gt;指定内核和initramfs的所处的子卷，&lt;code&gt;volume&lt;/code&gt;的值可以设定成&lt;code&gt;/&lt;/code&gt;或&lt;code&gt;/boot&lt;/code&gt;所处的子卷标签或者GUID。&lt;/p&gt;
+&lt;p&gt;查看子卷标签&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sudo lsblk -o name,mountpoint,label,size,uuid
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME          MOUNTP LABEL         SIZE UUID
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nvme0n1                            476.9G 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p1        SYSTEM_DRV    260M C2B6-5B79
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p2                      16M 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p3        Windows-SSD   175.7G 9292B82A92B81527
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p4        Windows       50G B88EF24F8EF20622
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p5        WINRE_DRV     1000M D800BC7600BC5CE6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p6 /home  arch          239.5G d26ed334-68d4-481d-894f-838783fa4f88
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p7 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;SWAP&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;               10G d5792b35-68e7-421d-8dde-365e39e6a92b
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└─nvme0n1p8 /efi                 512M 6CB0-E267
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;系统启动时会通过Boot Loader加载内核和ramfs，一般还要指定加载微码。内核文件vmlinuz-linux、内核对应的initramfs-linux.img以及微码intel-ucode.img默认位于&lt;code&gt;/boot&lt;/code&gt;文件夹，在rEFInd配置时需要确定自己系统中这些文件实际存在的路径。&lt;/p&gt;
+&lt;p&gt;Arch Linux启动过程参考&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Arch_boot_process&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arch boot process&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;保存对&lt;code&gt;/efi/EFI/refind/refind.conf&lt;/code&gt;更改，此时重启进入rEFInd界面，会多出一个我们刚才定义的启动项，直接选择此项启动会直接加载linux内核，按F2进入此启动项的子选单会出现我们刚才定义的加载fallback initramfs和加载linux-lts内核等选项。选中原先的Arch Linux启动项按Delete隐藏即可。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Arch Linux 配置 -- 驱动和软件安装</title>
+        <link>https://xland.cyou/p/arch-linux-configuration-driver-and-software/</link>
         <pubDate>Sat, 08 Jul 2023 17:40:07 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/arch-linux-configure/</guid>
-        <description>&lt;img src="https://xland.cyou/p/arch-linux-configure/arch.webp" alt="Featured image of post Arch Linux 配置" /&gt;&lt;p&gt;最近趁着假期把Manjaro换成了Arch Linux，本文记录了我安装Arch Linux中的一些配置。&lt;/p&gt;
+        <guid>https://xland.cyou/p/arch-linux-configuration-driver-and-software/</guid>
+        <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 -- 驱动和软件安装" /&gt;&lt;p&gt;最近趁着假期把Manjaro换成了Arch Linux，本文记录了我安装Arch Linux中的一些配置。&lt;/p&gt;
 &lt;h2 id=&#34;arch-linux安装&#34;&gt;Arch Linux安装&lt;/h2&gt;
 &lt;p&gt;安装教程参考&lt;a class=&#34;link&#34; href=&#34;https://arch.icekylin.online/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;archlinux 简明指南&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Installation_guide&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -163,7 +332,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此时在浏览器中进入&lt;code&gt;vivaldi:gpu&lt;/code&gt;，已经正常启用了硬件加速。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configure/vivaldi-gpu.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configuration-driver-and-software/vivaldi-gpu.webp&#34;
 	width=&#34;765&#34;
 	height=&#34;446&#34;
 	
@@ -191,7 +360,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在打开的页面中展开&lt;code&gt;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys&lt;/code&gt;，里面有一个以Windows蓝牙控制器的MAC地址命名的文件夹，打开该文件夹，里面的文件夹名对应的是蓝牙设备的MAC地址，记下蓝牙设备的MAC地址和里面注册表的值。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configure/windows-bluetooth.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configuration-driver-and-software/windows-bluetooth.webp&#34;
 	width=&#34;1168&#34;
 	height=&#34;467&#34;
 	
@@ -286,7 +455,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;官方默认安装主题到&lt;code&gt;/boot/efi/EFI/refind/themes/refind-theme-regular/theme.conf&lt;/code&gt;，如果在安装Arch时选择将ESP分区挂在在&lt;code&gt;/efi&lt;/code&gt;的话，需要按照官方的手动安装指导将主题安装到&lt;code&gt;/efi/EFI/refind/themes/refind-theme-regular/theme.conf&lt;/code&gt;。 最终的主题效果如下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configure/refind.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/arch-linux-configuration-driver-and-software/refind.webp&#34;
 	width=&#34;854&#34;
 	height=&#34;480&#34;
 	

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置'>
-<title>Arch Linux 配置</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程'>
+<title>Arch Linux 配置 -- 驱动和软件安装</title>
 
-<link rel='canonical' href='https://xland.cyou/p/arch-linux-configure/'>
+<link rel='canonical' href='https://xland.cyou/p/arch-linux-configuration-driver-and-software/'>
 
-<link rel="stylesheet" href="/scss/style.min.20d278306654cf6af9785c96df2e3b109d26dfbbf51a6df29ab0633d49df0176.css"><meta property='og:title' content='Arch Linux 配置'>
-<meta property='og:description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置'>
-<meta property='og:url' content='https://xland.cyou/p/arch-linux-configure/'>
+<link rel="stylesheet" href="/scss/style.min.20d278306654cf6af9785c96df2e3b109d26dfbbf51a6df29ab0633d49df0176.css"><meta property='og:title' content='Arch Linux 配置 -- 驱动和软件安装'>
+<meta property='og:description' content='本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程'>
+<meta property='og:url' content='https://xland.cyou/p/arch-linux-configuration-driver-and-software/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/arch-linux-configure/arch.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Arch Linux 配置">
-<meta name="twitter:description" content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://xland.cyou/p/arch-linux-configure/arch.webp' />
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Arch Linux 配置 -- 驱动和软件安装">
+<meta name="twitter:description" content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -351,13 +351,13 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/arch-linux-configure/">
-                <img src="/p/arch-linux-configure/arch.webp"
+            <a href="/p/arch-linux-configuration-driver-and-software/">
+                <img src="/p/arch-linux-configuration-driver-and-software/arch.webp"
                         
                         width="4838" 
                         height="2067" 
                         loading="lazy"
-                        alt="Featured image of post Arch Linux 配置" />
+                        alt="Featured image of post Arch Linux 配置 -- 驱动和软件安装" />
                 
             </a>
         </div>
@@ -376,12 +376,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/arch-linux-configure/">Arch Linux 配置</a>
+            <a href="/p/arch-linux-configuration-driver-and-software/">Arch Linux 配置 -- 驱动和软件安装</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置
+            本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程
         </h3>
         
     </div>
@@ -583,7 +583,7 @@ if (!doNotTrack) {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时在浏览器中进入<code>vivaldi:gpu</code>，已经正常启用了硬件加速。</p>
-<p><img src="/p/arch-linux-configure/vivaldi-gpu.webp"
+<p><img src="/p/arch-linux-configuration-driver-and-software/vivaldi-gpu.webp"
 	width="765"
 	height="446"
 	
@@ -611,7 +611,7 @@ if (!doNotTrack) {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在打开的页面中展开<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys</code>，里面有一个以Windows蓝牙控制器的MAC地址命名的文件夹，打开该文件夹，里面的文件夹名对应的是蓝牙设备的MAC地址，记下蓝牙设备的MAC地址和里面注册表的值。</p>
-<p><img src="/p/arch-linux-configure/windows-bluetooth.webp"
+<p><img src="/p/arch-linux-configuration-driver-and-software/windows-bluetooth.webp"
 	width="1168"
 	height="467"
 	
@@ -706,7 +706,7 @@ if (!doNotTrack) {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>官方默认安装主题到<code>/boot/efi/EFI/refind/themes/refind-theme-regular/theme.conf</code>，如果在安装Arch时选择将ESP分区挂在在<code>/efi</code>的话，需要按照官方的手动安装指导将主题安装到<code>/efi/EFI/refind/themes/refind-theme-regular/theme.conf</code>。 最终的主题效果如下</p>
-<p><img src="/p/arch-linux-configure/refind.webp"
+<p><img src="/p/arch-linux-configuration-driver-and-software/refind.webp"
 	width="854"
 	height="480"
 	
@@ -860,6 +860,25 @@ if (!doNotTrack) {
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/arch-linux-configuration-linux-lts-kernel/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/arch-linux-configuration-driver-and-software/arch.webp" loading="lazy" data-key="arch-linux-configuration-linux-lts-kernel" data-hash="/p/arch-linux-configuration-driver-and-software/arch.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arch Linux 配置 -- 安装linux-lts备用内核</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
