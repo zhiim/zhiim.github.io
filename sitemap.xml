@@ -2,25 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <loc>https://xland.cyou/p/arch-linux-configuration-btrfs-and-system-backup/</loc>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/categories/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/tags/linux/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/post/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/tags/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/categories/tech/</loc>
-    <lastmod>2023-07-09T14:10:06+08:00</lastmod>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/</loc>
+    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</loc>
     <lastmod>2023-07-09T14:10:06+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/p/arch-linux-configuration-driver-and-software/</loc>
