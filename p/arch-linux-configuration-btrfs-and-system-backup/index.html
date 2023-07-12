@@ -327,8 +327,8 @@ if (!doNotTrack) {
   <ol>
     <li><a href="#btrfs">Btrfs</a>
       <ol>
-        <li><a href="#写时复制copy-on-writecow"><strong>写时复制（Copy-on-Write，CoW）</strong></a></li>
-        <li><a href="#子卷subvolume"><strong>子卷（subvolume）</strong></a></li>
+        <li><a href="#写时复制copy-on-writecow">写时复制（Copy-on-Write，CoW）</a></li>
+        <li><a href="#子卷subvolume">子卷（subvolume）</a></li>
         <li><a href="#快照snapshot">快照（snapshot）</a></li>
       </ol>
     </li>
@@ -437,10 +437,10 @@ if (!doNotTrack) {
 <p>BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.</p>
 </blockquote>
 <p>Btrfs拥有较多传统文件系统如Ext3/4不具有的高级功能，为我们日常文件系统使用和备份带来了便利。</p>
-<h3 id="写时复制copy-on-writecow"><strong>写时复制（Copy-on-Write，CoW）</strong></h3>
+<h3 id="写时复制copy-on-writecow">写时复制（Copy-on-Write，CoW）</h3>
 <p>Btrfs默认采用<a class="link" href="https://en.wikipedia.org/wiki/copy-on-write"  target="_blank" rel="noopener"
     >CoW</a>机制，将文件指针存放在metadata文件中。在对文件进行更改时，Btrfs会将新的数据写在新的空闲数据块中，数据写入完成后，更新metadata增加将文件指向新的内存块的指针。</p>
-<h3 id="子卷subvolume"><strong>子卷（subvolume）</strong></h3>
+<h3 id="子卷subvolume">子卷（subvolume）</h3>
 <p>一个子卷可以看作是Btrfs中的一个文件夹，但是子卷也可以像分区一样被挂载。例如在<code>subvolume-test</code>中创建一个子卷<code>subvolume</code>，就相当于创建了一个对应的文件夹。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
