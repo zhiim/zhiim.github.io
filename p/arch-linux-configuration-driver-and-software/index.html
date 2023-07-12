@@ -672,7 +672,16 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="nv">Authenticated</span><span class="o">=</span><span class="m">0</span>
 </span></span><span class="line"><span class="cl"><span class="nv">EncSize</span><span class="o">=</span><span class="m">16</span>
 </span></span><span class="line"><span class="cl"><span class="nv">EDiv</span><span class="o">=</span><span class="m">11107</span>  <span class="c1"># 和Windows中EDIV相同</span>
-</span></span><span class="line"><span class="cl"><span class="nv">Rand</span><span class="o">=</span><span class="m">12409689061704920446</span>  <span class="c1"># 和Windows中Rand相同</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Rand</span><span class="o">=</span><span class="m">12409689061704920446</span>  <span class="c1"># 和Windows中ERand相同</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启蓝牙，蓝牙设备就会自动连接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart bluetooth
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="使用refind引导系统">使用rEFInd引导系统</h2>
