@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xland.cyou/tags/atlas/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/categories/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/post/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/tags/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/categories/tech/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
+    <loc>https://xland.cyou/p/deploy-deep-learning-model-on-atlas/</loc>
+    <lastmod>2023-09-26T12:08:08+08:00</lastmod>
+  </url><url>
     <loc>https://xland.cyou/p/arch-linux-configuration-btrfs-and-system-backup/</loc>
     <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
-    <loc>https://xland.cyou/categories/</loc>
-    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
-  </url><url>
     <loc>https://xland.cyou/tags/linux/</loc>
-    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/post/</loc>
-    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/tags/</loc>
-    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/categories/tech/</loc>
-    <lastmod>2023-07-11T14:54:53+08:00</lastmod>
-  </url><url>
-    <loc>https://xland.cyou/</loc>
     <lastmod>2023-07-11T14:54:53+08:00</lastmod>
   </url><url>
     <loc>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</loc>

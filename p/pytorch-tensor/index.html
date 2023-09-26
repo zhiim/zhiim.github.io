@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://xland.cyou/p/pytorch-tensor/'>
 
-<link rel="stylesheet" href="/scss/style.min.20d278306654cf6af9785c96df2e3b109d26dfbbf51a6df29ab0633d49df0176.css"><meta property='og:title' content='PyTorch基础 （一）Tensors'>
+<link rel="stylesheet" href="/scss/style.min.564453e5ee6d422198efe709f1bdca3c6739c3db36dcad8cc71534b50bf28ccc.css"><meta property='og:title' content='PyTorch基础 （一）Tensors'>
 <meta property='og:description' content='PyTorch学习笔记，Tensor的创建、Tensor的属性和Tensor的数学运算'>
 <meta property='og:url' content='https://xland.cyou/p/pytorch-tensor/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PyTorch' /><meta property='article:published_time' content='2023-01-06T17:12:03&#43;08:00'/><meta property='article:modified_time' content='2023-01-06T17:12:03&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/pytorch-tensor/pytorch.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PyTorch' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-01-06T17:12:03&#43;08:00'/><meta property='article:modified_time' content='2023-01-06T17:12:03&#43;08:00'/><meta property='og:image' content='https://xland.cyou/p/pytorch-tensor/pytorch.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="PyTorch基础 （一）Tensors">
 <meta name="twitter:description" content="PyTorch学习笔记，Tensor的创建、Tensor的属性和Tensor的数学运算"><meta name="twitter:card" content="summary_large_image">
@@ -470,11 +470,11 @@ if (!doNotTrack) {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">import</span><span class="err"> </span><span class="n">torch</span>
-</span></span><span class="line"><span class="cl"><span class="n">import</span><span class="err"> </span><span class="n">numpy</span><span class="err"> </span><span class="k">as</span><span class="err"> </span><span class="n">np</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">data</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="err"> </span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="err"> </span><span class="mi">4</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl"><span class="n">x_data</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="使用numpy-array创建">使用NumPy array创建</h3>
@@ -492,13 +492,13 @@ if (!doNotTrack) {
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">np_array</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">x_np</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">np_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_np</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Numpy np_array value: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">np_array</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Tensor x_np value: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">x_np</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np_array</span><span class="p">,</span><span class="err"> </span><span class="mi">2</span><span class="p">,</span><span class="err"> </span><span class="n">out</span><span class="o">=</span><span class="n">np_array</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">np_array</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">np_array</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Numpy np_array after * 2 operation: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">np_array</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># x_np会和np_array一起改变</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Tensor x_np value after modifying numpy array: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">x_np</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -518,11 +518,11 @@ if (!doNotTrack) {
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x_ones</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x_ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># x_ones会保持和x_data相同的属性，所有元素都为1</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Ones Tensor: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">x_ones</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">x_rand</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="err"> </span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_rand</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># x_rand保持x_data的属性，dtype设为torch.float</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Random Tensor: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">x_rand</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
@@ -540,10 +540,10 @@ if (!doNotTrack) {
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shape</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,)</span>
-</span></span><span class="line"><span class="cl"><span class="n">rand_tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">ones_tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">zeros_tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rand_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ones_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">zeros_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Random Tensor: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">rand_tensor</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Ones Tensor: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">ones_tensor</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -560,7 +560,7 @@ if (!doNotTrack) {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Shape of tensor: </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Datatype of tensor: </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
@@ -580,8 +580,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 当GPU可用时，将tensor转移到GPU中</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl"><span class="err">  </span><span class="n">tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tensor索引">Tensor索引</h3>
@@ -595,11 +595,11 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">tensor</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="err"> </span><span class="mi">4</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First row: &#39;</span><span class="p">,</span><span class="n">tensor</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First column: &#39;</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">[:,</span><span class="err"> </span><span class="mi">0</span><span class="p">])</span> <span class="c1"># 第一列</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last column:&#39;</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="err"> </span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 最后一列</span>
-</span></span><span class="line"><span class="cl"><span class="n">tensor</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="mi">0</span> <span class="c1"># 第二列元素置为0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First column: &#39;</span><span class="p">,</span> <span class="n">tensor</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="c1"># 第一列</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last column:&#39;</span><span class="p">,</span> <span class="n">tensor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 最后一列</span>
+</span></span><span class="line"><span class="cl"><span class="n">tensor</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># 第二列元素置为0</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -611,8 +611,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">t1</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">],</span><span class="err"> </span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">t1</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">],</span><span class="err"> </span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">t1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tensor的数学运算">Tensor的数学运算</h3>
@@ -634,18 +634,18 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 矩阵乘法</span>
-</span></span><span class="line"><span class="cl"><span class="n">y1</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="err"> </span><span class="o">@</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">T</span>
-</span></span><span class="line"><span class="cl"><span class="n">y2</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y1</span> <span class="o">=</span> <span class="n">tensor</span> <span class="o">@</span> <span class="n">tensor</span><span class="o">.</span><span class="n">T</span>
+</span></span><span class="line"><span class="cl"><span class="n">y2</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">y3</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="err"> </span><span class="n">out</span><span class="o">=</span><span class="n">y3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">y3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 矩阵对应元素相乘</span>
-</span></span><span class="line"><span class="cl"><span class="n">z1</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="err"> </span><span class="o">*</span><span class="err"> </span><span class="n">tensor</span>
-</span></span><span class="line"><span class="cl"><span class="n">z2</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">z1</span> <span class="o">=</span> <span class="n">tensor</span> <span class="o">*</span> <span class="n">tensor</span>
+</span></span><span class="line"><span class="cl"><span class="n">z2</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">z3</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="n">out</span><span class="o">=</span><span class="n">z3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">z3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">z3</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="单元素的tensor">单元素的tensor</h3>
@@ -657,9 +657,9 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">agg</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">tensor</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 将tensor中的元素相加</span>
-</span></span><span class="line"><span class="cl"><span class="n">agg_item</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">agg</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="err">  </span><span class="c1"># 将单元素agg转为Python数值</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">agg_item</span><span class="p">,</span><span class="err"> </span><span class="nb">type</span><span class="p">(</span><span class="n">agg_item</span><span class="p">))</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">agg</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 将tensor中的元素相加</span>
+</span></span><span class="line"><span class="cl"><span class="n">agg_item</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>  <span class="c1"># 将单元素agg转为Python数值</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">agg_item</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">agg_item</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="自动赋值运算">自动赋值运算</h3>
@@ -671,7 +671,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span><span class="err"> </span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">tensor</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># add_改变了tensor的元素值，每个元素加上5</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
@@ -686,9 +686,9 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">t</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;t: </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">t</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;n: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -700,8 +700,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">t</span><span class="err"> </span><span class="o">=</span><span class="err"> </span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -713,6 +713,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
     <section class="article-tags">
         
             <a href="/tags/pytorch/">PyTorch</a>
+        
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
         
     </section>
 
@@ -801,6 +803,28 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 
         <div class="article-details">
             <h2 class="article-title">PyTorch基础 （二）Dataset和DataLoader</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/deploy-deep-learning-model-on-atlas/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 在Atlas 200 DK中部署深度学习模型"
+                    data-key="deploy-deep-learning-model-on-atlas" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在Atlas 200 DK中部署深度学习模型</h2>
         </div>
     </a>
 </article>

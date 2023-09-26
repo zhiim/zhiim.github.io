@@ -6,7 +6,23 @@
         <description>Recent content in Tags on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 11 Jul 2023 14:54:53 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Sep 2023 12:08:08 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Atlas</title>
+        <link>https://xland.cyou/tags/atlas/</link>
+        <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
+        
+        <guid>https://xland.cyou/tags/atlas/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>深度学习</title>
+        <link>https://xland.cyou/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+        <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
+        
+        <guid>https://xland.cyou/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Linux</title>
         <link>https://xland.cyou/tags/linux/</link>
         <pubDate>Tue, 11 Jul 2023 14:54:53 +0800</pubDate>
