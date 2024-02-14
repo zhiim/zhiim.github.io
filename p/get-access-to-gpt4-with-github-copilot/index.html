@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'>
-<title>完全卸载VMware Workstation</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Github Copilot底层调用了GPT，本文介绍了如何通过Copilot获得GPT API，并搭配GPT前端使用GPT-4'>
+<title>通过Github Copilot获取GPT-4 API</title>
 
-<link rel='canonical' href='https://xland.cyou/p/uninstall-vmware/'>
+<link rel='canonical' href='https://xland.cyou/p/get-access-to-gpt4-with-github-copilot/'>
 
-<link rel="stylesheet" href="/scss/style.min.ed62dd08fec79fa2658d77dee09f11cbdf6f0d7fbaa1e1ad543cec325a9b7c2c.css"><meta property='og:title' content='完全卸载VMware Workstation'>
-<meta property='og:description' content='VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留'>
-<meta property='og:url' content='https://xland.cyou/p/uninstall-vmware/'>
+<link rel="stylesheet" href="/scss/style.min.ed62dd08fec79fa2658d77dee09f11cbdf6f0d7fbaa1e1ad543cec325a9b7c2c.css"><meta property='og:title' content='通过Github Copilot获取GPT-4 API'>
+<meta property='og:description' content='Github Copilot底层调用了GPT，本文介绍了如何通过Copilot获得GPT API，并搭配GPT前端使用GPT-4'>
+<meta property='og:url' content='https://xland.cyou/p/get-access-to-gpt4-with-github-copilot/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VMware' /><meta property='article:published_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='article:modified_time' content='2022-03-19T12:05:03&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='工具' /><meta property='article:published_time' content='2024-02-12T15:19:19&#43;08:00'/><meta property='article:modified_time' content='2024-02-12T15:19:19&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="完全卸载VMware Workstation">
-<meta name="twitter:description" content="VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="通过Github Copilot获取GPT-4 API">
+<meta name="twitter:description" content="Github Copilot底层调用了GPT，本文介绍了如何通过Copilot获得GPT API，并搭配GPT前端使用GPT-4"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -325,16 +325,14 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#获取gpt-api">获取GPT API</a>
       <ol>
-        <li><a href="#通过workstation安装程序自动清理">通过Workstation安装程序自动清理</a></li>
-        <li><a href="#停止vmware相关的服务">停止VMware相关的服务</a></li>
-        <li><a href="#删除vmware-network-bridge-adapter">删除VMware network bridge adapter</a></li>
-        <li><a href="#删除vmware相关的网络适配器">删除VMware相关的网络适配器</a></li>
-        <li><a href="#删除和vmware有关的文件夹">删除和VMware有关的文件夹</a></li>
-        <li><a href="#删除环境变量">删除环境变量</a></li>
+        <li><a href="#编译可执行文件">编译可执行文件</a></li>
+        <li><a href="#获取github-copilot-plugin-token">获取Github Copilot Plugin Token</a></li>
       </ol>
     </li>
+    <li><a href="#使用gpt前端">使用GPT前端</a></li>
+    <li><a href="#搭建gpt-academic">搭建GPT Academic</a></li>
   </ol>
 </nav>
         </div>
@@ -362,12 +360,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/uninstall-vmware/">完全卸载VMware Workstation</a>
+            <a href="/p/get-access-to-gpt4-with-github-copilot/">通过Github Copilot获取GPT-4 API</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            VMware Workstation如果卸载不彻底，会导致无法再次安装，此时可以手动清理卸载残留
+            Github Copilot底层调用了GPT，本文介绍了如何通过Copilot获得GPT API，并搭配GPT前端使用GPT-4
         </h3>
         
     </div>
@@ -388,7 +386,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 19, 2022</time>
+                <time class="article-time--published">Feb 12, 2024</time>
             </div>
         
 
@@ -403,7 +401,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -418,89 +416,188 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。</p>
-<h3 id="通过workstation安装程序自动清理">通过Workstation安装程序自动清理</h3>
-<p>下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入</p>
+    <p>最近Github向GitHub Student Developer Pack添加了无限使用Github Copilot的权益，大大提升了学生包的价值，学生认证后即可免费体验这款强大的AI编程助手。Github Copilot的实际体验让人不得不感慨AI的强大，Copilot自动补全的代码大多数情况下可以直接使用，大大提升了编程效率；Copilot Chat也可以对各种编程问题提供非常有用的建议。</p>
+<p>除此之外，由于Github Copilot的底层使用了GPT，我们也可以通过Copilot免费使用GPT-4。要实现这样的功能只需要使用开源项目copilot-gpt4-service获取GPT API，然后就可以通过GPT API搭配GPT前端来访问GPT-4，此外还可以使用GPT API部署AI学术助手gpt academic。</p>
+<ul>
+<li><a class="link" href="https://github.com/aaamoon/copilot-gpt4-service"  target="_blank" rel="noopener"
+    >copilot-gpt4-service</a>：通过Github Copilot Plugin Token调用GPT API。</li>
+<li><a class="link" href="https://github.com/Bin-Huang/chatbox"  target="_blank" rel="noopener"
+    >chatbox</a>：GPT前端，搭配GPT API可以搭建自己的ChatGPT，并和GPT-4对话。</li>
+<li><a class="link" href="https://github.com/binary-husky/gpt_academic"  target="_blank" rel="noopener"
+    >gpt_academic</a>：使用GPT API的AI学术助手，支持英文论文润色，一键翻译论文等功能。</li>
+</ul>
+<h2 id="获取gpt-api">获取GPT API</h2>
+<p>从Copilot获取GPT API只需要两步</p>
+<ol>
+<li>运行copilot-gpt4-service得到一个API URL用来替代OpenAI的API URL</li>
+<li>获取Github Copilot Plugin Token代替OpenAI的API Key</li>
+</ol>
+<h3 id="编译可执行文件">编译可执行文件</h3>
+<p>copilot-gpt4-service使用Go语言编写，官方未提供编译好的可执行文件，所以只能自己编译，需要下载并安装<a class="link" href="https://go.dev/dl/"  target="_blank" rel="noopener"
+    >Go语言编译器</a>，然后将源码下载到本地编译。</p>
+<p>将<a class="link" href="https://github.com/aaamoon/copilot-gpt4-service"  target="_blank" rel="noopener"
+    >copilot-gpt4-service</a>克隆到本地</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">VMware-workstation</span><span class="n">-full-xxx-xxx</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">clean</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/aaamoon/copilot-gpt4-service.git
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="停止vmware相关的服务">停止VMware相关的服务</h3>
-<p>在Windows搜索框搜索<code>services.msc</code>，打开“服务”，停止所有VMware相关的服务。</p>
+</div><p>编译源码，得到一个名为<code>main</code>的可执行文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 进入项目目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> copilot-gpt4-service
+</span></span><span class="line"><span class="cl"><span class="c1"># 编译</span>
+</span></span><span class="line"><span class="cl">go build main.go
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在终端中执行可执行文件，此时程序会打印出程序运行的端口以及可用的API地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">./main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>选择本地IP对应的API的地址<code>http://127.0.0.1:8080</code>，在浏览器中打开，如果出现下方提示表示程序运行正常</p>
+<blockquote>
+<p>Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。</p>
+</blockquote>
+<h3 id="获取github-copilot-plugin-token">获取Github Copilot Plugin Token</h3>
+<p>打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 安装依赖库</span>
+</span></span><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载python脚本</span>
+</span></span><span class="line"><span class="cl">curl -O https://raw.githubusercontent.com/aaamoon/copilot-gpt4-service/master/shells/get_copilot_token.py
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行脚本</span>
+</span></span><span class="line"><span class="cl">python get_copilot_token.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>根据终端输出的提示，在浏览器中打开Github验证页面，输入终端打印的认证码获取Github Copilot Plugin Token。</p>
+<h2 id="使用gpt前端">使用GPT前端</h2>
+<p>Chatbox是一款跨平台的GPT前端，可以使用GPT API搭建自己的ChatGPT，下载安装并填入GPT API的URL和Github Copilot Plugin Token即可使用。</p>
+<p>下载并打开<a class="link" href="https://chatboxai.app"  target="_blank" rel="noopener"
+    >chatbox</a>，进行如下设置：</p>
 <ul>
-<li>VMware Authorization Service</li>
-<li>VMware Authentication Service</li>
-<li>VMware Registration Service</li>
-<li>VMware DHCP Service</li>
-<li>VMware NAT Service</li>
-<li>VMware USB Arbitration Service</li>
-<li>VMware Workstation Server</li>
-<li>VMware WSX Service</li>
+<li><code>AI模型提供方</code>选择<code>OpenAI API</code></li>
+<li><code>OpenAI API 密钥</code>填入上一步获取的Github Copilot Plugin Token</li>
+<li><code>API 域名</code>填入<code>http://127.0.0.1:8080</code></li>
+<li><code>模型</code>选择<code>gpt-4</code>或者GPT的其他任意版本</li>
 </ul>
-<h3 id="删除vmware-network-bridge-adapter">删除VMware network bridge adapter</h3>
-<ol>
-<li>打开<code>控制面板\网络和 Internet\网络连接</code></li>
-<li>右键，属性，选择VMware Bridge Protocol，卸载</li>
-</ol>
-<h3 id="删除vmware相关的网络适配器">删除VMware相关的网络适配器</h3>
-<ol>
-<li>打开<code>控制面板\硬件和声音\设备管理器</code></li>
-<li>在“查看”工具栏勾选上“显示隐藏的设备”</li>
-<li>点击“网络适配器”，卸载名字包含VMware的适配器</li>
-</ol>
-<h3 id="删除和vmware有关的文件夹">删除和VMware有关的文件夹</h3>
-<ul>
-<li>程序安装目录</li>
-<li>数据目录<br>
-默认路径<code>C:\Program Files(X86)\VMware\</code></li>
-<li>开始菜单中的VMware<br>
-路径<code>C:\ProgramData\VMware</code></li>
-<li>快捷方式</li>
-<li>其他文件
-<ul>
-<li><code>C:\Windows\system32\vmnat.exe</code></li>
-<li><code>C:\Windows\system32\vmnetbridge.exe</code></li>
-<li><code>C:\Windows\system32\VMNetDHCP.exe</code></li>
-<li><code>C:\Windows\system32\vmnetdhcp.leases</code></li>
-<li><code>C:\Windows\system32\vmxw2ksetup.dll</code></li>
-<li><code>C:\Windows\system32\vnetprobe.exe</code></li>
-<li><code>C:\Windows\system32\vnetprobelib.dll</code></li>
-<li><code>C:\Windows\system32\vnetinst.dll</code></li>
-<li><code>C:\Windows\system32\vnetlib.dll</code></li>
-<li><code>C:\Windows\system32\vnetlib.exe</code></li>
-<li><code>C:\Windows\system32\drivers\vmnet.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetx.sys</code></li>
-<li><code>C:\Windows\system32\drivers\VMparport.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmx86.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetadapter.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetbridge.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmnetuserif.sys</code></li>
-<li><code>C:\Windows\system32\drivers\hcmon.sys</code></li>
-<li><code>C:\Windows\system32\drivers\vmusb.sys</code></li>
-</ul>
-</li>
-<li>注册表<br>
-打开注册表管理器，删除以下注册表
-<ul>
-<li><code>HKEY_CLASSES_ROOT\Installer\Features\A57F49D06AE015943BFA1B54AFE9506C</code></li>
-<li><code>HKEY_CLASSES_ROOT\Installer\Products\A57F49D06AE015943BFA1B54AFE9506C</code></li>
-<li><code>HKEY_CLASSES_ROOT\Installer\UpgradeCodes\3F935F414A4C79542AD9C8D157A3CC39</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{0D94F75A-0EA6-4951-B3AF-B145FA9E05C6}</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\VMware Workstation</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\VMware, Inc.\Installer\VMware Workstation</code></li>
-<li><code>HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\vmware.exe</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="删除环境变量">删除环境变量</h3>
-<p>打开系统环境变量设置，删除VMware Workstation的执行路径<br>
-重启电脑，就完成了VMware Workstation的完全卸载。<br>
-各版本路径存在一些不同，具体参考<a class="link" href="https://kb.vmware.com/s/article/1308"  target="_blank" rel="noopener"
-    >官方文档</a>。</p>
+<p><img src="/p/get-access-to-gpt4-with-github-copilot/chatbox_setting.webp"
+	width="748"
+	height="441"
+	
+	loading="lazy"
+	
+		alt="chatbox 设置"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></p>
+<p>为了验证API返回的结构是否来自GPT-4，可以提问<code>鲁迅为什么暴打周树人</code>，GPT-3.5会胡说八道，GPT-4会给出正确答案。</p>
+<p><img src="/p/get-access-to-gpt4-with-github-copilot/gpt4_or_not.webp"
+	width="853"
+	height="216"
+	
+	loading="lazy"
+	
+		alt="GPT4的回答"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="394"
+		data-flex-basis="947px"
+	
+></p>
+<h2 id="搭建gpt-academic">搭建GPT Academic</h2>
+<p>将项目克隆到本地，并进入项目目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/binary-husky/gpt_academic.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> gpt_academic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>安装依赖库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改<code>config.py</code>中的下面几项</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">API_KEY</span> <span class="o">=</span> <span class="s2">&#34;ghu_xxxxx&#34;</span>  <span class="c1"># Github Copilot Plugin Token</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">API_URL_REDIRECT</span> <span class="o">=</span> <span class="o">{</span><span class="s2">&#34;https://api.openai.com/v1/chat/completions&#34;</span>: <span class="s2">&#34;http://127.0.0.1:8080/v1/chat/completions&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CUSTOM_API_KEY_PATTERN</span> <span class="o">=</span> <span class="s2">&#34;ghu_[a-zA-Z0-9]{36}&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">WEB_PORT</span> <span class="o">=</span> <span class="m">1234</span>  <span class="c1"># 固定端口，也可以为其他值</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行程序，程序会自动在浏览器打开GPT Academic的页面，同样可以通过提问验证API配置是否正常</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python main.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/get-access-to-gpt4-with-github-copilot/gpt_academic.webp"
+	width="1849"
+	height="923"
+	
+	loading="lazy"
+	
+		alt="GPT Academic"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
 
 </section>
 
@@ -509,7 +606,7 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/vmware/">VMware</a>
+            <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
         
     </section>
 
