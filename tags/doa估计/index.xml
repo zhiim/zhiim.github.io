@@ -1,29 +1,283 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>DOA估计 on Zhiim&#39;s Blog</title>
-    <link>https://xland.cyou/tags/doa%E4%BC%B0%E8%AE%A1/</link>
-    <description>Recent content in DOA估计 on Zhiim&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sat, 25 Mar 2023 11:26:43 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/doa%E4%BC%B0%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>基于高阶累积量的DOA估计</title>
-      <link>https://xland.cyou/p/higer-order-statistics-doa-estimation/</link>
-      <pubDate>Sat, 25 Mar 2023 11:26:43 +0800</pubDate>
-      
-      <guid>https://xland.cyou/p/higer-order-statistics-doa-estimation/</guid>
-      <description>背景 传统的MUSIC算法和ESPRIT算法都指利用了接收信号的二阶累计量，这些算法的缺点主要有： 对于一个具有N个阵元的阵列，可估计的信号数最</description>
-    </item>
-    
-    <item>
-      <title>DOA估计中均匀圆阵的模糊问题</title>
-      <link>https://xland.cyou/p/uca-doa-ambiguity/</link>
-      <pubDate>Sat, 25 Feb 2023 15:54:25 +0800</pubDate>
-      
-      <guid>https://xland.cyou/p/uca-doa-ambiguity/</guid>
-      <description>DOA估计的模糊问题 一些经典的DOA估计算法，例如MUSIC算法，利用了阵列流型矩阵和噪声子空间的正交关系来确定入射信号的角度。因此在使用这</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>DOA估计 on Zhiim&#39;s Blog</title>
+        <link>https://xland.cyou/tags/doa%E4%BC%B0%E8%AE%A1/</link>
+        <description>Recent content in DOA估计 on Zhiim&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sat, 25 Mar 2023 11:26:43 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/doa%E4%BC%B0%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>基于高阶累积量的DOA估计</title>
+        <link>https://xland.cyou/p/higer-order-statistics-doa-estimation/</link>
+        <pubDate>Sat, 25 Mar 2023 11:26:43 +0800</pubDate>
+        
+        <guid>https://xland.cyou/p/higer-order-statistics-doa-estimation/</guid>
+        <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;传统的MUSIC算法和ESPRIT算法都指利用了接收信号的二阶累计量，这些算法的缺点主要有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于一个具有N个阵元的阵列，可估计的信号数最大为N-1&lt;/li&gt;
+&lt;li&gt;当阵列模型存在误差（eg. 算法中使用的流型矩阵和实际的流型矩阵不符），或者阵元接受到的噪声存在相关性的情况下，算法的鲁棒性很差&lt;/li&gt;
+&lt;li&gt;在较小快拍数下，对于角度邻近的信号估计精度较差
+基于高阶累计量（Higher-order Cumulants）的DOA估计算法早期被用于处理不同阵元接收到的高斯噪声存在相关性的情况，随着研究的深入，人们发现高阶累积量的引入提高了阵列的可估计信号数和分辨率，同时对阵列模型误差存在一定的校正。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;使用二阶累积量面临的问题&#34;&gt;使用二阶累积量面临的问题&lt;/h3&gt;
+&lt;p&gt;对于阵列接受信号
+$${\bf{X}}(t) = {\bf{AS}}(t) + {\bf{N}}(t)$$
+一般的子空间类分解算法是从接受信号的协方差矩阵，即二阶累积量组成的矩阵中提取角度信号
+$${R_{xx}} = A{R_{ss}}A + {R_{nn}}$$
+其中$R_{nn}$表示接受噪声的协方差矩阵。如果噪声是高斯白噪声，那么$R_{nn}=\sigma^2 I$，是一个对角元素等于噪声功率的对角阵，此时对$R_{xx}$做特征分解，可以得到
+$$R_{xx} = \begin{bmatrix}U_{s}&amp;amp;U_{n}\end{bmatrix}
+\begin{bmatrix}
+\sigma_1^2+\sigma^2&amp;amp;&amp;amp;&amp;amp; \newline
+&amp;amp;\sigma_2^2+\sigma^2&amp;amp;&amp;amp; \newline
+&amp;amp;&amp;amp;\ddots&amp;amp; \newline
+&amp;amp;&amp;amp;&amp;amp;\sigma^2
+\end{bmatrix}
+\begin{bmatrix} U_{s} \newline U_{n}\end{bmatrix}$$
+如果阵元接受到的噪声不是高斯白噪声，在DOA估计中主要表现为不同阵元接收到的噪声之间存在相关性，那么噪声的协方差矩阵$R_{nn}$不是一个对角阵，此时无法通过对接受信号协方差矩阵$R_{xx}$的特征分解确定信号子空间和噪声子空间。&lt;/p&gt;
+&lt;h3 id=&#34;高阶累计量对doa估计的意义&#34;&gt;高阶累计量对DOA估计的意义&lt;/h3&gt;
+&lt;p&gt;如果接受到的噪声不是高斯白噪声，那么噪声的协方差矩阵不是对角阵，无法分解出噪声子空间和信号子空间。根据高阶累积量的性质，高斯随机过程的四阶累积量为0，如果接受噪声符合高斯随机分布，即使不同阵元接受到的噪声存在相关性，仍然可以通过四阶累积量构造新的协方差矩阵，实现去除噪声的目的。&lt;/p&gt;
+&lt;h2 id=&#34;四阶累积量的计算&#34;&gt;四阶累积量的计算&lt;/h2&gt;
+&lt;p&gt;对于一个$N\times 1$的实数值矢量x，它的第q阶累积量可以由它的矩表示&lt;br&gt;
+$$Cum[{x_{{i_1}}},{x_{{i_2}}}, \ldots ,{x_{{i_q}}}] = \sum\limits_{p = 1}^q {{{( - 1)}^{p - 1}}(p - 1)!E{ \prod\limits_{j \in {S_1}} {{x_{ij}}} } } E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} }  \cdots E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} } $$&lt;br&gt;
+对于一个零均值的矢量x，它的二阶、三阶和四阶累计量可以写成
+$$Cum[{x_i},{x_j}] = E{ {x_i}{x_j}} $$
+$$Cum[{x_i},{x_j},{x_k}] = E{ {x_i}{x_j}{x_k}} $$
+$$Cum[{x_i},{x_j},{x_k},{x_l}] = E{ {x_i}{x_j}{x_k}{x_l}}  - E{ {x_i}{x_j}} E{ {x_k}{x_l}}  - E{ {x_i}{x_k}} E{ {x_j}{x_l}}  - E{ {x_i}{x_l}} E{ {x_j}{x_k}} $$&lt;/p&gt;
+&lt;h2 id=&#34;基于高阶累积量的doa估计&#34;&gt;基于高阶累积量的DOA估计&lt;/h2&gt;
+&lt;h3 id=&#34;接受信号模型&#34;&gt;接受信号模型&lt;/h3&gt;
+&lt;p&gt;考虑一个具有N个阵元的阵列，阵列接收到P个入射信号（P的个数可以大于或等于N）。我们把P个信号划分成G组，其中第g组包含的信号数表示成$P_g$。位于同一组的信号不独立但也不相干，位于不同组的信号相互独立。此时可以写出阵元接受信号的数学模型
+$$\bf{x_g}(t) = \bf{A_g}\bf{s_g}(t)$$
+$${\bf{y}}(t) = \sum\limits_{g = 1}^G {{{\bf{A}}_g}{{\bf{S}}_g}(t) + {\bf{w}}(t)} $$
+其中${{{\bf{S}}_g}(t)}$表示第g组入射信号复振幅，${{{\bf{A}}_g}}$表示第g组的入射信号对应流型矩阵。${{\bf{w}}(t)}$表示阵元接收到的噪声，假设该噪声符合高斯分布，不同阵元接受到的噪声之间存在相关性。&lt;/p&gt;
+&lt;h3 id=&#34;基于四阶累计量的music算法music-like-algorithm-based-on--fo-cumulant&#34;&gt;基于四阶累计量的MUSIC算法（MUSIC-Like Algorithm based on  FO Cumulant）&lt;/h3&gt;
+&lt;p&gt;在求接收信号的四阶累积量时，采用复数形式的定义式&lt;br&gt;
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$Cum[y_i,y_j,y_{k}^{*},y_{l}^{*}] = E\{ y_i,y_j,y_k^*,y_l^*\} -E\{ y_i,y_j\} E\{ y_k^*,y_l^*\}  - E\{ y_i,y_k^*\} E\{ y_j,y_l^*\}  - E\{ y_i,y_l^*\} E\{ y_j,y_k^*\}$$
+  &lt;/div&gt;
+
+一般使用近似公式求解四阶矩和二阶矩
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {y_i},{y_j},y_k^*,y_l^*\} = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)y_k^*(t)y_l^*(t)} $$
+  &lt;/div&gt;
+
+$$E{ {y_i},{y_j}}  = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)} $$
+按照上述四阶累积量的近似计算公式计算$x_g(t)$的四阶累积量，如果取四阶累积量的下标i、j、k、l为不同值，总共可以求出$N^2\times N^2$个不同的四阶累计量，把它们写成一个$N^2\times N^2$维矩阵$C_g$的形式，每个四阶累积量作为$C_g$的一个元素。其中
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${C_g}[(i - 1)N &amp;#43; k,(j - 1)M &amp;#43; l] = Cum[{y_i},{y_j},y_k^*,y_l^*]$$
+  &lt;/div&gt;
+
+于是有
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${{\bf{C}}_g} = ({{\bf{A}}_g} \otimes {\bf{A}}_g^*){{\bf{S}}_g}{({{\bf{A}}_g} \otimes {\bf{A}}_g^*)^H}$$
+  &lt;/div&gt;
+
+其中
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split} S_g &amp;amp;= E\{(s_g(t)\otimes s_g^*(t)) (s_g(t)\otimes s_g^*(t))^H\} \newline &amp;amp;- E\{s_g(t)\otimes s_g^*(t)\} E\{(s_g(t)\otimes s_g^*(t))^H\} \newline &amp;amp;- E\{s_g(t)\otimes s_g^H(t)\} E\{s_g(t)\otimes s_g^H(t)\}\end{split}$$
+  &lt;/div&gt;
+
+$S_g$表示第g组的接受信号的四阶累积量组成的$N^2\times N^2$维矩阵。&lt;br&gt;
+&lt;strong&gt;性质1&lt;/strong&gt;：如果随机变量$x_i$和$y_i$相互独立，那么有
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$cum\{x_1&amp;#43;y_1,x_2&amp;#43;y_2,\dots,x_n &amp;#43;y_n\}=cum\{x_1,x_2,\dots,x_n\}  &amp;#43;cum\{y_1,y_2,\dots,y_n\}$$
+  &lt;/div&gt;
+
+&lt;strong&gt;性质2&lt;/strong&gt;：如果x是一个高斯随机过程，则它的高阶累积量（$k\ge2$)恒等于0&lt;br&gt;
+由上述两个性质可得，在阵元接受到的噪声为高斯噪声的情况下，阵元接受数据y(t)的四阶累积量组成的$N^2\times N^2$维矩阵C为
+$$C = \sum\limits_{g = 1}^G {{C_g}} $$
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$C=\begin{bmatrix}A_1\otimes A_1^*,\dots,A_G\otimes A_G^*\end{bmatrix} 
+\begin{bmatrix}S_1&amp;amp;\dots&amp;amp;0\newline \vdots&amp;amp;\ddots&amp;amp;\vdots \newline 0&amp;amp; \dots&amp;amp;S_G \end{bmatrix} 
+\begin{bmatrix}(A_1\otimes A_1)^H \newline \vdots \newline (A_G\otimes A_G)^H\end{bmatrix}$$
+  &lt;/div&gt;
+
+由于第g组内的入射信号互相不独立，$S_g$是满秩矩阵，所以$C_g$的秩为$N_g^2$，于是矩阵C的秩为$\sum\limits_{g = 1}^G {N_g^2 &amp;lt; {N^2}}$。如果G=1，即所有接受信号互相不独立，那么C的秩为$N^2$；如果G=P，即所有接受信号互相独立，C的秩为N。对C做奇异值分解
+$$C=\begin{bmatrix}U_1&amp;amp;U_2\end{bmatrix}
+\begin{bmatrix}\Lambda&amp;amp;0 \newline 0&amp;amp;0\end{bmatrix}
+\begin{bmatrix}V_1^H \newline V_2^H\end{bmatrix}$$
+其中$\Lambda$是一个$\sum\limits_{g = 1}^G {N_g^2}$维对角阵，于是可以根据C的奇异值中0元素对应的特征向量确定子空间$U_2$。&lt;br&gt;
+由于${A_g} \otimes A_g^*$
+与$U_2$正交，可以确定与入射信号角度对应的导向矢量满足
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${[a(\theta ) \otimes {a^*}(\theta )]^H}{U_2} = 0$$
+  &lt;/div&gt;
+
+此时可以构造出类似于MUSIC算法的空间谱
+$$P(\theta ) = {1 \over {||{{[a(\theta ) \otimes {a^*}(\theta )]}^H}{U_2}|{|^2}}}$$
+&lt;strong&gt;优缺点&lt;/strong&gt;：可以应用于接受信号互相不独立（不能完全相关）或者不同阵元接收到的噪声之间存在相关性（高斯噪声）的场景。提高了DOA估计的分辨率和最大可估计信号数。&lt;br&gt;
+计算量较大，需要计算$N^4$个四阶累积量。对于信源发射信号不独立的情况，需要预先知道信号的分组情况来确定C的非零特征值数目。&lt;/p&gt;
+&lt;h2 id=&#34;四阶累积量带来的阵列扩展&#34;&gt;四阶累积量带来的阵列扩展&lt;/h2&gt;
+&lt;p&gt;对于一个任意阵列，以第一个阵元作为参考阵元，它的阵元位置可以表示成
+$$[0,{\vec d_1},{\vec d_2}, \ldots ,{\vec d_{M-1}}]$$
+阵列接收到的信号可以写成
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$\bf{X}(t)=\begin{bmatrix}s(t)&amp;amp;s(t)exp(-j\vec{d}_1 \cdot \vec{k})&amp;amp;\dots&amp;amp;s(t)exp(-j\vec{d}_{M-1}\cdot\vec{k})\end{bmatrix}^T$$
+  &lt;/div&gt;
+
+其中$\vec k = {{2\pi f} \over c}{\vec k_n}$，${\vec k_n}$表示入射信号方向的单位向量。&lt;br&gt;
+接受信号的二阶累积量为&lt;br&gt;
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${\mu _{l,k}} = cum({x_l}(t),{x_k}(t)) = E\{ {x_l}^*(t),{x_k}(t)\}  = \sigma _s^2\exp ( ({\vec d_l} - {\vec d_k}) \cdot \vec k)$$
+  &lt;/div&gt;
+
+接受信号的协方差矩阵为
+$$\bf{R}=\begin{bmatrix}
+\mu_{0,0}&amp;amp;\mu_{0,1}&amp;amp;\dots&amp;amp;\mu_{0,M-1}\newline
+\mu_{1,0}&amp;amp;\mu_{1,1}&amp;amp;\dots&amp;amp;\mu_{1,M-1}\newline
+\vdots&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots\newline
+\mu_{M-1,0}&amp;amp;\mu_{M-1,1}&amp;amp;\dots&amp;amp;\mu_{M-1,M-1}\newline
+\end{bmatrix}$$&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;信号入射到任意阵列&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E4%BF%A1%E5%8F%B7%E5%85%A5%E5%B0%84%E5%88%B0%E4%BB%BB%E6%84%8F%E9%98%B5%E5%88%97.webp&#34;
+	width=&#34;400&#34;
+	height=&#34;318&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;信号入射到任意阵列&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;图中$r(t),x(t),y(t)$表示三个阵元接受到的信号，其中以$r(t)$处作为参考阵元，即$r(t)=s(t)$，图中$v(t)$表示离$r(t)$为$\vec d$的某点接受到的信号
+$$v(t) = s(t)\exp ( - j\vec k \cdot \vec d)$$
+$r(t)$和$v(t)$组成的二阶累积量为
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${\mu _{r,v}} = E\{ {r^*}(t)v(t)\}  = \sigma _s^2\exp ( - j\vec d \cdot \vec k)$$
+  &lt;/div&gt;
+
+$r(t),x(t),y(t)$组成的一种四阶累积量
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split}
+\mu_{r,x}^{r,y}&amp;amp;=cum\{r^*(t),x(t),r^*(t),y(t)\}\newline
+&amp;amp;=cum\{s(t),s(t),s(t),s(t)\}exp(-j(\vec{d}_x&amp;#43;\vec{d}_y)\cdot\vec{k})\newline
+&amp;amp;=\gamma_{4,s}exp(-j\vec{d}\cdot\vec{k})
+\end{split}$$
+  &lt;/div&gt;
+
+所以我们可以得到四阶累积量和二阶累积量的关系
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {r^*}(t)v(t)\}=\frac{\sigma_s^2}{\gamma_{4,s}}cum\{ {r^*}(t),x(t),{r^*}(t),y(t)\}$$
+$${\mu _{r,v}}=\frac{\sigma_s^2}{\gamma_{4,s}}\mu _{r,x}^{r,y}$$
+  &lt;/div&gt;
+
+也即是说，通过求实际阵元$r,x,y$的四阶累积量，我们得到虚拟阵元v和实际阵元s之间的二阶累积量。并且它们在集合上有如下关系
+$$\overrightarrow {rv}  = \overrightarrow {rx}  + \overrightarrow {ry} $$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E5%9B%9B%E9%98%B6%E7%B4%AF%E7%A7%AF%E9%87%8F%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp&#34;
+	width=&#34;400&#34;
+	height=&#34;325&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;四阶累积量阵列扩展&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;295px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同理可以得到
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {r^*}(t)y(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {r^*}(t),y(t),{r^*}(t),r(t)\} $$
+$$E\{ {y^*}(t){v_4}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}(t),r(t),{y^*}(t),x(t)\} $$
+$$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}(t),x(t),{y^*}(t),r(t)\} $$
+  &lt;/div&gt;
+
+在前面所讨论的&lt;em&gt;基于四阶累计量的MUSIC算法&lt;/em&gt;中，我们用接受数据的四阶累积量组成了一个$M^2\times M^2$维的矩阵C，C中每一个元素都是由4个阵元的接受数据组成的四阶累积量$cum[{y_i},{y_j},y_k^*,y_l^*]$
+。&lt;br&gt;
+实际上它是对原本的M个阵元进行了扩展得到了一个虚拟阵列，每一个四阶累积量对应了经过这个虚拟阵列中两个阵元的接受数据组成的二阶累积量。所以$M^2\times M^2$维的矩阵C实际上是经过扩展后的虚拟阵列的协方差矩阵。&lt;br&gt;
+四阶累积量组成的$M^2\times M^2$维的矩阵C为
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$${{\bf{C}}} = ({{\bf{A}}} \otimes {\bf{A}}^*){{\bf{S}}}{({{\bf{A}}} \otimes {\bf{A}}^*)^H}$$
+  &lt;/div&gt;
+
+此时的流型矩阵为
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$\bf{A}\otimes\bf{A}^*=\begin{bmatrix}a(\theta_1)\otimes a^*(\theta_1)&amp;amp;\dots&amp;amp;a(\theta_N)\otimes a^*(\theta_N) \end{bmatrix}$$
+  &lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E4%B8%89%E9%98%B5%E5%85%83%E7%9A%84%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp&#34;
+	width=&#34;400&#34;
+	height=&#34;232&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三阵元的阵列扩展&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;以一个三阵元的阵列为例，三个实际存在的阵元分别为$r,y,x$，经过四阶累积量扩展后的流型矩阵为
+
+  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split}b(\theta)&amp;amp;=a(\theta)\otimes a^*(\theta)\newline
+&amp;amp;=\begin{bmatrix}1&amp;amp;exp(-jk\vec{d}_x)&amp;amp;exp(-jk\vec{d}_y)\end{bmatrix}^T\otimes
+\begin{bmatrix}1&amp;amp;exp(jk\vec{d}_x)&amp;amp;exp(jk\vec{d}_y)\end{bmatrix}^T\newline
+&amp;amp;=\begin{bmatrix}1&amp;amp;exp(jk\vec{d}_x)&amp;amp;exp(jk\vec{d}_y)&amp;amp;exp(-jk\vec{d}_y)&amp;amp;1&amp;amp;exp(-jk(\vec{d}_x-\vec{d}_y))&amp;amp;exp(-jk\vec{d}_y)&amp;amp;exp(-jk(\vec{d}_y-\vec{d}_x))&amp;amp;1\end{bmatrix}^T
+\end{split}$$
+  &lt;/div&gt;
+
+可以看出此时3个阵元的阵列经过四阶累积量扩展，得到的流型矩阵扩展为9个元素，其中除了实际存在的3个阵元外，还有4个虚拟阵元。&lt;br&gt;
+对于某些结构的阵列，经过四阶累积量的扩展，相当于加入了虚拟阵元，从而提升可估计的信号个数，提高了DOA估计算法的分辨率。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>DOA估计中均匀圆阵的模糊问题</title>
+        <link>https://xland.cyou/p/uca-doa-ambiguity/</link>
+        <pubDate>Sat, 25 Feb 2023 15:54:25 +0800</pubDate>
+        
+        <guid>https://xland.cyou/p/uca-doa-ambiguity/</guid>
+        <description>&lt;h2 id=&#34;doa估计的模糊问题&#34;&gt;DOA估计的模糊问题&lt;/h2&gt;
+&lt;p&gt;一些经典的DOA估计算法，例如MUSIC算法，利用了阵列流型矩阵和噪声子空间的正交关系来确定入射信号的角度。因此在使用这些算法时，必须保证流型矩阵中各个导向矢量是线性无关的，这也是为什么要保证阵列天线的个数大于入射信号的个数。&lt;br&gt;
+在讨论阵列的相位模糊时，如果某一个导向矢量可以表示成其他K个导向矢量的线性组合
+$$a(\phi_k,\theta_k) = \sum_{i = 1}^K l_ia(\phi_i,\theta_i), \ \ {l_i} \ne 0$$
+则称该阵列存在&lt;strong&gt;K阶模糊问题&lt;/strong&gt;，此时会存在测向模糊。当$K=1$时，称&lt;strong&gt;一阶模糊&lt;/strong&gt;或&lt;strong&gt;平凡模糊&lt;/strong&gt;。&lt;br&gt;
+高阶模糊的识别比较复杂，发生的条件也更加有限，一般只讨论一阶模糊的问题，即流型矩阵中的导向矢量存在
+$$a({\phi _i},{\theta _i}) = a({\phi _j},{\theta _j}),\ \ i \ne j$$&lt;/p&gt;
+&lt;h2 id=&#34;均匀线阵的相位模糊&#34;&gt;均匀线阵的相位模糊&lt;/h2&gt;
+&lt;p&gt;在讨论均匀线阵的模糊问题时，主要考虑阵元间距带来的相位模糊。&lt;br&gt;
+设$\theta$为实际的入射信号，如果存在$a(\hat{\theta})=a(\theta)$，此时在运行MUSIC算法时，在$\theta$和$\hat{\theta}$都会出现谱线峰值。&lt;br&gt;
+在均匀线阵中DOA估计的角度范围为$[ - {\pi  \over 2},{\pi  \over 2}]$，根据导向矢量的表达式
+$$a(\theta ) = \begin{bmatrix} e^{j\omega {\tau_0}} &amp;amp; e^{j\omega {\tau_1}} &amp;amp; \dots &amp;amp; e^{j\omega {\tau_{M-1}}}\end{bmatrix}$$
+一阶模糊出现的条件为
+$$2\pi \frac{d}{\lambda}sin\hat{\theta}=2\pi \frac{d}{\lambda}sin\theta+2k\pi,\ \ k\in Z$$
+其$d$为相邻两阵元的间距，化简得
+$$sin\hat{\theta}=sin\theta+\frac{k}{d / \lambda},\ \ k \in Z$$
+根据$sin\theta$在$[ - {\pi  \over 2},{\pi  \over 2}]$上的单调性，我们可以知道一阶模糊是否出现，等价于是否存在除零以外的整数k使得$(sin\theta+\frac{k}{d / \lambda})\in[-1,1]$。于是可以推导出&lt;strong&gt;均匀线阵出现一阶模糊的条件&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$d\le\frac{1}{2}\lambda$
+此时$|\frac{k}{d/\lambda}|\ge 2|k|$，为使$(sin\theta+\frac{k}{d / \lambda})\in[-1,1]$，k只能取0。&lt;/li&gt;
+&lt;li&gt;$\frac{1}{2}\lambda&amp;lt;d&amp;lt;\lambda$
+此时$2|k|&amp;gt;|\frac{k}{d/\lambda}|&amp;gt; |k|$，取$|k|=1$可得如果入射角满足$|sin\theta|&amp;lt;\lambda /d -1$，不会出现多余峰值；否则会出现一个虚假谱峰。&lt;/li&gt;
+&lt;li&gt;$d\ge \lambda$
+此时$|\frac{k}{d/\lambda}|\le |k|$，为使$(sin\theta+\frac{k}{d / \lambda})\in[-1,1]$，当$0\le sin\theta \le 1$时，k至少还可以取-1；当$-1\le sin\theta \le 0$时，k至少还可以取1，所以此时一定会出现虚假谱峰。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;均匀圆阵的相位模糊&#34;&gt;均匀圆阵的相位模糊&lt;/h2&gt;
+&lt;p&gt;均匀圆阵的相位模糊问题，一般只出现在阵列孔径较大，而阵元数较少的情况下。&lt;br&gt;
+考虑一维均匀圆阵，即只考虑方位角$\theta$，俯仰角取90度。&lt;br&gt;
+假设出现$a(\hat{\theta})=a(\theta)$，则在第m个阵元上有
+$$2\pi\frac{r}{\lambda}cos(\hat{\theta}-(m-1)\frac{2\pi}{M})=2\pi\frac{r}{\lambda}cos(\theta-(m-1)\frac{2\pi}{M})+2k\pi$$
+右式减左式可得
+$$\rho_m=\frac{4\pi r}{\lambda}sin(\frac{\theta-\hat{\theta}}{2})sin(\frac{\theta+\hat{\theta}}{2}-(m-1)\frac{2\pi}{M})=2k\pi,k\in Z$$
+同理，在第m+1个阵元上可以得到
+$$\rho_{m+1}=\frac{4\pi r}{\lambda}sin(\frac{\theta-\hat{\theta}}{2})sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=2k&amp;rsquo;\pi,k\in Z$$
+所以
+$$\frac{\rho_{m+1}}{\rho_m}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})/sin(\frac{\theta+\hat{\theta}}{2}-(m-1)\frac{2\pi}{M})=\frac{\phi_m}{\phi_{m+1}}=\frac{k}{k&amp;rsquo;}$$
+即在存在一阶模糊时，上式的结果为有理数。&lt;br&gt;
+根据三角函数的展开定理，可以将$\phi_{m+1}$用$\phi_m$表示
+$$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2\pi}{M}-\sqrt{1-\phi_m^2}sin\frac{2\pi}{M}$$
+于是可以得到&lt;strong&gt;均匀圆阵出现一阶模糊的条件&lt;/strong&gt;（&lt;em&gt;必要条件&lt;/em&gt;）：当$M\ge 5$且为奇数或者$M\ge 8$且为偶数时，$cos\frac{2\pi}{M}$和$\sin\frac{2\pi}{M}$为无理数，此时均匀圆阵不会出现一阶模糊。&lt;/p&gt;
+&lt;p&gt;[1] 跃郭, 王宏远, 陬周, Yue G. U. O., Hong-yuan Wang和Zou Zhou. 《阵元间距对MUSIC算法的影响》. 电子学报 35, 期 9 (2007年9月25日): 1675.&lt;br&gt;
+[2] Xiao, Wei, Xian-Ci Xiao和Heng-Ming Tai. 《Rank-1 ambiguity DOA estimation of circular array with fewer sensors》. 收入 The 2002 45th Midwest Symposium on Circuits and Systems, 2002. MWSCAS-2002., 3:III–III, 2002.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

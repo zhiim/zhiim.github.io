@@ -481,16 +481,12 @@ if (!doNotTrack) {
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 安装依赖库</span>
-</span></span><span class="line"><span class="cl">pip install -r requirements.txt
-</span></span><span class="line"><span class="cl"><span class="c1"># 下载python脚本</span>
-</span></span><span class="line"><span class="cl">curl -O https://raw.githubusercontent.com/aaamoon/copilot-gpt4-service/master/shells/get_copilot_token.py
+</span></span><span class="line"><span class="cl">pip install -r requests
 </span></span><span class="line"><span class="cl"><span class="c1"># 运行脚本</span>
-</span></span><span class="line"><span class="cl">python get_copilot_token.py
+</span></span><span class="line"><span class="cl">python shells/get_copilot_token.py
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>根据终端输出的提示，在浏览器中打开Github验证页面，输入终端打印的认证码获取Github Copilot Plugin Token。</p>
