@@ -10,7 +10,7 @@
 <meta property='og:description' content='在DOA估计中，传统的子空间分解类算法只利用了阵列接受数据的二阶累积量。通过四阶累积量的引入，可以实现相关噪声下的DOA估计，同时四阶累积量也对阵列进行了扩展'>
 <meta property='og:url' content='https://xland.cyou/p/higer-order-statistics-doa-estimation/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DOA估计' /><meta property='article:published_time' content='2023-03-25T11:26:43&#43;08:00'/><meta property='article:modified_time' content='2023-03-25T11:26:43&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DOA 估计' /><meta property='article:published_time' content='2023-03-25T11:26:43&#43;08:00'/><meta property='article:modified_time' content='2023-03-25T11:26:43&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="基于高阶累积量的DOA估计">
 <meta name="twitter:description" content="在DOA估计中，传统的子空间分解类算法只利用了阵列接受数据的二阶累积量。通过四阶累积量的引入，可以实现相关噪声下的DOA估计，同时四阶累积量也对阵列进行了扩展"><meta name="twitter:card" content="summary_large_image">
@@ -328,14 +328,14 @@ if (!doNotTrack) {
     <li><a href="#背景">背景</a>
       <ol>
         <li><a href="#使用二阶累积量面临的问题">使用二阶累积量面临的问题</a></li>
-        <li><a href="#高阶累计量对doa估计的意义">高阶累计量对DOA估计的意义</a></li>
+        <li><a href="#高阶累计量对-doa-估计的意义">高阶累计量对 DOA 估计的意义</a></li>
       </ol>
     </li>
     <li><a href="#四阶累积量的计算">四阶累积量的计算</a></li>
-    <li><a href="#基于高阶累积量的doa估计">基于高阶累积量的DOA估计</a>
+    <li><a href="#基于高阶累积量的-doa-估计">基于高阶累积量的 DOA 估计</a>
       <ol>
         <li><a href="#接受信号模型">接受信号模型</a></li>
-        <li><a href="#基于四阶累计量的music算法music-like-algorithm-based-on--fo-cumulant">基于四阶累计量的MUSIC算法（MUSIC-Like Algorithm based on  FO Cumulant）</a></li>
+        <li><a href="#基于四阶累计量的-music-算法music-like-algorithm-based-on-fo-cumulant">基于四阶累计量的 MUSIC 算法（MUSIC-Like Algorithm based on FO Cumulant）</a></li>
       </ol>
     </li>
     <li><a href="#四阶累积量带来的阵列扩展">四阶累积量带来的阵列扩展</a></li>
@@ -407,7 +407,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 7 分钟
+                    阅读时长: 6 分钟
                 </time>
             </div>
         
@@ -423,44 +423,46 @@ if (!doNotTrack) {
     
     
     <h2 id="背景">背景</h2>
-<p>传统的MUSIC算法和ESPRIT算法都指利用了接收信号的二阶累计量，这些算法的缺点主要有：</p>
+<p>传统的 MUSIC 算法和 ESPRIT 算法都指利用了接收信号的二阶累计量，这些算法的缺点主要有：</p>
 <ul>
-<li>对于一个具有N个阵元的阵列，可估计的信号数最大为N-1</li>
+<li>对于一个具有 N 个阵元的阵列，可估计的信号数最大为 N-1</li>
 <li>当阵列模型存在误差（eg. 算法中使用的流型矩阵和实际的流型矩阵不符），或者阵元接受到的噪声存在相关性的情况下，算法的鲁棒性很差</li>
 <li>在较小快拍数下，对于角度邻近的信号估计精度较差
-基于高阶累计量（Higher-order Cumulants）的DOA估计算法早期被用于处理不同阵元接收到的高斯噪声存在相关性的情况，随着研究的深入，人们发现高阶累积量的引入提高了阵列的可估计信号数和分辨率，同时对阵列模型误差存在一定的校正。</li>
+基于高阶累计量（Higher-order Cumulants）的 DOA 估计算法早期被用于处理不同阵元接收到的高斯噪声存在相关性的情况，随着研究的深入，人们发现高阶累积量的引入提高了阵列的可估计信号数和分辨率，同时对阵列模型误差存在一定的校正。</li>
 </ul>
 <h3 id="使用二阶累积量面临的问题">使用二阶累积量面临的问题</h3>
 <p>对于阵列接受信号
 $${\bf{X}}(t) = {\bf{AS}}(t) + {\bf{N}}(t)$$
 一般的子空间类分解算法是从接受信号的协方差矩阵，即二阶累积量组成的矩阵中提取角度信号
 $${R_{xx}} = A{R_{ss}}A + {R_{nn}}$$
-其中$R_{nn}$表示接受噪声的协方差矩阵。如果噪声是高斯白噪声，那么$R_{nn}=\sigma^2 I$，是一个对角元素等于噪声功率的对角阵，此时对$R_{xx}$做特征分解，可以得到
-$$R_{xx} = \begin{bmatrix}U_{s}&amp;U_{n}\end{bmatrix}
+其中$R_{nn}$表示接受噪声的协方差矩阵。如果噪声是高斯白噪声，那么$R_{nn}=\sigma^2 I$，是一个对角元素等于噪声功率的对角阵，此时对$R_{xx}$做特征分解，可以得到</p>
+<p>$$
+R_{xx} = \begin{bmatrix}U_{s}&amp;U_{n}\end{bmatrix}
 \begin{bmatrix}
 \sigma_1^2+\sigma^2&amp;&amp;&amp; \newline
 &amp;\sigma_2^2+\sigma^2&amp;&amp; \newline
 &amp;&amp;\ddots&amp; \newline
 &amp;&amp;&amp;\sigma^2
 \end{bmatrix}
-\begin{bmatrix} U_{s} \newline U_{n}\end{bmatrix}$$
-如果阵元接受到的噪声不是高斯白噪声，在DOA估计中主要表现为不同阵元接收到的噪声之间存在相关性，那么噪声的协方差矩阵$R_{nn}$不是一个对角阵，此时无法通过对接受信号协方差矩阵$R_{xx}$的特征分解确定信号子空间和噪声子空间。</p>
-<h3 id="高阶累计量对doa估计的意义">高阶累计量对DOA估计的意义</h3>
-<p>如果接受到的噪声不是高斯白噪声，那么噪声的协方差矩阵不是对角阵，无法分解出噪声子空间和信号子空间。根据高阶累积量的性质，高斯随机过程的四阶累积量为0，如果接受噪声符合高斯随机分布，即使不同阵元接受到的噪声存在相关性，仍然可以通过四阶累积量构造新的协方差矩阵，实现去除噪声的目的。</p>
+\begin{bmatrix} U_{s} \newline U_{n}\end{bmatrix}
+$$</p>
+<p>如果阵元接受到的噪声不是高斯白噪声，在 DOA 估计中主要表现为不同阵元接收到的噪声之间存在相关性，那么噪声的协方差矩阵$R_{nn}$不是一个对角阵，此时无法通过对接受信号协方差矩阵$R_{xx}$的特征分解确定信号子空间和噪声子空间。</p>
+<h3 id="高阶累计量对-doa-估计的意义">高阶累计量对 DOA 估计的意义</h3>
+<p>如果接受到的噪声不是高斯白噪声，那么噪声的协方差矩阵不是对角阵，无法分解出噪声子空间和信号子空间。根据高阶累积量的性质，高斯随机过程的四阶累积量为 0，如果接受噪声符合高斯随机分布，即使不同阵元接受到的噪声存在相关性，仍然可以通过四阶累积量构造新的协方差矩阵，实现去除噪声的目的。</p>
 <h2 id="四阶累积量的计算">四阶累积量的计算</h2>
-<p>对于一个$N\times 1$的实数值矢量x，它的第q阶累积量可以由它的矩表示<br>
+<p>对于一个$N\times 1$的实数值矢量 x，它的第 q 阶累积量可以由它的矩表示<br>
 $$Cum[{x_{{i_1}}},{x_{{i_2}}}, \ldots ,{x_{{i_q}}}] = \sum\limits_{p = 1}^q {{{( - 1)}^{p - 1}}(p - 1)!E{ \prod\limits_{j \in {S_1}} {{x_{ij}}} } } E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} }  \cdots E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} } $$<br>
 对于一个零均值的矢量x，它的二阶、三阶和四阶累计量可以写成
 $$Cum[{x_i},{x_j}] = E{ {x_i}{x_j}} $$
 $$Cum[{x_i},{x_j},{x_k}] = E{ {x_i}{x_j}{x_k}} $$
-$$Cum[{x_i},{x_j},{x_k},{x_l}] = E{ {x_i}{x_j}{x_k}{x_l}}  - E{ {x_i}{x_j}} E{ {x_k}{x_l}}  - E{ {x_i}{x_k}} E{ {x_j}{x_l}}  - E{ {x_i}{x_l}} E{ {x_j}{x_k}} $$</p>
-<h2 id="基于高阶累积量的doa估计">基于高阶累积量的DOA估计</h2>
+$$Cum[{x_i},{x_j},{x_k},{x_l}] = E{ {x_i}{x_j}{x_k}{x_l}} - E{ {x_i}{x_j}} E{ {x_k}{x_l}} - E{ {x_i}{x_k}} E{ {x_j}{x_l}} - E{ {x_i}{x_l}} E{ {x_j}{x_k}} $$</p>
+<h2 id="基于高阶累积量的-doa-估计">基于高阶累积量的 DOA 估计</h2>
 <h3 id="接受信号模型">接受信号模型</h3>
-<p>考虑一个具有N个阵元的阵列，阵列接收到P个入射信号（P的个数可以大于或等于N）。我们把P个信号划分成G组，其中第g组包含的信号数表示成$P_g$。位于同一组的信号不独立但也不相干，位于不同组的信号相互独立。此时可以写出阵元接受信号的数学模型
+<p>考虑一个具有 N 个阵元的阵列，阵列接收到 P 个入射信号（P 的个数可以大于或等于 N）。我们把 P 个信号划分成 G 组，其中第 g 组包含的信号数表示成$P_g$。位于同一组的信号不独立但也不相干，位于不同组的信号相互独立。此时可以写出阵元接受信号的数学模型
 $$\bf{x_g}(t) = \bf{A_g}\bf{s_g}(t)$$
 $${\bf{y}}(t) = \sum\limits_{g = 1}^G {{{\bf{A}}_g}{{\bf{S}}_g}(t) + {\bf{w}}(t)} $$
-其中${{{\bf{S}}_g}(t)}$表示第g组入射信号复振幅，${{{\bf{A}}_g}}$表示第g组的入射信号对应流型矩阵。${{\bf{w}}(t)}$表示阵元接收到的噪声，假设该噪声符合高斯分布，不同阵元接受到的噪声之间存在相关性。</p>
-<h3 id="基于四阶累计量的music算法music-like-algorithm-based-on--fo-cumulant">基于四阶累计量的MUSIC算法（MUSIC-Like Algorithm based on  FO Cumulant）</h3>
+其中${{{\bf{S}}_g}(t)}$表示第 g 组入射信号复振幅，${{{\bf{A}}_g}}$表示第 g 组的入射信号对应流型矩阵。${{\bf{w}}(t)}$表示阵元接收到的噪声，假设该噪声符合高斯分布，不同阵元接受到的噪声之间存在相关性。</p>
+<h3 id="基于四阶累计量的-music-算法music-like-algorithm-based-on-fo-cumulant">基于四阶累计量的 MUSIC 算法（MUSIC-Like Algorithm based on FO Cumulant）</h3>
 <p>在求接收信号的四阶累积量时，采用复数形式的定义式<br>
 
   <div class="equation leqno" >$$Cum[y_i,y_j,y_{k}^{*},y_{l}^{*}] = E\{ y_i,y_j,y_k^*,y_l^*\} -E\{ y_i,y_j\} E\{ y_k^*,y_l^*\}  - E\{ y_i,y_k^*\} E\{ y_j,y_l^*\}  - E\{ y_i,y_l^*\} E\{ y_j,y_k^*\}$$
@@ -471,7 +473,7 @@ $${\bf{y}}(t) = \sum\limits_{g = 1}^G {{{\bf{A}}_g}{{\bf{S}}_g}(t) + {\bf{w}}(t)
   <div class="equation leqno" >$$E\{ {y_i},{y_j},y_k^*,y_l^*\} = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)y_k^*(t)y_l^*(t)} $$
   </div>
 
-$$E{ {y_i},{y_j}}  = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)} $$
+$$E{ {y<em>i},{y_j}} = {1 \over L}\sum\limits</em>{t = 1}^L {{y_i}(t){y_j}(t)} $$
 按照上述四阶累积量的近似计算公式计算$x_g(t)$的四阶累积量，如果取四阶累积量的下标i、j、k、l为不同值，总共可以求出$N^2\times N^2$个不同的四阶累计量，把它们写成一个$N^2\times N^2$维矩阵$C_g$的形式，每个四阶累积量作为$C_g$的一个元素。其中
 
   <div class="equation leqno" >$${C_g}[(i - 1)N &#43; k,(j - 1)M &#43; l] = Cum[{y_i},{y_j},y_k^*,y_l^*]$$
@@ -487,36 +489,38 @@ $$E{ {y_i},{y_j}}  = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)} $$
   <div class="equation leqno" >$$\begin{split} S_g &amp;= E\{(s_g(t)\otimes s_g^*(t)) (s_g(t)\otimes s_g^*(t))^H\} \newline &amp;- E\{s_g(t)\otimes s_g^*(t)\} E\{(s_g(t)\otimes s_g^*(t))^H\} \newline &amp;- E\{s_g(t)\otimes s_g^H(t)\} E\{s_g(t)\otimes s_g^H(t)\}\end{split}$$
   </div>
 
-$S_g$表示第g组的接受信号的四阶累积量组成的$N^2\times N^2$维矩阵。<br>
-<strong>性质1</strong>：如果随机变量$x_i$和$y_i$相互独立，那么有
+$S_g$表示第 g 组的接受信号的四阶累积量组成的$N^2\times N^2$维矩阵。<br>
+<strong>性质 1</strong>：如果随机变量$x_i$和$y_i$相互独立，那么有
 
   <div class="equation leqno" >$$cum\{x_1&#43;y_1,x_2&#43;y_2,\dots,x_n &#43;y_n\}=cum\{x_1,x_2,\dots,x_n\}  &#43;cum\{y_1,y_2,\dots,y_n\}$$
   </div>
 
-<strong>性质2</strong>：如果x是一个高斯随机过程，则它的高阶累积量（$k\ge2$)恒等于0<br>
-由上述两个性质可得，在阵元接受到的噪声为高斯噪声的情况下，阵元接受数据y(t)的四阶累积量组成的$N^2\times N^2$维矩阵C为
+<strong>性质 2</strong>：如果 x 是一个高斯随机过程，则它的高阶累积量（$k\ge2$)恒等于 0<br>
+由上述两个性质可得，在阵元接受到的噪声为高斯噪声的情况下，阵元接受数据 y(t)的四阶累积量组成的$N^2\times N^2$维矩阵 C 为
 $$C = \sum\limits_{g = 1}^G {{C_g}} $$
 
-  <div class="equation leqno" >$$C=\begin{bmatrix}A_1\otimes A_1^*,\dots,A_G\otimes A_G^*\end{bmatrix} 
-\begin{bmatrix}S_1&amp;\dots&amp;0\newline \vdots&amp;\ddots&amp;\vdots \newline 0&amp; \dots&amp;S_G \end{bmatrix} 
+  <div class="equation leqno" >$$C=\begin{bmatrix}A*1\otimes A_1^*,\dots,A_G\otimes A_G^*\end{bmatrix}
+\begin{bmatrix}S_1&amp;\dots&amp;0\newline \vdots&amp;\ddots&amp;\vdots \newline 0&amp; \dots&amp;S_G \end{bmatrix}
 \begin{bmatrix}(A_1\otimes A_1)^H \newline \vdots \newline (A_G\otimes A_G)^H\end{bmatrix}$$
   </div>
 
-由于第g组内的入射信号互相不独立，$S_g$是满秩矩阵，所以$C_g$的秩为$N_g^2$，于是矩阵C的秩为$\sum\limits_{g = 1}^G {N_g^2 &lt; {N^2}}$。如果G=1，即所有接受信号互相不独立，那么C的秩为$N^2$；如果G=P，即所有接受信号互相独立，C的秩为N。对C做奇异值分解
-$$C=\begin{bmatrix}U_1&amp;U_2\end{bmatrix}
+由于第g组内的入射信号互相不独立，$S_g$是满秩矩阵，所以$C_g$的秩为$N_g^2$，于是矩阵C的秩为$\sum\limits*{g = 1}^G {N_g^2 &lt; {N^2}}$。如果G=1，即所有接受信号互相不独立，那么C的秩为$N^2$；如果 G=P，即所有接受信号互相独立，C 的秩为 N。对 C 做奇异值分解</p>
+<p>$$
+C=\begin{bmatrix}U_1&amp;U_2\end{bmatrix}
 \begin{bmatrix}\Lambda&amp;0 \newline 0&amp;0\end{bmatrix}
-\begin{bmatrix}V_1^H \newline V_2^H\end{bmatrix}$$
-其中$\Lambda$是一个$\sum\limits_{g = 1}^G {N_g^2}$维对角阵，于是可以根据C的奇异值中0元素对应的特征向量确定子空间$U_2$。<br>
+\begin{bmatrix}V_1^H \newline V_2^H\end{bmatrix}
+$$</p>
+<p>其中$\Lambda$是一个$\sum\limits_{g = 1}^G {N_g^2}$维对角阵，于是可以根据 C 的奇异值中 0 元素对应的特征向量确定子空间$U_2$。<br>
 由于${A_g} \otimes A_g^*$
 与$U_2$正交，可以确定与入射信号角度对应的导向矢量满足
 
   <div class="equation leqno" >$${[a(\theta ) \otimes {a^*}(\theta )]^H}{U_2} = 0$$
   </div>
 
-此时可以构造出类似于MUSIC算法的空间谱
+此时可以构造出类似于 MUSIC 算法的空间谱
 $$P(\theta ) = {1 \over {||{{[a(\theta ) \otimes {a^*}(\theta )]}^H}{U_2}|{|^2}}}$$
-<strong>优缺点</strong>：可以应用于接受信号互相不独立（不能完全相关）或者不同阵元接收到的噪声之间存在相关性（高斯噪声）的场景。提高了DOA估计的分辨率和最大可估计信号数。<br>
-计算量较大，需要计算$N^4$个四阶累积量。对于信源发射信号不独立的情况，需要预先知道信号的分组情况来确定C的非零特征值数目。</p>
+<strong>优缺点</strong>：可以应用于接受信号互相不独立（不能完全相关）或者不同阵元接收到的噪声之间存在相关性（高斯噪声）的场景。提高了 DOA 估计的分辨率和最大可估计信号数。<br>
+计算量较大，需要计算$N^4$个四阶累积量。对于信源发射信号不独立的情况，需要预先知道信号的分组情况来确定 C 的非零特征值数目。</p>
 <h2 id="四阶累积量带来的阵列扩展">四阶累积量带来的阵列扩展</h2>
 <p>对于一个任意阵列，以第一个阵元作为参考阵元，它的阵元位置可以表示成
 $$[0,{\vec d_1},{\vec d_2}, \ldots ,{\vec d_{M-1}}]$$
@@ -531,13 +535,15 @@ $$[0,{\vec d_1},{\vec d_2}, \ldots ,{\vec d_{M-1}}]$$
   <div class="equation leqno" >$${\mu _{l,k}} = cum({x_l}(t),{x_k}(t)) = E\{ {x_l}^*(t),{x_k}(t)\}  = \sigma _s^2\exp ( ({\vec d_l} - {\vec d_k}) \cdot \vec k)$$
   </div>
 
-接受信号的协方差矩阵为
-$$\bf{R}=\begin{bmatrix}
+接受信号的协方差矩阵为</p>
+<p>$$
+\bf{R}=\begin{bmatrix}
 \mu_{0,0}&amp;\mu_{0,1}&amp;\dots&amp;\mu_{0,M-1}\newline
 \mu_{1,0}&amp;\mu_{1,1}&amp;\dots&amp;\mu_{1,M-1}\newline
 \vdots&amp;\vdots&amp;\ddots&amp;\vdots\newline
 \mu_{M-1,0}&amp;\mu_{M-1,1}&amp;\dots&amp;\mu_{M-1,M-1}\newline
-\end{bmatrix}$$</p>
+\end{bmatrix}
+$$</p>
 <p><!-- raw HTML omitted -->信号入射到任意阵列<!-- raw HTML omitted --></p>
 <p><img src="/p/higer-order-statistics-doa-estimation/%E4%BF%A1%E5%8F%B7%E5%85%A5%E5%B0%84%E5%88%B0%E4%BB%BB%E6%84%8F%E9%98%B5%E5%88%97.webp"
 	width="400"
@@ -575,7 +581,7 @@ $r(t),x(t),y(t)$组成的一种四阶累积量
 $${\mu _{r,v}}=\frac{\sigma_s^2}{\gamma_{4,s}}\mu _{r,x}^{r,y}$$
   </div>
 
-也即是说，通过求实际阵元$r,x,y$的四阶累积量，我们得到虚拟阵元v和实际阵元s之间的二阶累积量。并且它们在集合上有如下关系
+也即是说，通过求实际阵元$r,x,y$的四阶累积量，我们得到虚拟阵元 v 和实际阵元 s 之间的二阶累积量。并且它们在集合上有如下关系
 $$\overrightarrow {rv}  = \overrightarrow {rx}  + \overrightarrow {ry} $$</p>
 <p><img src="/p/higer-order-statistics-doa-estimation/%E5%9B%9B%E9%98%B6%E7%B4%AF%E7%A7%AF%E9%87%8F%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp"
 	width="400"
@@ -594,8 +600,8 @@ $$\overrightarrow {rv}  = \overrightarrow {rx}  + \overrightarrow {ry} $$</p>
 <p>同理可以得到
 
   <div class="equation leqno" >$$E\{ {r^*}(t)y(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {r^*}(t),y(t),{r^*}(t),r(t)\} $$
-$$E\{ {y^*}(t){v_4}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}(t),r(t),{y^*}(t),x(t)\} $$
-$$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}(t),x(t),{y^*}(t),r(t)\} $$
+$$E\{ {y^_}(t){v*4}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}(t),r(t),{y^_}(t),x(t)\} $$
+$$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}(t),x(t),{y^_}(t),r(t)\} $$
   </div>
 
 在前面所讨论的<em>基于四阶累计量的MUSIC算法</em>中，我们用接受数据的四阶累积量组成了一个$M^2\times M^2$维的矩阵C，C中每一个元素都是由4个阵元的接受数据组成的四阶累积量$cum[{y_i},{y_j},y_k^*,y_l^*]$
@@ -603,12 +609,12 @@ $$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}
 实际上它是对原本的M个阵元进行了扩展得到了一个虚拟阵列，每一个四阶累积量对应了经过这个虚拟阵列中两个阵元的接受数据组成的二阶累积量。所以$M^2\times M^2$维的矩阵C实际上是经过扩展后的虚拟阵列的协方差矩阵。<br>
 四阶累积量组成的$M^2\times M^2$维的矩阵C为
 
-  <div class="equation leqno" >$${{\bf{C}}} = ({{\bf{A}}} \otimes {\bf{A}}^*){{\bf{S}}}{({{\bf{A}}} \otimes {\bf{A}}^*)^H}$$
+  <div class="equation leqno" >$${{\bf{C}}} = ({{\bf{A}}} \otimes {\bf{A}}^_){{\bf{S}}}{({{\bf{A}}} \otimes {\bf{A}}^_)^H}$$
   </div>
 
 此时的流型矩阵为
 
-  <div class="equation leqno" >$$\bf{A}\otimes\bf{A}^*=\begin{bmatrix}a(\theta_1)\otimes a^*(\theta_1)&amp;\dots&amp;a(\theta_N)\otimes a^*(\theta_N) \end{bmatrix}$$
+  <div class="equation leqno" >$$\bf{A}\otimes\bf{A}^_=\begin{bmatrix}a(\theta_1)\otimes a^_(\theta_1)&amp;\dots&amp;a(\theta_N)\otimes a^\*(\theta_N) \end{bmatrix}$$
   </div>
 </p>
 <p><img src="/p/higer-order-statistics-doa-estimation/%E4%B8%89%E9%98%B5%E5%85%83%E7%9A%84%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp"
@@ -634,8 +640,8 @@ $$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}
 \end{split}$$
   </div>
 
-可以看出此时3个阵元的阵列经过四阶累积量扩展，得到的流型矩阵扩展为9个元素，其中除了实际存在的3个阵元外，还有4个虚拟阵元。<br>
-对于某些结构的阵列，经过四阶累积量的扩展，相当于加入了虚拟阵元，从而提升可估计的信号个数，提高了DOA估计算法的分辨率。</p>
+可以看出此时 3 个阵元的阵列经过四阶累积量扩展，得到的流型矩阵扩展为 9 个元素，其中除了实际存在的 3 个阵元外，还有 4 个虚拟阵元。<br>
+对于某些结构的阵列，经过四阶累积量的扩展，相当于加入了虚拟阵元，从而提升可估计的信号个数，提高了 DOA 估计算法的分辨率。</p>
 
 </section>
 
@@ -644,7 +650,7 @@ $$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}
     
     <section class="article-tags">
         
-            <a href="/tags/doa%E4%BC%B0%E8%AE%A1/">DOA估计</a>
+            <a href="/tags/doa-%E4%BC%B0%E8%AE%A1/">DOA 估计</a>
         
     </section>
 
@@ -699,6 +705,28 @@ $$E\{ {v_1}^*(t){v_3}(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {y^*}
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/python_package_doa_estimation/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 用于 DOA 估计的 Python 包 classical_doa"
+                    data-key="python_package_doa_estimation" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">用于 DOA 估计的 Python 包 classical_doa</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
