@@ -15,16 +15,16 @@
         <description>&lt;p&gt;ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;brunch&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;brunch能够利用ChromeOS的recovery文件，生成可用的系统镜像文件，从而在非Chromebook上安装原生ChromeOS。&lt;/p&gt;
-&lt;h2 id=&#34;硬件要求&#34;&gt;硬件要求&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;硬件要求&#34;&gt;硬件要求
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;x86_64架构，UEFI启动模式&lt;/li&gt;
 &lt;li&gt;Intel CPU至少第四代，或者AMD Ryzen&lt;/li&gt;
 &lt;li&gt;不支持独显，不支持虚拟机，不支持Arm&lt;/li&gt;
 &lt;li&gt;可以安装Linux子系统（WSL2）的Windows或者Linux系统&lt;/li&gt;
 &lt;li&gt;空闲空间至少有16G&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;安装chromeos到u盘&#34;&gt;安装ChromeOS到U盘&lt;/h2&gt;
-&lt;ol&gt;
+&lt;h2 id=&#34;安装chromeos到u盘&#34;&gt;安装ChromeOS到U盘
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;下载ChromeOS recovery文件。&lt;/p&gt;
 &lt;p&gt;参考自己的CPU型号，选择一个和自己电脑配置接近的chrome设备，在&lt;a class=&#34;link&#34; href=&#34;https://chromiumdash.appspot.com/serving-builds?deviceCategory=Chrome%20OS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -123,8 +123,8 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;安装chromeos和windows双系统&#34;&gt;安装ChromeOS和Windows双系统&lt;/h2&gt;
-&lt;p&gt;获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。&lt;/p&gt;
+&lt;h2 id=&#34;安装chromeos和windows双系统&#34;&gt;安装ChromeOS和Windows双系统
+&lt;/h2&gt;&lt;p&gt;获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。&lt;/p&gt;
 &lt;p&gt;安装ChromeOS双系统同样通过在WSL终端中运行脚本完成，首先新建一个文件夹用于安装系统如&lt;code&gt;/mnt/d/brunch&lt;/code&gt;，表示在d盘新建文件夹brunch，然后输入命令。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

@@ -12,11 +12,11 @@
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
         
         <guid>https://xland.cyou/p/hugo_blog/</guid>
-        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
-&lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo
+&lt;/h2&gt;&lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
 &lt;p&gt;将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。&lt;/p&gt;
-&lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
-&lt;p&gt;官方文档定义：&lt;/p&gt;
+&lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages
+&lt;/h2&gt;&lt;p&gt;官方文档定义：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -26,8 +26,8 @@
 &lt;li&gt;User/Organization Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Project Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&amp;lt;PROJECT&amp;gt;/&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;创建user-page&#34;&gt;创建User Page&lt;/h2&gt;
-&lt;p&gt;在Github新建仓库时，个人页面的创建和项目页面不同：&lt;/p&gt;
+&lt;h2 id=&#34;创建user-page&#34;&gt;创建User Page
+&lt;/h2&gt;&lt;p&gt;在Github新建仓库时，个人页面的创建和项目页面不同：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;
@@ -48,8 +48,8 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;选择 &lt;strong&gt;Initialize this repository with a README&lt;/strong&gt; ，完成仓库创建&lt;/p&gt;
-&lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库&lt;/h2&gt;
-&lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
+&lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库
+&lt;/h2&gt;&lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png&#34;
 	
 	

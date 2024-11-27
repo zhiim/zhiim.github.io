@@ -14,9 +14,9 @@
         <guid>https://xland.cyou/p/telegram-bot/</guid>
         <description>&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyTelegramBotAPI&lt;/a&gt;库。&lt;/p&gt;
-&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
-&lt;h3 id=&#34;创建bot&#34;&gt;创建Bot&lt;/h3&gt;
-&lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;准备&#34;&gt;准备
+&lt;/h2&gt;&lt;h3 id=&#34;创建bot&#34;&gt;创建Bot
+&lt;/h3&gt;&lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@BotFather&lt;/a&gt;，输入/newbot开始创建Bot。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram-bot/newBot.webp&#34;
 	width=&#34;835&#34;
@@ -34,8 +34,8 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;等到BotFather回复后输入想要创建的Bot名称，BotFather再次回复后输入Bot的username，注意username必须以_bot结尾。&lt;/p&gt;
 &lt;p&gt;创建完Bot后就可以获取到Bot的token，Telegram Bot API的调用必须提供token。&lt;/p&gt;
-&lt;h3 id=&#34;安装pytelegrambotapi&#34;&gt;安装pyTelegramBotAPI&lt;/h3&gt;
-&lt;p&gt;使用pip安装pyTelegramBotAPI。&lt;/p&gt;
+&lt;h3 id=&#34;安装pytelegrambotapi&#34;&gt;安装pyTelegramBotAPI
+&lt;/h3&gt;&lt;p&gt;使用pip安装pyTelegramBotAPI。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -44,12 +44,12 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pyTelegramBotAPI&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;bot的运行原理&#34;&gt;Bot的运行原理&lt;/h2&gt;
-&lt;p&gt;Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;bot的运行原理&#34;&gt;Bot的运行原理
+&lt;/h2&gt;&lt;p&gt;Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。&lt;/p&gt;
 &lt;p&gt;pyTelegramBotAPI是一个Python库，对Telegram Bot API进行了封装。使得开发者不用对API直接调用，使用pyTelegramBotAPI提供的函数和类就可以实现Telegram Bot API的各种功能。&lt;/p&gt;
-&lt;h2 id=&#34;pytelegrambotapi的基础使用&#34;&gt;pyTelegramBotAPI的基础使用&lt;/h2&gt;
-&lt;h3 id=&#34;新建bot对象&#34;&gt;新建bot对象&lt;/h3&gt;
-&lt;p&gt;pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。&lt;/p&gt;
+&lt;h2 id=&#34;pytelegrambotapi的基础使用&#34;&gt;pyTelegramBotAPI的基础使用
+&lt;/h2&gt;&lt;h3 id=&#34;新建bot对象&#34;&gt;新建bot对象
+&lt;/h3&gt;&lt;p&gt;pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -77,13 +77,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;上述代码中表示对于用户发送给Bot的消息，定义一个&lt;code&gt;message_handler&lt;/code&gt;，这个&lt;code&gt;message_handler&lt;/code&gt;在用户发送了指令/start或/help时执行&lt;code&gt;send_welcome&lt;/code&gt;函数，产生对用户的回复”Howdy, how are you doing?“。&lt;/p&gt;
-&lt;h3 id=&#34;message对象&#34;&gt;message对象&lt;/h3&gt;
-&lt;p&gt;用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为&lt;a class=&#34;link&#34; href=&#34;https://core.telegram.org/bots/api#message&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;message对象&#34;&gt;message对象
+&lt;/h3&gt;&lt;p&gt;用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为&lt;a class=&#34;link&#34; href=&#34;https://core.telegram.org/bots/api#message&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;message&lt;/a&gt;的JSON对象，包含了消息内容，用户id等相关信息，详情可参考Telegram官方文档。&lt;/p&gt;
 &lt;p&gt;在上述给出的&lt;code&gt;message_handler&lt;/code&gt;示例代码中，&lt;code&gt;send_welcome&lt;/code&gt;函数传入参数message对象，&lt;code&gt;reply_to&lt;/code&gt;通过message中包含的属性&lt;code&gt;chat.id&lt;/code&gt;等获取用户id，从而向用户发送回复信息。&lt;/p&gt;
 &lt;p&gt;需要注意的是，由于&lt;code&gt;from&lt;/code&gt;是Python中的保留字，在pyTelegramBotAPI中，&lt;code&gt;message&lt;/code&gt;的属性名&lt;code&gt;from&lt;/code&gt;被替换为&lt;code&gt;from_user&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;message-handler&#34;&gt;message handler&lt;/h3&gt;
-&lt;p&gt;message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。&lt;/p&gt;
+&lt;h3 id=&#34;message-handler&#34;&gt;message handler
+&lt;/h3&gt;&lt;p&gt;message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -99,40 +99,40 @@
 &lt;/div&gt;&lt;p&gt;在message handler的一般形式中，&lt;code&gt;filters&lt;/code&gt;用来对message进行筛选，使该&lt;code&gt;message_handler&lt;/code&gt;只对特定类型的message进行响应。&lt;code&gt;filters&lt;/code&gt;的一般格式为&lt;code&gt;name=argument&lt;/code&gt;，name表示筛选类型，argument代表筛选范围。例如&lt;code&gt;commands=[&#39;start&#39;, &#39;help&#39;]&lt;/code&gt;表示只对命令/start和/help做出反应。&lt;/p&gt;
 &lt;p&gt;官方给出的filters支持的类型如下：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;name&lt;/th&gt;
-&lt;th&gt;argument&lt;/th&gt;
-&lt;th&gt;Condition&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;content_types&lt;/td&gt;
-&lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
-&lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;regexp&lt;/td&gt;
-&lt;td&gt;a regular expression as a string&lt;/td&gt;
-&lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;commands&lt;/td&gt;
-&lt;td&gt;list of strings&lt;/td&gt;
-&lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;chat_types&lt;/td&gt;
-&lt;td&gt;list of chat types&lt;/td&gt;
-&lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;func&lt;/td&gt;
-&lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
-&lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;argument&lt;/th&gt;
+          &lt;th&gt;Condition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;content_types&lt;/td&gt;
+          &lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
+          &lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regexp&lt;/td&gt;
+          &lt;td&gt;a regular expression as a string&lt;/td&gt;
+          &lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;commands&lt;/td&gt;
+          &lt;td&gt;list of strings&lt;/td&gt;
+          &lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;chat_types&lt;/td&gt;
+          &lt;td&gt;list of chat types&lt;/td&gt;
+          &lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;func&lt;/td&gt;
+          &lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
+          &lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

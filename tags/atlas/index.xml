@@ -12,8 +12,8 @@
         <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
         
         <guid>https://xland.cyou/p/deploy-deep-learning-model-on-atlas/</guid>
-        <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;p&gt;本文部署的模型是使用TensorFlow2训练的ResNet网络，用于干扰信号识别，原本的模型文件将权重保存在&lt;code&gt;ResNet.h5&lt;/code&gt;中。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备
+&lt;/h2&gt;&lt;p&gt;本文部署的模型是使用TensorFlow2训练的ResNet网络，用于干扰信号识别，原本的模型文件将权重保存在&lt;code&gt;ResNet.h5&lt;/code&gt;中。&lt;/p&gt;
 &lt;p&gt;从模型文件中读取权重，并使用测试数据进行推理&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -78,8 +78,8 @@
 &lt;/div&gt;&lt;p&gt;Atlas 200 DK的环境部署采用“开发环境与运行环境分设”的方案，开发环境使用Windows下Linux子系统中的Ubuntu 22.04.3 LTS，CANN版本为6.0.RC1.alpha005。&lt;/p&gt;
 &lt;p&gt;参考官方教程&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/Atlas200DKDeveloperKit/1013/environment/atlased_04_0018.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;开发环境与运行环境分设&lt;/a&gt;完成环境配置。&lt;/p&gt;
-&lt;h2 id=&#34;cann-toolkit-配置&#34;&gt;cann-toolkit 配置&lt;/h2&gt;
-&lt;p&gt;在Ubuntu中安装完Ascend-cann-toolkit后，运行模型转换工具&lt;code&gt;atc&lt;/code&gt;时可能会出现报错&lt;/p&gt;
+&lt;h2 id=&#34;cann-toolkit-配置&#34;&gt;cann-toolkit 配置
+&lt;/h2&gt;&lt;p&gt;在Ubuntu中安装完Ascend-cann-toolkit后，运行模型转换工具&lt;code&gt;atc&lt;/code&gt;时可能会出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -123,11 +123,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在终端输入&lt;code&gt;source ~/.bashrc&lt;/code&gt;并重启终端，此时&lt;code&gt;atc&lt;/code&gt;可以正常运行。&lt;/p&gt;
-&lt;h2 id=&#34;模型转换&#34;&gt;模型转换&lt;/h2&gt;
-&lt;p&gt;由于TensorFlow2不再支持导出模型为FrozenGraphDef格式，而&lt;code&gt;atc&lt;/code&gt;转换TensorFlow模型时只能使用FrozenGraphDef格式，所以本文采用的转换流程是，先将TensorFlow模型导出为SavedModel格式，再将模型转换为&lt;a class=&#34;link&#34; href=&#34;https://onnx.ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;模型转换&#34;&gt;模型转换
+&lt;/h2&gt;&lt;p&gt;由于TensorFlow2不再支持导出模型为FrozenGraphDef格式，而&lt;code&gt;atc&lt;/code&gt;转换TensorFlow模型时只能使用FrozenGraphDef格式，所以本文采用的转换流程是，先将TensorFlow模型导出为SavedModel格式，再将模型转换为&lt;a class=&#34;link&#34; href=&#34;https://onnx.ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ONNX&lt;/a&gt;格式，最后使用&lt;code&gt;atc&lt;/code&gt;将ONNX模型转换为.om格式。&lt;/p&gt;
-&lt;h3 id=&#34;将tensorflow模型导出为savedmodel&#34;&gt;将TensorFlow模型导出为SavedModel&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;将tensorflow模型导出为savedmodel&#34;&gt;将TensorFlow模型导出为SavedModel
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -163,8 +163,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;saved_model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mobilenet_save_path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;将savedmodel转换为onnx模型&#34;&gt;将SavedModel转换为ONNX模型&lt;/h3&gt;
-&lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/onnx/tensorflow-onnx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h3 id=&#34;将savedmodel转换为onnx模型&#34;&gt;将SavedModel转换为ONNX模型
+&lt;/h3&gt;&lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/onnx/tensorflow-onnx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;tf2onnx&lt;/a&gt;将SavedModel转换为.onnx格式的模型。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -235,9 +235,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;将onnx模型转换为om格式&#34;&gt;将ONNX模型转换为om格式&lt;/h3&gt;
-&lt;h4 id=&#34;domain_version报错&#34;&gt;&lt;code&gt;domain_version&lt;/code&gt;报错&lt;/h4&gt;
-&lt;p&gt;在Ubuntu终端中运行&lt;code&gt;atc&lt;/code&gt;模型转换工具&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;将onnx模型转换为om格式&#34;&gt;将ONNX模型转换为om格式
+&lt;/h3&gt;&lt;h4 id=&#34;domain_version报错&#34;&gt;&lt;code&gt;domain_version&lt;/code&gt;报错
+&lt;/h4&gt;&lt;p&gt;在Ubuntu终端中运行&lt;code&gt;atc&lt;/code&gt;模型转换工具&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -318,8 +318,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;onnx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;./resnet.onnx&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;模型输入维度报错&#34;&gt;模型输入维度报错&lt;/h4&gt;
-&lt;p&gt;再次运行&lt;code&gt;atc&lt;/code&gt;，出现报错&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;模型输入维度报错&#34;&gt;模型输入维度报错
+&lt;/h4&gt;&lt;p&gt;再次运行&lt;code&gt;atc&lt;/code&gt;，出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -349,8 +349,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;atc --model&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;resnet.onnx --framework&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; --output&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;resnet --input-shape&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;input_2:1,256,256,1&amp;#34;&lt;/span&gt; --soc_version&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Ascend310
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;在atlas-200-dk中进行模型推理&#34;&gt;在Atlas 200 DK中进行模型推理&lt;/h2&gt;
-&lt;p&gt;模型推理时使用的是&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/70RC1alpha003/infacldevg/aclpythondevg/aclpythondevg_0001.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h2 id=&#34;在atlas-200-dk中进行模型推理&#34;&gt;在Atlas 200 DK中进行模型推理
+&lt;/h2&gt;&lt;p&gt;模型推理时使用的是&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/70RC1alpha003/infacldevg/aclpythondevg/aclpythondevg_0001.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyACL&lt;/a&gt;接口，并使用了第三库&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/ascend/samples/tree/master/python/common/acllite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;acllite&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

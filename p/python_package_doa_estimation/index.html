@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='为了方便 DOA 估计的研究，我开发了一个 Python 包 classical_doa，部署了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。'>
-<title>用于 DOA 估计的 Python 包 classical_doa</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="为了方便 DOA 估计的研究，我开发了一个 Python 包 DOA_py，实现了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。">
+<title>用于 DOA 估计的 Python 包 DOA_py</title>
 
 <link rel='canonical' href='https://xland.cyou/p/python_package_doa_estimation/'>
 
-<link rel="stylesheet" href="/scss/style.min.ed62dd08fec79fa2658d77dee09f11cbdf6f0d7fbaa1e1ad543cec325a9b7c2c.css"><meta property='og:title' content='用于 DOA 估计的 Python 包 classical_doa'>
-<meta property='og:description' content='为了方便 DOA 估计的研究，我开发了一个 Python 包 classical_doa，部署了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。'>
+<link rel="stylesheet" href="/scss/style.min.746522fb10d2e56b69ae0b61d08c37bf122c7db244c0142fb83057719515a799.css"><meta property='og:title' content="用于 DOA 估计的 Python 包 DOA_py">
+<meta property='og:description' content="为了方便 DOA 估计的研究，我开发了一个 Python 包 DOA_py，实现了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。">
 <meta property='og:url' content='https://xland.cyou/p/python_package_doa_estimation/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='DOA 估计' /><meta property='article:published_time' content='2024-07-07T10:59:51&#43;08:00'/><meta property='article:modified_time' content='2024-07-07T10:59:51&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="用于 DOA 估计的 Python 包 classical_doa">
-<meta name="twitter:description" content="为了方便 DOA 估计的研究，我开发了一个 Python 包 classical_doa，部署了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="用于 DOA 估计的 Python 包 DOA_py">
+<meta name="twitter:description" content="为了方便 DOA 估计的研究，我开发了一个 Python 包 DOA_py，实现了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-D132QYJBV0', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-D132QYJBV0');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -71,7 +74,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/avatar_hudedeeb5aacf2bac0ca9893239364ccb5_12388_300x0_resize_q75_h2_box_2.webp" width="300"
+                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -87,7 +90,7 @@ if (!doNotTrack) {
             <h1 class="site-name"><a href="/">Zhiim&#39;s Blog</a></h1>
             <h2 class="site-description">总有想不明白的事</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -275,12 +278,12 @@ if (!doNotTrack) {
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -288,7 +291,7 @@ if (!doNotTrack) {
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -296,10 +299,11 @@ if (!doNotTrack) {
 
 
 
-                    <span>暗色模式</span>
-                </li>
-            
-        </div>
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -370,12 +374,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/python_package_doa_estimation/">用于 DOA 估计的 Python 包 classical_doa</a>
+            <a href="/p/python_package_doa_estimation/">用于 DOA 估计的 Python 包 DOA_py</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            为了方便 DOA 估计的研究，我开发了一个 Python 包 classical_doa，部署了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。
+            为了方便 DOA 估计的研究，我开发了一个 Python 包 DOA_py，实现了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。
         </h3>
         
     </div>
@@ -426,11 +430,11 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="项目地址">项目地址</h2>
-<p><a class="link" href="https://github.com/zhiim/classical_doa"  target="_blank" rel="noopener"
-    >classical_doa</a></p>
-<h2 id="安装">安装</h2>
-<p>使用 pip 或者从源码安装</p>
+    <h2 id="项目地址">项目地址
+</h2><p><a class="link" href="https://github.com/zhiim/doa_py"  target="_blank" rel="noopener"
+    >DOA_py: DOA etimation algorithms implemented in Python for ULA, UCA and broadband/wideband DOA estimation</a></p>
+<h2 id="安装">安装
+</h2><p>使用 pip 或者从源码安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -442,15 +446,15 @@ if (!doNotTrack) {
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># pip 安装</span>
-</span></span><span class="line"><span class="cl">pip install classical_doa
+</span></span><span class="line"><span class="cl">pip install doa_py
 </span></span><span class="line"><span class="cl"><span class="c1"># 从源码安装</span>
-</span></span><span class="line"><span class="cl">git clone https://github.com/zhiim/classical_doa.git
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> classical_doa
+</span></span><span class="line"><span class="cl">git clone https://github.com/zhiim/doa_py.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> doa_py
 </span></span><span class="line"><span class="cl">pip install .
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="使用案例均匀线阵">使用案例（均匀线阵）</h2>
-<div class="highlight"><div class="chroma">
+</div><h2 id="使用案例均匀线阵">使用案例（均匀线阵）
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -458,8 +462,8 @@ if (!doNotTrack) {
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="import-signal-和-array">Import Signal 和 Array</h3>
-<p><code>signal.py</code>定义了一些常用的信号类型，信号对应的 Class 都继承自<code>Signal</code>基类, 用于产生多个入射信号<br>
+</div><h3 id="import-signal-和-array">Import Signal 和 Array
+</h3><p><code>signal.py</code>定义了一些常用的信号类型，信号对应的 Class 都继承自<code>Signal</code>基类, 用于产生多个入射信号<br>
 <code>array.py</code>定义了一些常用的阵列结构，所有的阵列对应的 Class 都继承自<code>Array</code>基类，<code>Array</code>会使用<code>Signal</code>产生的信号以及入射角度，根据阵列接受信号的数学模型生成阵列接受信号的仿真数据</p>
 <p>阵列接收信号的数学模型（窄带信号）:
 $\bf{X} = \bf{A} \bf{S}$</p>
@@ -482,12 +486,12 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.arrays</span> <span class="kn">import</span> <span class="n">UniformLinearArray</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.signals</span> <span class="kn">import</span> <span class="n">ComplexStochasticSignal</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.arrays</span> <span class="kn">import</span> <span class="n">UniformLinearArray</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.signals</span> <span class="kn">import</span> <span class="n">ComplexStochasticSignal</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="设定仿真参数">设定仿真参数</h3>
-<p>设定与阵列结构以及信号参数、入射方向有关的仿真参数，产生采样后的阵列接受信号</p>
+</div><h3 id="设定仿真参数">设定仿真参数
+</h3><p>设定与阵列结构以及信号参数、入射方向有关的仿真参数，产生采样后的阵列接受信号</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -508,7 +512,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 信号参数</span>
 </span></span><span class="line"><span class="cl"><span class="n">num_snapshots</span> <span class="o">=</span> <span class="mi">300</span>
 </span></span><span class="line"><span class="cl"><span class="n">signal_fre</span> <span class="o">=</span> <span class="mf">2e7</span>
-</span></span><span class="line"><span class="cl"><span class="n">fs</span> <span class="o">=</span> <span class="mf">5e7</span>
+</span></span><span class="line"><span class="cl"><span class="n">fc</span> <span class="o">=</span> <span class="mf">5e7</span>
 </span></span><span class="line"><span class="cl"><span class="n">snr</span> <span class="o">=</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 阵列参数</span>
@@ -520,8 +524,8 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span></span><span class="line"><span class="cl"><span class="n">num_signal</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">angle_incidence</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="生成仿真信号">生成仿真信号</h3>
-<p>创建<code>Array</code>和<code>Signal</code>的实例，并生成阵列接受信号的仿真数据</p>
+</div><h3 id="生成仿真信号">生成仿真信号
+</h3><p>创建<code>Array</code>和<code>Signal</code>的实例，并生成阵列接受信号的仿真数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -537,30 +541,30 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 创建信号实例</span>
-</span></span><span class="line"><span class="cl"><span class="n">signal</span> <span class="o">=</span> <span class="n">ComplexStochasticSignal</span><span class="p">(</span><span class="n">nsamples</span><span class="o">=</span><span class="n">num_snapshots</span><span class="p">,</span> <span class="n">fre</span><span class="o">=</span><span class="n">signal_fre</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">signal</span> <span class="o">=</span> <span class="n">ComplexStochasticSignal</span><span class="p">(</span><span class="n">fc</span><span class="o">=</span><span class="n">fc</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 创建阵列实例</span>
 </span></span><span class="line"><span class="cl"><span class="n">array</span> <span class="o">=</span> <span class="n">UniformLinearArray</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">num_antennas</span><span class="p">,</span> <span class="n">dd</span><span class="o">=</span><span class="n">antenna_spacing</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 使用信号和阵列生成仿真数据</span>
 </span></span><span class="line"><span class="cl"><span class="n">received_data</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">received_signal</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="n">snr</span><span class="p">,</span> <span class="n">angle_incidence</span><span class="o">=</span><span class="n">angle_incidence</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&#34;deg&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">snr</span><span class="o">=</span><span class="n">snr</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">angle_incidence</span><span class="o">=</span><span class="n">angle_incidence</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&#34;deg&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="估计入射角">估计入射角</h3>
-<p><code>algorithm</code>中定义了几种经典的 DOA 估计算法，有些算法会输出空间谱，有些算法会直接输出估计的入射角的值<br>
+</div><h3 id="估计入射角">估计入射角
+</h3><p><code>algorithm</code>中定义了几种经典的 DOA 估计算法，有些算法会输出空间谱，有些算法会直接输出估计的入射角的值<br>
 首先 import 两个和绘图函数，分别用于展示这两种算法的估计结果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.plot</span> <span class="kn">import</span> <span class="n">plot_estimated_value</span><span class="p">,</span> <span class="n">plot_spatial_spectrum</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.plot</span> <span class="kn">import</span> <span class="n">plot_estimated_value</span><span class="p">,</span> <span class="n">plot_spatial_spectrum</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="music-算法">MUSIC 算法</h4>
-<div class="highlight"><div class="chroma">
+</div><h4 id="music-算法">MUSIC 算法
+</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -586,7 +590,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">search_grids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.algorithm.music</span> <span class="kn">import</span> <span class="n">music</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.algorithm.music</span> <span class="kn">import</span> <span class="n">music</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">music_spectrum</span> <span class="o">=</span> <span class="n">music</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">received_data</span><span class="o">=</span><span class="n">received_data</span><span class="p">,</span>
@@ -620,8 +624,8 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 		data-flex-basis="321px"
 	
 ></p>
-<h4 id="root-music-算法">Root-MUSIC 算法</h4>
-<div class="highlight"><div class="chroma">
+<h4 id="root-music-算法">Root-MUSIC 算法
+</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -635,7 +639,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.algorithm.music</span> <span class="kn">import</span> <span class="n">root_music</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.algorithm.music</span> <span class="kn">import</span> <span class="n">root_music</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">rmusic_estimates</span> <span class="o">=</span> <span class="n">root_music</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">received_data</span><span class="o">=</span><span class="n">received_data</span><span class="p">,</span>
@@ -661,8 +665,8 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 		data-flex-basis="315px"
 	
 ></p>
-<h4 id="esprit-算法">ESPRIT 算法</h4>
-<div class="highlight"><div class="chroma">
+<h4 id="esprit-算法">ESPRIT 算法
+</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -676,7 +680,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.algorithm.esprit</span> <span class="kn">import</span> <span class="n">esprit</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.algorithm.esprit</span> <span class="kn">import</span> <span class="n">esprit</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">esprit_estimates</span> <span class="o">=</span> <span class="n">esprit</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">received_data</span><span class="o">=</span><span class="n">received_data</span><span class="p">,</span>
@@ -702,8 +706,8 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 		data-flex-basis="315px"
 	
 ></p>
-<h4 id="omp-算法">OMP 算法</h4>
-<div class="highlight"><div class="chroma">
+<h4 id="omp-算法">OMP 算法
+</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -719,7 +723,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">classical_doa.algorithm.sparse</span> <span class="kn">import</span> <span class="n">omp</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">doa_py.algorithm.sparse</span> <span class="kn">import</span> <span class="n">omp</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">omp_estimates</span> <span class="o">=</span> <span class="n">omp</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">received_data</span><span class="o">=</span><span class="n">received_data</span><span class="p">,</span>
@@ -747,8 +751,9 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 		data-flex-basis="315px"
 	
 ></p>
-<h2 id="更多">更多</h2>
-<p>查看项目主页和仓库，了解更多的功能和使用方法</p>
+<h2 id="更多">更多
+</h2><p>查看<a class="link" href="https://github.com/zhiim/doa_py/tree/master/examples"  target="_blank" rel="noopener"
+    >项目仓库</a>，了解更多的功能和使用方法</p>
 
 </section>
 
@@ -782,18 +787,18 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+        renderMathInElement(document.body, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -814,28 +819,6 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/higer-order-statistics-doa-estimation/">
-        
-        
-            
-            <div class="article-image">
-                <img src="/img/default.webp" 
-                    loading="lazy"
-                    alt="Featured image of post 基于高阶累积量的DOA估计"
-                    data-key="higer-order-statistics-doa-estimation" 
-                    >
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">基于高阶累积量的DOA估计</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -934,8 +917,8 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -1024,7 +1007,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

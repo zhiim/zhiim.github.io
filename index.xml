@@ -7,16 +7,16 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sun, 07 Jul 2024 10:59:51 +0800</lastBuildDate><atom:link href="https://xland.cyou/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>用于 DOA 估计的 Python 包 classical_doa</title>
+        <title>用于 DOA 估计的 Python 包 DOA_py</title>
         <link>https://xland.cyou/p/python_package_doa_estimation/</link>
         <pubDate>Sun, 07 Jul 2024 10:59:51 +0800</pubDate>
         
         <guid>https://xland.cyou/p/python_package_doa_estimation/</guid>
-        <description>&lt;h2 id=&#34;项目地址&#34;&gt;项目地址&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/zhiim/classical_doa&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;classical_doa&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
-&lt;p&gt;使用 pip 或者从源码安装&lt;/p&gt;
+        <description>&lt;h2 id=&#34;项目地址&#34;&gt;项目地址
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/zhiim/doa_py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DOA_py: DOA etimation algorithms implemented in Python for ULA, UCA and broadband/wideband DOA estimation&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装
+&lt;/h2&gt;&lt;p&gt;使用 pip 或者从源码安装&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -28,15 +28,15 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# pip 安装&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install classical_doa
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install doa_py
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 从源码安装&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/zhiim/classical_doa.git
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; classical_doa
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/zhiim/doa_py.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; doa_py
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install .
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;使用案例均匀线阵&#34;&gt;使用案例（均匀线阵）&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h2 id=&#34;使用案例均匀线阵&#34;&gt;使用案例（均匀线阵）
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -44,8 +44,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;numpy&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;np&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;import-signal-和-array&#34;&gt;Import Signal 和 Array&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;signal.py&lt;/code&gt;定义了一些常用的信号类型，信号对应的 Class 都继承自&lt;code&gt;Signal&lt;/code&gt;基类, 用于产生多个入射信号&lt;br&gt;
+&lt;/div&gt;&lt;h3 id=&#34;import-signal-和-array&#34;&gt;Import Signal 和 Array
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;signal.py&lt;/code&gt;定义了一些常用的信号类型，信号对应的 Class 都继承自&lt;code&gt;Signal&lt;/code&gt;基类, 用于产生多个入射信号&lt;br&gt;
 &lt;code&gt;array.py&lt;/code&gt;定义了一些常用的阵列结构，所有的阵列对应的 Class 都继承自&lt;code&gt;Array&lt;/code&gt;基类，&lt;code&gt;Array&lt;/code&gt;会使用&lt;code&gt;Signal&lt;/code&gt;产生的信号以及入射角度，根据阵列接受信号的数学模型生成阵列接受信号的仿真数据&lt;/p&gt;
 &lt;p&gt;阵列接收信号的数学模型（窄带信号）:
 $\bf{X} = \bf{A} \bf{S}$&lt;/p&gt;
@@ -68,12 +68,12 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.arrays&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UniformLinearArray&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.signals&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ComplexStochasticSignal&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.arrays&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UniformLinearArray&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.signals&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ComplexStochasticSignal&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;设定仿真参数&#34;&gt;设定仿真参数&lt;/h3&gt;
-&lt;p&gt;设定与阵列结构以及信号参数、入射方向有关的仿真参数，产生采样后的阵列接受信号&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;设定仿真参数&#34;&gt;设定仿真参数
+&lt;/h3&gt;&lt;p&gt;设定与阵列结构以及信号参数、入射方向有关的仿真参数，产生采样后的阵列接受信号&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -94,7 +94,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 信号参数&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;num_snapshots&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;signal_fre&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2e7&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5e7&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5e7&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;snr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 阵列参数&lt;/span&gt;
@@ -106,8 +106,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;num_signal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;生成仿真信号&#34;&gt;生成仿真信号&lt;/h3&gt;
-&lt;p&gt;创建&lt;code&gt;Array&lt;/code&gt;和&lt;code&gt;Signal&lt;/code&gt;的实例，并生成阵列接受信号的仿真数据&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;生成仿真信号&#34;&gt;生成仿真信号
+&lt;/h3&gt;&lt;p&gt;创建&lt;code&gt;Array&lt;/code&gt;和&lt;code&gt;Signal&lt;/code&gt;的实例，并生成阵列接受信号的仿真数据&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -123,30 +123,30 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建信号实例&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ComplexStochasticSignal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nsamples&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num_snapshots&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fre&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signal_fre&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ComplexStochasticSignal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建阵列实例&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UniformLinearArray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num_antennas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;antenna_spacing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 使用信号和阵列生成仿真数据&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;received_signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;snr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;snr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deg&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;signal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;snr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;snr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nsamples&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;deg&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;估计入射角&#34;&gt;估计入射角&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;algorithm&lt;/code&gt;中定义了几种经典的 DOA 估计算法，有些算法会输出空间谱，有些算法会直接输出估计的入射角的值&lt;br&gt;
+&lt;/div&gt;&lt;h3 id=&#34;估计入射角&#34;&gt;估计入射角
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;algorithm&lt;/code&gt;中定义了几种经典的 DOA 估计算法，有些算法会输出空间谱，有些算法会直接输出估计的入射角的值&lt;br&gt;
 首先 import 两个和绘图函数，分别用于展示这两种算法的估计结果&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.plot&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plot_estimated_value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plot_spatial_spectrum&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.plot&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plot_estimated_value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plot_spatial_spectrum&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;music-算法&#34;&gt;MUSIC 算法&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;music-算法&#34;&gt;MUSIC 算法
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -172,7 +172,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;search_grids&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.algorithm.music&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;music&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.algorithm.music&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;music&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;music_spectrum&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;music&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
@@ -206,8 +206,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;321px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;root-music-算法&#34;&gt;Root-MUSIC 算法&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;root-music-算法&#34;&gt;Root-MUSIC 算法
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -221,7 +221,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.algorithm.music&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root_music&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.algorithm.music&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root_music&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rmusic_estimates&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root_music&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
@@ -247,8 +247,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;315px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;esprit-算法&#34;&gt;ESPRIT 算法&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;esprit-算法&#34;&gt;ESPRIT 算法
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -262,7 +262,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.algorithm.esprit&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;esprit&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.algorithm.esprit&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;esprit&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;esprit_estimates&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;esprit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
@@ -288,8 +288,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;315px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;omp-算法&#34;&gt;OMP 算法&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;omp-算法&#34;&gt;OMP 算法
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -305,7 +305,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;classical_doa.algorithm.sparse&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;omp&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;doa_py.algorithm.sparse&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;omp&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;omp_estimates&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;omp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;received_data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
@@ -333,8 +333,9 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;315px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;更多&#34;&gt;更多&lt;/h2&gt;
-&lt;p&gt;查看项目主页和仓库，了解更多的功能和使用方法&lt;/p&gt;
+&lt;h2 id=&#34;更多&#34;&gt;更多
+&lt;/h2&gt;&lt;p&gt;查看&lt;a class=&#34;link&#34; href=&#34;https://github.com/zhiim/doa_py/tree/master/examples&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;项目仓库&lt;/a&gt;，了解更多的功能和使用方法&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -353,14 +354,14 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/binary-husky/gpt_academic&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;gpt_academic&lt;/a&gt;：使用GPT API的AI学术助手，支持英文论文润色，一键翻译论文等功能。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;获取gpt-api&#34;&gt;获取GPT API&lt;/h2&gt;
-&lt;p&gt;从Copilot获取GPT API只需要两步&lt;/p&gt;
+&lt;h2 id=&#34;获取gpt-api&#34;&gt;获取GPT API
+&lt;/h2&gt;&lt;p&gt;从Copilot获取GPT API只需要两步&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;运行copilot-gpt4-service得到一个API URL用来替代OpenAI的API URL&lt;/li&gt;
 &lt;li&gt;获取Github Copilot Plugin Token代替OpenAI的API Key&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;编译可执行文件&#34;&gt;编译可执行文件&lt;/h3&gt;
-&lt;p&gt;copilot-gpt4-service使用Go语言编写，官方未提供编译好的可执行文件，所以只能自己编译，需要下载并安装&lt;a class=&#34;link&#34; href=&#34;https://go.dev/dl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;编译可执行文件&#34;&gt;编译可执行文件
+&lt;/h3&gt;&lt;p&gt;copilot-gpt4-service使用Go语言编写，官方未提供编译好的可执行文件，所以只能自己编译，需要下载并安装&lt;a class=&#34;link&#34; href=&#34;https://go.dev/dl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Go语言编译器&lt;/a&gt;，然后将源码下载到本地编译。&lt;/p&gt;
 &lt;p&gt;将&lt;a class=&#34;link&#34; href=&#34;https://github.com/aaamoon/copilot-gpt4-service&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;copilot-gpt4-service&lt;/a&gt;克隆到本地&lt;/p&gt;
@@ -400,8 +401,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;blockquote&gt;
 &lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;获取github-copilot-plugin-token&#34;&gt;获取Github Copilot Plugin Token&lt;/h3&gt;
-&lt;p&gt;打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。&lt;/p&gt;
+&lt;h3 id=&#34;获取github-copilot-plugin-token&#34;&gt;获取Github Copilot Plugin Token
+&lt;/h3&gt;&lt;p&gt;打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -417,8 +418,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;根据终端输出的提示，在浏览器中打开Github验证页面，输入终端打印的认证码获取Github Copilot Plugin Token。&lt;/p&gt;
-&lt;h2 id=&#34;使用gpt前端&#34;&gt;使用GPT前端&lt;/h2&gt;
-&lt;p&gt;Chatbox是一款跨平台的GPT前端，可以使用GPT API搭建自己的ChatGPT，下载安装并填入GPT API的URL和Github Copilot Plugin Token即可使用。&lt;/p&gt;
+&lt;h2 id=&#34;使用gpt前端&#34;&gt;使用GPT前端
+&lt;/h2&gt;&lt;p&gt;Chatbox是一款跨平台的GPT前端，可以使用GPT API搭建自己的ChatGPT，下载安装并填入GPT API的URL和Github Copilot Plugin Token即可使用。&lt;/p&gt;
 &lt;p&gt;下载并打开&lt;a class=&#34;link&#34; href=&#34;https://chatboxai.app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;chatbox&lt;/a&gt;，进行如下设置：&lt;/p&gt;
 &lt;ul&gt;
@@ -456,8 +457,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;947px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;搭建gpt-academic&#34;&gt;搭建GPT Academic&lt;/h2&gt;
-&lt;p&gt;将项目克隆到本地，并进入项目目录&lt;/p&gt;
+&lt;h2 id=&#34;搭建gpt-academic&#34;&gt;搭建GPT Academic
+&lt;/h2&gt;&lt;p&gt;将项目克隆到本地，并进入项目目录&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -529,8 +530,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
         
         <guid>https://xland.cyou/p/deploy-deep-learning-model-on-atlas/</guid>
-        <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备&lt;/h2&gt;
-&lt;p&gt;本文部署的模型是使用TensorFlow2训练的ResNet网络，用于干扰信号识别，原本的模型文件将权重保存在&lt;code&gt;ResNet.h5&lt;/code&gt;中。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备
+&lt;/h2&gt;&lt;p&gt;本文部署的模型是使用TensorFlow2训练的ResNet网络，用于干扰信号识别，原本的模型文件将权重保存在&lt;code&gt;ResNet.h5&lt;/code&gt;中。&lt;/p&gt;
 &lt;p&gt;从模型文件中读取权重，并使用测试数据进行推理&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -595,8 +596,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/div&gt;&lt;p&gt;Atlas 200 DK的环境部署采用“开发环境与运行环境分设”的方案，开发环境使用Windows下Linux子系统中的Ubuntu 22.04.3 LTS，CANN版本为6.0.RC1.alpha005。&lt;/p&gt;
 &lt;p&gt;参考官方教程&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/Atlas200DKDeveloperKit/1013/environment/atlased_04_0018.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;开发环境与运行环境分设&lt;/a&gt;完成环境配置。&lt;/p&gt;
-&lt;h2 id=&#34;cann-toolkit-配置&#34;&gt;cann-toolkit 配置&lt;/h2&gt;
-&lt;p&gt;在Ubuntu中安装完Ascend-cann-toolkit后，运行模型转换工具&lt;code&gt;atc&lt;/code&gt;时可能会出现报错&lt;/p&gt;
+&lt;h2 id=&#34;cann-toolkit-配置&#34;&gt;cann-toolkit 配置
+&lt;/h2&gt;&lt;p&gt;在Ubuntu中安装完Ascend-cann-toolkit后，运行模型转换工具&lt;code&gt;atc&lt;/code&gt;时可能会出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -640,11 +641,11 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在终端输入&lt;code&gt;source ~/.bashrc&lt;/code&gt;并重启终端，此时&lt;code&gt;atc&lt;/code&gt;可以正常运行。&lt;/p&gt;
-&lt;h2 id=&#34;模型转换&#34;&gt;模型转换&lt;/h2&gt;
-&lt;p&gt;由于TensorFlow2不再支持导出模型为FrozenGraphDef格式，而&lt;code&gt;atc&lt;/code&gt;转换TensorFlow模型时只能使用FrozenGraphDef格式，所以本文采用的转换流程是，先将TensorFlow模型导出为SavedModel格式，再将模型转换为&lt;a class=&#34;link&#34; href=&#34;https://onnx.ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;模型转换&#34;&gt;模型转换
+&lt;/h2&gt;&lt;p&gt;由于TensorFlow2不再支持导出模型为FrozenGraphDef格式，而&lt;code&gt;atc&lt;/code&gt;转换TensorFlow模型时只能使用FrozenGraphDef格式，所以本文采用的转换流程是，先将TensorFlow模型导出为SavedModel格式，再将模型转换为&lt;a class=&#34;link&#34; href=&#34;https://onnx.ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ONNX&lt;/a&gt;格式，最后使用&lt;code&gt;atc&lt;/code&gt;将ONNX模型转换为.om格式。&lt;/p&gt;
-&lt;h3 id=&#34;将tensorflow模型导出为savedmodel&#34;&gt;将TensorFlow模型导出为SavedModel&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;将tensorflow模型导出为savedmodel&#34;&gt;将TensorFlow模型导出为SavedModel
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -680,8 +681,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;saved_model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mobilenet_save_path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;将savedmodel转换为onnx模型&#34;&gt;将SavedModel转换为ONNX模型&lt;/h3&gt;
-&lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/onnx/tensorflow-onnx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h3 id=&#34;将savedmodel转换为onnx模型&#34;&gt;将SavedModel转换为ONNX模型
+&lt;/h3&gt;&lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/onnx/tensorflow-onnx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;tf2onnx&lt;/a&gt;将SavedModel转换为.onnx格式的模型。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -752,9 +753,9 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;将onnx模型转换为om格式&#34;&gt;将ONNX模型转换为om格式&lt;/h3&gt;
-&lt;h4 id=&#34;domain_version报错&#34;&gt;&lt;code&gt;domain_version&lt;/code&gt;报错&lt;/h4&gt;
-&lt;p&gt;在Ubuntu终端中运行&lt;code&gt;atc&lt;/code&gt;模型转换工具&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;将onnx模型转换为om格式&#34;&gt;将ONNX模型转换为om格式
+&lt;/h3&gt;&lt;h4 id=&#34;domain_version报错&#34;&gt;&lt;code&gt;domain_version&lt;/code&gt;报错
+&lt;/h4&gt;&lt;p&gt;在Ubuntu终端中运行&lt;code&gt;atc&lt;/code&gt;模型转换工具&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -835,8 +836,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;onnx&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;./resnet.onnx&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;模型输入维度报错&#34;&gt;模型输入维度报错&lt;/h4&gt;
-&lt;p&gt;再次运行&lt;code&gt;atc&lt;/code&gt;，出现报错&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;模型输入维度报错&#34;&gt;模型输入维度报错
+&lt;/h4&gt;&lt;p&gt;再次运行&lt;code&gt;atc&lt;/code&gt;，出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -866,8 +867,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;atc --model&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;resnet.onnx --framework&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; --output&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;resnet --input-shape&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;input_2:1,256,256,1&amp;#34;&lt;/span&gt; --soc_version&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Ascend310
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;在atlas-200-dk中进行模型推理&#34;&gt;在Atlas 200 DK中进行模型推理&lt;/h2&gt;
-&lt;p&gt;模型推理时使用的是&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/70RC1alpha003/infacldevg/aclpythondevg/aclpythondevg_0001.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h2 id=&#34;在atlas-200-dk中进行模型推理&#34;&gt;在Atlas 200 DK中进行模型推理
+&lt;/h2&gt;&lt;p&gt;模型推理时使用的是&lt;a class=&#34;link&#34; href=&#34;https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/70RC1alpha003/infacldevg/aclpythondevg/aclpythondevg_0001.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyACL&lt;/a&gt;接口，并使用了第三库&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/ascend/samples/tree/master/python/common/acllite&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;acllite&lt;/a&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -956,17 +957,17 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         <pubDate>Tue, 11 Jul 2023 14:54:53 +0800</pubDate>
         
         <guid>https://xland.cyou/p/arch-linux-configuration-btrfs-and-system-backup/</guid>
-        <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 — Btrfs与系统备份" /&gt;&lt;h2 id=&#34;btrfs&#34;&gt;Btrfs&lt;/h2&gt;
-&lt;p&gt;更据官方文档的说明&lt;/p&gt;
+        <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 — Btrfs与系统备份" /&gt;&lt;h2 id=&#34;btrfs&#34;&gt;Btrfs
+&lt;/h2&gt;&lt;p&gt;更据官方文档的说明&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Btrfs拥有较多传统文件系统如Ext3/4不具有的高级功能，为我们日常文件系统使用和备份带来了便利。&lt;/p&gt;
-&lt;h3 id=&#34;写时复制copy-on-writecow&#34;&gt;写时复制（Copy-on-Write，CoW）&lt;/h3&gt;
-&lt;p&gt;Btrfs默认采用&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/copy-on-write&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;写时复制copy-on-writecow&#34;&gt;写时复制（Copy-on-Write，CoW）
+&lt;/h3&gt;&lt;p&gt;Btrfs默认采用&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/copy-on-write&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;CoW&lt;/a&gt;机制，将文件指针存放在metadata文件中。在对文件进行更改时，Btrfs会将新的数据写在新的空闲数据块中，数据写入完成后，更新metadata增加将文件指向新的内存块的指针。&lt;/p&gt;
-&lt;h3 id=&#34;子卷subvolume&#34;&gt;子卷（subvolume）&lt;/h3&gt;
-&lt;p&gt;一个子卷可以看作是Btrfs中的一个文件夹，但是子卷也可以像分区一样被挂载。例如在&lt;code&gt;subvolume-test&lt;/code&gt;中创建一个子卷&lt;code&gt;subvolume&lt;/code&gt;，就相当于创建了一个对应的文件夹。&lt;/p&gt;
+&lt;h3 id=&#34;子卷subvolume&#34;&gt;子卷（subvolume）
+&lt;/h3&gt;&lt;p&gt;一个子卷可以看作是Btrfs中的一个文件夹，但是子卷也可以像分区一样被挂载。例如在&lt;code&gt;subvolume-test&lt;/code&gt;中创建一个子卷&lt;code&gt;subvolume&lt;/code&gt;，就相当于创建了一个对应的文件夹。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1056,8 +1057,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;可以看到我的根子卷下创建了&lt;code&gt;@&lt;/code&gt;子卷和&lt;code&gt;@home&lt;/code&gt;子卷分别挂载在&lt;code&gt;/&lt;/code&gt;和&lt;code&gt;/home&lt;/code&gt;文件夹下。每一个子卷都可以达到文件系统的总容量，使用子卷挂载&lt;code&gt;/&lt;/code&gt;和&lt;code&gt;/home&lt;/code&gt;就免除了某一个分区空间不足的烦恼。&lt;/p&gt;
-&lt;h3 id=&#34;快照snapshot&#34;&gt;快照（snapshot）&lt;/h3&gt;
-&lt;p&gt;快照可以看作是一个子卷，对一个子卷创建快照就是创建了一个新的子卷，这个新的子卷内容和原本子卷完全相同，但是快照不会包含子卷内的嵌套子卷。&lt;/p&gt;
+&lt;h3 id=&#34;快照snapshot&#34;&gt;快照（snapshot）
+&lt;/h3&gt;&lt;p&gt;快照可以看作是一个子卷，对一个子卷创建快照就是创建了一个新的子卷，这个新的子卷内容和原本子卷完全相同，但是快照不会包含子卷内的嵌套子卷。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1097,10 +1098,10 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;得益于CoW的特性，Btrfs创建快照时并不会将原子卷中的内容复制到快照子卷中，而是在快照中创建了指向原子卷内容的指针。如果对子卷内的文件进行更改，原本内容在数据块中不会改变，只是增加了指向新数据块的指针。&lt;/p&gt;
-&lt;h2 id=&#34;使用快照备份系统&#34;&gt;使用快照备份系统&lt;/h2&gt;
-&lt;p&gt;得益于Btrfs的快照特性，我们可以快速方便地备份和回滚系统，而且系统快照只会占用很小的储存空间，在备份方案上，我选择使用Snapper创建和管理系统快照。&lt;/p&gt;
-&lt;h3 id=&#34;snapper自动备份&#34;&gt;Snapper自动备份&lt;/h3&gt;
-&lt;p&gt;首先安装Snapper&lt;/p&gt;
+&lt;h2 id=&#34;使用快照备份系统&#34;&gt;使用快照备份系统
+&lt;/h2&gt;&lt;p&gt;得益于Btrfs的快照特性，我们可以快速方便地备份和回滚系统，而且系统快照只会占用很小的储存空间，在备份方案上，我选择使用Snapper创建和管理系统快照。&lt;/p&gt;
+&lt;h3 id=&#34;snapper自动备份&#34;&gt;Snapper自动备份
+&lt;/h3&gt;&lt;p&gt;首先安装Snapper&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1193,8 +1194,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; --now snapper-cleanup.timer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;改变快照存储位置&#34;&gt;改变快照存储位置&lt;/h3&gt;
-&lt;p&gt;Snapper默认把快照存储在&lt;code&gt;@&lt;/code&gt;子卷内的&lt;code&gt;.snapshots&lt;/code&gt;分卷下，如果&lt;code&gt;@&lt;/code&gt;子卷损坏&lt;code&gt;.snapshots&lt;/code&gt;也可能受影响，所以更好的子卷结构是把快照存储在&lt;code&gt;@snapshots&lt;/code&gt;子卷下，然后把&lt;code&gt;@snapshots&lt;/code&gt;挂载在根子卷下，这样&lt;code&gt;@&lt;/code&gt;和&lt;code&gt;@snapshots&lt;/code&gt;互不影响。&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;改变快照存储位置&#34;&gt;改变快照存储位置
+&lt;/h3&gt;&lt;p&gt;Snapper默认把快照存储在&lt;code&gt;@&lt;/code&gt;子卷内的&lt;code&gt;.snapshots&lt;/code&gt;分卷下，如果&lt;code&gt;@&lt;/code&gt;子卷损坏&lt;code&gt;.snapshots&lt;/code&gt;也可能受影响，所以更好的子卷结构是把快照存储在&lt;code&gt;@snapshots&lt;/code&gt;子卷下，然后把&lt;code&gt;@snapshots&lt;/code&gt;挂载在根子卷下，这样&lt;code&gt;@&lt;/code&gt;和&lt;code&gt;@snapshots&lt;/code&gt;互不影响。&lt;/p&gt;
 &lt;p&gt;删除默认的&lt;code&gt;.snapshots&lt;/code&gt;子卷&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1268,8 +1269,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Btrfs的快照不会备份其他子卷的内容，所以我们也可以把&lt;code&gt;/var/cache/pacman/pkg&lt;/code&gt;、&lt;code&gt;/var/abs&lt;/code&gt;、&lt;code&gt;/var/tmp&lt;/code&gt;和&lt;code&gt;/srv&lt;/code&gt;等经常读写但有没必要备份的文件夹挂载成子卷。&lt;/p&gt;
-&lt;h3 id=&#34;从快照中恢复&#34;&gt;从快照中恢复&lt;/h3&gt;
-&lt;p&gt;假设我们已经为&lt;code&gt;/&lt;/code&gt;创建了快照，如果想要从快照中恢复系统，可以先进入Arch Linux live USB，然后挂载Btrfs分区&lt;/p&gt;
+&lt;h3 id=&#34;从快照中恢复&#34;&gt;从快照中恢复
+&lt;/h3&gt;&lt;p&gt;假设我们已经为&lt;code&gt;/&lt;/code&gt;创建了快照，如果想要从快照中恢复系统，可以先进入Arch Linux live USB，然后挂载Btrfs分区&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1320,8 +1321,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo btrfs subvolume delete /mnt/@.broken
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;ol&gt;
+&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Btrfs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki-Btrfs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://fedoramagazine.org/working-with-btrfs-general-concepts/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1344,8 +1345,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         
         <guid>https://xland.cyou/p/arch-linux-configuration-linux-lts-kernel/</guid>
         <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 -- 安装linux-lts备用内核" /&gt;&lt;p&gt;由于滚动更新的机制，Arch Linux采用的linux内核更新较频繁，难免会碰到由于内核更新无法进入系统。为了解决由于内核更新导致的系统故障，我们可以同时安装更新周期更长的linux-lts内核，如果linux内核更新后无法进入系统，此时就可以选择加载linux-lts内核进入系统，回退linux内核或者等待修复。&lt;/p&gt;
-&lt;h2 id=&#34;安装linux-lts内核&#34;&gt;安装linux-lts内核&lt;/h2&gt;
-&lt;p&gt;首先安装linux-lts内核&lt;/p&gt;
+&lt;h2 id=&#34;安装linux-lts内核&#34;&gt;安装linux-lts内核
+&lt;/h2&gt;&lt;p&gt;首先安装linux-lts内核&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1357,8 +1358,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/div&gt;&lt;p&gt;此时重启如果使用GRUB引导系统的话，会出现“Advanced Options for Arch Linxu”，选择这一项就会进入选择启动linux内核或者linux-lts内核的自选单。&lt;/p&gt;
 &lt;p&gt;如果使用rEFInd引导系统的话，此时选择进入Arch Linux会默认加载最后安装的内核即linux-lts，选中Arch Linux图标在按F2键的话就会进入选择加载不同内核的选单。&lt;/p&gt;
 &lt;p&gt;为了更加方便地在Boot Loader界面选择想要加载的内核，我们可以分别对GRUB和rEFInd进行一些配置。&lt;/p&gt;
-&lt;h2 id=&#34;配置grub&#34;&gt;配置GRUB&lt;/h2&gt;
-&lt;p&gt;我们想要的是在进入GRUB界面后，直接列出了加载不同内核的选项，而不需要先进入子选单再选择内核。编辑&lt;code&gt;/etc/default/grub&lt;/code&gt;，取消注释&lt;/p&gt;
+&lt;h2 id=&#34;配置grub&#34;&gt;配置GRUB
+&lt;/h2&gt;&lt;p&gt;我们想要的是在进入GRUB界面后，直接列出了加载不同内核的选项，而不需要先进入子选单再选择内核。编辑&lt;code&gt;/etc/default/grub&lt;/code&gt;，取消注释&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1378,8 +1379,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;GRUB_SAVEDEFAULT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;配置refind&#34;&gt;配置rEFInd&lt;/h2&gt;
-&lt;p&gt;rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置refind&#34;&gt;配置rEFInd
+&lt;/h2&gt;&lt;p&gt;rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。&lt;/p&gt;
 &lt;p&gt;通过更改rEFInd配置文件，我们可以实现默认加载进入linux内核，然后通过子选单选择加载linux-lts内核。同时我们也可以选择附加内核参数，使得每次加载内核的同时加载微码，防止出现一些意外奔溃。&lt;/p&gt;
 &lt;p&gt;为了让rEFInd支持Btrfs子卷，需要为rEFInd安装驱动&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1513,12 +1514,12 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         
         <guid>https://xland.cyou/p/arch-linux-configuration-driver-and-software/</guid>
         <description>&lt;img src="https://xland.cyou/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 -- 驱动和软件安装" /&gt;&lt;p&gt;最近趁着假期把Manjaro换成了Arch Linux，本文记录了我安装Arch Linux中的一些配置。&lt;/p&gt;
-&lt;h2 id=&#34;arch-linux安装&#34;&gt;Arch Linux安装&lt;/h2&gt;
-&lt;p&gt;安装教程参考&lt;a class=&#34;link&#34; href=&#34;https://arch.icekylin.online/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;arch-linux安装&#34;&gt;Arch Linux安装
+&lt;/h2&gt;&lt;p&gt;安装教程参考&lt;a class=&#34;link&#34; href=&#34;https://arch.icekylin.online/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;archlinux 简明指南&lt;/a&gt;和&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Installation_guide&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;安装显卡驱动&#34;&gt;安装显卡驱动&lt;/h2&gt;
-&lt;p&gt;本人电脑是联想小新Air13 IWL，有一个Intel核显和一个Nvidia独显。&lt;/p&gt;
+&lt;h2 id=&#34;安装显卡驱动&#34;&gt;安装显卡驱动
+&lt;/h2&gt;&lt;p&gt;本人电脑是联想小新Air13 IWL，有一个Intel核显和一个Nvidia独显。&lt;/p&gt;
 &lt;p&gt;运行&lt;code&gt;lspci -k | grep -A 2 -E &amp;quot;(VGA|3D)&amp;quot;&lt;/code&gt;可以查看显卡信息&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1540,8 +1541,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       Kernel driver in use: nvidia
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;intel-驱动&#34;&gt;Intel 驱动&lt;/h3&gt;
-&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Intel_graphics#Installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h3 id=&#34;intel-驱动&#34;&gt;Intel 驱动
+&lt;/h3&gt;&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Intel_graphics#Installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki-Intel graphics&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;首先安装&lt;code&gt;mesa&lt;/code&gt;，它提供了用于3D加速得DRI驱动。对于Intel 8代以及更新的硬件选择软件包&lt;code&gt;mesa&lt;/code&gt;，对于7代以及更老的芯片选择&lt;code&gt;mesa-amber&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;为了支持32位程序，同时安装对应的&lt;code&gt;lib32-mesa&lt;/code&gt;或者&lt;code&gt;lib32-mesa-amber&lt;/code&gt;。 为了Vulkan支持，还需要安装&lt;code&gt;vulkan-intel&lt;/code&gt;，以及32位支持包&lt;code&gt;lib32-vulkan-intel&lt;/code&gt;。&lt;/p&gt;
@@ -1553,8 +1554,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;nvidia-驱动&#34;&gt;Nvidia 驱动&lt;/h3&gt;
-&lt;p&gt;建议对照&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/NVIDIA#Installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h3 id=&#34;nvidia-驱动&#34;&gt;Nvidia 驱动
+&lt;/h3&gt;&lt;p&gt;建议对照&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/NVIDIA#Installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki-NVIDIA&lt;/a&gt;安装，官方教程更加准确并且可能有更新。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对于新于 &lt;a class=&#34;link&#34; href=&#34;https://nouveau.freedesktop.org/CodeNames.html#NV160&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1597,8 +1598,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;重启系统，打开&lt;code&gt;nvidia-settings&lt;/code&gt;如果可以看到显卡的各种详细信息，则说明安装成功。&lt;/p&gt;
-&lt;h3 id=&#34;核显和独显动态切换&#34;&gt;核显和独显动态切换&lt;/h3&gt;
-&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://arch.icekylin.online/guide/rookie/graphic-driver.html#%E5%8F%8C%E6%98%BE%E5%8D%A1-%E6%A0%B8%E6%98%BE-%E7%8B%AC%E6%98%BE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;核显和独显动态切换&#34;&gt;核显和独显动态切换
+&lt;/h3&gt;&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://arch.icekylin.online/guide/rookie/graphic-driver.html#%E5%8F%8C%E6%98%BE%E5%8D%A1-%E6%A0%B8%E6%98%BE-%E7%8B%AC%E6%98%BE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;双显卡（核显 + 独显）&lt;/a&gt; 。&lt;/p&gt;
 &lt;p&gt;安装&lt;code&gt;optimus-manager&lt;/code&gt;，它提供了双显卡下切换仅用核显、仅用独显和动态切换三种模式，&lt;code&gt;optimus-manager-qt&lt;/code&gt;则提供了模式切换的图形界面。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1609,8 +1610,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yay -S optimus-manager optimus-manager-qt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;启用视频硬件加速&#34;&gt;启用视频硬件加速&lt;/h2&gt;
-&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Hardware_video_acceleration&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h2 id=&#34;启用视频硬件加速&#34;&gt;启用视频硬件加速
+&lt;/h2&gt;&lt;p&gt;参考&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Hardware_video_acceleration&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki-Hardware video acceleration&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;首先安装驱动&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1677,8 +1678,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 		data-flex-basis=&#34;411px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;windows-和-linux-共用蓝牙&#34;&gt;Windows 和 Linux 共用蓝牙&lt;/h2&gt;
-&lt;p&gt;安装双系统后，每次切换系统都需要重新配对蓝牙设备。但是可以通过改变Linux系统中蓝牙设备的配对参数，实现两个系统共用一个蓝牙配对，这些切换系统后旧不用重新配对，直接可以自动连接蓝牙了。&lt;/p&gt;
+&lt;h2 id=&#34;windows-和-linux-共用蓝牙&#34;&gt;Windows 和 Linux 共用蓝牙
+&lt;/h2&gt;&lt;p&gt;安装双系统后，每次切换系统都需要重新配对蓝牙设备。但是可以通过改变Linux系统中蓝牙设备的配对参数，实现两个系统共用一个蓝牙配对，这些切换系统后旧不用重新配对，直接可以自动连接蓝牙了。&lt;/p&gt;
 &lt;p&gt;首先在Linux里配对蓝牙设备，然后重启进入Windows重新配对蓝牙。&lt;/p&gt;
 &lt;p&gt;下载&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/psexec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PSEXEC&lt;/a&gt;，以管理员身份启动终端，进入PSEXEC解压后的文件夹，运行&lt;/p&gt;
@@ -1764,8 +1765,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart bluetooth
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;使用refind引导系统&#34;&gt;使用rEFInd引导系统&lt;/h2&gt;
-&lt;p&gt;rEFInd是一个适用于UEFI的Boot Manager，支持自定义主题，可以替代界面简陋的GRUB，用来引导Linux和Windows双系统。 rEFInd和GRUB的关系可以参考&lt;a class=&#34;link&#34; href=&#34;https://neucrack.com/p/330&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;h2 id=&#34;使用refind引导系统&#34;&gt;使用rEFInd引导系统
+&lt;/h2&gt;&lt;p&gt;rEFInd是一个适用于UEFI的Boot Manager，支持自定义主题，可以替代界面简陋的GRUB，用来引导Linux和Windows双系统。 rEFInd和GRUB的关系可以参考&lt;a class=&#34;link&#34; href=&#34;https://neucrack.com/p/330&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;。首先安装rEFInd软件包&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1810,8 +1811,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;如果引导页面有多余项的话，可以按键盘上的Delete键隐藏该启动项。如果未出现rEFInd引导页，可以在电脑的BIOS设置界面将rEFInd启动项置顶。&lt;/p&gt;
-&lt;h2 id=&#34;安装matlab&#34;&gt;安装MATLAB&lt;/h2&gt;
-&lt;p&gt;我在安装时采用的是MATLAB 2022a安装包，在终端运行安装脚本，出现报错&lt;/p&gt;
+&lt;h2 id=&#34;安装matlab&#34;&gt;安装MATLAB
+&lt;/h2&gt;&lt;p&gt;我在安装时采用的是MATLAB 2022a安装包，在终端运行安装脚本，出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1889,242 +1890,14 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 </description>
         </item>
         <item>
-        <title>基于高阶累积量的DOA估计</title>
-        <link>https://xland.cyou/p/higer-order-statistics-doa-estimation/</link>
-        <pubDate>Sat, 25 Mar 2023 11:26:43 +0800</pubDate>
-        
-        <guid>https://xland.cyou/p/higer-order-statistics-doa-estimation/</guid>
-        <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-&lt;p&gt;传统的 MUSIC 算法和 ESPRIT 算法都指利用了接收信号的二阶累计量，这些算法的缺点主要有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;对于一个具有 N 个阵元的阵列，可估计的信号数最大为 N-1&lt;/li&gt;
-&lt;li&gt;当阵列模型存在误差（eg. 算法中使用的流型矩阵和实际的流型矩阵不符），或者阵元接受到的噪声存在相关性的情况下，算法的鲁棒性很差&lt;/li&gt;
-&lt;li&gt;在较小快拍数下，对于角度邻近的信号估计精度较差
-基于高阶累计量（Higher-order Cumulants）的 DOA 估计算法早期被用于处理不同阵元接收到的高斯噪声存在相关性的情况，随着研究的深入，人们发现高阶累积量的引入提高了阵列的可估计信号数和分辨率，同时对阵列模型误差存在一定的校正。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;使用二阶累积量面临的问题&#34;&gt;使用二阶累积量面临的问题&lt;/h3&gt;
-&lt;p&gt;对于阵列接受信号
-$${\bf{X}}(t) = {\bf{AS}}(t) + {\bf{N}}(t)$$
-一般的子空间类分解算法是从接受信号的协方差矩阵，即二阶累积量组成的矩阵中提取角度信号
-$${R_{xx}} = A{R_{ss}}A + {R_{nn}}$$
-其中$R_{nn}$表示接受噪声的协方差矩阵。如果噪声是高斯白噪声，那么$R_{nn}=\sigma^2 I$，是一个对角元素等于噪声功率的对角阵，此时对$R_{xx}$做特征分解，可以得到&lt;/p&gt;
-&lt;p&gt;$$
-R_{xx} = \begin{bmatrix}U_{s}&amp;amp;U_{n}\end{bmatrix}
-\begin{bmatrix}
-\sigma_1^2+\sigma^2&amp;amp;&amp;amp;&amp;amp; \newline
-&amp;amp;\sigma_2^2+\sigma^2&amp;amp;&amp;amp; \newline
-&amp;amp;&amp;amp;\ddots&amp;amp; \newline
-&amp;amp;&amp;amp;&amp;amp;\sigma^2
-\end{bmatrix}
-\begin{bmatrix} U_{s} \newline U_{n}\end{bmatrix}
-$$&lt;/p&gt;
-&lt;p&gt;如果阵元接受到的噪声不是高斯白噪声，在 DOA 估计中主要表现为不同阵元接收到的噪声之间存在相关性，那么噪声的协方差矩阵$R_{nn}$不是一个对角阵，此时无法通过对接受信号协方差矩阵$R_{xx}$的特征分解确定信号子空间和噪声子空间。&lt;/p&gt;
-&lt;h3 id=&#34;高阶累计量对-doa-估计的意义&#34;&gt;高阶累计量对 DOA 估计的意义&lt;/h3&gt;
-&lt;p&gt;如果接受到的噪声不是高斯白噪声，那么噪声的协方差矩阵不是对角阵，无法分解出噪声子空间和信号子空间。根据高阶累积量的性质，高斯随机过程的四阶累积量为 0，如果接受噪声符合高斯随机分布，即使不同阵元接受到的噪声存在相关性，仍然可以通过四阶累积量构造新的协方差矩阵，实现去除噪声的目的。&lt;/p&gt;
-&lt;h2 id=&#34;四阶累积量的计算&#34;&gt;四阶累积量的计算&lt;/h2&gt;
-&lt;p&gt;对于一个$N\times 1$的实数值矢量 x，它的第 q 阶累积量可以由它的矩表示&lt;br&gt;
-$$Cum[{x_{{i_1}}},{x_{{i_2}}}, \ldots ,{x_{{i_q}}}] = \sum\limits_{p = 1}^q {{{( - 1)}^{p - 1}}(p - 1)!E{ \prod\limits_{j \in {S_1}} {{x_{ij}}} } } E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} }  \cdots E{ \prod\limits_{j \in {S_2}} {{x_{ij}}} } $$&lt;br&gt;
-对于一个零均值的矢量x，它的二阶、三阶和四阶累计量可以写成
-$$Cum[{x_i},{x_j}] = E{ {x_i}{x_j}} $$
-$$Cum[{x_i},{x_j},{x_k}] = E{ {x_i}{x_j}{x_k}} $$
-$$Cum[{x_i},{x_j},{x_k},{x_l}] = E{ {x_i}{x_j}{x_k}{x_l}} - E{ {x_i}{x_j}} E{ {x_k}{x_l}} - E{ {x_i}{x_k}} E{ {x_j}{x_l}} - E{ {x_i}{x_l}} E{ {x_j}{x_k}} $$&lt;/p&gt;
-&lt;h2 id=&#34;基于高阶累积量的-doa-估计&#34;&gt;基于高阶累积量的 DOA 估计&lt;/h2&gt;
-&lt;h3 id=&#34;接受信号模型&#34;&gt;接受信号模型&lt;/h3&gt;
-&lt;p&gt;考虑一个具有 N 个阵元的阵列，阵列接收到 P 个入射信号（P 的个数可以大于或等于 N）。我们把 P 个信号划分成 G 组，其中第 g 组包含的信号数表示成$P_g$。位于同一组的信号不独立但也不相干，位于不同组的信号相互独立。此时可以写出阵元接受信号的数学模型
-$$\bf{x_g}(t) = \bf{A_g}\bf{s_g}(t)$$
-$${\bf{y}}(t) = \sum\limits_{g = 1}^G {{{\bf{A}}_g}{{\bf{S}}_g}(t) + {\bf{w}}(t)} $$
-其中${{{\bf{S}}_g}(t)}$表示第 g 组入射信号复振幅，${{{\bf{A}}_g}}$表示第 g 组的入射信号对应流型矩阵。${{\bf{w}}(t)}$表示阵元接收到的噪声，假设该噪声符合高斯分布，不同阵元接受到的噪声之间存在相关性。&lt;/p&gt;
-&lt;h3 id=&#34;基于四阶累计量的-music-算法music-like-algorithm-based-on-fo-cumulant&#34;&gt;基于四阶累计量的 MUSIC 算法（MUSIC-Like Algorithm based on FO Cumulant）&lt;/h3&gt;
-&lt;p&gt;在求接收信号的四阶累积量时，采用复数形式的定义式&lt;br&gt;
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$Cum[y_i,y_j,y_{k}^{*},y_{l}^{*}] = E\{ y_i,y_j,y_k^*,y_l^*\} -E\{ y_i,y_j\} E\{ y_k^*,y_l^*\}  - E\{ y_i,y_k^*\} E\{ y_j,y_l^*\}  - E\{ y_i,y_l^*\} E\{ y_j,y_k^*\}$$
-  &lt;/div&gt;
-
-一般使用近似公式求解四阶矩和二阶矩
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {y_i},{y_j},y_k^*,y_l^*\} = {1 \over L}\sum\limits_{t = 1}^L {{y_i}(t){y_j}(t)y_k^*(t)y_l^*(t)} $$
-  &lt;/div&gt;
-
-$$E{ {y&lt;em&gt;i},{y_j}} = {1 \over L}\sum\limits&lt;/em&gt;{t = 1}^L {{y_i}(t){y_j}(t)} $$
-按照上述四阶累积量的近似计算公式计算$x_g(t)$的四阶累积量，如果取四阶累积量的下标i、j、k、l为不同值，总共可以求出$N^2\times N^2$个不同的四阶累计量，把它们写成一个$N^2\times N^2$维矩阵$C_g$的形式，每个四阶累积量作为$C_g$的一个元素。其中
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${C_g}[(i - 1)N &amp;#43; k,(j - 1)M &amp;#43; l] = Cum[{y_i},{y_j},y_k^*,y_l^*]$$
-  &lt;/div&gt;
-
-于是有
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${{\bf{C}}_g} = ({{\bf{A}}_g} \otimes {\bf{A}}_g^*){{\bf{S}}_g}{({{\bf{A}}_g} \otimes {\bf{A}}_g^*)^H}$$
-  &lt;/div&gt;
-
-其中
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split} S_g &amp;amp;= E\{(s_g(t)\otimes s_g^*(t)) (s_g(t)\otimes s_g^*(t))^H\} \newline &amp;amp;- E\{s_g(t)\otimes s_g^*(t)\} E\{(s_g(t)\otimes s_g^*(t))^H\} \newline &amp;amp;- E\{s_g(t)\otimes s_g^H(t)\} E\{s_g(t)\otimes s_g^H(t)\}\end{split}$$
-  &lt;/div&gt;
-
-$S_g$表示第 g 组的接受信号的四阶累积量组成的$N^2\times N^2$维矩阵。&lt;br&gt;
-&lt;strong&gt;性质 1&lt;/strong&gt;：如果随机变量$x_i$和$y_i$相互独立，那么有
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$cum\{x_1&amp;#43;y_1,x_2&amp;#43;y_2,\dots,x_n &amp;#43;y_n\}=cum\{x_1,x_2,\dots,x_n\}  &amp;#43;cum\{y_1,y_2,\dots,y_n\}$$
-  &lt;/div&gt;
-
-&lt;strong&gt;性质 2&lt;/strong&gt;：如果 x 是一个高斯随机过程，则它的高阶累积量（$k\ge2$)恒等于 0&lt;br&gt;
-由上述两个性质可得，在阵元接受到的噪声为高斯噪声的情况下，阵元接受数据 y(t)的四阶累积量组成的$N^2\times N^2$维矩阵 C 为
-$$C = \sum\limits_{g = 1}^G {{C_g}} $$
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$C=\begin{bmatrix}A*1\otimes A_1^*,\dots,A_G\otimes A_G^*\end{bmatrix}
-\begin{bmatrix}S_1&amp;amp;\dots&amp;amp;0\newline \vdots&amp;amp;\ddots&amp;amp;\vdots \newline 0&amp;amp; \dots&amp;amp;S_G \end{bmatrix}
-\begin{bmatrix}(A_1\otimes A_1)^H \newline \vdots \newline (A_G\otimes A_G)^H\end{bmatrix}$$
-  &lt;/div&gt;
-
-由于第g组内的入射信号互相不独立，$S_g$是满秩矩阵，所以$C_g$的秩为$N_g^2$，于是矩阵C的秩为$\sum\limits*{g = 1}^G {N_g^2 &amp;lt; {N^2}}$。如果G=1，即所有接受信号互相不独立，那么C的秩为$N^2$；如果 G=P，即所有接受信号互相独立，C 的秩为 N。对 C 做奇异值分解&lt;/p&gt;
-&lt;p&gt;$$
-C=\begin{bmatrix}U_1&amp;amp;U_2\end{bmatrix}
-\begin{bmatrix}\Lambda&amp;amp;0 \newline 0&amp;amp;0\end{bmatrix}
-\begin{bmatrix}V_1^H \newline V_2^H\end{bmatrix}
-$$&lt;/p&gt;
-&lt;p&gt;其中$\Lambda$是一个$\sum\limits_{g = 1}^G {N_g^2}$维对角阵，于是可以根据 C 的奇异值中 0 元素对应的特征向量确定子空间$U_2$。&lt;br&gt;
-由于${A_g} \otimes A_g^*$
-与$U_2$正交，可以确定与入射信号角度对应的导向矢量满足
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${[a(\theta ) \otimes {a^*}(\theta )]^H}{U_2} = 0$$
-  &lt;/div&gt;
-
-此时可以构造出类似于 MUSIC 算法的空间谱
-$$P(\theta ) = {1 \over {||{{[a(\theta ) \otimes {a^*}(\theta )]}^H}{U_2}|{|^2}}}$$
-&lt;strong&gt;优缺点&lt;/strong&gt;：可以应用于接受信号互相不独立（不能完全相关）或者不同阵元接收到的噪声之间存在相关性（高斯噪声）的场景。提高了 DOA 估计的分辨率和最大可估计信号数。&lt;br&gt;
-计算量较大，需要计算$N^4$个四阶累积量。对于信源发射信号不独立的情况，需要预先知道信号的分组情况来确定 C 的非零特征值数目。&lt;/p&gt;
-&lt;h2 id=&#34;四阶累积量带来的阵列扩展&#34;&gt;四阶累积量带来的阵列扩展&lt;/h2&gt;
-&lt;p&gt;对于一个任意阵列，以第一个阵元作为参考阵元，它的阵元位置可以表示成
-$$[0,{\vec d_1},{\vec d_2}, \ldots ,{\vec d_{M-1}}]$$
-阵列接收到的信号可以写成
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$\bf{X}(t)=\begin{bmatrix}s(t)&amp;amp;s(t)exp(-j\vec{d}_1 \cdot \vec{k})&amp;amp;\dots&amp;amp;s(t)exp(-j\vec{d}_{M-1}\cdot\vec{k})\end{bmatrix}^T$$
-  &lt;/div&gt;
-
-其中$\vec k = {{2\pi f} \over c}{\vec k_n}$，${\vec k_n}$表示入射信号方向的单位向量。&lt;br&gt;
-接受信号的二阶累积量为&lt;br&gt;
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${\mu _{l,k}} = cum({x_l}(t),{x_k}(t)) = E\{ {x_l}^*(t),{x_k}(t)\}  = \sigma _s^2\exp ( ({\vec d_l} - {\vec d_k}) \cdot \vec k)$$
-  &lt;/div&gt;
-
-接受信号的协方差矩阵为&lt;/p&gt;
-&lt;p&gt;$$
-\bf{R}=\begin{bmatrix}
-\mu_{0,0}&amp;amp;\mu_{0,1}&amp;amp;\dots&amp;amp;\mu_{0,M-1}\newline
-\mu_{1,0}&amp;amp;\mu_{1,1}&amp;amp;\dots&amp;amp;\mu_{1,M-1}\newline
-\vdots&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots\newline
-\mu_{M-1,0}&amp;amp;\mu_{M-1,1}&amp;amp;\dots&amp;amp;\mu_{M-1,M-1}\newline
-\end{bmatrix}
-$$&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;信号入射到任意阵列&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E4%BF%A1%E5%8F%B7%E5%85%A5%E5%B0%84%E5%88%B0%E4%BB%BB%E6%84%8F%E9%98%B5%E5%88%97.webp&#34;
-	width=&#34;400&#34;
-	height=&#34;318&#34;
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;信号入射到任意阵列&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;125&#34;
-		data-flex-basis=&#34;301px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;图中$r(t),x(t),y(t)$表示三个阵元接受到的信号，其中以$r(t)$处作为参考阵元，即$r(t)=s(t)$，图中$v(t)$表示离$r(t)$为$\vec d$的某点接受到的信号
-$$v(t) = s(t)\exp ( - j\vec k \cdot \vec d)$$
-$r(t)$和$v(t)$组成的二阶累积量为
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${\mu _{r,v}} = E\{ {r^*}(t)v(t)\}  = \sigma _s^2\exp ( - j\vec d \cdot \vec k)$$
-  &lt;/div&gt;
-
-$r(t),x(t),y(t)$组成的一种四阶累积量
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split}
-\mu_{r,x}^{r,y}&amp;amp;=cum\{r^*(t),x(t),r^*(t),y(t)\}\newline
-&amp;amp;=cum\{s(t),s(t),s(t),s(t)\}exp(-j(\vec{d}_x&amp;#43;\vec{d}_y)\cdot\vec{k})\newline
-&amp;amp;=\gamma_{4,s}exp(-j\vec{d}\cdot\vec{k})
-\end{split}$$
-  &lt;/div&gt;
-
-所以我们可以得到四阶累积量和二阶累积量的关系
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {r^*}(t)v(t)\}=\frac{\sigma_s^2}{\gamma_{4,s}}cum\{ {r^*}(t),x(t),{r^*}(t),y(t)\}$$
-$${\mu _{r,v}}=\frac{\sigma_s^2}{\gamma_{4,s}}\mu _{r,x}^{r,y}$$
-  &lt;/div&gt;
-
-也即是说，通过求实际阵元$r,x,y$的四阶累积量，我们得到虚拟阵元 v 和实际阵元 s 之间的二阶累积量。并且它们在集合上有如下关系
-$$\overrightarrow {rv}  = \overrightarrow {rx}  + \overrightarrow {ry} $$&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E5%9B%9B%E9%98%B6%E7%B4%AF%E7%A7%AF%E9%87%8F%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp&#34;
-	width=&#34;400&#34;
-	height=&#34;325&#34;
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;四阶累积量阵列扩展&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;123&#34;
-		data-flex-basis=&#34;295px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;同理可以得到
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$E\{ {r^*}(t)y(t)\}  = {{\sigma _s^2} \over {{\gamma _{4,s}}}}cum\{ {r^*}(t),y(t),{r^*}(t),r(t)\} $$
-$$E\{ {y^_}(t){v*4}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}(t),r(t),{y^_}(t),x(t)\} $$
-$$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}(t),x(t),{y^_}(t),r(t)\} $$
-  &lt;/div&gt;
-
-在前面所讨论的&lt;em&gt;基于四阶累计量的MUSIC算法&lt;/em&gt;中，我们用接受数据的四阶累积量组成了一个$M^2\times M^2$维的矩阵C，C中每一个元素都是由4个阵元的接受数据组成的四阶累积量$cum[{y_i},{y_j},y_k^*,y_l^*]$
-。&lt;br&gt;
-实际上它是对原本的M个阵元进行了扩展得到了一个虚拟阵列，每一个四阶累积量对应了经过这个虚拟阵列中两个阵元的接受数据组成的二阶累积量。所以$M^2\times M^2$维的矩阵C实际上是经过扩展后的虚拟阵列的协方差矩阵。&lt;br&gt;
-四阶累积量组成的$M^2\times M^2$维的矩阵C为
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$${{\bf{C}}} = ({{\bf{A}}} \otimes {\bf{A}}^_){{\bf{S}}}{({{\bf{A}}} \otimes {\bf{A}}^_)^H}$$
-  &lt;/div&gt;
-
-此时的流型矩阵为
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$\bf{A}\otimes\bf{A}^_=\begin{bmatrix}a(\theta_1)\otimes a^_(\theta_1)&amp;amp;\dots&amp;amp;a(\theta_N)\otimes a^\*(\theta_N) \end{bmatrix}$$
-  &lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/higer-order-statistics-doa-estimation/%E4%B8%89%E9%98%B5%E5%85%83%E7%9A%84%E9%98%B5%E5%88%97%E6%89%A9%E5%B1%95.webp&#34;
-	width=&#34;400&#34;
-	height=&#34;232&#34;
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;三阵元的阵列扩展&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;172&#34;
-		data-flex-basis=&#34;413px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;以一个三阵元的阵列为例，三个实际存在的阵元分别为$r,y,x$，经过四阶累积量扩展后的流型矩阵为
-
-  &lt;div class=&#34;equation leqno&#34; &gt;$$\begin{split}b(\theta)&amp;amp;=a(\theta)\otimes a^*(\theta)\newline
-&amp;amp;=\begin{bmatrix}1&amp;amp;exp(-jk\vec{d}_x)&amp;amp;exp(-jk\vec{d}_y)\end{bmatrix}^T\otimes
-\begin{bmatrix}1&amp;amp;exp(jk\vec{d}_x)&amp;amp;exp(jk\vec{d}_y)\end{bmatrix}^T\newline
-&amp;amp;=\begin{bmatrix}1&amp;amp;exp(jk\vec{d}_x)&amp;amp;exp(jk\vec{d}_y)&amp;amp;exp(-jk\vec{d}_y)&amp;amp;1&amp;amp;exp(-jk(\vec{d}_x-\vec{d}_y))&amp;amp;exp(-jk\vec{d}_y)&amp;amp;exp(-jk(\vec{d}_y-\vec{d}_x))&amp;amp;1\end{bmatrix}^T
-\end{split}$$
-  &lt;/div&gt;
-
-可以看出此时 3 个阵元的阵列经过四阶累积量扩展，得到的流型矩阵扩展为 9 个元素，其中除了实际存在的 3 个阵元外，还有 4 个虚拟阵元。&lt;br&gt;
-对于某些结构的阵列，经过四阶累积量的扩展，相当于加入了虚拟阵元，从而提升可估计的信号个数，提高了 DOA 估计算法的分辨率。&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>Manjaro Linux 安装 MATLAB</title>
         <link>https://xland.cyou/p/manjaro-linux-matlab/</link>
         <pubDate>Sun, 19 Mar 2023 18:40:57 +0800</pubDate>
         
         <guid>https://xland.cyou/p/manjaro-linux-matlab/</guid>
         <description>&lt;p&gt;最近从 Windows 换到了 Manjaro，日常离不开 MATLAB，虽然 MATLAB 官方提供了 Linux 版本，但是没有对 Manjaro 做适配，所以在安装 MATLAB 的过程中遇到了各种问题，以此记录。任何其他问题建议查阅&lt;a class=&#34;link&#34; href=&#34;wiki.archlinux.org&#34; &gt;ArchWiki&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;matlab-安装报错&#34;&gt;MATLAB 安装报错&lt;/h2&gt;
-&lt;p&gt;最初安装的时候，我下载的是 MATLAB 2020b 的 iso 镜像，即使按照 ArchWiki 的指导，移除了&lt;code&gt;libfreetype.so*&lt;/code&gt;还是会继续报错。后来换成 MATLAB 2022a 的镜像才成功安装。&lt;br&gt;
+&lt;h2 id=&#34;matlab-安装报错&#34;&gt;MATLAB 安装报错
+&lt;/h2&gt;&lt;p&gt;最初安装的时候，我下载的是 MATLAB 2020b 的 iso 镜像，即使按照 ArchWiki 的指导，移除了&lt;code&gt;libfreetype.so*&lt;/code&gt;还是会继续报错。后来换成 MATLAB 2022a 的镜像才成功安装。&lt;br&gt;
 进入 MATLAB 2022a 安装文件所处的文件夹，运行&lt;code&gt;./install&lt;/code&gt;，出现报错&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2177,8 +1950,8 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
 &lt;/div&gt;&lt;p&gt;此时再执行&lt;code&gt;./install&lt;/code&gt;就可以成功打开 MATLAB 安装引导。&lt;br&gt;
 解决方案来源：&lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/MATLAB#Unable_to_launch_the_MATLABWindow_application&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ArchWiki-MATLAB&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;matlab-界面内中文无法显示&#34;&gt;MATLAB 界面内中文无法显示&lt;/h2&gt;
-&lt;p&gt;安装完成，打开 MATLAB 却发现中文乱码，所有的中文都是方块。MATLAB 的界面是用 JAVA 开发的，中文无法显示是因为 JAVA 的中文字体配置问题。&lt;br&gt;
+&lt;h2 id=&#34;matlab-界面内中文无法显示&#34;&gt;MATLAB 界面内中文无法显示
+&lt;/h2&gt;&lt;p&gt;安装完成，打开 MATLAB 却发现中文乱码，所有的中文都是方块。MATLAB 的界面是用 JAVA 开发的，中文无法显示是因为 JAVA 的中文字体配置问题。&lt;br&gt;
 此时进入 MATLAB 的安装路径下的 jre 目录，我的 MATLAB 安装在&lt;code&gt;/usr/local/MATLAB/R2022a&lt;/code&gt;，进入该文件夹&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2229,8 +2002,8 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
 解决方案来源：&lt;a class=&#34;link&#34; href=&#34;https://developer.aliyun.com/article/398395&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux 下 Matlab 的安装和中文显示支持&lt;/a&gt;。&lt;br&gt;
 如果 MATLAB 的终端无法显示中文，可以在 MATLAB 内&lt;code&gt;主页-预设-字体&lt;/code&gt;下的两个字体选项里选择中文字体（如果设置无法保存请参考下节）。&lt;/p&gt;
-&lt;h2 id=&#34;matlab-的设置无法保存&#34;&gt;MATLAB 的设置无法保存&lt;/h2&gt;
-&lt;p&gt;在 MATLAB 的设置界面更改设置选项，发现退出 MATLAB 后在重新打开，所有的设置会恢复默认值，这是因为 MATLAB 无法使用/tmp 文件夹。新建文件夹&lt;/p&gt;
+&lt;h2 id=&#34;matlab-的设置无法保存&#34;&gt;MATLAB 的设置无法保存
+&lt;/h2&gt;&lt;p&gt;在 MATLAB 的设置界面更改设置选项，发现退出 MATLAB 后在重新打开，所有的设置会恢复默认值，这是因为 MATLAB 无法使用/tmp 文件夹。新建文件夹&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2265,8 +2038,8 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
 &lt;/div&gt;&lt;p&gt;注意替换 MATLAB 可执行文件的路径，以及 MATLAB 的 Icon 路径。&lt;br&gt;
 解决方案来源：&lt;a class=&#34;link&#34; href=&#34;https://ww2.mathworks.cn/matlabcentral/answers/1806255-why-aren-t-my-matlab-preferences-saved-on-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Why aren&amp;rsquo;t my MATLAB preferences saved on Linux?&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;matlab-无法打开文本编辑器&#34;&gt;MATLAB 无法打开文本编辑器&lt;/h2&gt;
-&lt;p&gt;在 MATLAB 中新建脚本或者打开脚本时，出现报错&lt;code&gt;Unable to open this file in the current system configuration&lt;/code&gt;，终端输出&lt;/p&gt;
+&lt;h2 id=&#34;matlab-无法打开文本编辑器&#34;&gt;MATLAB 无法打开文本编辑器
+&lt;/h2&gt;&lt;p&gt;在 MATLAB 中新建脚本或者打开脚本时，出现报错&lt;code&gt;Unable to open this file in the current system configuration&lt;/code&gt;，终端输出&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2304,8 +2077,8 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;解决方案来源：&lt;a class=&#34;link&#34; href=&#34;https://bbs.archlinux.org/viewtopic.php?id=275084&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;MATLAB cannot create or open script files&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;matlab-界面缩放过小&#34;&gt;MATLAB 界面缩放过小&lt;/h2&gt;
-&lt;p&gt;MATLAB 的界面、字体和图标在 Linux 下很小，无法随着系统缩放而改变。
+&lt;h2 id=&#34;matlab-界面缩放过小&#34;&gt;MATLAB 界面缩放过小
+&lt;/h2&gt;&lt;p&gt;MATLAB 的界面、字体和图标在 Linux 下很小，无法随着系统缩放而改变。
 以 MATLAB 界面放大 1.25 倍为例，在 MATLAB 终端输入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2319,8 +2092,8 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;解决方案来源：&lt;a class=&#34;link&#34; href=&#34;https://ww2.mathworks.cn/matlabcentral/answers/406956-does-matlab-support-high-dpi-screens-on-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Does MATLAB support High DPI screens on Linux?&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;matlab-无法使用-opengl-加速&#34;&gt;MATLAB 无法使用 OpenGL 加速&lt;/h2&gt;
-&lt;p&gt;MATLAB 绘图时终端输出&lt;/p&gt;
+&lt;h2 id=&#34;matlab-无法使用-opengl-加速&#34;&gt;MATLAB 无法使用 OpenGL 加速
+&lt;/h2&gt;&lt;p&gt;MATLAB 绘图时终端输出&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2385,15 +2158,15 @@ $$E\{ {v_1}^_(t){v*3}(t)\} = {{\sigma \_s^2} \over {{\gamma *{4,s}}}}cum\{ {y^_}
         <pubDate>Sat, 25 Feb 2023 15:54:25 +0800</pubDate>
         
         <guid>https://xland.cyou/p/uca-doa-ambiguity/</guid>
-        <description>&lt;h2 id=&#34;doa-估计的模糊问题&#34;&gt;DOA 估计的模糊问题&lt;/h2&gt;
-&lt;p&gt;一些经典的 DOA 估计算法，例如 MUSIC 算法，利用了阵列流型矩阵和噪声子空间的正交关系来确定入射信号的角度。因此在使用这些算法时，必须保证流型矩阵中各个导向矢量是线性无关的，这也是为什么要保证阵列天线的个数大于入射信号的个数。&lt;br&gt;
+        <description>&lt;h2 id=&#34;doa-估计的模糊问题&#34;&gt;DOA 估计的模糊问题
+&lt;/h2&gt;&lt;p&gt;一些经典的 DOA 估计算法，例如 MUSIC 算法，利用了阵列流型矩阵和噪声子空间的正交关系来确定入射信号的角度。因此在使用这些算法时，必须保证流型矩阵中各个导向矢量是线性无关的，这也是为什么要保证阵列天线的个数大于入射信号的个数。&lt;br&gt;
 在讨论阵列的相位模糊时，如果某一个导向矢量可以表示成其他 K 个导向矢量的线性组合
 $$a(\phi_k,\theta_k) = \sum_{i = 1}^K l_ia(\phi_i,\theta_i), \ \ {l_i} \ne 0$$
 则称该阵列存在&lt;strong&gt;K 阶模糊问题&lt;/strong&gt;，此时会存在测向模糊。当$K=1$时，称&lt;strong&gt;一阶模糊&lt;/strong&gt;或&lt;strong&gt;平凡模糊&lt;/strong&gt;。&lt;br&gt;
 高阶模糊的识别比较复杂，发生的条件也更加有限，一般只讨论一阶模糊的问题，即流型矩阵中的导向矢量存在
 $$a({\phi _i},{\theta _i}) = a({\phi _j},{\theta _j}),\ \ i \ne j$$&lt;/p&gt;
-&lt;h2 id=&#34;均匀线阵的相位模糊&#34;&gt;均匀线阵的相位模糊&lt;/h2&gt;
-&lt;p&gt;在讨论均匀线阵的模糊问题时，主要考虑阵元间距带来的相位模糊。&lt;br&gt;
+&lt;h2 id=&#34;均匀线阵的相位模糊&#34;&gt;均匀线阵的相位模糊
+&lt;/h2&gt;&lt;p&gt;在讨论均匀线阵的模糊问题时，主要考虑阵元间距带来的相位模糊。&lt;br&gt;
 设$\theta$为实际的入射信号，如果存在$a(\hat{\theta})=a(\theta)$，此时在运行 MUSIC 算法时，在$\theta$和$\hat{\theta}$都会出现谱线峰值。&lt;br&gt;
 在均匀线阵中 DOA 估计的角度范围为$[ - {\pi  \over 2},{\pi  \over 2}]$，根据导向矢量的表达式
 $$a(\theta ) = \begin{bmatrix} e^{j\omega {\tau_0}} &amp;amp; e^{j\omega {\tau_1}} &amp;amp; \dots &amp;amp; e^{j\omega {\tau_{M-1}}}\end{bmatrix}$$
@@ -2410,8 +2183,8 @@ $$sin\hat{\theta}=sin\theta+\frac{k}{d / \lambda},\ \ k \in Z$$
 &lt;li&gt;$d\ge \lambda$
 此时$|\frac{k}{d/\lambda}|\le |k|$，为使$(sin\theta+\frac{k}{d / \lambda})\in[-1,1]$，当$0\le sin\theta \le 1$时，k 至少还可以取-1；当$-1\le sin\theta \le 0$时，k 至少还可以取 1，所以此时一定会出现虚假谱峰。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;均匀圆阵的相位模糊&#34;&gt;均匀圆阵的相位模糊&lt;/h2&gt;
-&lt;p&gt;均匀圆阵的相位模糊问题，一般只出现在阵列孔径较大，而阵元数较少的情况下。&lt;br&gt;
+&lt;h2 id=&#34;均匀圆阵的相位模糊&#34;&gt;均匀圆阵的相位模糊
+&lt;/h2&gt;&lt;p&gt;均匀圆阵的相位模糊问题，一般只出现在阵列孔径较大，而阵元数较少的情况下。&lt;br&gt;
 考虑一维均匀圆阵，即只考虑方位角$\theta$，俯仰角取 90 度。&lt;br&gt;
 假设出现$a(\hat{\theta})=a(\theta)$，则在第 m 个阵元上有
 $$2\pi\frac{r}{\lambda}cos(\hat{\theta}-(m-1)\frac{2\pi}{M})=2\pi\frac{r}{\lambda}cos(\theta-(m-1)\frac{2\pi}{M})+2k\pi$$
@@ -2438,16 +2211,16 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
         <description>&lt;p&gt;ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目&lt;a class=&#34;link&#34; href=&#34;https://github.com/sebanc/brunch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;brunch&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;brunch能够利用ChromeOS的recovery文件，生成可用的系统镜像文件，从而在非Chromebook上安装原生ChromeOS。&lt;/p&gt;
-&lt;h2 id=&#34;硬件要求&#34;&gt;硬件要求&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;硬件要求&#34;&gt;硬件要求
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;x86_64架构，UEFI启动模式&lt;/li&gt;
 &lt;li&gt;Intel CPU至少第四代，或者AMD Ryzen&lt;/li&gt;
 &lt;li&gt;不支持独显，不支持虚拟机，不支持Arm&lt;/li&gt;
 &lt;li&gt;可以安装Linux子系统（WSL2）的Windows或者Linux系统&lt;/li&gt;
 &lt;li&gt;空闲空间至少有16G&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;安装chromeos到u盘&#34;&gt;安装ChromeOS到U盘&lt;/h2&gt;
-&lt;ol&gt;
+&lt;h2 id=&#34;安装chromeos到u盘&#34;&gt;安装ChromeOS到U盘
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;下载ChromeOS recovery文件。&lt;/p&gt;
 &lt;p&gt;参考自己的CPU型号，选择一个和自己电脑配置接近的chrome设备，在&lt;a class=&#34;link&#34; href=&#34;https://chromiumdash.appspot.com/serving-builds?deviceCategory=Chrome%20OS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2546,8 +2319,8 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;安装chromeos和windows双系统&#34;&gt;安装ChromeOS和Windows双系统&lt;/h2&gt;
-&lt;p&gt;获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。&lt;/p&gt;
+&lt;h2 id=&#34;安装chromeos和windows双系统&#34;&gt;安装ChromeOS和Windows双系统
+&lt;/h2&gt;&lt;p&gt;获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。&lt;/p&gt;
 &lt;p&gt;安装ChromeOS双系统同样通过在WSL终端中运行脚本完成，首先新建一个文件夹用于安装系统如&lt;code&gt;/mnt/d/brunch&lt;/code&gt;，表示在d盘新建文件夹brunch，然后输入命令。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2573,9 +2346,9 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
         <guid>https://xland.cyou/p/telegram-bot/</guid>
         <description>&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyTelegramBotAPI&lt;/a&gt;库。&lt;/p&gt;
-&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
-&lt;h3 id=&#34;创建bot&#34;&gt;创建Bot&lt;/h3&gt;
-&lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;准备&#34;&gt;准备
+&lt;/h2&gt;&lt;h3 id=&#34;创建bot&#34;&gt;创建Bot
+&lt;/h3&gt;&lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@BotFather&lt;/a&gt;，输入/newbot开始创建Bot。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/telegram-bot/newBot.webp&#34;
 	width=&#34;835&#34;
@@ -2593,8 +2366,8 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &gt;&lt;/p&gt;
 &lt;p&gt;等到BotFather回复后输入想要创建的Bot名称，BotFather再次回复后输入Bot的username，注意username必须以_bot结尾。&lt;/p&gt;
 &lt;p&gt;创建完Bot后就可以获取到Bot的token，Telegram Bot API的调用必须提供token。&lt;/p&gt;
-&lt;h3 id=&#34;安装pytelegrambotapi&#34;&gt;安装pyTelegramBotAPI&lt;/h3&gt;
-&lt;p&gt;使用pip安装pyTelegramBotAPI。&lt;/p&gt;
+&lt;h3 id=&#34;安装pytelegrambotapi&#34;&gt;安装pyTelegramBotAPI
+&lt;/h3&gt;&lt;p&gt;使用pip安装pyTelegramBotAPI。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2603,12 +2376,12 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pip&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pyTelegramBotAPI&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;bot的运行原理&#34;&gt;Bot的运行原理&lt;/h2&gt;
-&lt;p&gt;Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;bot的运行原理&#34;&gt;Bot的运行原理
+&lt;/h2&gt;&lt;p&gt;Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。&lt;/p&gt;
 &lt;p&gt;pyTelegramBotAPI是一个Python库，对Telegram Bot API进行了封装。使得开发者不用对API直接调用，使用pyTelegramBotAPI提供的函数和类就可以实现Telegram Bot API的各种功能。&lt;/p&gt;
-&lt;h2 id=&#34;pytelegrambotapi的基础使用&#34;&gt;pyTelegramBotAPI的基础使用&lt;/h2&gt;
-&lt;h3 id=&#34;新建bot对象&#34;&gt;新建bot对象&lt;/h3&gt;
-&lt;p&gt;pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。&lt;/p&gt;
+&lt;h2 id=&#34;pytelegrambotapi的基础使用&#34;&gt;pyTelegramBotAPI的基础使用
+&lt;/h2&gt;&lt;h3 id=&#34;新建bot对象&#34;&gt;新建bot对象
+&lt;/h3&gt;&lt;p&gt;pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2636,13 +2409,13 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;上述代码中表示对于用户发送给Bot的消息，定义一个&lt;code&gt;message_handler&lt;/code&gt;，这个&lt;code&gt;message_handler&lt;/code&gt;在用户发送了指令/start或/help时执行&lt;code&gt;send_welcome&lt;/code&gt;函数，产生对用户的回复”Howdy, how are you doing?“。&lt;/p&gt;
-&lt;h3 id=&#34;message对象&#34;&gt;message对象&lt;/h3&gt;
-&lt;p&gt;用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为&lt;a class=&#34;link&#34; href=&#34;https://core.telegram.org/bots/api#message&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;message对象&#34;&gt;message对象
+&lt;/h3&gt;&lt;p&gt;用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为&lt;a class=&#34;link&#34; href=&#34;https://core.telegram.org/bots/api#message&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;message&lt;/a&gt;的JSON对象，包含了消息内容，用户id等相关信息，详情可参考Telegram官方文档。&lt;/p&gt;
 &lt;p&gt;在上述给出的&lt;code&gt;message_handler&lt;/code&gt;示例代码中，&lt;code&gt;send_welcome&lt;/code&gt;函数传入参数message对象，&lt;code&gt;reply_to&lt;/code&gt;通过message中包含的属性&lt;code&gt;chat.id&lt;/code&gt;等获取用户id，从而向用户发送回复信息。&lt;/p&gt;
 &lt;p&gt;需要注意的是，由于&lt;code&gt;from&lt;/code&gt;是Python中的保留字，在pyTelegramBotAPI中，&lt;code&gt;message&lt;/code&gt;的属性名&lt;code&gt;from&lt;/code&gt;被替换为&lt;code&gt;from_user&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&#34;message-handler&#34;&gt;message handler&lt;/h3&gt;
-&lt;p&gt;message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。&lt;/p&gt;
+&lt;h3 id=&#34;message-handler&#34;&gt;message handler
+&lt;/h3&gt;&lt;p&gt;message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2658,40 +2431,40 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &lt;/div&gt;&lt;p&gt;在message handler的一般形式中，&lt;code&gt;filters&lt;/code&gt;用来对message进行筛选，使该&lt;code&gt;message_handler&lt;/code&gt;只对特定类型的message进行响应。&lt;code&gt;filters&lt;/code&gt;的一般格式为&lt;code&gt;name=argument&lt;/code&gt;，name表示筛选类型，argument代表筛选范围。例如&lt;code&gt;commands=[&#39;start&#39;, &#39;help&#39;]&lt;/code&gt;表示只对命令/start和/help做出反应。&lt;/p&gt;
 &lt;p&gt;官方给出的filters支持的类型如下：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;name&lt;/th&gt;
-&lt;th&gt;argument&lt;/th&gt;
-&lt;th&gt;Condition&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;content_types&lt;/td&gt;
-&lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
-&lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;regexp&lt;/td&gt;
-&lt;td&gt;a regular expression as a string&lt;/td&gt;
-&lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;commands&lt;/td&gt;
-&lt;td&gt;list of strings&lt;/td&gt;
-&lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;chat_types&lt;/td&gt;
-&lt;td&gt;list of chat types&lt;/td&gt;
-&lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;func&lt;/td&gt;
-&lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
-&lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;argument&lt;/th&gt;
+          &lt;th&gt;Condition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;content_types&lt;/td&gt;
+          &lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
+          &lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regexp&lt;/td&gt;
+          &lt;td&gt;a regular expression as a string&lt;/td&gt;
+          &lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;commands&lt;/td&gt;
+          &lt;td&gt;list of strings&lt;/td&gt;
+          &lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;chat_types&lt;/td&gt;
+          &lt;td&gt;list of chat types&lt;/td&gt;
+          &lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;func&lt;/td&gt;
+          &lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
+          &lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2781,8 +2554,8 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
         <pubDate>Mon, 09 Jan 2023 15:14:55 +0800</pubDate>
         
         <guid>https://xland.cyou/p/pytorch-model/</guid>
-        <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （三）网络模型" /&gt;&lt;h2 id=&#34;神经网络-neural-network&#34;&gt;神经网络 neural network&lt;/h2&gt;
-&lt;p&gt;神经网络由多个神经元互相连接组成，每个神经元是一个计算单元，位于同一层级的多个神经元组成一个网络层。一般的神经网络一般由三种网络层组成：输入层，隐藏层和输出层。&lt;/p&gt;
+        <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （三）网络模型" /&gt;&lt;h2 id=&#34;神经网络-neural-network&#34;&gt;神经网络 neural network
+&lt;/h2&gt;&lt;p&gt;神经网络由多个神经元互相连接组成，每个神经元是一个计算单元，位于同一层级的多个神经元组成一个网络层。一般的神经网络一般由三种网络层组成：输入层，隐藏层和输出层。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/pytorch-model/neutral-network.webp&#34;
 	width=&#34;820&#34;
 	height=&#34;415&#34;
@@ -2797,8 +2570,8 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 		data-flex-basis=&#34;474px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;神经网络的组成&#34;&gt;神经网络的组成&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;神经网络的组成&#34;&gt;神经网络的组成
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;激活函数 Activatioin Functioin&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。&lt;/p&gt;
@@ -2854,8 +2627,8 @@ $$&lt;/p&gt;
 &lt;p&gt;$$
 output=activation function(\sum{(weights * inputs) + bias})
 $$&lt;/p&gt;
-&lt;h2 id=&#34;在pytorch中建立神经网络&#34;&gt;在PyTorch中建立神经网络&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;torch.nn&lt;/code&gt;提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是&lt;code&gt;nn.Module&lt;/code&gt;的子类。&lt;/p&gt;
+&lt;h2 id=&#34;在pytorch中建立神经网络&#34;&gt;在PyTorch中建立神经网络
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;torch.nn&lt;/code&gt;提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是&lt;code&gt;nn.Module&lt;/code&gt;的子类。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2935,12 +2708,12 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Predicted class: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y_pred&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;nnlinear&#34;&gt;nn.Linear&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;nn.Linear&lt;/code&gt;随机初始化每层的权重和偏置，并储存在tensors中&lt;/p&gt;
-&lt;h3 id=&#34;nnflatten&#34;&gt;nn.Flatten&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;nn.Flatten&lt;/code&gt;将28x28的图片转换为一个784维的输入向量&lt;/p&gt;
-&lt;h3 id=&#34;nnsequential&#34;&gt;nn.Sequential&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;nn.Sequential&lt;/code&gt;是一个module的容器，数据经过&lt;code&gt;nn.Sequential&lt;/code&gt;后，会按照定义时的顺序，依次进行运算。&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;nnlinear&#34;&gt;nn.Linear
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nn.Linear&lt;/code&gt;随机初始化每层的权重和偏置，并储存在tensors中&lt;/p&gt;
+&lt;h3 id=&#34;nnflatten&#34;&gt;nn.Flatten
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nn.Flatten&lt;/code&gt;将28x28的图片转换为一个784维的输入向量&lt;/p&gt;
+&lt;h3 id=&#34;nnsequential&#34;&gt;nn.Sequential
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nn.Sequential&lt;/code&gt;是一个module的容器，数据经过&lt;code&gt;nn.Sequential&lt;/code&gt;后，会按照定义时的顺序，依次进行运算。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2967,10 +2740,10 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# nn.ReLU()，nn.Linear(512, 512)，nn.ReLU()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;nnrelu&#34;&gt;nn.ReLU&lt;/h3&gt;
-&lt;p&gt;激活函数ReLU&lt;/p&gt;
-&lt;h2 id=&#34;模型参数&#34;&gt;模型参数&lt;/h2&gt;
-&lt;p&gt;神经网络的参数包括每一个网络层的weight和bais，通过模型的&lt;code&gt;parameters()&lt;/code&gt;或&lt;code&gt;named_parameters()&lt;/code&gt;可以获取模型中的所有参数&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;nnrelu&#34;&gt;nn.ReLU
+&lt;/h3&gt;&lt;p&gt;激活函数ReLU&lt;/p&gt;
+&lt;h2 id=&#34;模型参数&#34;&gt;模型参数
+&lt;/h2&gt;&lt;p&gt;神经网络的参数包括每一个网络层的weight和bais，通过模型的&lt;code&gt;parameters()&lt;/code&gt;或&lt;code&gt;named_parameters()&lt;/code&gt;可以获取模型中的所有参数&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -2995,8 +2768,8 @@ $$&lt;/p&gt;
         <guid>https://xland.cyou/p/pytorch-dataset/</guid>
         <description>&lt;img src="https://xland.cyou/p/pytorch-tensor/pytorch.webp" alt="Featured image of post PyTorch基础 （二）Dataset和DataLoader" /&gt;&lt;p&gt;PyTorch provides two data primitives: &lt;code&gt;torch.utils.data.DataLoader&lt;/code&gt;and &lt;code&gt;torch.utils.data.Dataset&lt;/code&gt; that allow you to use pre-loaded datasets as well as your own data.
 &lt;code&gt;Dataset&lt;/code&gt;stores the samples and their corresponding labels, and &lt;code&gt;DataLoader&lt;/code&gt; wraps an iterable around the &lt;code&gt;Dataset&lt;/code&gt; to enable easy access to the samples.&lt;/p&gt;
-&lt;h2 id=&#34;loading-a-dataset&#34;&gt;loading a dataset&lt;/h2&gt;
-&lt;p&gt;load the &lt;strong&gt;Fashion-MNIST&lt;/strong&gt; dataset from TorchVision.
+&lt;h2 id=&#34;loading-a-dataset&#34;&gt;loading a dataset
+&lt;/h2&gt;&lt;p&gt;load the &lt;strong&gt;Fashion-MNIST&lt;/strong&gt; dataset from TorchVision.
 The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/index.html#module-torchvision&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;torchvision&lt;/a&gt; package consists of popular datasets, model architectures, and common image transformations for computer vision.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3045,8 +2818,8 @@ The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/inde
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;iterating-and-visualizing-the-dataset&#34;&gt;Iterating and Visualizing the Dataset&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h2 id=&#34;iterating-and-visualizing-the-dataset&#34;&gt;Iterating and Visualizing the Dataset
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -3096,8 +2869,8 @@ The &lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/vision/stable/inde
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;training-with-dataloaders&#34;&gt;Training with DataLoaders&lt;/h2&gt;
-&lt;p&gt;While training a model, we use &lt;code&gt;DataLoader&lt;/code&gt; to pass samples in &amp;ldquo;&lt;strong&gt;minibatches&lt;/strong&gt;&amp;rdquo;, reshuffle the data at every &lt;strong&gt;epoch&lt;/strong&gt; to reduce model overfitting, and use Python&amp;rsquo;s multiprocessing to speed up data retrieval.
+&lt;/div&gt;&lt;h2 id=&#34;training-with-dataloaders&#34;&gt;Training with DataLoaders
+&lt;/h2&gt;&lt;p&gt;While training a model, we use &lt;code&gt;DataLoader&lt;/code&gt; to pass samples in &amp;ldquo;&lt;strong&gt;minibatches&lt;/strong&gt;&amp;rdquo;, reshuffle the data at every &lt;strong&gt;epoch&lt;/strong&gt; to reduce model overfitting, and use Python&amp;rsquo;s multiprocessing to speed up data retrieval.
 To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings paraments:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;dataset&lt;/strong&gt;-dataset from which to load the data&lt;/li&gt;
@@ -3152,10 +2925,10 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;iter(object[, sentinel])&lt;/code&gt; 用于生成迭代器，传入参数object必须为支持迭代的对象，&lt;code&gt;next()&lt;/code&gt; 返回迭代器下一项。&lt;/p&gt;
-&lt;h2 id=&#34;normalizatioin&#34;&gt;Normalizatioin&lt;/h2&gt;
-&lt;p&gt;Normalization is a common data pre-processing technique that is applied to scale or transform the data to make sure there&amp;rsquo;s an equal learning contribution from each feature.&lt;/p&gt;
-&lt;h3 id=&#34;transforms&#34;&gt;Transforms&lt;/h3&gt;
-&lt;p&gt;We use &lt;strong&gt;transforms&lt;/strong&gt; to perform some manipulation of the data and make it suitable for training.
+&lt;h2 id=&#34;normalizatioin&#34;&gt;Normalizatioin
+&lt;/h2&gt;&lt;p&gt;Normalization is a common data pre-processing technique that is applied to scale or transform the data to make sure there&amp;rsquo;s an equal learning contribution from each feature.&lt;/p&gt;
+&lt;h3 id=&#34;transforms&#34;&gt;Transforms
+&lt;/h3&gt;&lt;p&gt;We use &lt;strong&gt;transforms&lt;/strong&gt; to perform some manipulation of the data and make it suitable for training.
 &lt;code&gt;transform&lt;/code&gt; to modify the features and &lt;code&gt;target_transform&lt;/code&gt; to modify the labels.
 &lt;code&gt;ToTensor&lt;/code&gt; converts a PIL image or NumPy &lt;code&gt;ndarray&lt;/code&gt; into a &lt;code&gt;FloatTensor&lt;/code&gt; and scales the image&amp;rsquo;s pixel intensity values in the range [0., 1.]&lt;/p&gt;
 </description>
@@ -3181,9 +2954,9 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 		data-flex-basis=&#34;553px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;创建tensor&#34;&gt;创建Tensor&lt;/h2&gt;
-&lt;h3 id=&#34;直接使用数据创建&#34;&gt;直接使用数据创建&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h2 id=&#34;创建tensor&#34;&gt;创建Tensor
+&lt;/h2&gt;&lt;h3 id=&#34;直接使用数据创建&#34;&gt;直接使用数据创建
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3199,8 +2972,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用numpy-array创建&#34;&gt;使用NumPy array创建&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用numpy-array创建&#34;&gt;使用NumPy array创建
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -3227,8 +3000,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;由于&lt;code&gt;np_array&lt;/code&gt;和&lt;code&gt;x_np&lt;/code&gt;使用相同的内存地址，两者的值会同时改变&lt;/p&gt;
-&lt;h3 id=&#34;使用其他tensor创建&#34;&gt;使用其他tensor创建&lt;/h3&gt;
-&lt;p&gt;tensor可以使用其他tensor的属性（包括tensor的shape，dtype）进行初始化&lt;/p&gt;
+&lt;h3 id=&#34;使用其他tensor创建&#34;&gt;使用其他tensor创建
+&lt;/h3&gt;&lt;p&gt;tensor可以使用其他tensor的属性（包括tensor的shape，dtype）进行初始化&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3249,8 +3022,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Random Tensor: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_rand&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;使用随机数或常数创建&#34;&gt;使用随机数或常数创建&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用随机数或常数创建&#34;&gt;使用随机数或常数创建
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3272,8 +3045,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Zeros Tensor: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros_tensor&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;tensor的属性&#34;&gt;Tensor的属性&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h2 id=&#34;tensor的属性&#34;&gt;Tensor的属性
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3290,8 +3063,8 @@ To use &lt;code&gt;DataLoader&lt;/code&gt;, we need to set the followings parame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;tensor的属性包括维度shape，数据类型dtype，和存储的设备类型device&lt;/p&gt;
-&lt;h2 id=&#34;tensor的操作&#34;&gt;Tensor的操作&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/docs/stable/torch.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;tensor的操作&#34;&gt;Tensor的操作
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pytorch.org/docs/stable/torch.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;tensor的参考文档&lt;/a&gt;
 tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要使用&lt;code&gt;.to&lt;/code&gt;设置&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3306,8 +3079,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;cuda&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;tensor索引&#34;&gt;Tensor索引&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor索引&#34;&gt;Tensor索引
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3325,8 +3098,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;tensor合并&#34;&gt;Tensor合并&lt;/h3&gt;
-&lt;p&gt;tensor的合并有两种方法&lt;code&gt;torch.cat&lt;/code&gt;和&lt;code&gt;torch.stack&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor合并&#34;&gt;Tensor合并
+&lt;/h3&gt;&lt;p&gt;tensor的合并有两种方法&lt;code&gt;torch.cat&lt;/code&gt;和&lt;code&gt;torch.stack&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3337,8 +3110,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;t1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stack&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;tensor的数学运算&#34;&gt;Tensor的数学运算&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor的数学运算&#34;&gt;Tensor的数学运算
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -3370,8 +3143,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mul&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;单元素的tensor&#34;&gt;单元素的tensor&lt;/h3&gt;
-&lt;p&gt;单元素的tensor可以使用&lt;code&gt;item()&lt;/code&gt;转变为Python中的数值量&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;单元素的tensor&#34;&gt;单元素的tensor
+&lt;/h3&gt;&lt;p&gt;单元素的tensor可以使用&lt;code&gt;item()&lt;/code&gt;转变为Python中的数值量&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3384,8 +3157,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg_item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;agg_item&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;自动赋值运算&#34;&gt;自动赋值运算&lt;/h3&gt;
-&lt;p&gt;自动赋值运算通常在方法后有 &lt;code&gt;_&lt;/code&gt; 作为后缀，在运算中会直接改变运算量&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;自动赋值运算&#34;&gt;自动赋值运算
+&lt;/h3&gt;&lt;p&gt;自动赋值运算通常在方法后有 &lt;code&gt;_&lt;/code&gt; 作为后缀，在运算中会直接改变运算量&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3398,9 +3171,9 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;tensor和numpy&#34;&gt;Tensor和NumPy&lt;/h3&gt;
-&lt;h4 id=&#34;tensor转为numpy-array&#34;&gt;Tensor转为NumPy array&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;tensor和numpy&#34;&gt;Tensor和NumPy
+&lt;/h3&gt;&lt;h4 id=&#34;tensor转为numpy-array&#34;&gt;Tensor转为NumPy array
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3415,8 +3188,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;tensor和NumPy array共享内存，两者会同时改变&lt;/p&gt;
-&lt;h4 id=&#34;numpy-array转为tensor&#34;&gt;NumPy array转为Tensor&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;numpy-array转为tensor&#34;&gt;NumPy array转为Tensor
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -3435,8 +3208,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
         
         <guid>https://xland.cyou/p/uninstall-vmware/</guid>
         <description>&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
-&lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理&lt;/h3&gt;
-&lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;
+&lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理
+&lt;/h3&gt;&lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3445,8 +3218,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;VMware-workstation&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-full-xxx-xxx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;exe&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clean&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;停止vmware相关的服务&#34;&gt;停止VMware相关的服务&lt;/h3&gt;
-&lt;p&gt;在Windows搜索框搜索&lt;code&gt;services.msc&lt;/code&gt;，打开“服务”，停止所有VMware相关的服务。&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;停止vmware相关的服务&#34;&gt;停止VMware相关的服务
+&lt;/h3&gt;&lt;p&gt;在Windows搜索框搜索&lt;code&gt;services.msc&lt;/code&gt;，打开“服务”，停止所有VMware相关的服务。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;VMware Authorization Service&lt;/li&gt;
 &lt;li&gt;VMware Authentication Service&lt;/li&gt;
@@ -3457,19 +3230,19 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;li&gt;VMware Workstation Server&lt;/li&gt;
 &lt;li&gt;VMware WSX Service&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;删除vmware-network-bridge-adapter&#34;&gt;删除VMware network bridge adapter&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id=&#34;删除vmware-network-bridge-adapter&#34;&gt;删除VMware network bridge adapter
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;打开&lt;code&gt;控制面板\网络和 Internet\网络连接&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;右键，属性，选择VMware Bridge Protocol，卸载&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;删除vmware相关的网络适配器&#34;&gt;删除VMware相关的网络适配器&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id=&#34;删除vmware相关的网络适配器&#34;&gt;删除VMware相关的网络适配器
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;打开&lt;code&gt;控制面板\硬件和声音\设备管理器&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;在“查看”工具栏勾选上“显示隐藏的设备”&lt;/li&gt;
 &lt;li&gt;点击“网络适配器”，卸载名字包含VMware的适配器&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;删除和vmware有关的文件夹&#34;&gt;删除和VMware有关的文件夹&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;删除和vmware有关的文件夹&#34;&gt;删除和VMware有关的文件夹
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;程序安装目录&lt;/li&gt;
 &lt;li&gt;数据目录&lt;br&gt;
 默认路径&lt;code&gt;C:\Program Files(X86)\VMware\&lt;/code&gt;&lt;/li&gt;
@@ -3512,8 +3285,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;删除环境变量&#34;&gt;删除环境变量&lt;/h3&gt;
-&lt;p&gt;打开系统环境变量设置，删除VMware Workstation的执行路径&lt;br&gt;
+&lt;h3 id=&#34;删除环境变量&#34;&gt;删除环境变量
+&lt;/h3&gt;&lt;p&gt;打开系统环境变量设置，删除VMware Workstation的执行路径&lt;br&gt;
 重启电脑，就完成了VMware Workstation的完全卸载。&lt;br&gt;
 各版本路径存在一些不同，具体参考&lt;a class=&#34;link&#34; href=&#34;https://kb.vmware.com/s/article/1308&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官方文档&lt;/a&gt;。&lt;/p&gt;
@@ -3546,11 +3319,11 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
         <pubDate>Sat, 12 Feb 2022 19:34:01 +0800</pubDate>
         
         <guid>https://xland.cyou/p/hugo_blog/</guid>
-        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h2&gt;
-&lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;关于hugo&#34;&gt;关于Hugo
+&lt;/h2&gt;&lt;p&gt;Hugo的便利之处在于，用户只需编辑markdown文档，Hugo会自动将markdown文档转换为网页。Hugo根据存放于content文件夹中的用户markdown文件，生成网页源文件，并存放于public文件夹中。&lt;/p&gt;
 &lt;p&gt;将博客部署到GitHub Pages，只需将Hugo生成的public文件夹推送到GitHub仓库。&lt;/p&gt;
-&lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages&lt;/h2&gt;
-&lt;p&gt;官方文档定义：&lt;/p&gt;
+&lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages
+&lt;/h2&gt;&lt;p&gt;官方文档定义：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3560,8 +3333,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;li&gt;User/Organization Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Project Pages (&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&amp;lt;PROJECT&amp;gt;/&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;创建user-page&#34;&gt;创建User Page&lt;/h2&gt;
-&lt;p&gt;在Github新建仓库时，个人页面的创建和项目页面不同：&lt;/p&gt;
+&lt;h2 id=&#34;创建user-page&#34;&gt;创建User Page
+&lt;/h2&gt;&lt;p&gt;在Github新建仓库时，个人页面的创建和项目页面不同：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;用于个人页面的仓库必须被用户（而不是组织）所有，并将仓库命名为&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;
@@ -3582,8 +3355,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;选择 &lt;strong&gt;Initialize this repository with a README&lt;/strong&gt; ，完成仓库创建&lt;/p&gt;
-&lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库&lt;/h2&gt;
-&lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
+&lt;h2 id=&#34;将源文件推送到仓库&#34;&gt;将源文件推送到仓库
+&lt;/h2&gt;&lt;p&gt;在创建的仓库中复制远程仓库地址&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/fmpic/imghost/20220214111325.png&#34;
 	
 	

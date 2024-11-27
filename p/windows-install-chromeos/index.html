@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ChromeOS是Google推出的桌面操作系统，只能搭载在Google认证的Chromebook上，但是我们可以借助开源项目brunch，在自己的电脑上安装ChromeOS'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="ChromeOS是Google推出的桌面操作系统，只能搭载在Google认证的Chromebook上，但是我们可以借助开源项目brunch，在自己的电脑上安装ChromeOS">
 <title>Windows下制作ChromeOS Live USB</title>
 
 <link rel='canonical' href='https://xland.cyou/p/windows-install-chromeos/'>
 
-<link rel="stylesheet" href="/scss/style.min.ed62dd08fec79fa2658d77dee09f11cbdf6f0d7fbaa1e1ad543cec325a9b7c2c.css"><meta property='og:title' content='Windows下制作ChromeOS Live USB'>
-<meta property='og:description' content='ChromeOS是Google推出的桌面操作系统，只能搭载在Google认证的Chromebook上，但是我们可以借助开源项目brunch，在自己的电脑上安装ChromeOS'>
+<link rel="stylesheet" href="/scss/style.min.746522fb10d2e56b69ae0b61d08c37bf122c7db244c0142fb83057719515a799.css"><meta property='og:title' content="Windows下制作ChromeOS Live USB">
+<meta property='og:description' content="ChromeOS是Google推出的桌面操作系统，只能搭载在Google认证的Chromebook上，但是我们可以借助开源项目brunch，在自己的电脑上安装ChromeOS">
 <meta property='og:url' content='https://xland.cyou/p/windows-install-chromeos/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ChromeOS' /><meta property='article:published_time' content='2023-02-05T11:02:40&#43;08:00'/><meta property='article:modified_time' content='2023-02-05T11:02:40&#43;08:00'/><meta property='og:image' content='https://xland.cyou/img/default.webp' />
@@ -17,17 +17,20 @@
     <meta name="twitter:image" content='https://xland.cyou/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-D132QYJBV0', { 'anonymize_ip': false });
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-D132QYJBV0');
+        }
+      </script>
     </head>
     <body class="
     article-page
@@ -71,7 +74,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/avatar_hudedeeb5aacf2bac0ca9893239364ccb5_12388_300x0_resize_q75_h2_box_2.webp" width="300"
+                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -87,7 +90,7 @@ if (!doNotTrack) {
             <h1 class="site-name"><a href="/">Zhiim&#39;s Blog</a></h1>
             <h2 class="site-description">总有想不明白的事</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -275,12 +278,12 @@ if (!doNotTrack) {
             </a>
         </li>
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -288,7 +291,7 @@ if (!doNotTrack) {
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -296,10 +299,11 @@ if (!doNotTrack) {
 
 
 
-                    <span>暗色模式</span>
-                </li>
-            
-        </div>
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -414,16 +418,16 @@ if (!doNotTrack) {
     <p>ChromeOS是Google推出的桌面操作系统，主打基于云应用的轻量操作系统，如今的ChromeOS已经支持Linux模式和直接运行Android应用。由于Google没有开放系统给Chromebook以外的设备，一般电脑安装ChromeOS可以借助开源项目<a class="link" href="https://github.com/sebanc/brunch"  target="_blank" rel="noopener"
     >brunch</a>。</p>
 <p>brunch能够利用ChromeOS的recovery文件，生成可用的系统镜像文件，从而在非Chromebook上安装原生ChromeOS。</p>
-<h2 id="硬件要求">硬件要求</h2>
-<ul>
+<h2 id="硬件要求">硬件要求
+</h2><ul>
 <li>x86_64架构，UEFI启动模式</li>
 <li>Intel CPU至少第四代，或者AMD Ryzen</li>
 <li>不支持独显，不支持虚拟机，不支持Arm</li>
 <li>可以安装Linux子系统（WSL2）的Windows或者Linux系统</li>
 <li>空闲空间至少有16G</li>
 </ul>
-<h2 id="安装chromeos到u盘">安装ChromeOS到U盘</h2>
-<ol>
+<h2 id="安装chromeos到u盘">安装ChromeOS到U盘
+</h2><ol>
 <li>
 <p>下载ChromeOS recovery文件。</p>
 <p>参考自己的CPU型号，选择一个和自己电脑配置接近的chrome设备，在<a class="link" href="https://chromiumdash.appspot.com/serving-builds?deviceCategory=Chrome%20OS"  target="_blank" rel="noopener"
@@ -522,8 +526,8 @@ if (!doNotTrack) {
 ></p>
 </li>
 </ol>
-<h2 id="安装chromeos和windows双系统">安装ChromeOS和Windows双系统</h2>
-<p>获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。</p>
+<h2 id="安装chromeos和windows双系统">安装ChromeOS和Windows双系统
+</h2><p>获取文件以及解压同“安装ChromeOS到Windows”中的步骤1、2、3。</p>
 <p>安装ChromeOS双系统同样通过在WSL终端中运行脚本完成，首先新建一个文件夹用于安装系统如<code>/mnt/d/brunch</code>，表示在d盘新建文件夹brunch，然后输入命令。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -570,18 +574,18 @@ if (!doNotTrack) {
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+        renderMathInElement(document.body, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -669,8 +673,8 @@ if (!doNotTrack) {
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -759,7 +763,7 @@ if (!doNotTrack) {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
