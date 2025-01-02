@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Zhiim&#39;s Blog</title>
-        <link>https://xland.cyou/page/</link>
+        <link>https://zhiim.github.io/page/</link>
         <description>Recent content in Pages on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 14 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://xland.cyou/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 14 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zhiim.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>About</title>
-        <link>https://xland.cyou/about/</link>
+        <link>https://zhiim.github.io/about/</link>
         <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://xland.cyou/about/</guid>
+        <guid>https://zhiim.github.io/about/</guid>
         <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
 在夏目漱石的《三四郎》里&lt;/p&gt;
 &lt;blockquote&gt;
@@ -29,18 +29,18 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https://xland.cyou/archives/</link>
+        <link>https://zhiim.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://xland.cyou/archives/</guid>
+        <guid>https://zhiim.github.io/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://xland.cyou/links/</link>
+        <link>https://zhiim.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://xland.cyou/links/</guid>
+        <guid>https://zhiim.github.io/links/</guid>
         <description>&lt;p&gt;交换友链请留言或者&lt;a class=&#34;link&#34; href=&#34;https://t.me/zhiim_0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Telegram&lt;/a&gt;联系，友链格式请参考本站信息：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -61,10 +61,10 @@
         </item>
         <item>
         <title>Search</title>
-        <link>https://xland.cyou/search/</link>
+        <link>https://zhiim.github.io/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://xland.cyou/search/</guid>
+        <guid>https://zhiim.github.io/search/</guid>
         <description></description>
         </item>
         

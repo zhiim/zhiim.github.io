@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>DOA 估计 on Zhiim&#39;s Blog</title>
-        <link>https://xland.cyou/tags/doa-%E4%BC%B0%E8%AE%A1/</link>
+        <link>https://zhiim.github.io/tags/doa-%E4%BC%B0%E8%AE%A1/</link>
         <description>Recent content in DOA 估计 on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 07 Jul 2024 10:59:51 +0800</lastBuildDate><atom:link href="https://xland.cyou/tags/doa-%E4%BC%B0%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 07 Jul 2024 10:59:51 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/doa-%E4%BC%B0%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>用于 DOA 估计的 Python 包 DOA_py</title>
-        <link>https://xland.cyou/p/python_package_doa_estimation/</link>
+        <link>https://zhiim.github.io/p/python_package_doa_estimation/</link>
         <pubDate>Sun, 07 Jul 2024 10:59:51 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/python_package_doa_estimation/</guid>
+        <guid>https://zhiim.github.io/p/python_package_doa_estimation/</guid>
         <description>&lt;h2 id=&#34;项目地址&#34;&gt;项目地址
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/zhiim/doa_py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;DOA_py: DOA etimation algorithms implemented in Python for ULA, UCA and broadband/wideband DOA estimation&lt;/a&gt;&lt;/p&gt;
@@ -192,7 +192,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/python_package_doa_estimation/img/music.webp&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/python_package_doa_estimation/img/music.webp&#34;
 	width=&#34;578&#34;
 	height=&#34;432&#34;
 	
@@ -233,7 +233,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plot_estimated_value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;estimates&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rmusic_estimates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ground_truth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/python_package_doa_estimation/img/rmusic.webp&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/python_package_doa_estimation/img/rmusic.webp&#34;
 	width=&#34;576&#34;
 	height=&#34;438&#34;
 	
@@ -274,7 +274,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plot_estimated_value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;estimates&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;esprit_estimates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ground_truth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/python_package_doa_estimation/img/esprit.webp&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/python_package_doa_estimation/img/esprit.webp&#34;
 	width=&#34;576&#34;
 	height=&#34;438&#34;
 	
@@ -319,7 +319,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plot_estimated_value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;estimates&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;omp_estimates&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ground_truth&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle_incidence&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://xland.cyou/p/python_package_doa_estimation/img/omp.webp&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/python_package_doa_estimation/img/omp.webp&#34;
 	width=&#34;576&#34;
 	height=&#34;438&#34;
 	
@@ -340,10 +340,10 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         </item>
         <item>
         <title>DOA估计中均匀圆阵的模糊问题</title>
-        <link>https://xland.cyou/p/uca-doa-ambiguity/</link>
+        <link>https://zhiim.github.io/p/uca-doa-ambiguity/</link>
         <pubDate>Sat, 25 Feb 2023 15:54:25 +0800</pubDate>
         
-        <guid>https://xland.cyou/p/uca-doa-ambiguity/</guid>
+        <guid>https://zhiim.github.io/p/uca-doa-ambiguity/</guid>
         <description>&lt;h2 id=&#34;doa-估计的模糊问题&#34;&gt;DOA 估计的模糊问题
 &lt;/h2&gt;&lt;p&gt;一些经典的 DOA 估计算法，例如 MUSIC 算法，利用了阵列流型矩阵和噪声子空间的正交关系来确定入射信号的角度。因此在使用这些算法时，必须保证流型矩阵中各个导向矢量是线性无关的，这也是为什么要保证阵列天线的个数大于入射信号的个数。&lt;br&gt;
 在讨论阵列的相位模糊时，如果某一个导向矢量可以表示成其他 K 个导向矢量的线性组合
