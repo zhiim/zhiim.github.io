@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程">
 <title>Arch Linux 配置 -- 驱动和软件安装</title>
 
-<link rel='canonical' href='http://localhost:1313/p/arch-linux-configuration-driver-and-software/'>
+<link rel='canonical' href='https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/'>
 
 <link rel="stylesheet" href="/scss/style.min.992319673492edfd77ed092bdc71e5e400f360e88f235bbb25e78fa03424a95f.css"><meta property='og:title' content="Arch Linux 配置 -- 驱动和软件安装">
 <meta property='og:description' content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程">
-<meta property='og:url' content='http://localhost:1313/p/arch-linux-configuration-driver-and-software/'>
+<meta property='og:url' content='https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='og:image' content='http://localhost:1313/p/arch-linux-configuration-driver-and-software/arch.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-08T17:40:07&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/arch.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Arch Linux 配置 -- 驱动和软件安装">
 <meta name="twitter:description" content="本文记录了Arch Linux安装后，安装显卡驱动、启用视频编解码加速、统一双系统蓝牙等系统配置的过程"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/p/arch-linux-configuration-driver-and-software/arch.webp' />
+    <meta name="twitter:image" content='https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/arch.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -158,7 +158,7 @@
             
                 <li>
                     <a 
-                        href='https://xland.cyou/index.xml'
+                        href='https://zhiim.github.io/index.xml'
                         target="_blank"
                         title="Rss"
                         rel="me"
@@ -482,11 +482,11 @@
     >ArchWiki-NVIDIA</a>安装，官方教程更加准确并且可能有更新。</p>
 <ul>
 <li>对于新于 <a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NV160"  target="_blank" rel="noopener"
-    >Turing (NV160/TU_XXX_)</a>系列的显卡，如果系统使用l<code>inux</code>内核则安装<code>nvidia-open</code>，如果使用其他内核则安装<code>nvidia-open-dkms</code>。</li>
+    >Turing (NV160/TU<em>XXX</em>)</a>系列的显卡，如果系统使用l<code>inux</code>内核则安装<code>nvidia-open</code>，如果使用其他内核则安装<code>nvidia-open-dkms</code>。</li>
 <li>对于较旧且新于 <a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NV110"  target="_blank" rel="noopener"
-    >Maxwell (NV110/GM_XXX_)</a>系列的显卡，如果使用<code>linux</code>内核则安装<code>nvidia</code>，如果使用<code>linux-lts</code>内核则安装<code>nvidia-lts</code>，其他内核则安装<code>nvidia-dkms</code>。</li>
+    >Maxwell (NV110/GM<em>XXX</em>)</a>系列的显卡，如果使用<code>linux</code>内核则安装<code>nvidia</code>，如果使用<code>linux-lts</code>内核则安装<code>nvidia-lts</code>，其他内核则安装<code>nvidia-dkms</code>。</li>
 <li><a class="link" href="https://nouveau.freedesktop.org/CodeNames.html#NVE0"  target="_blank" rel="noopener"
-    >Kepler (NVE0/GK_XXX_)</a>系列显卡，安装<code>nvidia-470xx-dkms</code>。</li>
+    >Kepler (NVE0/GK<em>XXX</em>)</a>系列显卡，安装<code>nvidia-470xx-dkms</code>。</li>
 <li>更旧的显卡安装开源驱动<code>nouveau</code>。</li>
 </ul>
 <p>如果需要32位应用支持，还需安装<code>lib32-nvidia-utils</code>。同时可以安装<code>nvidia-settings</code>用来对nvidia驱动进行一些配置。</p>
@@ -808,7 +808,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这时MATLAB安装界面可以正常运行，正常安装即可。</p>
-<p>如果在MATLAB运行时碰到问题，可以参考我之前写的<a class="link" href="https://xland.cyou/p/manjaro-linux-matlab/"  target="_blank" rel="noopener"
+<p>如果在MATLAB运行时碰到问题，可以参考我之前写的<a class="link" href="https://zhiim.zhiim.io/p/manjaro-linux-matlab/"  target="_blank" rel="noopener"
     >Manjaro Linux 安装 MATLAB</a>，里面记录了诸如设置无法保存、无法开启OpenGL加速等各种问题。</p>
 
 </section>
@@ -952,7 +952,7 @@
                 shortname: "zhiim",
                 siteName: "Zhiim's Blog",
                 apikey: "zISoMc3WnXMqUN9voGP2jQHZTwaUqeSTS6RBa7Zw0jX4MgGGRu5zwWjhMNoEnWdi",
-                api: "https://disqus.xland.cyou/",
+                api: "https://disqusjs-proxy-example-blush.vercel.app/",
                 
                 
             });
@@ -1099,7 +1099,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.6bd175a343c18b52398c0ef837c2b7ec54e17c02eea31f7f86b627d3cd27ed23.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

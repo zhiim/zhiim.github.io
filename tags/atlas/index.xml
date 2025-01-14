@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Atlas on Zhiim&#39;s Blog</title>
-        <link>http://localhost:1313/tags/atlas/</link>
+        <link>https://zhiim.github.io/tags/atlas/</link>
         <description>Recent content in Atlas on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 26 Sep 2023 12:08:08 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/atlas/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Sep 2023 12:08:08 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/atlas/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>在Atlas 200 DK中部署深度学习模型</title>
-        <link>http://localhost:1313/p/deploy-deep-learning-model-on-atlas/</link>
+        <link>https://zhiim.github.io/p/deploy-deep-learning-model-on-atlas/</link>
         <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
         
-        <guid>http://localhost:1313/p/deploy-deep-learning-model-on-atlas/</guid>
+        <guid>https://zhiim.github.io/p/deploy-deep-learning-model-on-atlas/</guid>
         <description>&lt;h2 id=&#34;环境准备&#34;&gt;环境准备
 &lt;/h2&gt;&lt;p&gt;本文部署的模型是使用TensorFlow2训练的ResNet网络，用于干扰信号识别，原本的模型文件将权重保存在&lt;code&gt;ResNet.h5&lt;/code&gt;中。&lt;/p&gt;
 &lt;p&gt;从模型文件中读取权重，并使用测试数据进行推理&lt;/p&gt;
