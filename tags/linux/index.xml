@@ -940,7 +940,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这时MATLAB安装界面可以正常运行，正常安装即可。&lt;/p&gt;
-&lt;p&gt;如果在MATLAB运行时碰到问题，可以参考我之前写的&lt;a class=&#34;link&#34; href=&#34;https://zhiim.zhiim.io/p/manjaro-linux-matlab/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;如果在MATLAB运行时碰到问题，可以参考我之前写的&lt;a class=&#34;link&#34; href=&#34;https://zhiim.github.io/p/manjaro-linux-matlab/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Manjaro Linux 安装 MATLAB&lt;/a&gt;，里面记录了诸如设置无法保存、无法开启OpenGL加速等各种问题。&lt;/p&gt;
 </description>
         </item>
