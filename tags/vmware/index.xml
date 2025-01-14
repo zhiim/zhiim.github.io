@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>VMware on Zhiim&#39;s Blog</title>
-        <link>https://zhiim.github.io/tags/vmware/</link>
+        <link>http://localhost:1313/tags/vmware/</link>
         <description>Recent content in VMware on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 19 Mar 2022 12:05:03 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/vmware/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 19 Mar 2022 12:05:03 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/vmware/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>完全卸载VMware Workstation</title>
-        <link>https://zhiim.github.io/p/uninstall-vmware/</link>
+        <link>http://localhost:1313/p/uninstall-vmware/</link>
         <pubDate>Sat, 19 Mar 2022 12:05:03 +0800</pubDate>
         
-        <guid>https://zhiim.github.io/p/uninstall-vmware/</guid>
+        <guid>http://localhost:1313/p/uninstall-vmware/</guid>
         <description>&lt;p&gt;之前没有通过引导卸载VMware Workstation，直接把整个文件夹删了，导致卸载不彻底。VMware在安装时会先检测是否已经安装，使得我的电脑无法再次安装VMware Workstation。后来按照官方的卸载教程试了几次都没成功，偶然发现系统环境变量中还有VMware的路径，才解决了这个问题。关键在于卸载后没有删除环境变量，所以被认为没有完全卸载VMware Workstation。&lt;/p&gt;
 &lt;h3 id=&#34;通过workstation安装程序自动清理&#34;&gt;通过Workstation安装程序自动清理
 &lt;/h3&gt;&lt;p&gt;下载对应版本的安装程序，在当前文件夹打开终端，在终端中输入&lt;/p&gt;

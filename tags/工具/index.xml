@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>工具 on Zhiim&#39;s Blog</title>
-        <link>https://zhiim.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
+        <link>http://localhost:1313/tags/%E5%B7%A5%E5%85%B7/</link>
         <description>Recent content in 工具 on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 12 Feb 2024 15:19:19 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 12 Feb 2024 15:19:19 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>通过Github Copilot获取GPT-4 API</title>
-        <link>https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/</link>
+        <link>http://localhost:1313/p/get-access-to-gpt4-with-github-copilot/</link>
         <pubDate>Mon, 12 Feb 2024 15:19:19 +0800</pubDate>
         
-        <guid>https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/</guid>
+        <guid>http://localhost:1313/p/get-access-to-gpt4-with-github-copilot/</guid>
         <description>&lt;p&gt;最近Github向GitHub Student Developer Pack添加了无限使用Github Copilot的权益，大大提升了学生包的价值，学生认证后即可免费体验这款强大的AI编程助手。Github Copilot的实际体验让人不得不感慨AI的强大，Copilot自动补全的代码大多数情况下可以直接使用，大大提升了编程效率；Copilot Chat也可以对各种编程问题提供非常有用的建议。&lt;/p&gt;
 &lt;p&gt;除此之外，由于Github Copilot的底层使用了GPT，我们也可以通过Copilot免费使用GPT-4。要实现这样的功能只需要使用开源项目copilot-gpt4-service获取GPT API，然后就可以通过GPT API搭配GPT前端来访问GPT-4，此外还可以使用GPT API部署AI学术助手gpt academic。&lt;/p&gt;
 &lt;ul&gt;
@@ -96,7 +96,7 @@
 &lt;li&gt;&lt;code&gt;API 域名&lt;/code&gt;填入&lt;code&gt;http://127.0.0.1:8080&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;模型&lt;/code&gt;选择&lt;code&gt;gpt-4&lt;/code&gt;或者GPT的其他任意版本&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/chatbox_setting.webp&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/get-access-to-gpt4-with-github-copilot/chatbox_setting.webp&#34;
 	width=&#34;748&#34;
 	height=&#34;441&#34;
 	
@@ -111,7 +111,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;为了验证API返回的结构是否来自GPT-4，可以提问&lt;code&gt;鲁迅为什么暴打周树人&lt;/code&gt;，GPT-3.5会胡说八道，GPT-4会给出正确答案。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/gpt4_or_not.webp&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/get-access-to-gpt4-with-github-copilot/gpt4_or_not.webp&#34;
 	width=&#34;853&#34;
 	height=&#34;216&#34;
 	
@@ -176,7 +176,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python main.py
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/gpt_academic.webp&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/get-access-to-gpt4-with-github-copilot/gpt_academic.webp&#34;
 	width=&#34;1849&#34;
 	height=&#34;923&#34;
 	

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Telegram Bot on Zhiim&#39;s Blog</title>
-        <link>https://zhiim.github.io/tags/telegram-bot/</link>
+        <link>http://localhost:1313/tags/telegram-bot/</link>
         <description>Recent content in Telegram Bot on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 10 Jan 2023 19:39:43 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/telegram-bot/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Jan 2023 19:39:43 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/telegram-bot/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Telegram Bot（一）Python库pyTelegramBotAPI的使用</title>
-        <link>https://zhiim.github.io/p/telegram-bot/</link>
+        <link>http://localhost:1313/p/telegram-bot/</link>
         <pubDate>Tue, 10 Jan 2023 19:39:43 +0800</pubDate>
         
-        <guid>https://zhiim.github.io/p/telegram-bot/</guid>
+        <guid>http://localhost:1313/p/telegram-bot/</guid>
         <description>&lt;p&gt;基于Python的Telegram Bot，使用&lt;a class=&#34;link&#34; href=&#34;https://github.com/eternnoir/pyTelegramBotAPI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pyTelegramBotAPI&lt;/a&gt;库。&lt;/p&gt;
 &lt;h2 id=&#34;准备&#34;&gt;准备
 &lt;/h2&gt;&lt;h3 id=&#34;创建bot&#34;&gt;创建Bot
 &lt;/h3&gt;&lt;p&gt;点击START私聊&lt;a class=&#34;link&#34; href=&#34;https://t.me/botfather&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@BotFather&lt;/a&gt;，输入/newbot开始创建Bot。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/telegram-bot/newBot.webp&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/telegram-bot/newBot.webp&#34;
 	width=&#34;835&#34;
 	height=&#34;635&#34;
 	
@@ -99,40 +99,40 @@
 &lt;/div&gt;&lt;p&gt;在message handler的一般形式中，&lt;code&gt;filters&lt;/code&gt;用来对message进行筛选，使该&lt;code&gt;message_handler&lt;/code&gt;只对特定类型的message进行响应。&lt;code&gt;filters&lt;/code&gt;的一般格式为&lt;code&gt;name=argument&lt;/code&gt;，name表示筛选类型，argument代表筛选范围。例如&lt;code&gt;commands=[&#39;start&#39;, &#39;help&#39;]&lt;/code&gt;表示只对命令/start和/help做出反应。&lt;/p&gt;
 &lt;p&gt;官方给出的filters支持的类型如下：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;name&lt;/th&gt;
-&lt;th&gt;argument&lt;/th&gt;
-&lt;th&gt;Condition&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;content_types&lt;/td&gt;
-&lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
-&lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;regexp&lt;/td&gt;
-&lt;td&gt;a regular expression as a string&lt;/td&gt;
-&lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;commands&lt;/td&gt;
-&lt;td&gt;list of strings&lt;/td&gt;
-&lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;chat_types&lt;/td&gt;
-&lt;td&gt;list of chat types&lt;/td&gt;
-&lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;func&lt;/td&gt;
-&lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
-&lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;argument&lt;/th&gt;
+          &lt;th&gt;Condition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;content_types&lt;/td&gt;
+          &lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
+          &lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regexp&lt;/td&gt;
+          &lt;td&gt;a regular expression as a string&lt;/td&gt;
+          &lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;commands&lt;/td&gt;
+          &lt;td&gt;list of strings&lt;/td&gt;
+          &lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;chat_types&lt;/td&gt;
+          &lt;td&gt;list of chat types&lt;/td&gt;
+          &lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;func&lt;/td&gt;
+          &lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
+          &lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
