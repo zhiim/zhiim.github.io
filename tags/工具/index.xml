@@ -67,7 +67,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;选择本地IP对应的API的地址&lt;code&gt;http://127.0.0.1:8080&lt;/code&gt;，在浏览器中打开，如果出现下方提示表示程序运行正常&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;获取github-copilot-plugin-token&#34;&gt;获取Github Copilot Plugin Token
 &lt;/h3&gt;&lt;p&gt;打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

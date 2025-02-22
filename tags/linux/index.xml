@@ -15,7 +15,8 @@
         <description>&lt;img src="https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 — Btrfs与系统备份" /&gt;&lt;h2 id=&#34;btrfs&#34;&gt;Btrfs
 &lt;/h2&gt;&lt;p&gt;更据官方文档的说明&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Btrfs拥有较多传统文件系统如Ext3/4不具有的高级功能，为我们日常文件系统使用和备份带来了便利。&lt;/p&gt;
 &lt;h3 id=&#34;写时复制copy-on-writecow&#34;&gt;写时复制（Copy-on-Write，CoW）
 &lt;/h3&gt;&lt;p&gt;Btrfs默认采用&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/copy-on-write&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

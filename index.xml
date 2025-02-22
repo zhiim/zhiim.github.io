@@ -399,7 +399,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;选择本地IP对应的API的地址&lt;code&gt;http://127.0.0.1:8080&lt;/code&gt;，在浏览器中打开，如果出现下方提示表示程序运行正常&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;获取github-copilot-plugin-token&#34;&gt;获取Github Copilot Plugin Token
 &lt;/h3&gt;&lt;p&gt;打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -959,7 +960,8 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         <description>&lt;img src="https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 — Btrfs与系统备份" /&gt;&lt;h2 id=&#34;btrfs&#34;&gt;Btrfs
 &lt;/h2&gt;&lt;p&gt;更据官方文档的说明&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Btrfs拥有较多传统文件系统如Ext3/4不具有的高级功能，为我们日常文件系统使用和备份带来了便利。&lt;/p&gt;
 &lt;h3 id=&#34;写时复制copy-on-writecow&#34;&gt;写时复制（Copy-on-Write，CoW）
 &lt;/h3&gt;&lt;p&gt;Btrfs默认采用&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/copy-on-write&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2429,40 +2431,40 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &lt;/div&gt;&lt;p&gt;在message handler的一般形式中，&lt;code&gt;filters&lt;/code&gt;用来对message进行筛选，使该&lt;code&gt;message_handler&lt;/code&gt;只对特定类型的message进行响应。&lt;code&gt;filters&lt;/code&gt;的一般格式为&lt;code&gt;name=argument&lt;/code&gt;，name表示筛选类型，argument代表筛选范围。例如&lt;code&gt;commands=[&#39;start&#39;, &#39;help&#39;]&lt;/code&gt;表示只对命令/start和/help做出反应。&lt;/p&gt;
 &lt;p&gt;官方给出的filters支持的类型如下：&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;name&lt;/th&gt;
-          &lt;th&gt;argument&lt;/th&gt;
-          &lt;th&gt;Condition&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;content_types&lt;/td&gt;
-          &lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
-          &lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;regexp&lt;/td&gt;
-          &lt;td&gt;a regular expression as a string&lt;/td&gt;
-          &lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;commands&lt;/td&gt;
-          &lt;td&gt;list of strings&lt;/td&gt;
-          &lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;chat_types&lt;/td&gt;
-          &lt;td&gt;list of chat types&lt;/td&gt;
-          &lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;func&lt;/td&gt;
-          &lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
-          &lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;argument&lt;/th&gt;
+&lt;th&gt;Condition&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;content_types&lt;/td&gt;
+&lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
+&lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;regexp&lt;/td&gt;
+&lt;td&gt;a regular expression as a string&lt;/td&gt;
+&lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;commands&lt;/td&gt;
+&lt;td&gt;list of strings&lt;/td&gt;
+&lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;chat_types&lt;/td&gt;
+&lt;td&gt;list of chat types&lt;/td&gt;
+&lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;func&lt;/td&gt;
+&lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
+&lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3299,13 +3301,16 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
         <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
 在夏目漱石的《三四郎》里&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;“时间，记忆与自我欺骗”&lt;/strong&gt;&lt;br&gt;
 出自石黑一雄的《长日将尽》，书中的史蒂文斯，总在遮遮掩掩，又总在回忆和幻想中自我欺骗。我想我即是如此。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;为什么，史蒂文斯先生，为什么，为什么，为什么你总是要去假装呢？”&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;为什么，史蒂文斯先生，为什么，为什么，为什么你总是要去假装呢？”&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;的确——我又何必再遮遮掩掩？——在那一刻，我的心都碎了。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;的确——我又何必再遮遮掩掩？——在那一刻，我的心都碎了。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -3320,7 +3325,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages
 &lt;/h2&gt;&lt;p&gt;官方文档定义：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github Pages&lt;/a&gt; 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;访问个人博客，应当设置成个人页面。&lt;/p&gt;
 &lt;ul&gt;
