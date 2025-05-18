@@ -6,19 +6,17 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/deploy-deep-learning-model-on-atlas/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="在Atlas 200 DK中部署深度学习模型">
+<link rel="stylesheet" href="/scss/style.min.0943f61af864206cd291acd53f743a96776f7cb3f8417dd67842983b40a83c4e.css"><meta property='og:title' content="在Atlas 200 DK中部署深度学习模型">
 <meta property='og:description' content="本文记录了将Tensorflow模型部署到Atlas 200 DK的过程，首先将SavedModel转换成ONNX模型，然后将ONNX模型转换为om格式，以及模型转换中遇到的一些问题">
 <meta property='og:url' content='https://zhiim.github.io/p/deploy-deep-learning-model-on-atlas/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Atlas' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-09-26T12:08:08&#43;08:00'/><meta property='article:modified_time' content='2023-09-26T12:08:08&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-09-26T12:08:08&#43;08:00'/><meta property='article:modified_time' content='2023-09-26T12:08:08&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="在Atlas 200 DK中部署深度学习模型">
 <meta name="twitter:description" content="本文记录了将Tensorflow模型部署到Atlas 200 DK的过程，首先将SavedModel转换成ONNX模型，然后将ONNX模型转换为om格式，以及模型转换中遇到的一些问题"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
       <script>
         var doNotTrack = false;
@@ -33,10 +31,6 @@
           gtag('config', 'G-D132QYJBV0');
         }
       </script>
-    
-  
-
-
     </head>
     <body class="
     article-page
@@ -80,7 +74,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
+                        <img src="/img/avatar_hu_c983396e5d9fc283.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -368,8 +362,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/tech/" style="background-color: #e66351; color: #fff;">
-                Tech
+            <a href="/categories/notes/" style="background-color: #e66351; color: #fff;">
+                Notes
             </a>
         
     </header>
@@ -860,8 +854,6 @@
     
     <section class="article-tags">
         
-            <a href="/tags/atlas/">Atlas</a>
-        
             <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
         
     </section>
@@ -896,7 +888,8 @@
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.body, {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -906,6 +899,7 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -1056,7 +1050,7 @@
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 

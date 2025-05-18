@@ -6,19 +6,17 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/pytorch-model/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="PyTorch基础 （三）网络模型">
+<link rel="stylesheet" href="/scss/style.min.0943f61af864206cd291acd53f743a96776f7cb3f8417dd67842983b40a83c4e.css"><meta property='og:title' content="PyTorch基础 （三）网络模型">
 <meta property='og:description' content="在PyTorch中建立神经网络模型，初始化和查看模型参数">
 <meta property='og:url' content='https://zhiim.github.io/p/pytorch-model/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PyTorch' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='article:modified_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/pytorch-tensor/pytorch.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='article:modified_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/pytorch-tensor/pytorch.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="PyTorch基础 （三）网络模型">
 <meta name="twitter:description" content="在PyTorch中建立神经网络模型，初始化和查看模型参数"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/p/pytorch-tensor/pytorch.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
       <script>
         var doNotTrack = false;
@@ -33,10 +31,6 @@
           gtag('config', 'G-D132QYJBV0');
         }
       </script>
-    
-  
-
-
     </head>
     <body class="
     article-page
@@ -80,7 +74,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
+                        <img src="/img/avatar_hu_c983396e5d9fc283.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -375,8 +369,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/tech/" style="background-color: #e66351; color: #fff;">
-                Tech
+            <a href="/categories/notes/" style="background-color: #e66351; color: #fff;">
+                Notes
             </a>
         
     </header>
@@ -458,43 +452,30 @@
 ></p>
 <h3 id="神经网络的组成">神经网络的组成
 </h3><ul>
-<li>
-<p><strong>激活函数 Activatioin Functioin</strong></p>
-<p>神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。</p>
+<li><strong>激活函数 Activatioin Functioin</strong>
+神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。
 <ul>
-<li>
-<p><em>Binary</em> 输入为正数时神经元输出1，输入为负数时神经元输出0</p>
-<p>$$
+<li><em>Binary</em> 输入为正数时神经元输出1，输入为负数时神经元输出0
+$$
 f(x)= \small\begin{cases} 0, &amp; \text{if } x &lt; 0 \newline 1, &amp; \text{if } x\geq 0 \end{cases}
-$$</p>
-</li>
-<li>
-<p><em>Sigmod</em> 由输入值得到0和1之间的连续输出值</p>
-<p>$$
+$$</li>
+<li><em>Sigmod</em> 由输入值得到0和1之间的连续输出值
+$$
 f(x) = {\large \frac{1}{1+e^{-x}}}
-$$</p>
-</li>
-<li>
-<p><em>Tanh</em> 由输入值得到-1和1之间的连续输出值</p>
-<p>$$
+$$</li>
+<li><em>Tanh</em> 由输入值得到-1和1之间的连续输出值
+$$
 f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$</p>
-</li>
-<li>
-<p><em>ReLU</em> 当输入为负数时输出为0，输入为正数时保持输入值</p>
-<p>$$
+$$</li>
+<li><em>ReLU</em> 当输入为负数时输出为0，输入为正数时保持输入值
+$$
 f(x)= \small \begin{cases} 0, &amp; \text{if } x &lt; 0\newline x, &amp; \text{if } x\geq 0 \end{cases}
-$$</p>
-</li>
+$$</li>
 </ul>
 </li>
-<li>
-<p><strong>权重 Weights</strong></p>
-<p>由前一神经元输出到下一神经元输入的加权</p>
-</li>
-<li>
-<p><strong>偏置 Bias</strong></p>
-</li>
+<li><strong>权重 Weights</strong>
+由前一神经元输出到下一神经元输入的加权</li>
+<li><strong>偏置 Bias</strong></li>
 </ul>
 <p><img src="/p/pytorch-model/neuron.webp"
 	width="1240"
@@ -652,7 +633,7 @@ $$</p>
     
     <section class="article-tags">
         
-            <a href="/tags/pytorch/">PyTorch</a>
+            <a href="/tags/python/">Python</a>
         
             <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
         
@@ -688,7 +669,8 @@ $$</p>
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.body, {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -698,6 +680,7 @@ $$</p>
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -755,6 +738,28 @@ $$</p>
             
                 
 <article class="">
+    <a href="/p/python_package_doa_estimation/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 用于 DOA 估计的 Python 包 DOA_py"
+                    data-key="python_package_doa_estimation" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">用于 DOA 估计的 Python 包 DOA_py</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/deploy-deep-learning-model-on-atlas/">
         
         
@@ -770,6 +775,28 @@ $$</p>
 
         <div class="article-details">
             <h2 class="article-title">在Atlas 200 DK中部署深度学习模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/telegram-bot/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post Telegram Bot（一）Python库pyTelegramBotAPI的使用"
+                    data-key="telegram-bot" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Telegram Bot（一）Python库pyTelegramBotAPI的使用</h2>
         </div>
     </a>
 </article>
@@ -851,7 +878,7 @@ $$</p>
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 

@@ -6,7 +6,156 @@
         <description>Recent content in Posts on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 07 Jul 2024 10:59:51 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 May 2025 16:32:02 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>机器学习 02 线性分类器和感知机</title>
+        <link>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</link>
+        <pubDate>Sun, 18 May 2025 16:32:02 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 02 线性分类器和感知机" /&gt;&lt;h2 id=&#34;分类器&#34;&gt;分类器
+&lt;/h2&gt;&lt;p&gt;假设我们有 $n$ 个观测样例（bofservations），每个观测样例有 $d$ 个特征（features），有些样例属于类别 C，有些不是&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/decision_boudaries.webp&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;决策边界&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;决策边界&lt;/em&gt;：分类器选择的可以将样例分成不同类别的边界&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;过拟合&lt;/em&gt;：决策边界拟合得太好，以至于无法用于未来分类&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;决策函数&lt;/em&gt;：将一个点映射到一个值，例如&lt;/p&gt;
+&lt;p&gt;$$
+\begin{matrix}
+f(x) &amp;gt; 0 &amp;amp; &amp;amp; \text{if } x \in \text{class } C; \\
+f(x) \le 0 &amp;amp; &amp;amp; \text{if } x \notin \text{class } C;
+\end{matrix}
+$$&lt;/p&gt;
+&lt;p&gt;则分类边界为 ${x\in \mathbb{R}^{d}: f(x)=0}$&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/dc_2.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;分类边界&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;linear-classifier-math&#34;&gt;Linear Classifier Math
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;内积&lt;/em&gt;：$x\cdot y = x_1y_1+x_2y_2+\dots + x_dy_d$，也可以写成 $x^Ty$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;欧拉范数&lt;/em&gt;：$|x|=\sqrt{x\cdot x}=\sqrt{x_1^2 + x_2^2 + \dots + x_d^2}$。可以表示向量 $x$ 的欧拉长度 (Euclidean length)。&lt;/p&gt;
+&lt;p&gt;归一化向量 $x$： ${x}/{|x|}$&lt;/p&gt;
+&lt;p&gt;给定一个线性决策函数 $f(x) = w \cdot x + \alpha$，决策边界为 $H = {x: w \cdot x = -\alpha}$。集合 $H$ 被称为&lt;em&gt;超平面&lt;/em&gt;（hyperplane）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;超平面是 $d-1$ 维，并且分割了一个 $d$ 维空间&lt;/li&gt;
+&lt;li&gt;它是无线且平展的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$w$ 和超平面 $H$ 上的任何直面正交。所以 $w$ 被称为 $H$ 的&lt;em&gt;法线&lt;/em&gt;（normal vector）。如果 $w$ 是一个单位向量，那么 $f(x) = w \cdot x + \alpha$ 是 $x$ 到 $H$ 的有符号距离（singed distance）。此外，$H$ 到原点的距离为 $\alpha$。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/normal_vector.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;平面的法线&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如果存在一个超平面将所有的训练点分类，则它们&lt;em&gt;线性可分&lt;/em&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;一个简单的分类器&#34;&gt;一个简单的分类器
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;质心法&lt;/em&gt;（Centroid method）：首先分别计算属于了类别 $C$ 的所有点的平均 $\mu_C$，以及所有不属于 $C$ 的平均 $\mu_X$。则决策函数可以表示为
+$$f(x) = (\mu_C - \mu_X) \cdot x - (\mu_C - \mu_X) \cdot \frac{\mu_C + \mu_X}{2}$$&lt;/p&gt;
+&lt;p&gt;质心法非常简洁，但是也只能处理简单的情况。例如下图中的数据点无法使用质心法正确分类。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/centorid_method.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;质心法失效的情况&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;感知机&#34;&gt;感知机
+&lt;/h2&gt;&lt;p&gt;假设有 $n$ 个采样点数据 $X_1, X_2,\dots,X_n$。对于每个采样点，对应的&lt;em&gt;标签&lt;/em&gt;为&lt;/p&gt;
+&lt;p&gt;$$
+y_i = \begin{cases}
+\begin{matrix}
+1 &amp;amp; \text{if } X_i \in \text{class C} \\
+-1 &amp;amp; \text{if } X_i \notin \text{class C}
+\end{matrix}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;为了简化讨论，这里只考虑经过原点的决策边界。于是我们寻找决策边界的目标可以转换成寻找一个权重 $w$，使其满足&lt;/p&gt;
+&lt;p&gt;$$
+\begin{matrix}
+X_i \cdot w \ge 0 &amp;amp; &amp;amp; \text{if } y_i = 1 \\
+X_i \cdot w \le 0 &amp;amp; &amp;amp; \text{if } y_i = -1
+\end{matrix}
+$$&lt;/p&gt;
+&lt;p&gt;等价为
+$$y_iX_i\cdot w \ge 0$$
+上式即为&lt;em&gt;约束&lt;/em&gt;（constraint）。&lt;/p&gt;
+&lt;p&gt;为了找到最优的 $w$，我们定义一个&lt;em&gt;风险函数&lt;/em&gt;$R$，如果约束被违背，则风险函数为正值，然后通过最小化 $R$ 选择最优 $w$。&lt;/p&gt;
+&lt;p&gt;首先定义&lt;em&gt;损失函数&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$$
+L(\hat{y}, y_i) = \begin{cases}
+\begin{matrix}
+0 &amp;amp; &amp;amp; \text{if } y_i\hat{y} \ge 0 \\
+-y_i \hat{y} &amp;amp; &amp;amp; \text{otherwise}
+\end{matrix}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;其中 $\hat{y}$ 是分类器的预测值。&lt;/p&gt;
+&lt;p&gt;于是，我们可以定义风险函数（即优化问题的目标函数）为
+$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$
+所有寻找超平面的问题变为一个最优化问题：寻找 $w$ ，使得 $R(w)$ 最小。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 01 引言</title>
+        <link>https://zhiim.github.io/p/ml_01_introduction/</link>
+        <pubDate>Sun, 18 May 2025 15:40:22 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_01_introduction/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 01 引言" /&gt;&lt;p&gt;本人 &lt;a class=&#34;link&#34; href=&#34;https://people.eecs.berkeley.edu/~jrs/189/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CS 189/289A Introduction to Machine Learning&lt;/a&gt; Spring 2025 的学习笔记，仅供参考。&lt;/p&gt;
+&lt;h2 id=&#34;分类问题&#34;&gt;分类问题
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;收集具有标签的训练样本&lt;/li&gt;
+&lt;li&gt;预测新样本的类别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_01_introduction/classifier.webp&#34;
+	width=&#34;906&#34;
+	height=&#34;421&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;两种不同分类器的决策边界&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;516px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;训练验证和测试&#34;&gt;训练、验证和测试
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;我们拥有一些设置好标签的数据&lt;/li&gt;
+&lt;li&gt;从数据中取出一部分作为&lt;em&gt;验证集&lt;/em&gt;（通常 20），其余作为&lt;em&gt;训练集&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;训练一个或者多个分类器：训练多种不同算法，或者具有不同超参数的同一算法&lt;/li&gt;
+&lt;li&gt;使用验证集选出具有最低验证误差的分类器&lt;/li&gt;
+&lt;li&gt;使用新的数据测试算法的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;训练误差&lt;/em&gt;：训练集中分类错误的比例&lt;br&gt;
+&lt;em&gt;验证误差&lt;/em&gt;：验证集中分类错误的比例&lt;br&gt;
+&lt;em&gt;测试误差&lt;/em&gt;：测试集中分类错误的比例&lt;/p&gt;
+&lt;p&gt;大多数机器学习算法的一些超参数改变会造成欠拟合或者过拟合&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_01_introduction/overfitting.webp&#34;
+	width=&#34;811&#34;
+	height=&#34;540&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;k邻接算法中超参数k的改变带来的影响&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;过拟合&lt;/em&gt;：当验证/测试误差恶化时，原因是分类器对异常值或其他虚假模式变得过于敏感。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;欠拟合&lt;/em&gt;：当验证/测试误差恶化时，原因是分类器不够灵活，无法拟合模式。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;异常值&lt;/em&gt;：具有非典型标签的点（例如，富裕的借款人仍然违约）。增加过拟合的风险。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>用于 DOA 估计的 Python 包 DOA_py</title>
         <link>https://zhiim.github.io/p/python_package_doa_estimation/</link>
         <pubDate>Sun, 07 Jul 2024 10:59:51 +0800</pubDate>
@@ -399,8 +548,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;选择本地IP对应的API的地址&lt;code&gt;http://127.0.0.1:8080&lt;/code&gt;，在浏览器中打开，如果出现下方提示表示程序运行正常&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;获取github-copilot-plugin-token&#34;&gt;获取Github Copilot Plugin Token
 &lt;/h3&gt;&lt;p&gt;打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -960,8 +1108,7 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
         <description>&lt;img src="https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/arch.webp" alt="Featured image of post Arch Linux 配置 — Btrfs与系统备份" /&gt;&lt;h2 id=&#34;btrfs&#34;&gt;Btrfs
 &lt;/h2&gt;&lt;p&gt;更据官方文档的说明&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;BTRFS is a modern copy on write (COW) filesystem for Linux aimed at implementing advanced features while also focusing on fault tolerance, repair and easy administration.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Btrfs拥有较多传统文件系统如Ext3/4不具有的高级功能，为我们日常文件系统使用和备份带来了便利。&lt;/p&gt;
 &lt;h3 id=&#34;写时复制copy-on-writecow&#34;&gt;写时复制（Copy-on-Write，CoW）
 &lt;/h3&gt;&lt;p&gt;Btrfs默认采用&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/copy-on-write&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2431,40 +2578,40 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &lt;/div&gt;&lt;p&gt;在message handler的一般形式中，&lt;code&gt;filters&lt;/code&gt;用来对message进行筛选，使该&lt;code&gt;message_handler&lt;/code&gt;只对特定类型的message进行响应。&lt;code&gt;filters&lt;/code&gt;的一般格式为&lt;code&gt;name=argument&lt;/code&gt;，name表示筛选类型，argument代表筛选范围。例如&lt;code&gt;commands=[&#39;start&#39;, &#39;help&#39;]&lt;/code&gt;表示只对命令/start和/help做出反应。&lt;/p&gt;
 &lt;p&gt;官方给出的filters支持的类型如下：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;name&lt;/th&gt;
-&lt;th&gt;argument&lt;/th&gt;
-&lt;th&gt;Condition&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;content_types&lt;/td&gt;
-&lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
-&lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;regexp&lt;/td&gt;
-&lt;td&gt;a regular expression as a string&lt;/td&gt;
-&lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;commands&lt;/td&gt;
-&lt;td&gt;list of strings&lt;/td&gt;
-&lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;chat_types&lt;/td&gt;
-&lt;td&gt;list of chat types&lt;/td&gt;
-&lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;func&lt;/td&gt;
-&lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
-&lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;argument&lt;/th&gt;
+          &lt;th&gt;Condition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;content_types&lt;/td&gt;
+          &lt;td&gt;list of strings (default [&amp;rsquo;text&amp;rsquo;])&lt;/td&gt;
+          &lt;td&gt;True if message.content_type is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;regexp&lt;/td&gt;
+          &lt;td&gt;a regular expression as a string&lt;/td&gt;
+          &lt;td&gt;True if re.search(regexp_arg) returns True and message.content_type == &amp;rsquo;text&amp;rsquo; (See https://docs.python.org/2/library/re.html)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;commands&lt;/td&gt;
+          &lt;td&gt;list of strings&lt;/td&gt;
+          &lt;td&gt;True if message.content_type == &amp;rsquo;text&amp;rsquo; and message.text starts with a command that is in the list of strings.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;chat_types&lt;/td&gt;
+          &lt;td&gt;list of chat types&lt;/td&gt;
+          &lt;td&gt;True if message.chat.type in your filter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;func&lt;/td&gt;
+          &lt;td&gt;a function (lambda or function reference)&lt;/td&gt;
+          &lt;td&gt;True if the lambda or function reference returns True&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2572,43 +2719,30 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;神经网络的组成&#34;&gt;神经网络的组成
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;激活函数 Activatioin Functioin&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。&lt;/p&gt;
+&lt;li&gt;&lt;strong&gt;激活函数 Activatioin Functioin&lt;/strong&gt;
+神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Binary&lt;/em&gt; 输入为正数时神经元输出1，输入为负数时神经元输出0&lt;/p&gt;
-&lt;p&gt;$$
+&lt;li&gt;&lt;em&gt;Binary&lt;/em&gt; 输入为正数时神经元输出1，输入为负数时神经元输出0
+$$
 f(x)= \small\begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0 \newline 1, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Sigmod&lt;/em&gt; 由输入值得到0和1之间的连续输出值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Sigmod&lt;/em&gt; 由输入值得到0和1之间的连续输出值
+$$
 f(x) = {\large \frac{1}{1+e^{-x}}}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Tanh&lt;/em&gt; 由输入值得到-1和1之间的连续输出值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Tanh&lt;/em&gt; 由输入值得到-1和1之间的连续输出值
+$$
 f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;ReLU&lt;/em&gt; 当输入为负数时输出为0，输入为正数时保持输入值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;ReLU&lt;/em&gt; 当输入为负数时输出为0，输入为正数时保持输入值
+$$
 f(x)= \small \begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0\newline x, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/p&gt;
-&lt;/li&gt;
+$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;权重 Weights&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由前一神经元输出到下一神经元输入的加权&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;偏置 Bias&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权重 Weights&lt;/strong&gt;
+由前一神经元输出到下一神经元输入的加权&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;偏置 Bias&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/pytorch-model/neuron.webp&#34;
 	width=&#34;1240&#34;
@@ -3304,8 +3438,7 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
 &lt;h2 id=&#34;关于github-pages&#34;&gt;关于Github Pages
 &lt;/h2&gt;&lt;p&gt;官方文档定义：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github Pages&lt;/a&gt; 有两种形式，个人/组织页面和项目页面，两者访问时的url不同，为了能够使用&lt;code&gt;https://&amp;lt;USERNAME|ORGANIZATION&amp;gt;.github.io/&lt;/code&gt;访问个人博客，应当设置成个人页面。&lt;/p&gt;
 &lt;ul&gt;

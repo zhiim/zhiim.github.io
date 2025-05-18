@@ -457,43 +457,30 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;神经网络的组成&#34;&gt;神经网络的组成
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;激活函数 Activatioin Functioin&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。&lt;/p&gt;
+&lt;li&gt;&lt;strong&gt;激活函数 Activatioin Functioin&lt;/strong&gt;
+神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Binary&lt;/em&gt; 输入为正数时神经元输出1，输入为负数时神经元输出0&lt;/p&gt;
-&lt;p&gt;$$
+&lt;li&gt;&lt;em&gt;Binary&lt;/em&gt; 输入为正数时神经元输出1，输入为负数时神经元输出0
+$$
 f(x)= \small\begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0 \newline 1, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Sigmod&lt;/em&gt; 由输入值得到0和1之间的连续输出值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Sigmod&lt;/em&gt; 由输入值得到0和1之间的连续输出值
+$$
 f(x) = {\large \frac{1}{1+e^{-x}}}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Tanh&lt;/em&gt; 由输入值得到-1和1之间的连续输出值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Tanh&lt;/em&gt; 由输入值得到-1和1之间的连续输出值
+$$
 f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;ReLU&lt;/em&gt; 当输入为负数时输出为0，输入为正数时保持输入值&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;ReLU&lt;/em&gt; 当输入为负数时输出为0，输入为正数时保持输入值
+$$
 f(x)= \small \begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0\newline x, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/p&gt;
-&lt;/li&gt;
+$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;权重 Weights&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由前一神经元输出到下一神经元输入的加权&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;偏置 Bias&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权重 Weights&lt;/strong&gt;
+由前一神经元输出到下一神经元输入的加权&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;偏置 Bias&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/pytorch-model/neuron.webp&#34;
 	width=&#34;1240&#34;

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>机器学习 on Zhiim&#39;s Blog</title>
+        <link>https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+        <description>Recent content in 机器学习 on Zhiim&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 18 May 2025 16:32:02 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>机器学习 02 线性分类器和感知机</title>
+        <link>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</link>
+        <pubDate>Sun, 18 May 2025 16:32:02 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 02 线性分类器和感知机" /&gt;&lt;h2 id=&#34;分类器&#34;&gt;分类器
+&lt;/h2&gt;&lt;p&gt;假设我们有 $n$ 个观测样例（bofservations），每个观测样例有 $d$ 个特征（features），有些样例属于类别 C，有些不是&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/decision_boudaries.webp&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;决策边界&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;决策边界&lt;/em&gt;：分类器选择的可以将样例分成不同类别的边界&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;过拟合&lt;/em&gt;：决策边界拟合得太好，以至于无法用于未来分类&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;决策函数&lt;/em&gt;：将一个点映射到一个值，例如&lt;/p&gt;
+&lt;p&gt;$$
+\begin{matrix}
+f(x) &amp;gt; 0 &amp;amp; &amp;amp; \text{if } x \in \text{class } C; \\
+f(x) \le 0 &amp;amp; &amp;amp; \text{if } x \notin \text{class } C;
+\end{matrix}
+$$&lt;/p&gt;
+&lt;p&gt;则分类边界为 ${x\in \mathbb{R}^{d}: f(x)=0}$&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/dc_2.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;分类边界&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;linear-classifier-math&#34;&gt;Linear Classifier Math
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;内积&lt;/em&gt;：$x\cdot y = x_1y_1+x_2y_2+\dots + x_dy_d$，也可以写成 $x^Ty$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;欧拉范数&lt;/em&gt;：$|x|=\sqrt{x\cdot x}=\sqrt{x_1^2 + x_2^2 + \dots + x_d^2}$。可以表示向量 $x$ 的欧拉长度 (Euclidean length)。&lt;/p&gt;
+&lt;p&gt;归一化向量 $x$： ${x}/{|x|}$&lt;/p&gt;
+&lt;p&gt;给定一个线性决策函数 $f(x) = w \cdot x + \alpha$，决策边界为 $H = {x: w \cdot x = -\alpha}$。集合 $H$ 被称为&lt;em&gt;超平面&lt;/em&gt;（hyperplane）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;超平面是 $d-1$ 维，并且分割了一个 $d$ 维空间&lt;/li&gt;
+&lt;li&gt;它是无线且平展的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$w$ 和超平面 $H$ 上的任何直面正交。所以 $w$ 被称为 $H$ 的&lt;em&gt;法线&lt;/em&gt;（normal vector）。如果 $w$ 是一个单位向量，那么 $f(x) = w \cdot x + \alpha$ 是 $x$ 到 $H$ 的有符号距离（singed distance）。此外，$H$ 到原点的距离为 $\alpha$。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/normal_vector.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;平面的法线&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如果存在一个超平面将所有的训练点分类，则它们&lt;em&gt;线性可分&lt;/em&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;一个简单的分类器&#34;&gt;一个简单的分类器
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;质心法&lt;/em&gt;（Centroid method）：首先分别计算属于了类别 $C$ 的所有点的平均 $\mu_C$，以及所有不属于 $C$ 的平均 $\mu_X$。则决策函数可以表示为
+$$f(x) = (\mu_C - \mu_X) \cdot x - (\mu_C - \mu_X) \cdot \frac{\mu_C + \mu_X}{2}$$&lt;/p&gt;
+&lt;p&gt;质心法非常简洁，但是也只能处理简单的情况。例如下图中的数据点无法使用质心法正确分类。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/centorid_method.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;质心法失效的情况&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;感知机&#34;&gt;感知机
+&lt;/h2&gt;&lt;p&gt;假设有 $n$ 个采样点数据 $X_1, X_2,\dots,X_n$。对于每个采样点，对应的&lt;em&gt;标签&lt;/em&gt;为&lt;/p&gt;
+&lt;p&gt;$$
+y_i = \begin{cases}
+\begin{matrix}
+1 &amp;amp; \text{if } X_i \in \text{class C} \\
+-1 &amp;amp; \text{if } X_i \notin \text{class C}
+\end{matrix}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;为了简化讨论，这里只考虑经过原点的决策边界。于是我们寻找决策边界的目标可以转换成寻找一个权重 $w$，使其满足&lt;/p&gt;
+&lt;p&gt;$$
+\begin{matrix}
+X_i \cdot w \ge 0 &amp;amp; &amp;amp; \text{if } y_i = 1 \\
+X_i \cdot w \le 0 &amp;amp; &amp;amp; \text{if } y_i = -1
+\end{matrix}
+$$&lt;/p&gt;
+&lt;p&gt;等价为
+$$y_iX_i\cdot w \ge 0$$
+上式即为&lt;em&gt;约束&lt;/em&gt;（constraint）。&lt;/p&gt;
+&lt;p&gt;为了找到最优的 $w$，我们定义一个&lt;em&gt;风险函数&lt;/em&gt;$R$，如果约束被违背，则风险函数为正值，然后通过最小化 $R$ 选择最优 $w$。&lt;/p&gt;
+&lt;p&gt;首先定义&lt;em&gt;损失函数&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$$
+L(\hat{y}, y_i) = \begin{cases}
+\begin{matrix}
+0 &amp;amp; &amp;amp; \text{if } y_i\hat{y} \ge 0 \\
+-y_i \hat{y} &amp;amp; &amp;amp; \text{otherwise}
+\end{matrix}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;其中 $\hat{y}$ 是分类器的预测值。&lt;/p&gt;
+&lt;p&gt;于是，我们可以定义风险函数（即优化问题的目标函数）为
+$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$
+所有寻找超平面的问题变为一个最优化问题：寻找 $w$ ，使得 $R(w)$ 最小。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 01 引言</title>
+        <link>https://zhiim.github.io/p/ml_01_introduction/</link>
+        <pubDate>Sun, 18 May 2025 15:40:22 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_01_introduction/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 01 引言" /&gt;&lt;p&gt;本人 &lt;a class=&#34;link&#34; href=&#34;https://people.eecs.berkeley.edu/~jrs/189/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CS 189/289A Introduction to Machine Learning&lt;/a&gt; Spring 2025 的学习笔记，仅供参考。&lt;/p&gt;
+&lt;h2 id=&#34;分类问题&#34;&gt;分类问题
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;收集具有标签的训练样本&lt;/li&gt;
+&lt;li&gt;预测新样本的类别&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_01_introduction/classifier.webp&#34;
+	width=&#34;906&#34;
+	height=&#34;421&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;两种不同分类器的决策边界&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;516px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;训练验证和测试&#34;&gt;训练、验证和测试
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;我们拥有一些设置好标签的数据&lt;/li&gt;
+&lt;li&gt;从数据中取出一部分作为&lt;em&gt;验证集&lt;/em&gt;（通常 20），其余作为&lt;em&gt;训练集&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;训练一个或者多个分类器：训练多种不同算法，或者具有不同超参数的同一算法&lt;/li&gt;
+&lt;li&gt;使用验证集选出具有最低验证误差的分类器&lt;/li&gt;
+&lt;li&gt;使用新的数据测试算法的效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;训练误差&lt;/em&gt;：训练集中分类错误的比例&lt;br&gt;
+&lt;em&gt;验证误差&lt;/em&gt;：验证集中分类错误的比例&lt;br&gt;
+&lt;em&gt;测试误差&lt;/em&gt;：测试集中分类错误的比例&lt;/p&gt;
+&lt;p&gt;大多数机器学习算法的一些超参数改变会造成欠拟合或者过拟合&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_01_introduction/overfitting.webp&#34;
+	width=&#34;811&#34;
+	height=&#34;540&#34;
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;k邻接算法中超参数k的改变带来的影响&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;过拟合&lt;/em&gt;：当验证/测试误差恶化时，原因是分类器对异常值或其他虚假模式变得过于敏感。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;欠拟合&lt;/em&gt;：当验证/测试误差恶化时，原因是分类器不够灵活，无法拟合模式。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;异常值&lt;/em&gt;：具有非典型标签的点（例如，富裕的借款人仍然违约）。增加过拟合的风险。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

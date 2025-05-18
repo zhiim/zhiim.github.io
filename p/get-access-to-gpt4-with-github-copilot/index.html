@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="通过Github Copilot获取GPT-4 API">
+<link rel="stylesheet" href="/scss/style.min.0943f61af864206cd291acd53f743a96776f7cb3f8417dd67842983b40a83c4e.css"><meta property='og:title' content="通过Github Copilot获取GPT-4 API">
 <meta property='og:description' content="Github Copilot底层调用了GPT，本文介绍了如何通过Copilot获得GPT API，并搭配GPT前端使用GPT-4">
 <meta property='og:url' content='https://zhiim.github.io/p/get-access-to-gpt4-with-github-copilot/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -17,8 +17,6 @@
     <meta name="twitter:image" content='https://zhiim.github.io/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
       <script>
         var doNotTrack = false;
@@ -33,10 +31,6 @@
           gtag('config', 'G-D132QYJBV0');
         }
       </script>
-    
-  
-
-
     </head>
     <body class="
     article-page
@@ -80,7 +74,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
+                        <img src="/img/avatar_hu_c983396e5d9fc283.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -361,8 +355,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/tech/" style="background-color: #e66351; color: #fff;">
-                Tech
+            <a href="/categories/notes/" style="background-color: #e66351; color: #fff;">
+                Notes
             </a>
         
     </header>
@@ -481,8 +475,7 @@
 </div>
 </div><p>选择本地IP对应的API的地址<code>http://127.0.0.1:8080</code>，在浏览器中打开，如果出现下方提示表示程序运行正常</p>
 <blockquote>
-<p>Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。</p>
-</blockquote>
+<p>Very important: please do not make this service public, for personal use only, otherwise the account or Copilot will be banned. 非常重要：请不要将此服务公开，仅供个人使用，否则账户或 Copilot 将被封禁。</p></blockquote>
 <h3 id="获取github-copilot-plugin-token">获取Github Copilot Plugin Token
 </h3><p>打开新的终端（如果关闭原本终端，正在运行的copilot-gpt4-service也会被关闭），运行Python脚本获取Github Copilot Plugin Token。</p>
 <div class="highlight"><div class="chroma">
@@ -646,7 +639,8 @@
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.body, {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -656,12 +650,88 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/windows-install-chromeos/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post Windows下制作ChromeOS Live USB"
+                    data-key="windows-install-chromeos" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows下制作ChromeOS Live USB</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/uninstall-vmware/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 完全卸载VMware Workstation"
+                    data-key="uninstall-vmware" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">完全卸载VMware Workstation</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/hugo_blog/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 将Hugo博客部署到Github Pages"
+                    data-key="hugo_blog" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">将Hugo博客部署到Github Pages</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -735,7 +805,7 @@
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 

@@ -6,19 +6,17 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/telegram-bot/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="Telegram Bot（一）Python库pyTelegramBotAPI的使用">
+<link rel="stylesheet" href="/scss/style.min.0943f61af864206cd291acd53f743a96776f7cb3f8417dd67842983b40a83c4e.css"><meta property='og:title' content="Telegram Bot（一）Python库pyTelegramBotAPI的使用">
 <meta property='og:description' content="通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用">
 <meta property='og:url' content='https://zhiim.github.io/p/telegram-bot/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Telegram Bot' /><meta property='article:tag' content='pyTelegramBotAPI' /><meta property='article:published_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='article:modified_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='article:modified_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
     <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Telegram Bot（一）Python库pyTelegramBotAPI的使用">
 <meta name="twitter:description" content="通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
       <script>
         var doNotTrack = false;
@@ -33,10 +31,6 @@
           gtag('config', 'G-D132QYJBV0');
         }
       </script>
-    
-  
-
-
     </head>
     <body class="
     article-page
@@ -80,7 +74,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1162002891107627466.webp" width="300"
+                        <img src="/img/avatar_hu_c983396e5d9fc283.webp" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -367,8 +361,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/tech/" style="background-color: #e66351; color: #fff;">
-                Tech
+            <a href="/categories/notes/" style="background-color: #e66351; color: #fff;">
+                Notes
             </a>
         
     </header>
@@ -519,40 +513,40 @@
 </div><p>在message handler的一般形式中，<code>filters</code>用来对message进行筛选，使该<code>message_handler</code>只对特定类型的message进行响应。<code>filters</code>的一般格式为<code>name=argument</code>，name表示筛选类型，argument代表筛选范围。例如<code>commands=['start', 'help']</code>表示只对命令/start和/help做出反应。</p>
 <p>官方给出的filters支持的类型如下：</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>name</th>
-<th>argument</th>
-<th>Condition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>content_types</td>
-<td>list of strings (default [&rsquo;text&rsquo;])</td>
-<td>True if message.content_type is in the list of strings.</td>
-</tr>
-<tr>
-<td>regexp</td>
-<td>a regular expression as a string</td>
-<td>True if re.search(regexp_arg) returns True and message.content_type == &rsquo;text&rsquo; (See https://docs.python.org/2/library/re.html)</td>
-</tr>
-<tr>
-<td>commands</td>
-<td>list of strings</td>
-<td>True if message.content_type == &rsquo;text&rsquo; and message.text starts with a command that is in the list of strings.</td>
-</tr>
-<tr>
-<td>chat_types</td>
-<td>list of chat types</td>
-<td>True if message.chat.type in your filter</td>
-</tr>
-<tr>
-<td>func</td>
-<td>a function (lambda or function reference)</td>
-<td>True if the lambda or function reference returns True</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>name</th>
+          <th>argument</th>
+          <th>Condition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>content_types</td>
+          <td>list of strings (default [&rsquo;text&rsquo;])</td>
+          <td>True if message.content_type is in the list of strings.</td>
+      </tr>
+      <tr>
+          <td>regexp</td>
+          <td>a regular expression as a string</td>
+          <td>True if re.search(regexp_arg) returns True and message.content_type == &rsquo;text&rsquo; (See https://docs.python.org/2/library/re.html)</td>
+      </tr>
+      <tr>
+          <td>commands</td>
+          <td>list of strings</td>
+          <td>True if message.content_type == &rsquo;text&rsquo; and message.text starts with a command that is in the list of strings.</td>
+      </tr>
+      <tr>
+          <td>chat_types</td>
+          <td>list of chat types</td>
+          <td>True if message.chat.type in your filter</td>
+      </tr>
+      <tr>
+          <td>func</td>
+          <td>a function (lambda or function reference)</td>
+          <td>True if the lambda or function reference returns True</td>
+      </tr>
+  </tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -642,9 +636,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/telegram-bot/">Telegram Bot</a>
-        
-            <a href="/tags/pytelegrambotapi/">PyTelegramBotAPI</a>
+            <a href="/tags/python/">Python</a>
         
     </section>
 
@@ -678,7 +670,8 @@
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.body, {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -688,12 +681,106 @@
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/python_package_doa_estimation/">
+        
+        
+            
+            <div class="article-image">
+                <img src="/img/default.webp" 
+                    loading="lazy"
+                    alt="Featured image of post 用于 DOA 估计的 Python 包 DOA_py"
+                    data-key="python_package_doa_estimation" 
+                    >
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">用于 DOA 估计的 Python 包 DOA_py</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pytorch-model/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" data-key="pytorch-model" data-hash="/p/pytorch-tensor/pytorch.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PyTorch基础 （三）网络模型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pytorch-dataset/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" data-key="pytorch-dataset" data-hash="/p/pytorch-tensor/pytorch.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PyTorch基础 （二）Dataset和DataLoader</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pytorch-tensor/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pytorch-tensor/pytorch.7899a0b479e389b343b4120312b0ff14.webp" 
+                        width="1200" 
+                        height="500" 
+                        loading="lazy"
+                        alt="Featured image of post PyTorch基础 （一）Tensors"
+                        data-key="pytorch-tensor" 
+                        data-hash="md5-eJmgtHnjibNDtBIDErD/FA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PyTorch基础 （一）Tensors</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
@@ -767,7 +854,7 @@
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
