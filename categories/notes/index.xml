@@ -6,7 +6,133 @@
         <description>Recent content in Notes on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 18 May 2025 16:32:02 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 19 May 2025 16:29:23 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>机器学习 03 感知机学习和最大间隔分类器</title>
+        <link>https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/</link>
+        <pubDate>Mon, 19 May 2025 16:29:23 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 03 感知机学习和最大间隔分类器" /&gt;&lt;h2 id=&#34;感知机算法&#34;&gt;感知机算法
+&lt;/h2&gt;&lt;p&gt;在 &lt;a class=&#34;link&#34; href=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;机器学习 02 线性分类器和感知机——感知机&lt;/a&gt;中，我们将在 $x-$ 空间寻找分类超平面的问题转换为在 ${} w- {}$ 空间寻找一个最优点 $w$ 的问题。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;$x$-space&lt;/th&gt;
+          &lt;th&gt;$w$-space&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;hyperplane: $\{ x : w \cdot x = 0 \}$&lt;/td&gt;
+          &lt;td&gt;point: $w$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;point: $x$&lt;/td&gt;
+          &lt;td&gt;hyperplane: $\{ z : w \cdot z = 0 \}$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;在 $x-$ 空间的超平面被转换为在 $w-$ 空间的一个点，这个点是超平面的法线&lt;/li&gt;
+&lt;li&gt;在 $x-$ 空间的样本点被转换为在 $w-$ 空间的超平面，这个超平面的法线为样本点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果我们需要找到的 $w$ 满足：当 $x$ 为类别 $C$ 时，$x \cdot w \ge 0$，那么&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 $x-$ 空间，存在一个超平面，分离了不同类别的点。所有属于类别 $C$ 的点与 $w$ 在超平面的同侧；所有不属于类别 $C$ 的点与 $w$ 在超平面的不同侧。&lt;/li&gt;
+&lt;li&gt;在 $w-$ 空间，每一个点 ${} X_i$ 对应了 $w-$ 空间一个超平面 $H_i$。如果 ${} X_i \in \text{class C}$，那么 $w$ 与 ${} X_i$ 在 $H_i$ 的同侧；反之，在不同侧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/53660548c2812635c4ce367acba8da3b.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在左图中，$x-$ 空间内寻找一个超平面，可以将蓝色的样本点 $C$ （类别为 $C$ 的点）和红色的样本点 $X$ （类别不为 $C$ 的点）正确分类，$w$ 是这个超平面的法线。并且 $w$ 和样本点 $C$ 处于同侧。&lt;/li&gt;
+&lt;li&gt;在右图中，每一个样本点在 $w-$ 空间对应一个超平面，$w$ 需要处于红色超平面的反侧，处于蓝色超平面的正侧，即图中阴影区。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;现在我们需要在 $w-$ 空间中找出最优的 $w$，使其最小化 $R(w)$ 。&lt;/p&gt;
+&lt;p&gt;优化算法：对风险函数 $R(w)$ &lt;em&gt;梯度下降&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首先初始化 $w$ 的值，然后计算 $R(w)$ 关于 $w$ 的梯度（即 $R(w)$ 增长最快的方向），然后在相反的方向移动一步。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用 &lt;a class=&#34;link&#34; href=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;机器学习 02 线性分类器和感知机——感知机&lt;/a&gt; 中定义的风险函数&lt;/p&gt;
+&lt;p&gt;$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$&lt;/p&gt;
+&lt;p&gt;计算其梯度为&lt;/p&gt;
+&lt;p&gt;$$
+\nabla R(w) = \begin{bmatrix}
+\frac{\partial R}{\partial w_1} \\
+\frac{\partial R}{\partial w_2} \\
+\vdots \\
+\frac{\partial R}{\partial w_d}
+\end{bmatrix} = \nabla \sum_{i \in V}-y_i X_i \cdot w = -\sum_{i\in V}y_i X_i
+$$&lt;/p&gt;
+&lt;p&gt;其中 $V$ 表示所有满足 $y_i X_i \cdot w &amp;lt; 0$ 的下标 $i$ 的集合。&lt;/p&gt;
+&lt;p&gt;对 $R(w)$ 的梯度下降可以表示为&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+&amp;amp; w \leftarrow \text{任意非零初始化} \\
+&amp;amp; \text{while } R(w) &amp;gt; 0 \\
+&amp;amp; \quad \quad V \leftarrow \text{所有满足 } y_i X_i \cdot w &amp;lt; 0 \text{ 的下标 } i \text{ 的集合} \\
+&amp;amp; \quad \quad w \leftarrow w + \varepsilon \sum_{i \in V} y_i X_i \\
+&amp;amp; \text{return } w
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;其中 $\varepsilon$ 是&lt;em&gt;学习率&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;梯度下降的每一步复杂度为 $O(nd)$，我们可以通过&lt;em&gt;随机梯度下降&lt;/em&gt;提升算法性能。&lt;/p&gt;
+&lt;p&gt;随机梯度下降的核心思想是在每一步的梯度下降中，随机选择一个满足条件的下标 $i$，并使用损失函数 $L(X_i \cdot w, y_i)$ 的梯度，该方法被称为&lt;em&gt;感知机算法&lt;/em&gt;，其每一步的计算复杂度为 $O(d)$。&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+&amp;amp; \text{while } \text{找到某一个 } i \text{ 满足 } y_i X_i \cdot w &amp;lt; 0 \\
+&amp;amp; \quad \quad w \leftarrow x + \varepsilon y_i X_i \\
+&amp;amp; \text{return } w
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虽然随机梯度下降法非常高效，但是并不是所有梯度下降法可以解决的问题都可以使用随机梯度下降。&lt;/strong&gt; 如果数据线性可分，感知机算法一定可以找到全局最优，随机梯度法一定可行。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果我们需要找到不经过原点的超平面，此时只需要额外增加一个维度用于表示 $\alpha$&lt;/p&gt;
+&lt;p&gt;$$
+f(x) = w \cdot x + \alpha = \begin{bmatrix}
+w_1 &amp;amp; w_2 &amp;amp; \alpha
+\end{bmatrix} \cdot \begin{bmatrix}
+x_1 \\ x_2 \\ 1
+\end{bmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;此时我们的每个样本数据点存在于实数空间 $\mathbb{R}^{d + 1}$，其中最后一个维度的特征 $x_{d+1} = 1$。仍然可以在 $d + 1$ 维空间中使用感知机算法找到解。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;感知机收敛理论&lt;/em&gt;：如果数据是线性可分的，感知机算法可以在最多 $O(r^2/\gamma^2)$ 的迭代中找到一个可以将所有数据正确分类的分类器。其中 $r=\max{||X_i||}$ 是数据的半径，$\gamma$ 是最大间隔。&lt;/p&gt;
+&lt;h2 id=&#34;最大边界分类器&#34;&gt;最大边界分类器
+&lt;/h2&gt;&lt;p&gt;一个线性分类器的&lt;em&gt;间隔&lt;/em&gt;是超平面到最近的一个训练样本点的距离。如果我们可以找到一个超平面，它的间隔最大，那么这个分类器最优（决策边界离所有的点距离最远，最不容易分类错误）。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/1fde55281481c2de74c3cd3b96b57416.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如图，一个满足上述条件的超平面可以表示为 $w \cdot x + \alpha = 0$，那么平行于这个超平面的、经过最近的样本点的超平面可以表示为 $|w \cdot x + \alpha| = 1$（$1$ 只是为了方便讨论，也可以为 $w \cdot x + \alpha = k$，对 $k$ 归一化后也为 $1$）。&lt;/p&gt;
+&lt;p&gt;由于所有的样本点都在这两个最近超平面之外，所有样本点满足
+$$w \cdot X_i + \alpha \ge 1 \quad \text{for } i \in [1, n]$$
+由于标签 $y_i \in \{1, -1\}$，约束条件可以表示成
+$$y_i(w \cdot X_i + \alpha) \ge 1 \quad \text{for } i \in [1, n]$$&lt;/p&gt;
+&lt;p&gt;已知，如果 $||w|| = 1$，那么 $X_i$ 到超平面的有符号距离为 $w \cdot X_i + \alpha$。所以我们对 $w$ 归一化，可得
+$$\frac{1}{||w||}|w \cdot X_i + \alpha| \ge \frac{1}{||w||}$$
+即间隔为 $\frac{1}{||w||}$，为了使间隔最大化，需要最小化 $||w||$。&lt;/p&gt;
+&lt;p&gt;于是可以求解优化问题&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+&amp;amp; \text{找到 } w, \alpha \text{ 最小化 } ||w||^2 \\
+&amp;amp; \text{同时满足 } y_i (X_i \cdot w + \alpha) \ge 1 \quad \text{for all } i \in [1, n]
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;上述问题被称为在 $d + 1$ 维空间中，有 $n$ 个约束的的二次规划（quadratic program）。如果所有样本点线性可分，它有唯一解，反之无解。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最小化 $||w||^2$ 而不是 $||w||$ 的原因：$||w||$ 在 0 处不平滑。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;上述方法可以得到一个&lt;em&gt;最大间隔分类器&lt;/em&gt;，即&lt;em&gt;硬间隔支持向量机&lt;/em&gt;（hard-margin support vector machine， SVM）。&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/eb9976478a95b52b81156b59409096c8.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图是 $(w_1, w_2, \alpha)$ 的三维空间。类别 $C$ 的样本点为法线的超平面为绿色，非类别 $C$ 的样本点为法线的超平面为红色。图中为 3 个样本点的情况。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为了满足约束条件 $y_i (X_i \cdot w + \alpha) \ge 1$，$w, \alpha$ 存在于绿色超平面之上，红色超平面之下&lt;/li&gt;
+&lt;li&gt;为了满足 $||w||^2$ 最小，$w, \alpha$ 应该最接近 $\alpha$ 轴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;和感知机算法类似，只有所有数据点线性可分时，硬边界 SVM 可行。&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>机器学习 02 线性分类器和感知机</title>
         <link>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</link>
         <pubDate>Sun, 18 May 2025 16:32:02 +0800</pubDate>
@@ -15,12 +141,12 @@
         <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 02 线性分类器和感知机" /&gt;&lt;h2 id=&#34;分类器&#34;&gt;分类器
 &lt;/h2&gt;&lt;p&gt;假设我们有 $n$ 个观测样例（bofservations），每个观测样例有 $d$ 个特征（features），有些样例属于类别 C，有些不是&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/decision_boudaries.webp&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
-      &lt;h4&gt;决策边界&lt;/h4&gt;
+      &lt;h4&gt;不同的决策边界&lt;/h4&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;&lt;em&gt;决策边界&lt;/em&gt;：分类器选择的可以将样例分成不同类别的边界&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;过拟合&lt;/em&gt;：决策边界拟合得太好，以至于无法用于未来分类&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;过拟合&lt;/em&gt;：决策边界拟合得太好，以至于无法用于未来样本的分类&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;决策函数&lt;/em&gt;：将一个点映射到一个值，例如&lt;/p&gt;
 &lt;p&gt;$$
 \begin{matrix}
@@ -28,7 +154,7 @@ f(x) &amp;gt; 0 &amp;amp; &amp;amp; \text{if } x \in \text{class } C; \\
 f(x) \le 0 &amp;amp; &amp;amp; \text{if } x \notin \text{class } C;
 \end{matrix}
 $$&lt;/p&gt;
-&lt;p&gt;则分类边界为 ${x\in \mathbb{R}^{d}: f(x)=0}$&lt;/p&gt;
+&lt;p&gt;则分类边界为 $\{x\in \mathbb{R}^{d}: f(x)=0\}$&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/dc_2.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
       &lt;h4&gt;分类边界&lt;/h4&gt;
     &lt;/figcaption&gt;
@@ -36,22 +162,22 @@ $$&lt;/p&gt;
 
 &lt;h2 id=&#34;linear-classifier-math&#34;&gt;Linear Classifier Math
 &lt;/h2&gt;&lt;p&gt;&lt;em&gt;内积&lt;/em&gt;：$x\cdot y = x_1y_1+x_2y_2+\dots + x_dy_d$，也可以写成 $x^Ty$&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;欧拉范数&lt;/em&gt;：$|x|=\sqrt{x\cdot x}=\sqrt{x_1^2 + x_2^2 + \dots + x_d^2}$。可以表示向量 $x$ 的欧拉长度 (Euclidean length)。&lt;/p&gt;
-&lt;p&gt;归一化向量 $x$： ${x}/{|x|}$&lt;/p&gt;
-&lt;p&gt;给定一个线性决策函数 $f(x) = w \cdot x + \alpha$，决策边界为 $H = {x: w \cdot x = -\alpha}$。集合 $H$ 被称为&lt;em&gt;超平面&lt;/em&gt;（hyperplane）。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;欧拉范数&lt;/em&gt;：$||x||=\sqrt{x\cdot x}=\sqrt{x_1^2 + x_2^2 + \dots + x_d^2}$。可以表示向量 $x$ 的欧拉长度 (Euclidean length)。&lt;/p&gt;
+&lt;p&gt;归一化向量 $x$： ${x}/{||x||}$&lt;/p&gt;
+&lt;p&gt;给定一个线性决策函数 $f(x) = w \cdot x + \alpha$，决策边界为 $H = \{x: w \cdot x = -\alpha\}$。集合 $H$ 被称为&lt;em&gt;超平面&lt;/em&gt;（hyperplane）。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;超平面是 $d-1$ 维，并且分割了一个 $d$ 维空间&lt;/li&gt;
-&lt;li&gt;它是无线且平展的&lt;/li&gt;
+&lt;li&gt;它是无限且平展的&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;$w$ 和超平面 $H$ 上的任何直面正交。所以 $w$ 被称为 $H$ 的&lt;em&gt;法线&lt;/em&gt;（normal vector）。如果 $w$ 是一个单位向量，那么 $f(x) = w \cdot x + \alpha$ 是 $x$ 到 $H$ 的有符号距离（singed distance）。此外，$H$ 到原点的距离为 $\alpha$。&lt;/p&gt;
+&lt;p&gt;$w$ 和超平面 $H$ 上的任何直线正交。所以 $w$ 被称为 $H$ 的&lt;em&gt;法线&lt;/em&gt;（normal vector）。如果 $w$ 是一个单位向量，那么 $f(x) = w \cdot x + \alpha$ 是 $x$ 到 $H$ 的有符号距离（singed distance）。此外，$H$ 到原点的距离为 $\alpha$。&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/normal_vector.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
       &lt;h4&gt;平面的法线&lt;/h4&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;如果存在一个超平面将所有的训练点分类，则它们&lt;em&gt;线性可分&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;如果存在一个超平面可以将所有的训练样本点分类，则它们&lt;em&gt;线性可分&lt;/em&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;一个简单的分类器&#34;&gt;一个简单的分类器
-&lt;/h2&gt;&lt;p&gt;&lt;em&gt;质心法&lt;/em&gt;（Centroid method）：首先分别计算属于了类别 $C$ 的所有点的平均 $\mu_C$，以及所有不属于 $C$ 的平均 $\mu_X$。则决策函数可以表示为
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;质心法&lt;/em&gt;（Centroid method）：首先分别计算属于类别 $C$ 的所有点的平均 $\mu_C$，以及所有不属于 $C$ 的平均 $\mu_X$。则决策函数可以表示为
 $$f(x) = (\mu_C - \mu_X) \cdot x - (\mu_C - \mu_X) \cdot \frac{\mu_C + \mu_X}{2}$$&lt;/p&gt;
 &lt;p&gt;质心法非常简洁，但是也只能处理简单的情况。例如下图中的数据点无法使用质心法正确分类。&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/centorid_method.webp&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
@@ -92,7 +218,7 @@ $$&lt;/p&gt;
 &lt;p&gt;其中 $\hat{y}$ 是分类器的预测值。&lt;/p&gt;
 &lt;p&gt;于是，我们可以定义风险函数（即优化问题的目标函数）为
 $$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$
-所有寻找超平面的问题变为一个最优化问题：寻找 $w$ ，使得 $R(w)$ 最小。&lt;/p&gt;
+所以寻找超平面的问题变为一个最优化问题：寻找 $w$ ，使得 $R(w)$ 最小。&lt;/p&gt;
 </description>
         </item>
         <item>
