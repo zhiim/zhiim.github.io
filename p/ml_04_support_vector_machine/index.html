@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在PyTorch中建立神经网络模型，初始化和查看模型参数">
-<title>PyTorch基础 （三）网络模型</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="软间隔支持向量机；特征和非线性决策边界；核函数和和技巧">
+<title>机器学习 04 支持向量机</title>
 
-<link rel='canonical' href='https://zhiim.github.io/p/pytorch-model/'>
+<link rel='canonical' href='https://zhiim.github.io/p/ml_04_support_vector_machine/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="PyTorch基础 （三）网络模型">
-<meta property='og:description' content="在PyTorch中建立神经网络模型，初始化和查看模型参数">
-<meta property='og:url' content='https://zhiim.github.io/p/pytorch-model/'>
+<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="机器学习 04 支持向量机">
+<meta property='og:description' content="软间隔支持向量机；特征和非线性决策边界；核函数和和技巧">
+<meta property='og:url' content='https://zhiim.github.io/p/ml_04_support_vector_machine/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='article:modified_time' content='2023-01-09T15:14:55&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/pytorch-tensor/pytorch.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-21T12:41:59&#43;08:00'/><meta property='article:modified_time' content='2025-05-21T12:41:59&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="PyTorch基础 （三）网络模型">
-<meta name="twitter:description" content="在PyTorch中建立神经网络模型，初始化和查看模型参数"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://zhiim.github.io/p/pytorch-tensor/pytorch.webp' />
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 04 支持向量机">
+<meta name="twitter:description" content="软间隔支持向量机；特征和非线性决策边界；核函数和和技巧"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-D132QYJBV0"></script>
@@ -329,20 +329,20 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#神经网络-neural-network">神经网络 neural network</a>
+    <li><a href="#软间隔支持向量机">软间隔支持向量机</a></li>
+    <li><a href="#特征与非线性">特征与非线性</a>
       <ol>
-        <li><a href="#神经网络的组成">神经网络的组成</a></li>
+        <li><a href="#样例-1抛物线提升映射the-parabolic-lifting-map">样例 1：抛物线提升映射（The parabolic lifting map）</a></li>
+        <li><a href="#样例-2椭球体双曲面抛物面决策边界">样例 2：椭球体/双曲面/抛物面决策边界</a></li>
+        <li><a href="#样例-3p-次多项式作为决策函数">样例 3：$p$ 次多项式作为决策函数</a></li>
       </ol>
     </li>
-    <li><a href="#在pytorch中建立神经网络">在PyTorch中建立神经网络</a>
+    <li><a href="#核技巧">核技巧</a>
       <ol>
-        <li><a href="#nnlinear">nn.Linear</a></li>
-        <li><a href="#nnflatten">nn.Flatten</a></li>
-        <li><a href="#nnsequential">nn.Sequential</a></li>
-        <li><a href="#nnrelu">nn.ReLU</a></li>
+        <li><a href="#支持向量机的学习算法">支持向量机的学习算法</a></li>
+        <li><a href="#核函数">核函数</a></li>
       </ol>
     </li>
-    <li><a href="#模型参数">模型参数</a></li>
   </ol>
 </nav>
         </div>
@@ -357,9 +357,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/pytorch-model/">
+            <a href="/p/ml_04_support_vector_machine/">
                 
-                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" alt="Featured image of post PyTorch基础 （三）网络模型" />
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 04 支持向量机" />
                 
             </a>
         </div>
@@ -378,12 +378,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/pytorch-model/">PyTorch基础 （三）网络模型</a>
+            <a href="/p/ml_04_support_vector_machine/">机器学习 04 支持向量机</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            在PyTorch中建立神经网络模型，初始化和查看模型参数
+            软间隔支持向量机；特征和非线性决策边界；核函数和和技巧
         </h3>
         
     </div>
@@ -404,7 +404,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 09, 2023</time>
+                <time class="article-time--published">May 21, 2025</time>
             </div>
         
 
@@ -419,7 +419,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 5 分钟
                 </time>
             </div>
         
@@ -434,198 +434,182 @@
     <section class="article-content">
     
     
-    <h2 id="神经网络-neural-network">神经网络 neural network
-</h2><p>神经网络由多个神经元互相连接组成，每个神经元是一个计算单元，位于同一层级的多个神经元组成一个网络层。一般的神经网络一般由三种网络层组成：输入层，隐藏层和输出层。</p>
-<p><img src="/p/pytorch-model/neutral-network.webp"
-	width="820"
-	height="415"
-	
-	loading="lazy"
-	
-		alt="神经网络"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="197"
-		data-flex-basis="474px"
-	
-></p>
-<h3 id="神经网络的组成">神经网络的组成
-</h3><ul>
-<li><strong>激活函数 Activatioin Functioin</strong>
-神经元的输入经过激活函数得到输出，激活函数的输出值定义了神经元是否被激活。激活函数有几种不同的形式，它的选取取决于期望的神经元输出。
+    <h2 id="软间隔支持向量机">软间隔支持向量机
+</h2><p>硬间隔 SVM 存在两个问题：</p>
 <ul>
-<li><em>Binary</em> 输入为正数时神经元输出1，输入为负数时神经元输出0
-$$
-f(x)= \small\begin{cases} 0, &amp; \text{if } x &lt; 0 \newline 1, &amp; \text{if } x\geq 0 \end{cases}
-$$</li>
-<li><em>Sigmod</em> 由输入值得到0和1之间的连续输出值
-$$
-f(x) = {\large \frac{1}{1+e^{-x}}}
-$$</li>
-<li><em>Tanh</em> 由输入值得到-1和1之间的连续输出值
-$$
-f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$</li>
-<li><em>ReLU</em> 当输入为负数时输出为0，输入为正数时保持输入值
-$$
-f(x)= \small \begin{cases} 0, &amp; \text{if } x &lt; 0\newline x, &amp; \text{if } x\geq 0 \end{cases}
-$$</li>
+<li>如果数据不是线性可分的，则算法将会失效；</li>
+<li>对极端值（outliers）敏感，例如右图添加了一个极端值，严重改变了决策边界。</li>
 </ul>
-</li>
-<li><strong>权重 Weights</strong>
-由前一神经元输出到下一神经元输入的加权</li>
-<li><strong>偏置 Bias</strong></li>
-</ul>
-<p><img src="/p/pytorch-model/neuron.webp"
-	width="1240"
-	height="677"
-	
-	loading="lazy"
-	
-		alt="神经元模型"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="183"
-		data-flex-basis="439px"
-	
-></p>
+<figure><img src="/p/ml_04_support_vector_machine/2f171bd2708ce6c0d926e02aabfacc60.png" width="800"><figcaption>
+      <h4>异常值造成了决策边界的偏移</h4>
+    </figcaption>
+</figure>
+
+<p><em>软间隔支持向量机</em>：通过引入<em>松弛变量</em>，允许一些样本点违背最小间隔的约束，此时约束条件可以变为</p>
+<p>$$y_i (X_i \cdot w + \alpha) \ge 1 - \xi_i$$</p>
+<p>其中 $\xi_i$ 为引入的松弛变量，满足 $\xi_i \ge 0$。只有当样本点违背最小间隔约束时，松弛变量 $\xi_i$ 不为 $0$。</p>
+<figure><img src="/p/ml_04_support_vector_machine/f3ea99726ceb561f856e542debef3c17.png" width="400"><figcaption>
+      <h4>松弛变量存在的情况</h4>
+    </figcaption>
+</figure>
+
+<p>此时，仍然定义间隔为 $1 / ||w||$，为了防止松弛变量的滥用，我们在目标函数中添加一个损失项对其进行约束</p>
 <p>$$
-output=activation function(\sum{(weights * inputs) + bias})
+\begin{align*}
+&amp; \text{Find } w, \alpha, \xi_i \text{ that minimize } ||w||^2 + C\sum_{i = 1}^n\xi_i \\
+&amp; \begin{aligned}
+\text{subject to } &amp; \quad  y_i(X_i \cdot w + \alpha) \ge 1 - \xi_i &amp; \text{for all } i \in [1, n] \\
+&amp; \quad \xi_i \ge 0 &amp; \text{for all } i \in [1, n]
+\end{aligned}
+\end{align*}
 $$</p>
-<h2 id="在pytorch中建立神经网络">在PyTorch中建立神经网络
-</h2><p><code>torch.nn</code>提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是<code>nn.Module</code>的子类。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using </span><span class="si">{}</span><span class="s1"> device&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NeuralNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">NeuralNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">logits</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">NeuralNetwork</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>通过向模型传递输入数据，模型会自动调用forward()，并返回模型输出。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># 生成模型输入数据</span>
-</span></span><span class="line"><span class="cl"><span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># 向模型传递输入数据，model.forward()自动执行，得到输出logits</span>
-</span></span><span class="line"><span class="cl"><span class="n">pred_probab</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">logits</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">y_pred</span> <span class="o">=</span> <span class="n">pred_probab</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Predicted class: </span><span class="si">{</span><span class="n">y_pred</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="nnlinear">nn.Linear
-</h3><p><code>nn.Linear</code>随机初始化每层的权重和偏置，并储存在tensors中</p>
-<h3 id="nnflatten">nn.Flatten
-</h3><p><code>nn.Flatten</code>将28x28的图片转换为一个784维的输入向量</p>
-<h3 id="nnsequential">nn.Sequential
-</h3><p><code>nn.Sequential</code>是一个module的容器，数据经过<code>nn.Sequential</code>后，会按照定义时的顺序，依次进行运算。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relu_stack</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># x输入linear_relu_stack后，依次经过module nn.Linear(28*28, 512)，</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># nn.ReLU()，nn.Linear(512, 512)，nn.ReLU()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="nnrelu">nn.ReLU
-</h3><p>激活函数ReLU</p>
-<h2 id="模型参数">模型参数
-</h2><p>神经网络的参数包括每一个网络层的weight和bais，通过模型的<code>parameters()</code>或<code>named_parameters()</code>可以获取模型中的所有参数</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Model structure: &#34;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n\n</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Layer: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> | Size: </span><span class="si">{</span><span class="n">param</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> | Values : </span><span class="si">{</span><span class="n">param</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+<p>这是一个 $d + n + 1$ 维空间的、具有 $2n$ 个约束项的二次规划问题。其中 $C &gt; 0$ 是一个<em>正则化超参数</em>（regularization hyperparameter）。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>较小C</th>
+          <th>较大C</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>目标</strong></td>
+          <td>最大化间隔 ${} 1 / ||w||$</td>
+          <td>保持大多数松弛变量为零或很小</td>
+      </tr>
+      <tr>
+          <td><strong>风险</strong></td>
+          <td>欠拟合（误分类许多训练数据）</td>
+          <td>过拟合（训练效果好，测试效果差）</td>
+      </tr>
+      <tr>
+          <td><strong>异常值</strong></td>
+          <td>不太敏感</td>
+          <td>非常敏感</td>
+      </tr>
+      <tr>
+          <td><strong>边界（非线性时）</strong></td>
+          <td>更“平坦”</td>
+          <td>更曲折</td>
+      </tr>
+  </tbody>
+</table></div>
+<figure><img src="/p/ml_04_support_vector_machine/8d7ca67f5ea4176993da2f0615155dae.png" width="600"><figcaption>
+      <h4>不同C值的决策边界，右下方C更大</h4>
+    </figcaption>
+</figure>
+
+<h2 id="特征与非线性">特征与非线性
+</h2><p>非线性决策边界：<strong>通过创建非线性特征将样本点提升到高维空间，那么高维的线性分类器等价于低维的非线性分类器</strong></p>
+<h3 id="样例-1抛物线提升映射the-parabolic-lifting-map">样例 1：抛物线提升映射（The parabolic lifting map）
+</h3><p>定义一个非线性映射，将 $d$ 维空间的点 $x$ 提升为 $d + 1$ 维空间的抛物面</p>
+<p>$$
+\begin{align*}
+&amp; \Phi: \mathbb{R}^d \rightarrow \mathbb{R}^{d + 1} \\
+&amp; \Phi(x) = \begin{bmatrix}
+x \\ ||x||^2
+\end{bmatrix}
+\end{align*}
+$$</p>
+<figure><img src="/p/ml_04_support_vector_machine/851322ecf7bca26253ddb6646d6d3ab3.png" width="600"><figcaption>
+      <h4>点被提升到抛物面</h4>
+    </figcaption>
+</figure>
+
+<p>上图中样本点由二维空间的点，经过非线性映射被提升到三维空间的抛物面。此时二维平面的球形决策边界，等价于三维平面的线性决策边界。</p>
+<p><strong>定理</strong>：$\Phi(X_1),\Phi(X_2),\dots,\Phi(X_n)$ 线性可分 $\leftrightarrow$ $X_1,X_2,\dots,X_n$ 可以被超球面分离</p>
+<p>证明：考虑 $\mathbb{R}^d$ 中的超球面，它的球心为 $c$，半径为 $\rho$。$x$ 在超球面内当且仅当</p>
+<p>$$
+\begin{align*}
+&amp; ||x-c||^2 &lt; \rho^2 \\
+&amp; ||x||^2 - 2c \cdot x + ||c||^2 &lt; \rho^2 \\
+&amp; \begin{bmatrix}
+-2c^T &amp; 1
+\end{bmatrix} \begin{bmatrix}
+x \\ ||x||^2
+\end{bmatrix} &lt; \rho^2 - ||c||^2
+\end{align*}
+$$</p>
+<p>其中 $\begin{bmatrix}-2c^T &amp; 1\end{bmatrix}$ 是 $\mathbb{R}^{d + 1}$ 中的法向量，而 $\Phi(x)$ 表示 $\mathbb{R}^{d + 1}$ 中的一个点，所以 $\mathbb{R}^{d}$ 中的超球面内等价于 $\mathbb{R}^{d + 1}$ 中的超平面以下。</p>
+<h3 id="样例-2椭球体双曲面抛物面决策边界">样例 2：椭球体/双曲面/抛物面决策边界
+</h3><figure><img src="/p/ml_04_support_vector_machine/354198eae8587f9626e0af64267a4c63.png" width="600"><figcaption>
+      <h4>不同的二次曲面</h4>
+    </figcaption>
+</figure>
+
+<p>对于式
+$$A x_1^2 + B x_2^2 + C x_3^2 + D x_1x_2 + E x_2x_3 + F x_3x_1 + G x_1 + H x_2 + I x_3 + \alpha = 0$$
+可以表示上图中的任意一个二次曲面。</p>
+<p>所以，我们可以定义非线性映射</p>
+<p>$$
+\begin{align*}
+&amp; \Phi(x) = \begin{bmatrix}
+x_1^2 &amp; x_2^2 &amp; x_3^2 &amp; x_1x_2 &amp; x_2x_3 &amp; x_3x_1 &amp; x_1 &amp; x_2 &amp; x_3
+\end{bmatrix}^T \\
+&amp; \begin{bmatrix}
+A &amp; B &amp; C &amp; D &amp; E &amp; F &amp; G &amp; H &amp; I
+\end{bmatrix} \cdot \Phi(x) + \alpha
+\end{align*}
+$$</p>
+<p>此时，决策函数可以为任意二次多项式，决策超曲面可以为任意二次曲面。$\Phi-$ 空间的线性决策边界等价于 $x-$ 空间的二次曲面分类边界。</p>
+<h3 id="样例-3p-次多项式作为决策函数">样例 3：$p$ 次多项式作为决策函数
+</h3><figure><img src="/p/ml_04_support_vector_machine/3e4fe1b91d90ca7b5db1e13b5952e64c.png" width="600"><figcaption>
+      <h4>拥有不同次方的决策函数的硬支持向量机：1，2，5</h4>
+    </figcaption>
+</figure>
+
+<p>增加决策函数的最高次</p>
+<ul>
+<li>线性不可分的数据可能由于最够高的非线性变为线性可分</li>
+<li>高维提供了更高的自由度，可能找到更大的间隔，可能提升决策边界的鲁棒性</li>
+</ul>
+<h2 id="核技巧">核技巧
+</h2><h3 id="支持向量机的学习算法">支持向量机的学习算法
+</h3><p>在训练软间隔支持向量机时，我们可以使用如下学习算法（基于<em>拉格朗日对偶性</em>，推过过程参考李航-《统计学习方法》）：</p>
+<p>输入：训练数据集 $T={(x_1,y_1),(x_2, y_2),\dots,(x_n,y_n)}$，其中 $x_i \in \mathbb{R}^{d}, y_i \in {-1,1}$<br>
+输出：决策超平面和决策函数<br>
+（1）选择一个正则化超参数 $C &gt; 0$, 求解以下凸二次规划问题（软间隔支持向量机的原始问题的对偶问题）：</p>
+<p>$$
+\begin{align*}
+&amp; \min_{\alpha} \frac{1}{2} \sum_{i = 1}^n\sum_{j = 1}^n\alpha_i\alpha_j y_i y_j (x_i \cdot x_j) - \sum_{i = 1}^n \alpha_i \\
+&amp;\begin{aligned} \text{s.t. }
+&amp; \sum_{i = 1}^n \alpha_i y_i = 0 \\
+&amp; 0 \le \alpha_i \le C, \quad i = 1,2,\dots,n
+\end{aligned}
+\end{align*}
+$$</p>
+<p>求解最优解 $\alpha^* = (\alpha_1^*, \alpha_2^*, \dots, \alpha_n^*)$<br>
+（2）计算 $w^* = \sum_{i = 1}^n \alpha_i^* y_i x_i$<br>
+选择一个下标 $j$，满足 $0&lt; \alpha_j^* &lt; C$，计算</p>
+<p>$$b^* = y_j - \sum_{i = 1}^n y_i \alpha_i^*(x_i \cdot x_j)$$</p>
+<p>（3）求得决策超球面
+$$w^* \cdot x + b^* = 0$$
+以及决策函数</p>
+<p>$$f(x) = w^* \cdot x + b^* = \sum_{i = 1}^n \alpha_i^* y_i(x \cdot  x_i) + b^*$$</p>
+<p>在上述算法中，$w^*$ 和 $b^*$ 只依赖于 $\alpha_i^* &gt; 0$ 的样本点 $x_i$，称这些样本点为<em>支持向量</em>。</p>
+<p>可以看出在支持向量机学习算法中，无论优化的目标函数还是决策函数都只涉及两个向量之间的点积，例如 $x_i \cdot x_j$ 和 $x \cdot x_i$。</p>
+<h3 id="核函数">核函数
+</h3><p>我们已经知道，低维空间的非线性决策曲面可以等价为高维空间的线性决策平面。</p>
+<p>但是如果特征的维度 $d$ 非常高，此时使用非线性映射 $\Phi(x)$ 得到的高次多项式特征维度非常大，$\Phi(x_i) \cdot \Phi(x_j)$ 的计算复杂度非常大。</p>
+<p>于是，我们希望找到一个低维空间<em>核函数</em>，等价于高维空间的点积运算</p>
+<p><strong>定义</strong>：设 $\mathcal{X}$ 是一个低维输入空间，$\mathcal{H}$ 是一个高维特征空间，如果存在一个映射
+$$\Phi(x): \mathcal{X} \rightarrow \mathcal{H}$$
+使得对所有的 $x, z \in \mathcal{X}$，函数 $K(x, z)$ 满足
+$$K(x, z) = \Phi(x) \cdot \Phi(z)$$
+则称 $K(x, z)$ 为核函数。</p>
+<p>如果我们不显示指定一个非线性映射 $\Phi(x)$，而是使用一个特定的核函数 $K(x, z)$ 替代高维空间的点积 $\Phi(x_i) \cdot \Phi(x_j)$ ，那么支持向量机的优化目标可以写成</p>
+<p>$$
+\begin{align*}
+&amp; \min_{\alpha} \frac{1}{2} \sum_{i = 1}^n\sum_{j = 1}^n\alpha_i\alpha_j y_i y_j K(x_i, x_j) - \sum_{i = 1}^n \alpha_i \\
+&amp;\begin{aligned} \text{s.t. }
+&amp; \sum_{i = 1}^n \alpha_i y_i = 0 \\
+&amp; 0 \le \alpha_i \le C, \quad i = 1,2,\dots,n
+\end{aligned}
+\end{align*}
+$$</p>
+<p>此时我们可以在核函数 $K(x, z)$ 对应的高维特征空间 $\mathcal{H}$ 中寻找一个线性决策超平面，但是参数学习是在低维输入空间 $\mathcal{X}$ 进行的，这称为支持向量机的<em>核技巧</em>。</p>
+
 </section>
 
 
@@ -633,9 +617,7 @@ $$</p>
     
     <section class="article-tags">
         
-            <a href="/tags/python/">Python</a>
-        
-            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
         
     </section>
 
@@ -695,18 +677,18 @@ $$</p>
             
                 
 <article class="has-image">
-    <a href="/p/pytorch-dataset/">
+    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
         
         
             <div class="article-image">
                 
-                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" data-key="pytorch-dataset" data-hash="/p/pytorch-tensor/pytorch.webp"/>
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">PyTorch基础 （二）Dataset和DataLoader</h2>
+            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>
@@ -714,89 +696,42 @@ $$</p>
             
                 
 <article class="has-image">
-    <a href="/p/pytorch-tensor/">
+    <a href="/p/ml_02_linear_classifiers_and_perceptrons/">
         
         
             <div class="article-image">
-                <img src="/p/pytorch-tensor/pytorch.7899a0b479e389b343b4120312b0ff14.webp" 
-                        width="1200" 
-                        height="500" 
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_02_linear_classifiers_and_perceptrons" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 02 线性分类器和感知机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ml_01_introduction/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ml_01_introduction/ml_header.8cc12338efb31594a31aa6c7a8304759.webp" 
+                        width="4549" 
+                        height="3033" 
                         loading="lazy"
-                        alt="Featured image of post PyTorch基础 （一）Tensors"
-                        data-key="pytorch-tensor" 
-                        data-hash="md5-eJmgtHnjibNDtBIDErD/FA==">
+                        alt="Featured image of post 机器学习 01 引言"
+                        data-key="ml_01_introduction" 
+                        data-hash="md5-jMEjOO&#43;zFZSjGqbHqDBHWQ==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">PyTorch基础 （一）Tensors</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/python_package_doa_estimation/">
-        
-        
-            
-            <div class="article-image">
-                <img src="/img/default.webp" 
-                    loading="lazy"
-                    alt="Featured image of post 用于 DOA 估计的 Python 包 DOA_py"
-                    data-key="python_package_doa_estimation" 
-                    >
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">用于 DOA 估计的 Python 包 DOA_py</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/deploy-deep-learning-model-on-atlas/">
-        
-        
-            
-            <div class="article-image">
-                <img src="/img/default.webp" 
-                    loading="lazy"
-                    alt="Featured image of post 在Atlas 200 DK中部署深度学习模型"
-                    data-key="deploy-deep-learning-model-on-atlas" 
-                    >
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">在Atlas 200 DK中部署深度学习模型</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/telegram-bot/">
-        
-        
-            
-            <div class="article-image">
-                <img src="/img/default.webp" 
-                    loading="lazy"
-                    alt="Featured image of post Telegram Bot（一）Python库pyTelegramBotAPI的使用"
-                    data-key="telegram-bot" 
-                    >
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Telegram Bot（一）Python库pyTelegramBotAPI的使用</h2>
+            <h2 class="article-title">机器学习 01 引言</h2>
         </div>
     </a>
 </article>
