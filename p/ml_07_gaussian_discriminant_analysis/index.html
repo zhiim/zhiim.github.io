@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="线性分类器；决策函数和决策边界；质心法；感知机">
-<title>机器学习 02 线性分类器和感知机</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计">
+<title>机器学习 07 高斯判别分析</title>
 
-<link rel='canonical' href='https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/'>
+<link rel='canonical' href='https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/'>
 
-<link rel="stylesheet" href="/scss/style.min.b0d6c98220e1e0e4160f497ee8f9f39909bc8c24573837ee20d739344e9ca7af.css"><meta property='og:title' content="机器学习 02 线性分类器和感知机">
-<meta property='og:description' content="线性分类器；决策函数和决策边界；质心法；感知机">
-<meta property='og:url' content='https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/'>
+<link rel="stylesheet" href="/scss/style.min.b0d6c98220e1e0e4160f497ee8f9f39909bc8c24573837ee20d739344e9ca7af.css"><meta property='og:title' content="机器学习 07 高斯判别分析">
+<meta property='og:description' content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计">
+<meta property='og:url' content='https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-18T16:32:02&#43;08:00'/><meta property='article:modified_time' content='2025-05-18T16:32:02&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-23T23:21:38&#43;08:00'/><meta property='article:modified_time' content='2025-05-23T23:21:38&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 02 线性分类器和感知机">
-<meta name="twitter:description" content="线性分类器；决策函数和决策边界；质心法；感知机"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 07 高斯判别分析">
+<meta name="twitter:description" content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -329,10 +329,18 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#分类器">分类器</a></li>
-    <li><a href="#linear-classifier-math">Linear Classifier Math</a></li>
-    <li><a href="#一个简单的分类器">一个简单的分类器</a></li>
-    <li><a href="#感知机">感知机</a></li>
+    <li><a href="#高斯判别分析-gaussian-discriminant-analysis">高斯判别分析 Gaussian Discriminant Analysis</a>
+      <ol>
+        <li><a href="#二次判别分析-quadratic-discriminant-analysis-qda">二次判别分析 Quadratic Discriminant Analysis (QDA)</a></li>
+        <li><a href="#线性判决分析-linear-discriminant-analysis-lda">线性判决分析 Linear Discriminant Analysis (LDA)</a></li>
+      </ol>
+    </li>
+    <li><a href="#概率分布的参数估计">概率分布的参数估计</a>
+      <ol>
+        <li><a href="#估计前验概率-pi_c">估计前验概率 $\pi_C$</a></li>
+        <li><a href="#估计均值-mu_c-和方差-sigma_c2">估计均值 $\mu_C$ 和方差 $\sigma_C^2$</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -347,9 +355,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ml_02_linear_classifiers_and_perceptrons/">
+            <a href="/p/ml_07_gaussian_discriminant_analysis/">
                 
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 02 线性分类器和感知机" />
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 07 高斯判别分析" />
                 
             </a>
         </div>
@@ -368,12 +376,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ml_02_linear_classifiers_and_perceptrons/">机器学习 02 线性分类器和感知机</a>
+            <a href="/p/ml_07_gaussian_discriminant_analysis/">机器学习 07 高斯判别分析</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            线性分类器；决策函数和决策边界；质心法；感知机
+            高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计
         </h3>
         
     </div>
@@ -394,7 +402,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 18, 2025</time>
+                <time class="article-time--published">May 23, 2025</time>
             </div>
         
 
@@ -424,87 +432,92 @@
     <section class="article-content">
     
     
-    <h2 id="分类器">分类器
-</h2><p>假设我们有 $n$ 个观测样例（bofservations），每个观测样例有 $d$ 个特征（features），有些样例属于类别 C，有些不是</p>
-<figure><img src="/p/ml_02_linear_classifiers_and_perceptrons/decision_boudaries.webp" width="800"><figcaption>
-      <h4>不同的决策边界</h4>
+    <h2 id="高斯判别分析-gaussian-discriminant-analysis">高斯判别分析 Gaussian Discriminant Analysis
+</h2><p><strong>基本假设</strong>：每个类别服从高斯分布</p>
+<p>$$X \sim \mathcal{N}(\mu, \sigma^2): f(x) = \frac{1}{(\sqrt{2 \pi} \sigma)^d}\exp{\left( -\frac{||x - \mu||^2}{2\sigma^2} \right)}$$</p>
+<p>其中 $x,\mu$ 是向量，$\sigma$ 是标量，$d$ 表示维度。（注：这里使用的正态分布公式是一个简化版本，它假设数据在所有的特征维度上的方差相同，并且不考虑不同特征之间的相关性）</p>
+<p>对于每个类别 $C$，假设我们知道了均值 $\mu_C$ 和协方差 $\sigma_C^2$，那么我们就可以根据上述高斯分布公式，将均值和方差代入确定概率密度函数 $f_{X|Y=C}(x)$。同时假设前验概率 $\pi_C=P(Y = C)$ 已知</p>
+<p>在给定观测 $x$ 的条件下，贝叶斯决策准则 $r^*(x)$ 根据最大化 $f_{X|Y=C}(x)$ 来判决类别 $C$</p>
+<figure><img src="/p/ml_07_gaussian_discriminant_analysis/9265fadf674aa9dfce38e558124f5253.png" width="800"><figcaption>
+      <h4>两个类别的概率密度函数</h4>
     </figcaption>
 </figure>
 
-<p><em>决策边界</em>：分类器选择的可以将样例分成不同类别的边界</p>
-<p><em>过拟合</em>：决策边界拟合得太好，以至于无法用于未来样本的分类</p>
-<p><em>决策函数</em>：将一个点映射到一个值，例如</p>
+<p>等价于最大化</p>
+<p>$$Q_C(x) = \ln\left( (\sqrt{2\pi})^d f_{X|Y=C}(x) \right)=-\frac{||x - \mu_C||^2}{2\sigma_C^2}-d\ln\sigma_C + \ln\pi_C$$</p>
+<p>$Q_C(x)$ 是一个关于 $x$ 的二次函数</p>
+<h3 id="二次判别分析-quadratic-discriminant-analysis-qda">二次判别分析 Quadratic Discriminant Analysis (QDA)
+</h3><p>假设只有两个类别 $C$ 和 $D$，那么贝叶斯分类器为</p>
 <p>$$
-\begin{matrix}
-f(x) &gt; 0 &amp; &amp; \text{if } x \in \text{class } C; \\
-f(x) \le 0 &amp; &amp; \text{if } x \notin \text{class } C;
-\end{matrix}
+r^*(x) = \begin{cases}
+C &amp; \text{if } Q_C(x) - Q_D(x) &gt; 0 \\
+D &amp; otherwise
+\end{cases}
 $$</p>
-<p>则分类边界为 $\{x\in \mathbb{R}^{d}: f(x)=0\}$</p>
-<figure><img src="/p/ml_02_linear_classifiers_and_perceptrons/dc_2.webp" width="400"><figcaption>
-      <h4>分类边界</h4>
+<p>决策函数为 $Q_C(x) - Q_D(x)$，贝叶斯决策边界为 $\{ x: Q_C(x) - Q_D(x) = 0 \}$。如果样本点是 $1$ 维的，那么贝叶斯决策边界可能有 $1$ 个或者 $2$ 个点（二次方程的解）；如果样本点是 $d$ 维的，那么贝叶斯决策边界是一个二次曲面。</p>
+<p>除了根据贝叶斯规则判别样本点的类别外，也可以得到判别正确的概率，即
+$$P(Y = C | X = x) = \frac{f_{X | Y = C}\pi_C}{f_{X | Y = C}\pi_C + f_{X | Y = D}\pi_D}$$
+上式也可以进一步写成
+$$P(Y = C | X = x) = \frac{e^{Q_C(x)}}{e^{Q_C(x)} + e^{Q_D(x)}} = s(Q_C(x) - Q_D(x))$$
+其中 $s(\gamma)=\frac{1}{1 + e^{-\gamma}}$ 是 Logistic 函数也即是 Sigmoid 函数</p>
+<figure><img src="/p/ml_07_gaussian_discriminant_analysis/19ef8537b1068b93b5d7ac865151ebe4.png" width="400"><figcaption>
+      <h4>Logistic函数</h4>
     </figcaption>
 </figure>
 
-<h2 id="linear-classifier-math">Linear Classifier Math
-</h2><p><em>内积</em>：$x\cdot y = x_1y_1+x_2y_2+\dots + x_dy_d$，也可以写成 $x^Ty$</p>
-<p><em>欧拉范数</em>：$||x||=\sqrt{x\cdot x}=\sqrt{x_1^2 + x_2^2 + \dots + x_d^2}$。可以表示向量 $x$ 的欧拉长度 (Euclidean length)。</p>
-<p>归一化向量 $x$： ${x}/{||x||}$</p>
-<p>给定一个线性决策函数 $f(x) = w \cdot x + \alpha$，决策边界为 $H = \{x: w \cdot x = -\alpha\}$。集合 $H$ 被称为<em>超平面</em>（hyperplane）。</p>
+<p>Logistic 函数满足 $s(0) = 0.5$，也就是说当 $Q_C(x) = Q_D(x)$ 时，判别成两种类型的概率均等</p>
+<figure><img src="/p/ml_07_gaussian_discriminant_analysis/3560589dbc4fdc3bf12bef2f35ec6c2d.png" width="400"><figcaption>
+      <h4>多类别QDA判决边界</h4>
+    </figcaption>
+</figure>
+
+<p>多类别 QDA 将特征空间划分为多个区域。在二维或更高维度中，通常会形成多个决策边界，这些边界在连接点处相互邻接</p>
+<h3 id="线性判决分析-linear-discriminant-analysis-lda">线性判决分析 Linear Discriminant Analysis (LDA)
+</h3><p>LDA 时 QDA 的一个变种，它有线性的决策边界，相较于 QDA 不容易过拟合</p>
+<p><strong>基本假设</strong>：所有的高斯分布有相同的方差 $\sigma^2$</p>
+<p>此时贝叶斯分类器是一个线性分类器</p>
+<p>$$Q_C(x) - Q_D(x) = \underbrace{\frac{(\mu_C - \mu_D) \cdot x}{\sigma^2}}_{w \cdot x} \underbrace{- \frac{||\mu_C||^2 - ||\mu_D||^2}{2\sigma^2} + \ln\pi_C - \ln\pi_D} _{+ \alpha}$$</p>
 <ul>
-<li>超平面是 $d-1$ 维，并且分割了一个 $d$ 维空间</li>
-<li>它是无限且平展的</li>
+<li>决策边界为 $w \cdot x + \alpha = 0$</li>
+<li>前验概率为 $P(Y=C | X= x) = s(w \cdot x + \alpha)$</li>
 </ul>
-<p>$w$ 和超平面 $H$ 上的任何直线正交。所以 $w$ 被称为 $H$ 的<em>法线</em>（normal vector）。如果 $w$ 是一个单位向量，那么 $f(x) = w \cdot x + \alpha$ 是 $x$ 到 $H$ 的有符号距离（singed distance）。此外，$H$ 到原点的距离为 $\alpha$。</p>
-<figure><img src="/p/ml_02_linear_classifiers_and_perceptrons/normal_vector.webp" width="400"><figcaption>
-      <h4>平面的法线</h4>
+<p>特殊情况：如果 $\pi_C = \pi_D = 0.5$，那么决策边界变为 $(\mu_C - \mu_D) \cdot x - (\mu_C - \mu_D) \cdot \left( \frac{\mu_C + \mu_D}{2} \right) = 0$，此时变成了质心法</p>
+<p>多类别 LDA：选择类别 C，最大化线性决策函数 $\frac{\mu_C \cdot x}{\sigma^2} - \frac{||\mu_C||^2}{2\sigma^2} + \ln\pi_C$</p>
+<figure><img src="/p/ml_07_gaussian_discriminant_analysis/823390d4a186991b57d5fe3eb459e2ad.png" width="400"><figcaption>
+      <h4>多类别LDA决策边界</h4>
     </figcaption>
 </figure>
 
-<p>如果存在一个超平面可以将所有的训练样本点分类，则它们<em>线性可分</em>。</p>
-<h2 id="一个简单的分类器">一个简单的分类器
-</h2><p><em>质心法</em>（Centroid method）：首先分别计算属于类别 $C$ 的所有点的平均 $\mu_C$，以及所有不属于 $C$ 的平均 $\mu_X$。则决策函数可以表示为
-$$f(x) = (\mu_C - \mu_X) \cdot x - (\mu_C - \mu_X) \cdot \frac{\mu_C + \mu_X}{2}$$</p>
-<p>质心法非常简洁，但是也只能处理简单的情况。例如下图中的数据点无法使用质心法正确分类。</p>
-<figure><img src="/p/ml_02_linear_classifiers_and_perceptrons/centorid_method.webp" width="400"><figcaption>
-      <h4>质心法失效的情况</h4>
-    </figcaption>
-</figure>
-
-<h2 id="感知机">感知机
-</h2><p>假设有 $n$ 个采样点数据 $X_1, X_2,\dots,X_n$。对于每个采样点，对应的<em>标签</em>为</p>
+<h2 id="概率分布的参数估计">概率分布的参数估计
+</h2><p><em>最大似然估计</em>：通过选择使似然函数 $\mathcal{L}$ 最大化的参数来得到统计模型的参数估计值</p>
+<h3 id="估计前验概率-pi_c">估计前验概率 $\pi_C$
+</h3><p>一个不均匀硬币，有概率 $p$ 得到正面，$1 - p$ 的概率得到反面。在 $n$ 次试验中，有 $a$ 次为正面，则似然函数为
+$$\mathcal{L} = C_n^a p^a (1 - p)^{n - a}$$
+通过最大似然法，使 $\mathcal{L}$ 最大，$\frac{\partial \mathcal{L}}{\partial p} = 0$ ，得到 $p = \frac{a}{n}$</p>
+<p>类似的，如果共有 $n$ 个训练样本点，其中 $a$ 个属于类别 C，则前验概率 $\hat{\pi}_C = a / n$</p>
+<h3 id="估计均值-mu_c-和方差-sigma_c2">估计均值 $\mu_C$ 和方差 $\sigma_C^2$
+</h3><p>根据 $n$ 个样本点 $X_1,X_2,\dots,X_n$ 求出最拟合的高斯分布</p>
+<p>似然函数为
+$$\mathcal{L}(\mu, \sigma;X_1,X_2,\dots,X_n) = f(X_1)f(X_2)\cdots f(X_n)$$
+为了方便计算，最大化对数似然函数</p>
 <p>$$
-y_i = \begin{cases}
-\begin{matrix}
-1 &amp; \text{if } X_i \in \text{class C} \\
--1 &amp; \text{if } X_i \notin \text{class C}
-\end{matrix}
-\end{cases}
+\begin{align*}
+l(\mu, \sigma;X_1,\dots,X_n) &amp;= \ln{f(X_1)} + \dots \ln{f(X_n)} \\
+&amp;= \sum_{i = 1}^n \left( -\frac{|| X_i - \mu||^2}{2 \sigma^2} - d\ln{\sqrt{2\pi} -d \ln{\sigma}} \right)
+\end{align*}
 $$</p>
-<p>为了简化讨论，这里只考虑经过原点的决策边界。于是我们寻找决策边界的目标可以转换成寻找一个权重 $w$，使其满足</p>
+<p>可得</p>
 <p>$$
-\begin{matrix}
-X_i \cdot w \ge 0 &amp; &amp; \text{if } y_i = 1 \\
-X_i \cdot w \le 0 &amp; &amp; \text{if } y_i = -1
-\end{matrix}
+\begin{align*}
+&amp; \nabla_ul = \sum_{i = 1}^n \frac{X_i - \mu}{\sigma^2} = 0  \quad \Rightarrow \quad \hat{\mu} = \frac{1}{n} \sum_{i = 1}^nX_i \\
+&amp; \frac{\partial l}{\partial \sigma} = \sum_{i = 1}^n \frac{||X_i - \mu||^2 - d\sigma^2}{\sigma^2} = 0 \quad \Rightarrow \quad \hat{\sigma}^2 = \frac{1}{dn} \sum_{i = 1}^n ||X_i - \hat{\mu} ||^2
+\end{align*}
 $$</p>
-<p>等价为
-$$y_iX_i\cdot w \ge 0$$
-上式即为<em>约束</em>（constraint）。</p>
-<p>为了找到最优的 $w$，我们定义一个<em>风险函数</em>$R$，如果约束被违背，则风险函数为正值，然后通过最小化 $R$ 选择最优 $w$。</p>
-<p>首先定义<em>损失函数</em></p>
+<p>对于 QDA，分别使用类别内的数据点每个类别 C 的均值和方差，使用所有数据点估计前验概率 $\hat{\pi_C} = \frac{n_C}{\sum_D n_D}$</p>
+<p>对于 LDA，使用同样的方法估计每个类别的均值以及前验概率，然后使用所有数据估计方差
+$$\hat{\sigma}^2 = \frac{1}{dn} \sum_C \sum_{\{i:y_i = c\}} ||X_i - \hat{\mu}_C||^2$$</p>
 <p>$$
-L(\hat{y}, y_i) = \begin{cases}
-\begin{matrix}
-0 &amp; &amp; \text{if } y_i\hat{y} \ge 0 \\
--y_i \hat{y} &amp; &amp; \text{otherwise}
-\end{matrix}
-\end{cases}
 $$</p>
-<p>其中 $\hat{y}$ 是分类器的预测值。</p>
-<p>于是，我们可以定义风险函数（即优化问题的目标函数）为
-$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$
-所以寻找超平面的问题变为一个最优化问题：寻找 $w$ ，使得 $R(w)$ 最小。</p>
 
 </section>
 
@@ -570,25 +583,6 @@ $$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/ml_07_gaussian_discriminant_analysis/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_07_gaussian_discriminant_analysis" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 07 高斯判别分析</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -661,6 +655,25 @@ $$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 
 
         <div class="article-details">
             <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ml_02_linear_classifiers_and_perceptrons/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_02_linear_classifiers_and_perceptrons" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 02 线性分类器和感知机</h2>
         </div>
     </a>
 </article>
