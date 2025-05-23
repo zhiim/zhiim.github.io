@@ -6,7 +6,222 @@
         <description>Recent content in 机器学习 on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 21 May 2025 12:41:59 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 May 2025 14:43:55 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>机器学习 06 决策理论</title>
+        <link>https://zhiim.github.io/p/ml_06_decision_theory/</link>
+        <pubDate>Fri, 23 May 2025 14:43:55 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_06_decision_theory/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 06 决策理论" /&gt;&lt;h2 id=&#34;决策理论亦风险最小化&#34;&gt;决策理论亦风险最小化
+&lt;/h2&gt;&lt;p&gt;如果多个属于不同类别的样本点可能处于同一个位置（例如训练数据中，升高为 1.70m 的样本，可能男性和女性同样存在），此时我们没法通过一个分类器直接将样本划分为某一种类别，所以我们需要一个概率分类器，输出当前样本为某种类别的概率&lt;/p&gt;
+&lt;p&gt;贝叶斯定理：&lt;/p&gt;
+&lt;p&gt;$$P(Y| X) = \frac{P(X| Y) P(Y)}{P(X)}$$&lt;/p&gt;
+&lt;p&gt;其中 $P(Y | X)$ 表示观测到 $X$ 的条件下事件 $Y$ 发生的后验概率，$ P(Y)$ 表示事件发生的先验概率。&lt;/p&gt;
+&lt;p&gt;例如，假设人群中 $10%$ 的人患有癌症，$90%$ 的人没有癌症，不同职业的人患有癌症的概率分布为&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;job $(X)$&lt;/th&gt;
+          &lt;th&gt;miner $(X = 0)$&lt;/th&gt;
+          &lt;th&gt;farmer $(X = 1)$&lt;/th&gt;
+          &lt;th&gt;other ${} (X = 2)$&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cancer ${} (Y = 1)$&lt;/td&gt;
+          &lt;td&gt;20%&lt;/td&gt;
+          &lt;td&gt;50%&lt;/td&gt;
+          &lt;td&gt;30%&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;no cancer $(Y = -1)$&lt;/td&gt;
+          &lt;td&gt;1%&lt;/td&gt;
+          &lt;td&gt;10%&lt;/td&gt;
+          &lt;td&gt;89%&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;我们可以计算出，农民没有癌症的概率为&lt;/p&gt;
+&lt;p&gt;$$P(Y = -1 | X = 0) = \frac{P(X = 0 | Y = -1) P (Y = -1)}{P(X = 0)}=\frac{0.1 \times 0.9}{0.1 \times 0.5 + 0.9 \times 0.1} = \frac{9}{14}$$&lt;/p&gt;
+&lt;p&gt;在我们的概率分类器中，可能不同的错误判决类型带来的影响不同。例如将癌症判决为假阴性（本来有癌症但被判决为没有癌症）和假阳性（本来没有被判决为有）的后果差别非常大，前者会造成癌症被忽视，后者只会带来额外的检查开销。此时，我们可以通过损失函数衡量不同错误的代价&lt;/p&gt;
+&lt;p&gt;$$
+L(\hat{y}, y) = \begin{cases}
+1 &amp;amp; \text{if } \hat{y} = 1, y = -1  \\
+5 &amp;amp; \text{if } \hat{y} = -1, y = 1 \\
+0 &amp;amp; \text{if } \hat{y} = y
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;其中 $\hat{y}$ 表示预测的类别，$y$ 表示真实的类别， 假阴性在损失函数中被施加了更多的权重，上述损失函数被称为是&lt;em&gt;非对称&lt;/em&gt;的&lt;/p&gt;
+&lt;p&gt;相反的，一个对称的&lt;em&gt;0-1 损失函数&lt;/em&gt;可以表示为&lt;/p&gt;
+&lt;p&gt;$$
+L(\hat{y}, y) = \begin{cases}
+1 &amp;amp; \text{if } \hat{y} \neq y \\
+0 &amp;amp; \text{if } \hat{y} = y
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;定义 $r: \mathbb{R}^d \rightarrow \pm 1$ 是一个&lt;em&gt;决策规则&lt;/em&gt;，也被称为&lt;em&gt;分类器&lt;/em&gt;，它表示一个将特征向量 $x$ 映射到 1 或 -1 的函数&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;$r$ 的&lt;em&gt;风险&lt;/em&gt;指在所有的可能的数据点 $(x, y)$ 上的期望损失&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+R(r) &amp;amp;= E[L(r(X), Y)] \\
+&amp;amp;= \sum_x \left( L(r(x), 1)P(Y = 1 | X = x) + L(r(x), -1)P(Y = -1 | X = x) \right) P(X = x) \\
+&amp;amp;= P(Y = 1) \sum_{x} L(r(x), 1) P(X = x | Y = 1) +\\
+&amp;amp; \quad P(Y = -1) \sum_x L(r(x), -1) P(X = x | Y = -1)
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;贝叶斯决策规则&lt;/em&gt;（贝叶斯分类器）就是可以最小化风险函数 $R(r)$ 的函数 $r^*$，当 $L(1, 1) = L(-1, -1) = 0$，即预测正确损失函数为 0 的情况下&lt;/p&gt;
+&lt;p&gt;$$
+r^* (x) = \begin{cases}
+1 &amp;amp; \text{if } L(-1, 1)P(Y = 1 | X = x) &amp;gt; L(1, -1)P(Y = -1 | X = x) \\
+-1 &amp;amp; \text{otherwise}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;当损失函数 $L$ 是对称的时，$r^*$ 就是&lt;strong&gt;选择后验概率最大的类别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果我们可以知道真实的概率分布，可以直接根据上式构建一个理想的概率分类器 $r^*$。但是真实场景中，我们只能通过一些统计手段估计概率分布&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;获得使风险函数最小的 $r^*$ 的过程被称为&lt;em&gt;风险最小化&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;连续概率分布&#34;&gt;连续概率分布
+&lt;/h3&gt;&lt;p&gt;假设 $X$ 有一个连续的概率密度函数，则&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_06_decision_theory/cd3ee7bf682b292e11e2f7242823ff31.png&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;概率密度函数&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$X \in [x_1, x_2]$ 的概率为 $\int_{x_1}^{x_2} f(x) dx$&lt;/li&gt;
+&lt;li&gt;概率密度函数包含的整个区域面积为 $\int_{-\infty}^{\infty} f(x)dx = 1$&lt;/li&gt;
+&lt;li&gt;$g(X)$ 的期望为 $E[g(X)] = \int_{-\infty}^{\infty} g(x)f(x) dx$&lt;/li&gt;
+&lt;li&gt;$X$ 的均值为 $\mu = E[X] = \int_{-\infty}^{\infty}x f(x)dx$，方差为 $\sigma^2 = E[(X - \mu)^2] = E[X^2] - \mu^2$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;假设我们使用 0-1 损失函数，在连续概率分布的情况下，此时贝叶斯决策规则为&lt;/p&gt;
+&lt;p&gt;$$
+r^* (x) = \begin{cases}
+1 &amp;amp; \text{if } f_{X | Y = 1}(x)P(Y = 1) &amp;gt; f_{X | Y = -1}(x)P(Y = -1) \\
+-1 &amp;amp; \text{otherwise}
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;上式表示，在观测到数据 $x$ 时，如果它有更多的可能为类别 1 则被判别为类别 1，反之不为类别 1&lt;/p&gt;
+&lt;p&gt;我们可以画出 $f_{X | Y = 1}(x)P(Y = 1)$ 和 $f_{X | Y = -1}(x)P(Y = -1)$ 的概率密度曲线&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_06_decision_theory/872da1136c31970df2a4dc704d3e39fe.png&#34; width=&#34;600&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;贝叶斯最优决策边界&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;贝叶斯决策规则对应了一个&lt;em&gt;贝叶斯最优决策边界&lt;/em&gt;，即 $f_{X | Y = 1}(x)P(Y = 1) = f_{X | Y = -1}(x)P(Y = -1)$，它是两个概率密度函数的交点。在贝叶斯最优边界左边的点 $x$ 会被判别为类别 1，右边的点 $x$ 会被判别为类别 -1&lt;/p&gt;
+&lt;p&gt;贝叶斯最优决策边界是两个后验概率密度函数相交的边界，在这个边界上两者的概率密度相等，所以贝叶斯最优决策边界为 $\{ x: P(Y = 1 | X = x) = 0.5 \}$&lt;/p&gt;
+&lt;p&gt;在连续概率分布下，风险函数可以写成&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align*}
+R(r) &amp;amp;= E[L(r(X), Y)] \\
+&amp;amp;= P(Y = 1) \int L(r(x), 1) f_{X | Y = 1}(x) dx + \\
+&amp;amp; \quad P(Y = -1) \int L(r(x), -1) f_{X | Y = -1}(x) dx
+\end{align*}
+$$&lt;/p&gt;
+&lt;p&gt;在 $r$ 为贝叶斯决策规则 $r^*$ 的条件下，贝叶斯风险就是两个概率密度函数重合部分的面积
+$$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$&lt;/p&gt;
+&lt;h2 id=&#34;构建分类器的三种方法&#34;&gt;构建分类器的三种方法
+&lt;/h2&gt;&lt;p&gt;现在我们可以总结出三种构建分类器的方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;生成模型 Generative models（例如LDA）
+&lt;ul&gt;
+&lt;li&gt;假设样本点来自特定的概率分布，并且不同类别的分布不同&lt;/li&gt;
+&lt;li&gt;猜测概率分布的形式&lt;/li&gt;
+&lt;li&gt;对每个类别，给定了概率分布的形式 $f_{X | Y = C}(x)$， 使得概率分布的参数拟合类别 C 的点&lt;/li&gt;
+&lt;li&gt;对每个类别 C 估计 $P(Y = C)$&lt;/li&gt;
+&lt;li&gt;根据贝叶斯定理计算 $P(Y | C)$&lt;/li&gt;
+&lt;li&gt;根据后验概率的大小，得出最终的类别，即使得 $f_{X|Y=C}(x)P(Y = C)$ 的 C&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;判别模型 Discriminative models（例如 logistic 回归）
+&lt;ul&gt;
+&lt;li&gt;直接对 $P(Y|X)$ 建模&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;寻找决策边界（例如 SVM）
+&lt;ul&gt;
+&lt;li&gt;直接对 $r(x)$ 建模&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;相较于方法 3，方法 1 和 2 都可以直接给出估计正确的概率。相较于方法 2，方法 1 一般在有异常值和少量训练样本下更加稳定，但是现实问题中很难准确估计概率分布&lt;/p&gt;
+&lt;p&gt;如果数据服从高斯分布或者一个特定的概率分布，一般使用生成模型效果更稳定&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 05 机器学习抽象和数值优化</title>
+        <link>https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/</link>
+        <pubDate>Fri, 23 May 2025 14:33:10 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 05 机器学习抽象和数值优化" /&gt;&lt;h2 id=&#34;机器学习问题的抽象&#34;&gt;机器学习问题的抽象
+&lt;/h2&gt;&lt;p&gt;机器学习问题可以抽象成数据、模型、优化问题、优化算法四个层级&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;数据是否有标签？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是：标签是类别（分类）还是数值（回归）&lt;/li&gt;
+&lt;li&gt;否：相似性（聚类）还是定位（降维）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;决策函数选择：线性、多项式、逻辑、神经网络，&amp;hellip;&lt;/li&gt;
+&lt;li&gt;最近邻，决策树&lt;/li&gt;
+&lt;li&gt;特征选择&lt;/li&gt;
+&lt;li&gt;低容量 vs 高容量考虑（影响过拟合、欠拟合、推断）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;最优化问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;变量、目标函数、约束条件&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;最优化算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;梯度下降、单纯形、SVD&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;最优化问题&#34;&gt;最优化问题
+&lt;/h2&gt;&lt;h3 id=&#34;无约束问题&#34;&gt;无约束问题
+&lt;/h3&gt;&lt;p&gt;目标：寻找一个 $w$ 最小化一个连续的目标函数 $f(w)$&lt;/p&gt;
+&lt;p&gt;如果 $f$ 的导数也是连续的则称 $f$ 是&lt;em&gt;光滑&lt;/em&gt;的&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;全局最小值&lt;/em&gt;：对于任意 $v$，有 $f(w) \le f(v)$&lt;br&gt;
+&lt;em&gt;局部最小值&lt;/em&gt;：一个 $w$ 附近的区间内，对于任意 $v$，有 $f(w)\le f(v)$&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/bd8dc79dab48cd26c8f44288954b173a.png&#34; width=&#34;400&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;全局最小值和局部最小值&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;凸函数&lt;/em&gt;：函数 $f$ 是凸的，如果对于每个 $x, y \in \mathbb{R}^d$，连接 $(x, f(x))$ 和 $(y, f(y))$ 的切线在函数 $f$ 之上。&lt;br&gt;
+也可以表示为：对于任意 $x, y \in \mathbb{R}^d$，以及 $\beta \in [0, 1]$，有 $f(x + \beta(y - x)) \le f(x) + \beta (f(y) - f(x))$&lt;/p&gt;
+&lt;p&gt;凸函数的和也是凸函数。感知机的风险函数是凸损失函数的和，所以它也是凸函数。&lt;/p&gt;
+&lt;p&gt;一个连续函数如果在封闭的凸定义域内，则&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;没有最小值（趋近于 $-\infty$）&lt;/li&gt;
+&lt;li&gt;只有一个最小值&lt;/li&gt;
+&lt;li&gt;一个连通的最小值集合，且值相等（一个线段或者平面）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于后两种情况，我们可以通过梯度下降法寻找最小值&lt;/p&gt;
+&lt;p&gt;很多时候我们没法找到一个凸目标函数，所以梯度下降只能找到一个局部最小值而不是全局最小值。但是在很多情形下，例如在训练神经网络时，随机梯度下降仍然是一个比较好的选择&lt;/p&gt;
+&lt;h3 id=&#34;线性规划&#34;&gt;线性规划
+&lt;/h3&gt;&lt;p&gt;线性目标函数 + 线性约束函数&lt;/p&gt;
+&lt;p&gt;目标：寻找 $w$ 最大化（或者最小化）$c \cdot w$，并满足 $Aw \le b$&lt;br&gt;
+其中 $A$ 是一个 $n \times d$ 维度的矩阵，$b \in \mathbb{R}^n$。所以上述不等式包含了 $n$ 个线性约束&lt;/p&gt;
+&lt;p&gt;$$A_i \cdot w \le b_i, \quad i \in [1, n]$$&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/dc81dbe98ddeaa023a6b39498a59a4f0.png&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;线性规划&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;满足所有约束条件的 $w$ 的集合是一个&lt;em&gt;凸多面体&lt;/em&gt;，被称为&lt;em&gt;可行域&lt;/em&gt;$F$。优化过程是在 $F$ 中寻找一个沿方向 $c$ 最远的点&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;凸多面体&lt;/em&gt;：对于任意 $p,q \in P$，连接 $p,q$ 的线段完全在 $P$ 内&lt;/p&gt;
+&lt;p&gt;在线性规划中，最优点通常位于边界或者顶点上，所以某些等式形式的约束被称为&lt;em&gt;积极约束&lt;/em&gt;，积极约束对应的对偶变量通常非零。&lt;/p&gt;
+&lt;p&gt;在支持向量机中，在对偶问题中如果 $a_i &amp;gt; 0$，则原始问题中 $y_i (w^T x_i + b) = 1 - \xi_i$，所以支持向量在活跃约束上&lt;/p&gt;
+&lt;p&gt;线性规划最著名的算法是&lt;em&gt;单纯性算法&lt;/em&gt;（simplex algorithm）&lt;/p&gt;
+&lt;h3 id=&#34;二次规划&#34;&gt;二次规划
+&lt;/h3&gt;&lt;p&gt;二次凸目标函数 + 线性不等式约束&lt;/p&gt;
+&lt;p&gt;目标：寻找 $w$ 最小化 $f(w) = w^T Q w + c^T w$，并满足 $Aw \le b$&lt;br&gt;
+其中 $Q$ 是一个对称半正定矩阵&lt;/p&gt;
+&lt;p&gt;如果 $Q$ 是一个&lt;em&gt;正定矩阵&lt;/em&gt;，目标函数是严格凸的，那么二次规划只有一个唯一的全局最优解（如果有解的话）。如果 $Q$ 是一个&lt;em&gt;半正定矩阵&lt;/em&gt;，目标函数是凸的，但不一定是严格凸的，可能有多个目标函数值相同的全局最优解。如果 $Q$ 是非正定的，目标函数是非凸的，可能存在多个局部最优解，求解全局最优解通常是 NP-hard&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>机器学习 04 支持向量机</title>
         <link>https://zhiim.github.io/p/ml_04_support_vector_machine/</link>
         <pubDate>Wed, 21 May 2025 12:41:59 +0800</pubDate>

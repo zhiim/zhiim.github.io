@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）">
-<title>机器学习 03 感知机学习和最大间隔分类器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="决策理论，也称为风险最小化：贝叶斯决策规则和贝叶斯风险；生成模型与判别模型">
+<title>机器学习 06 决策理论</title>
 
-<link rel='canonical' href='https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/'>
+<link rel='canonical' href='https://zhiim.github.io/p/ml_06_decision_theory/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="机器学习 03 感知机学习和最大间隔分类器">
-<meta property='og:description' content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）">
-<meta property='og:url' content='https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/'>
+<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="机器学习 06 决策理论">
+<meta property='og:description' content="决策理论，也称为风险最小化：贝叶斯决策规则和贝叶斯风险；生成模型与判别模型">
+<meta property='og:url' content='https://zhiim.github.io/p/ml_06_decision_theory/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-19T16:29:23&#43;08:00'/><meta property='article:modified_time' content='2025-05-19T16:29:23&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-23T14:43:55&#43;08:00'/><meta property='article:modified_time' content='2025-05-23T14:43:55&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 03 感知机学习和最大间隔分类器">
-<meta name="twitter:description" content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 06 决策理论">
+<meta name="twitter:description" content="决策理论，也称为风险最小化：贝叶斯决策规则和贝叶斯风险；生成模型与判别模型"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -329,8 +329,12 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#感知机算法">感知机算法</a></li>
-    <li><a href="#最大边界分类器">最大边界分类器</a></li>
+    <li><a href="#决策理论亦风险最小化">决策理论亦风险最小化</a>
+      <ol>
+        <li><a href="#连续概率分布">连续概率分布</a></li>
+      </ol>
+    </li>
+    <li><a href="#构建分类器的三种方法">构建分类器的三种方法</a></li>
   </ol>
 </nav>
         </div>
@@ -345,9 +349,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
+            <a href="/p/ml_06_decision_theory/">
                 
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 03 感知机学习和最大间隔分类器" />
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 06 决策理论" />
                 
             </a>
         </div>
@@ -366,12 +370,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">机器学习 03 感知机学习和最大间隔分类器</a>
+            <a href="/p/ml_06_decision_theory/">机器学习 06 决策理论</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）
+            决策理论，也称为风险最小化：贝叶斯决策规则和贝叶斯风险；生成模型与判别模型
         </h3>
         
     </div>
@@ -392,7 +396,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 19, 2025</time>
+                <time class="article-time--published">May 23, 2025</time>
             </div>
         
 
@@ -422,124 +426,139 @@
     <section class="article-content">
     
     
-    <h2 id="感知机算法">感知机算法
-</h2><p>在 <a class="link" href="https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba"  target="_blank" rel="noopener"
-    >机器学习 02 线性分类器和感知机——感知机</a>中，我们将在 $x-$ 空间寻找分类超平面的问题转换为在 ${} w- {}$ 空间寻找一个最优点 $w$ 的问题。</p>
+    <h2 id="决策理论亦风险最小化">决策理论亦风险最小化
+</h2><p>如果多个属于不同类别的样本点可能处于同一个位置（例如训练数据中，升高为 1.70m 的样本，可能男性和女性同样存在），此时我们没法通过一个分类器直接将样本划分为某一种类别，所以我们需要一个概率分类器，输出当前样本为某种类别的概率</p>
+<p>贝叶斯定理：</p>
+<p>$$P(Y| X) = \frac{P(X| Y) P(Y)}{P(X)}$$</p>
+<p>其中 $P(Y | X)$ 表示观测到 $X$ 的条件下事件 $Y$ 发生的后验概率，$ P(Y)$ 表示事件发生的先验概率。</p>
+<p>例如，假设人群中 $10%$ 的人患有癌症，$90%$ 的人没有癌症，不同职业的人患有癌症的概率分布为</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>$x$-space</th>
-          <th>$w$-space</th>
+          <th>job $(X)$</th>
+          <th>miner $(X = 0)$</th>
+          <th>farmer $(X = 1)$</th>
+          <th>other ${} (X = 2)$</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>hyperplane: $\{ x : w \cdot x = 0 \}$</td>
-          <td>point: $w$</td>
+          <td>cancer ${} (Y = 1)$</td>
+          <td>20%</td>
+          <td>50%</td>
+          <td>30%</td>
       </tr>
       <tr>
-          <td>point: $x$</td>
-          <td>hyperplane: $\{ z : w \cdot z = 0 \}$</td>
+          <td>no cancer $(Y = -1)$</td>
+          <td>1%</td>
+          <td>10%</td>
+          <td>89%</td>
       </tr>
   </tbody>
 </table></div>
-<ul>
-<li>在 $x-$ 空间的超平面被转换为在 $w-$ 空间的一个点，这个点是超平面的法线</li>
-<li>在 $x-$ 空间的样本点被转换为在 $w-$ 空间的超平面，这个超平面的法线为样本点</li>
-</ul>
-<p>如果我们需要找到的 $w$ 满足：当 $x$ 为类别 $C$ 时，$x \cdot w \ge 0$，那么</p>
-<ul>
-<li>在 $x-$ 空间，存在一个超平面，分离了不同类别的点。所有属于类别 $C$ 的点与 $w$ 在超平面的同侧；所有不属于类别 $C$ 的点与 $w$ 在超平面的不同侧。</li>
-<li>在 $w-$ 空间，每一个点 ${} X_i$ 对应了 $w-$ 空间一个超平面 $H_i$。如果 ${} X_i \in \text{class C}$，那么 $w$ 与 ${} X_i$ 在 $H_i$ 的同侧；反之，在不同侧。</li>
-</ul>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/53660548c2812635c4ce367acba8da3b.png" width="800">
+<p>我们可以计算出，农民没有癌症的概率为</p>
+<p>$$P(Y = -1 | X = 0) = \frac{P(X = 0 | Y = -1) P (Y = -1)}{P(X = 0)}=\frac{0.1 \times 0.9}{0.1 \times 0.5 + 0.9 \times 0.1} = \frac{9}{14}$$</p>
+<p>在我们的概率分类器中，可能不同的错误判决类型带来的影响不同。例如将癌症判决为假阴性（本来有癌症但被判决为没有癌症）和假阳性（本来没有被判决为有）的后果差别非常大，前者会造成癌症被忽视，后者只会带来额外的检查开销。此时，我们可以通过损失函数衡量不同错误的代价</p>
+<p>$$
+L(\hat{y}, y) = \begin{cases}
+1 &amp; \text{if } \hat{y} = 1, y = -1  \\
+5 &amp; \text{if } \hat{y} = -1, y = 1 \\
+0 &amp; \text{if } \hat{y} = y
+\end{cases}
+$$</p>
+<p>其中 $\hat{y}$ 表示预测的类别，$y$ 表示真实的类别， 假阴性在损失函数中被施加了更多的权重，上述损失函数被称为是<em>非对称</em>的</p>
+<p>相反的，一个对称的<em>0-1 损失函数</em>可以表示为</p>
+<p>$$
+L(\hat{y}, y) = \begin{cases}
+1 &amp; \text{if } \hat{y} \neq y \\
+0 &amp; \text{if } \hat{y} = y
+\end{cases}
+$$</p>
+<p>定义 $r: \mathbb{R}^d \rightarrow \pm 1$ 是一个<em>决策规则</em>，也被称为<em>分类器</em>，它表示一个将特征向量 $x$ 映射到 1 或 -1 的函数</p>
+<p><strong>$r$ 的<em>风险</em>指在所有的可能的数据点 $(x, y)$ 上的期望损失</strong></p>
+<p>$$
+\begin{align*}
+R(r) &amp;= E[L(r(X), Y)] \\
+&amp;= \sum_x \left( L(r(x), 1)P(Y = 1 | X = x) + L(r(x), -1)P(Y = -1 | X = x) \right) P(X = x) \\
+&amp;= P(Y = 1) \sum_{x} L(r(x), 1) P(X = x | Y = 1) +\\
+&amp; \quad P(Y = -1) \sum_x L(r(x), -1) P(X = x | Y = -1)
+\end{align*}
+$$</p>
+<p><em>贝叶斯决策规则</em>（贝叶斯分类器）就是可以最小化风险函数 $R(r)$ 的函数 $r^*$，当 $L(1, 1) = L(-1, -1) = 0$，即预测正确损失函数为 0 的情况下</p>
+<p>$$
+r^* (x) = \begin{cases}
+1 &amp; \text{if } L(-1, 1)P(Y = 1 | X = x) &gt; L(1, -1)P(Y = -1 | X = x) \\
+-1 &amp; \text{otherwise}
+\end{cases}
+$$</p>
+<p>当损失函数 $L$ 是对称的时，$r^*$ 就是<strong>选择后验概率最大的类别</strong></p>
+<p>如果我们可以知道真实的概率分布，可以直接根据上式构建一个理想的概率分类器 $r^*$。但是真实场景中，我们只能通过一些统计手段估计概率分布</p>
+<p><strong>获得使风险函数最小的 $r^*$ 的过程被称为<em>风险最小化</em></strong></p>
+<h3 id="连续概率分布">连续概率分布
+</h3><p>假设 $X$ 有一个连续的概率密度函数，则</p>
+<figure><img src="/p/ml_06_decision_theory/cd3ee7bf682b292e11e2f7242823ff31.png" width="400"><figcaption>
+      <h4>概率密度函数</h4>
+    </figcaption>
 </figure>
 
 <ul>
-<li>在左图中，$x-$ 空间内寻找一个超平面，可以将蓝色的样本点 $C$ （类别为 $C$ 的点）和红色的样本点 $X$ （类别不为 $C$ 的点）正确分类，$w$ 是这个超平面的法线。并且 $w$ 和样本点 $C$ 处于同侧。</li>
-<li>在右图中，每一个样本点在 $w-$ 空间对应一个超平面，$w$ 需要处于红色超平面的反侧，处于蓝色超平面的正侧，即图中阴影区。</li>
+<li>$X \in [x_1, x_2]$ 的概率为 $\int_{x_1}^{x_2} f(x) dx$</li>
+<li>概率密度函数包含的整个区域面积为 $\int_{-\infty}^{\infty} f(x)dx = 1$</li>
+<li>$g(X)$ 的期望为 $E[g(X)] = \int_{-\infty}^{\infty} g(x)f(x) dx$</li>
+<li>$X$ 的均值为 $\mu = E[X] = \int_{-\infty}^{\infty}x f(x)dx$，方差为 $\sigma^2 = E[(X - \mu)^2] = E[X^2] - \mu^2$</li>
 </ul>
-<hr>
-<p>现在我们需要在 $w-$ 空间中找出最优的 $w$，使其最小化 $R(w)$ 。</p>
-<p>优化算法：对风险函数 $R(w)$ <em>梯度下降</em></p>
-<p><strong>首先初始化 $w$ 的值，然后计算 $R(w)$ 关于 $w$ 的梯度（即 $R(w)$ 增长最快的方向），然后在相反的方向移动一步。</strong></p>
-<p>使用 <a class="link" href="https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba"  target="_blank" rel="noopener"
-    >机器学习 02 线性分类器和感知机——感知机</a> 中定义的风险函数</p>
-<p>$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$</p>
-<p>计算其梯度为</p>
+<p>假设我们使用 0-1 损失函数，在连续概率分布的情况下，此时贝叶斯决策规则为</p>
 <p>$$
-\nabla R(w) = \begin{bmatrix}
-\frac{\partial R}{\partial w_1} \\
-\frac{\partial R}{\partial w_2} \\
-\vdots \\
-\frac{\partial R}{\partial w_d}
-\end{bmatrix} = \nabla \sum_{i \in V}-y_i X_i \cdot w = -\sum_{i\in V}y_i X_i
+r^* (x) = \begin{cases}
+1 &amp; \text{if } f_{X | Y = 1}(x)P(Y = 1) &gt; f_{X | Y = -1}(x)P(Y = -1) \\
+-1 &amp; \text{otherwise}
+\end{cases}
 $$</p>
-<p>其中 $V$ 表示所有满足 $y_i X_i \cdot w &lt; 0$ 的下标 $i$ 的集合。</p>
-<p>对 $R(w)$ 的梯度下降可以表示为</p>
-<p>$$
-\begin{align*}
-&amp; w \leftarrow \text{任意非零初始化} \\
-&amp; \text{while } R(w) &gt; 0 \\
-&amp; \quad \quad V \leftarrow \text{所有满足 } y_i X_i \cdot w &lt; 0 \text{ 的下标 } i \text{ 的集合} \\
-&amp; \quad \quad w \leftarrow w + \varepsilon \sum_{i \in V} y_i X_i \\
-&amp; \text{return } w
-\end{align*}
-$$</p>
-<p>其中 $\varepsilon$ 是<em>学习率</em>。</p>
-<p>梯度下降的每一步复杂度为 $O(nd)$，我们可以通过<em>随机梯度下降</em>提升算法性能。</p>
-<p>随机梯度下降的核心思想是在每一步的梯度下降中，随机选择一个满足条件的下标 $i$，并使用损失函数 $L(X_i \cdot w, y_i)$ 的梯度，该方法被称为<em>感知机算法</em>，其每一步的计算复杂度为 $O(d)$。</p>
-<p>$$
-\begin{align*}
-&amp; \text{while } \text{找到某一个 } i \text{ 满足 } y_i X_i \cdot w &lt; 0 \\
-&amp; \quad \quad w \leftarrow x + \varepsilon y_i X_i \\
-&amp; \text{return } w
-\end{align*}
-$$</p>
-<p><strong>虽然随机梯度下降法非常高效，但是并不是所有梯度下降法可以解决的问题都可以使用随机梯度下降。</strong> 如果数据线性可分，感知机算法一定可以找到全局最优，随机梯度法一定可行。</p>
-<hr>
-<p>如果我们需要找到不经过原点的超平面，此时只需要额外增加一个维度用于表示 $\alpha$</p>
-<p>$$
-f(x) = w \cdot x + \alpha = \begin{bmatrix}
-w_1 &amp; w_2 &amp; \alpha
-\end{bmatrix} \cdot \begin{bmatrix}
-x_1 \\ x_2 \\ 1
-\end{bmatrix}
-$$</p>
-<p>此时我们的每个样本数据点存在于实数空间 $\mathbb{R}^{d + 1}$，其中最后一个维度的特征 $x_{d+1} = 1$。仍然可以在 $d + 1$ 维空间中使用感知机算法找到解。</p>
-<p><em>感知机收敛理论</em>：如果数据是线性可分的，感知机算法可以在最多 $O(r^2/\gamma^2)$ 的迭代中找到一个可以将所有数据正确分类的分类器。其中 $r=\max{||X_i||}$ 是数据的半径，$\gamma$ 是最大间隔。</p>
-<h2 id="最大边界分类器">最大边界分类器
-</h2><p>一个线性分类器的<em>间隔</em>是超平面到最近的一个训练样本点的距离。如果我们可以找到一个超平面，它的间隔最大，那么这个分类器最优（决策边界离所有的点距离最远，最不容易分类错误）。</p>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/1fde55281481c2de74c3cd3b96b57416.png" width="600">
+<p>上式表示，在观测到数据 $x$ 时，如果它有更多的可能为类别 1 则被判别为类别 1，反之不为类别 1</p>
+<p>我们可以画出 $f_{X | Y = 1}(x)P(Y = 1)$ 和 $f_{X | Y = -1}(x)P(Y = -1)$ 的概率密度曲线</p>
+<figure><img src="/p/ml_06_decision_theory/872da1136c31970df2a4dc704d3e39fe.png" width="600"><figcaption>
+      <h4>贝叶斯最优决策边界</h4>
+    </figcaption>
 </figure>
 
-<p>如图，一个满足上述条件的超平面可以表示为 $w \cdot x + \alpha = 0$，那么平行于这个超平面的、经过最近的样本点的超平面可以表示为 $|w \cdot x + \alpha| = 1$（$1$ 只是为了方便讨论，也可以为 $w \cdot x + \alpha = k$，对 $k$ 归一化后也为 $1$）。</p>
-<p>由于所有的样本点都在这两个最近超平面之外，所有样本点满足
-$$w \cdot X_i + \alpha \ge 1 \quad \text{for } i \in [1, n]$$
-由于标签 $y_i \in \{1, -1\}$，约束条件可以表示成
-$$y_i(w \cdot X_i + \alpha) \ge 1 \quad \text{for } i \in [1, n]$$</p>
-<p>已知，如果 $||w|| = 1$，那么 $X_i$ 到超平面的有符号距离为 $w \cdot X_i + \alpha$。所以我们对 $w$ 归一化，可得
-$$\frac{1}{||w||}|w \cdot X_i + \alpha| \ge \frac{1}{||w||}$$
-即间隔为 $\frac{1}{||w||}$，为了使间隔最大化，需要最小化 $||w||$。</p>
-<p>于是可以求解优化问题</p>
+<p>贝叶斯决策规则对应了一个<em>贝叶斯最优决策边界</em>，即 $f_{X | Y = 1}(x)P(Y = 1) = f_{X | Y = -1}(x)P(Y = -1)$，它是两个概率密度函数的交点。在贝叶斯最优边界左边的点 $x$ 会被判别为类别 1，右边的点 $x$ 会被判别为类别 -1</p>
+<p>贝叶斯最优决策边界是两个后验概率密度函数相交的边界，在这个边界上两者的概率密度相等，所以贝叶斯最优决策边界为 $\{ x: P(Y = 1 | X = x) = 0.5 \}$</p>
+<p>在连续概率分布下，风险函数可以写成</p>
 <p>$$
 \begin{align*}
-&amp; \text{找到 } w, \alpha \text{ 最小化 } ||w||^2 \\
-&amp; \text{同时满足 } y_i (X_i \cdot w + \alpha) \ge 1 \quad \text{for all } i \in [1, n]
+R(r) &amp;= E[L(r(X), Y)] \\
+&amp;= P(Y = 1) \int L(r(x), 1) f_{X | Y = 1}(x) dx + \\
+&amp; \quad P(Y = -1) \int L(r(x), -1) f_{X | Y = -1}(x) dx
 \end{align*}
 $$</p>
-<p>上述问题被称为在 $d + 1$ 维空间中，有 $n$ 个约束的的二次规划（quadratic program）。如果所有样本点线性可分，它有唯一解，反之无解。</p>
-<p><strong>最小化 $||w||^2$ 而不是 $||w||$ 的原因：$||w||$ 在 0 处不平滑。</strong></p>
-<p>上述方法可以得到一个<em>最大间隔分类器</em>，即<em>硬间隔支持向量机</em>（hard-margin support vector machine， SVM）。</p>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/eb9976478a95b52b81156b59409096c8.png" width="800">
-</figure>
-
-<p>上图是 $(w_1, w_2, \alpha)$ 的三维空间。类别 $C$ 的样本点为法线的超平面为绿色，非类别 $C$ 的样本点为法线的超平面为红色。图中为 3 个样本点的情况。</p>
+<p>在 $r$ 为贝叶斯决策规则 $r^*$ 的条件下，贝叶斯风险就是两个概率密度函数重合部分的面积
+$$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$</p>
+<h2 id="构建分类器的三种方法">构建分类器的三种方法
+</h2><p>现在我们可以总结出三种构建分类器的方法：</p>
+<ol>
+<li>生成模型 Generative models（例如LDA）
 <ul>
-<li>为了满足约束条件 $y_i (X_i \cdot w + \alpha) \ge 1$，$w, \alpha$ 存在于绿色超平面之上，红色超平面之下</li>
-<li>为了满足 $||w||^2$ 最小，$w, \alpha$ 应该最接近 $\alpha$ 轴</li>
+<li>假设样本点来自特定的概率分布，并且不同类别的分布不同</li>
+<li>猜测概率分布的形式</li>
+<li>对每个类别，给定了概率分布的形式 $f_{X | Y = C}(x)$， 使得概率分布的参数拟合类别 C 的点</li>
+<li>对每个类别 C 估计 $P(Y = C)$</li>
+<li>根据贝叶斯定理计算 $P(Y | C)$</li>
+<li>根据后验概率的大小，得出最终的类别，即使得 $f_{X|Y=C}(x)P(Y = C)$ 的 C</li>
 </ul>
-<p><strong>和感知机算法类似，只有所有数据点线性可分时，硬边界 SVM 可行。</strong></p>
+</li>
+<li>判别模型 Discriminative models（例如 logistic 回归）
+<ul>
+<li>直接对 $P(Y|X)$ 建模</li>
+</ul>
+</li>
+<li>寻找决策边界（例如 SVM）
+<ul>
+<li>直接对 $r(x)$ 建模</li>
+</ul>
+</li>
+</ol>
+<p>相较于方法 3，方法 1 和 2 都可以直接给出估计正确的概率。相较于方法 2，方法 1 一般在有异常值和少量训练样本下更加稳定，但是现实问题中很难准确估计概率分布</p>
+<p>如果数据服从高斯分布或者一个特定的概率分布，一般使用生成模型效果更稳定</p>
 
 </section>
 
@@ -608,25 +627,6 @@ $$</p>
             
                 
 <article class="has-image">
-    <a href="/p/ml_06_decision_theory/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_06_decision_theory" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 06 决策理论</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/">
         
         
@@ -658,6 +658,25 @@ $$</p>
 
         <div class="article-details">
             <h2 class="article-title">机器学习 04 支持向量机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>

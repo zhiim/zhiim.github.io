@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）">
-<title>机器学习 03 感知机学习和最大间隔分类器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划">
+<title>机器学习 05 机器学习抽象和数值优化</title>
 
-<link rel='canonical' href='https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/'>
+<link rel='canonical' href='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 
-<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="机器学习 03 感知机学习和最大间隔分类器">
-<meta property='og:description' content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）">
-<meta property='og:url' content='https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/'>
+<link rel="stylesheet" href="/scss/style.min.1f01611bdca41ddd5eadcd9615efe4b415d92d1bef82a9dfcdc64b9b11e114d5.css"><meta property='og:title' content="机器学习 05 机器学习抽象和数值优化">
+<meta property='og:description' content="机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划">
+<meta property='og:url' content='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-19T16:29:23&#43;08:00'/><meta property='article:modified_time' content='2025-05-19T16:29:23&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-23T14:33:10&#43;08:00'/><meta property='article:modified_time' content='2025-05-23T14:33:10&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 03 感知机学习和最大间隔分类器">
-<meta name="twitter:description" content="梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 05 机器学习抽象和数值优化">
+<meta name="twitter:description" content="机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -329,8 +329,14 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#感知机算法">感知机算法</a></li>
-    <li><a href="#最大边界分类器">最大边界分类器</a></li>
+    <li><a href="#机器学习问题的抽象">机器学习问题的抽象</a></li>
+    <li><a href="#最优化问题">最优化问题</a>
+      <ol>
+        <li><a href="#无约束问题">无约束问题</a></li>
+        <li><a href="#线性规划">线性规划</a></li>
+        <li><a href="#二次规划">二次规划</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -345,9 +351,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
+            <a href="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/">
                 
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 03 感知机学习和最大间隔分类器" />
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 05 机器学习抽象和数值优化" />
                 
             </a>
         </div>
@@ -366,12 +372,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">机器学习 03 感知机学习和最大间隔分类器</a>
+            <a href="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/">机器学习 05 机器学习抽象和数值优化</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            梯度下降，随机梯度下降以及感知机算法；最大间隔分类器（硬间隔支持向量机）
+            机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划
         </h3>
         
     </div>
@@ -392,7 +398,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 19, 2025</time>
+                <time class="article-time--published">May 23, 2025</time>
             </div>
         
 
@@ -407,7 +413,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -422,124 +428,72 @@
     <section class="article-content">
     
     
-    <h2 id="感知机算法">感知机算法
-</h2><p>在 <a class="link" href="https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba"  target="_blank" rel="noopener"
-    >机器学习 02 线性分类器和感知机——感知机</a>中，我们将在 $x-$ 空间寻找分类超平面的问题转换为在 ${} w- {}$ 空间寻找一个最优点 $w$ 的问题。</p>
-<div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>$x$-space</th>
-          <th>$w$-space</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>hyperplane: $\{ x : w \cdot x = 0 \}$</td>
-          <td>point: $w$</td>
-      </tr>
-      <tr>
-          <td>point: $x$</td>
-          <td>hyperplane: $\{ z : w \cdot z = 0 \}$</td>
-      </tr>
-  </tbody>
-</table></div>
+    <h2 id="机器学习问题的抽象">机器学习问题的抽象
+</h2><p>机器学习问题可以抽象成数据、模型、优化问题、优化算法四个层级</p>
+<hr>
+<p><strong>数据</strong></p>
+<p>数据是否有标签？</p>
 <ul>
-<li>在 $x-$ 空间的超平面被转换为在 $w-$ 空间的一个点，这个点是超平面的法线</li>
-<li>在 $x-$ 空间的样本点被转换为在 $w-$ 空间的超平面，这个超平面的法线为样本点</li>
-</ul>
-<p>如果我们需要找到的 $w$ 满足：当 $x$ 为类别 $C$ 时，$x \cdot w \ge 0$，那么</p>
-<ul>
-<li>在 $x-$ 空间，存在一个超平面，分离了不同类别的点。所有属于类别 $C$ 的点与 $w$ 在超平面的同侧；所有不属于类别 $C$ 的点与 $w$ 在超平面的不同侧。</li>
-<li>在 $w-$ 空间，每一个点 ${} X_i$ 对应了 $w-$ 空间一个超平面 $H_i$。如果 ${} X_i \in \text{class C}$，那么 $w$ 与 ${} X_i$ 在 $H_i$ 的同侧；反之，在不同侧。</li>
-</ul>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/53660548c2812635c4ce367acba8da3b.png" width="800">
-</figure>
-
-<ul>
-<li>在左图中，$x-$ 空间内寻找一个超平面，可以将蓝色的样本点 $C$ （类别为 $C$ 的点）和红色的样本点 $X$ （类别不为 $C$ 的点）正确分类，$w$ 是这个超平面的法线。并且 $w$ 和样本点 $C$ 处于同侧。</li>
-<li>在右图中，每一个样本点在 $w-$ 空间对应一个超平面，$w$ 需要处于红色超平面的反侧，处于蓝色超平面的正侧，即图中阴影区。</li>
+<li>是：标签是类别（分类）还是数值（回归）</li>
+<li>否：相似性（聚类）还是定位（降维）</li>
 </ul>
 <hr>
-<p>现在我们需要在 $w-$ 空间中找出最优的 $w$，使其最小化 $R(w)$ 。</p>
-<p>优化算法：对风险函数 $R(w)$ <em>梯度下降</em></p>
-<p><strong>首先初始化 $w$ 的值，然后计算 $R(w)$ 关于 $w$ 的梯度（即 $R(w)$ 增长最快的方向），然后在相反的方向移动一步。</strong></p>
-<p>使用 <a class="link" href="https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba"  target="_blank" rel="noopener"
-    >机器学习 02 线性分类器和感知机——感知机</a> 中定义的风险函数</p>
-<p>$$R(w) = \frac{1}{n} \sum_{i = 1}^n L(X_i \cdot w, y_i) = \frac{1}{n} \sum_{i = 1}^n -y_iX_i \cdot w$$</p>
-<p>计算其梯度为</p>
-<p>$$
-\nabla R(w) = \begin{bmatrix}
-\frac{\partial R}{\partial w_1} \\
-\frac{\partial R}{\partial w_2} \\
-\vdots \\
-\frac{\partial R}{\partial w_d}
-\end{bmatrix} = \nabla \sum_{i \in V}-y_i X_i \cdot w = -\sum_{i\in V}y_i X_i
-$$</p>
-<p>其中 $V$ 表示所有满足 $y_i X_i \cdot w &lt; 0$ 的下标 $i$ 的集合。</p>
-<p>对 $R(w)$ 的梯度下降可以表示为</p>
-<p>$$
-\begin{align*}
-&amp; w \leftarrow \text{任意非零初始化} \\
-&amp; \text{while } R(w) &gt; 0 \\
-&amp; \quad \quad V \leftarrow \text{所有满足 } y_i X_i \cdot w &lt; 0 \text{ 的下标 } i \text{ 的集合} \\
-&amp; \quad \quad w \leftarrow w + \varepsilon \sum_{i \in V} y_i X_i \\
-&amp; \text{return } w
-\end{align*}
-$$</p>
-<p>其中 $\varepsilon$ 是<em>学习率</em>。</p>
-<p>梯度下降的每一步复杂度为 $O(nd)$，我们可以通过<em>随机梯度下降</em>提升算法性能。</p>
-<p>随机梯度下降的核心思想是在每一步的梯度下降中，随机选择一个满足条件的下标 $i$，并使用损失函数 $L(X_i \cdot w, y_i)$ 的梯度，该方法被称为<em>感知机算法</em>，其每一步的计算复杂度为 $O(d)$。</p>
-<p>$$
-\begin{align*}
-&amp; \text{while } \text{找到某一个 } i \text{ 满足 } y_i X_i \cdot w &lt; 0 \\
-&amp; \quad \quad w \leftarrow x + \varepsilon y_i X_i \\
-&amp; \text{return } w
-\end{align*}
-$$</p>
-<p><strong>虽然随机梯度下降法非常高效，但是并不是所有梯度下降法可以解决的问题都可以使用随机梯度下降。</strong> 如果数据线性可分，感知机算法一定可以找到全局最优，随机梯度法一定可行。</p>
-<hr>
-<p>如果我们需要找到不经过原点的超平面，此时只需要额外增加一个维度用于表示 $\alpha$</p>
-<p>$$
-f(x) = w \cdot x + \alpha = \begin{bmatrix}
-w_1 &amp; w_2 &amp; \alpha
-\end{bmatrix} \cdot \begin{bmatrix}
-x_1 \\ x_2 \\ 1
-\end{bmatrix}
-$$</p>
-<p>此时我们的每个样本数据点存在于实数空间 $\mathbb{R}^{d + 1}$，其中最后一个维度的特征 $x_{d+1} = 1$。仍然可以在 $d + 1$ 维空间中使用感知机算法找到解。</p>
-<p><em>感知机收敛理论</em>：如果数据是线性可分的，感知机算法可以在最多 $O(r^2/\gamma^2)$ 的迭代中找到一个可以将所有数据正确分类的分类器。其中 $r=\max{||X_i||}$ 是数据的半径，$\gamma$ 是最大间隔。</p>
-<h2 id="最大边界分类器">最大边界分类器
-</h2><p>一个线性分类器的<em>间隔</em>是超平面到最近的一个训练样本点的距离。如果我们可以找到一个超平面，它的间隔最大，那么这个分类器最优（决策边界离所有的点距离最远，最不容易分类错误）。</p>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/1fde55281481c2de74c3cd3b96b57416.png" width="600">
-</figure>
-
-<p>如图，一个满足上述条件的超平面可以表示为 $w \cdot x + \alpha = 0$，那么平行于这个超平面的、经过最近的样本点的超平面可以表示为 $|w \cdot x + \alpha| = 1$（$1$ 只是为了方便讨论，也可以为 $w \cdot x + \alpha = k$，对 $k$ 归一化后也为 $1$）。</p>
-<p>由于所有的样本点都在这两个最近超平面之外，所有样本点满足
-$$w \cdot X_i + \alpha \ge 1 \quad \text{for } i \in [1, n]$$
-由于标签 $y_i \in \{1, -1\}$，约束条件可以表示成
-$$y_i(w \cdot X_i + \alpha) \ge 1 \quad \text{for } i \in [1, n]$$</p>
-<p>已知，如果 $||w|| = 1$，那么 $X_i$ 到超平面的有符号距离为 $w \cdot X_i + \alpha$。所以我们对 $w$ 归一化，可得
-$$\frac{1}{||w||}|w \cdot X_i + \alpha| \ge \frac{1}{||w||}$$
-即间隔为 $\frac{1}{||w||}$，为了使间隔最大化，需要最小化 $||w||$。</p>
-<p>于是可以求解优化问题</p>
-<p>$$
-\begin{align*}
-&amp; \text{找到 } w, \alpha \text{ 最小化 } ||w||^2 \\
-&amp; \text{同时满足 } y_i (X_i \cdot w + \alpha) \ge 1 \quad \text{for all } i \in [1, n]
-\end{align*}
-$$</p>
-<p>上述问题被称为在 $d + 1$ 维空间中，有 $n$ 个约束的的二次规划（quadratic program）。如果所有样本点线性可分，它有唯一解，反之无解。</p>
-<p><strong>最小化 $||w||^2$ 而不是 $||w||$ 的原因：$||w||$ 在 0 处不平滑。</strong></p>
-<p>上述方法可以得到一个<em>最大间隔分类器</em>，即<em>硬间隔支持向量机</em>（hard-margin support vector machine， SVM）。</p>
-<figure><img src="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/eb9976478a95b52b81156b59409096c8.png" width="800">
-</figure>
-
-<p>上图是 $(w_1, w_2, \alpha)$ 的三维空间。类别 $C$ 的样本点为法线的超平面为绿色，非类别 $C$ 的样本点为法线的超平面为红色。图中为 3 个样本点的情况。</p>
+<p><strong>模型</strong></p>
 <ul>
-<li>为了满足约束条件 $y_i (X_i \cdot w + \alpha) \ge 1$，$w, \alpha$ 存在于绿色超平面之上，红色超平面之下</li>
-<li>为了满足 $||w||^2$ 最小，$w, \alpha$ 应该最接近 $\alpha$ 轴</li>
+<li>决策函数选择：线性、多项式、逻辑、神经网络，&hellip;</li>
+<li>最近邻，决策树</li>
+<li>特征选择</li>
+<li>低容量 vs 高容量考虑（影响过拟合、欠拟合、推断）</li>
 </ul>
-<p><strong>和感知机算法类似，只有所有数据点线性可分时，硬边界 SVM 可行。</strong></p>
+<hr>
+<p><strong>最优化问题</strong></p>
+<p>变量、目标函数、约束条件</p>
+<hr>
+<p><strong>最优化算法</strong></p>
+<p>梯度下降、单纯形、SVD</p>
+<hr>
+<h2 id="最优化问题">最优化问题
+</h2><h3 id="无约束问题">无约束问题
+</h3><p>目标：寻找一个 $w$ 最小化一个连续的目标函数 $f(w)$</p>
+<p>如果 $f$ 的导数也是连续的则称 $f$ 是<em>光滑</em>的</p>
+<p><em>全局最小值</em>：对于任意 $v$，有 $f(w) \le f(v)$<br>
+<em>局部最小值</em>：一个 $w$ 附近的区间内，对于任意 $v$，有 $f(w)\le f(v)$</p>
+<figure><img src="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/bd8dc79dab48cd26c8f44288954b173a.png" width="400"><figcaption>
+      <h4>全局最小值和局部最小值</h4>
+    </figcaption>
+</figure>
+
+<p><em>凸函数</em>：函数 $f$ 是凸的，如果对于每个 $x, y \in \mathbb{R}^d$，连接 $(x, f(x))$ 和 $(y, f(y))$ 的切线在函数 $f$ 之上。<br>
+也可以表示为：对于任意 $x, y \in \mathbb{R}^d$，以及 $\beta \in [0, 1]$，有 $f(x + \beta(y - x)) \le f(x) + \beta (f(y) - f(x))$</p>
+<p>凸函数的和也是凸函数。感知机的风险函数是凸损失函数的和，所以它也是凸函数。</p>
+<p>一个连续函数如果在封闭的凸定义域内，则</p>
+<ol>
+<li>没有最小值（趋近于 $-\infty$）</li>
+<li>只有一个最小值</li>
+<li>一个连通的最小值集合，且值相等（一个线段或者平面）</li>
+</ol>
+<p>对于后两种情况，我们可以通过梯度下降法寻找最小值</p>
+<p>很多时候我们没法找到一个凸目标函数，所以梯度下降只能找到一个局部最小值而不是全局最小值。但是在很多情形下，例如在训练神经网络时，随机梯度下降仍然是一个比较好的选择</p>
+<h3 id="线性规划">线性规划
+</h3><p>线性目标函数 + 线性约束函数</p>
+<p>目标：寻找 $w$ 最大化（或者最小化）$c \cdot w$，并满足 $Aw \le b$<br>
+其中 $A$ 是一个 $n \times d$ 维度的矩阵，$b \in \mathbb{R}^n$。所以上述不等式包含了 $n$ 个线性约束</p>
+<p>$$A_i \cdot w \le b_i, \quad i \in [1, n]$$</p>
+<figure><img src="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/dc81dbe98ddeaa023a6b39498a59a4f0.png" width="800"><figcaption>
+      <h4>线性规划</h4>
+    </figcaption>
+</figure>
+
+<p>满足所有约束条件的 $w$ 的集合是一个<em>凸多面体</em>，被称为<em>可行域</em>$F$。优化过程是在 $F$ 中寻找一个沿方向 $c$ 最远的点</p>
+<p><em>凸多面体</em>：对于任意 $p,q \in P$，连接 $p,q$ 的线段完全在 $P$ 内</p>
+<p>在线性规划中，最优点通常位于边界或者顶点上，所以某些等式形式的约束被称为<em>积极约束</em>，积极约束对应的对偶变量通常非零。</p>
+<p>在支持向量机中，在对偶问题中如果 $a_i &gt; 0$，则原始问题中 $y_i (w^T x_i + b) = 1 - \xi_i$，所以支持向量在活跃约束上</p>
+<p>线性规划最著名的算法是<em>单纯性算法</em>（simplex algorithm）</p>
+<h3 id="二次规划">二次规划
+</h3><p>二次凸目标函数 + 线性不等式约束</p>
+<p>目标：寻找 $w$ 最小化 $f(w) = w^T Q w + c^T w$，并满足 $Aw \le b$<br>
+其中 $Q$ 是一个对称半正定矩阵</p>
+<p>如果 $Q$ 是一个<em>正定矩阵</em>，目标函数是严格凸的，那么二次规划只有一个唯一的全局最优解（如果有解的话）。如果 $Q$ 是一个<em>半正定矩阵</em>，目标函数是凸的，但不一定是严格凸的，可能有多个目标函数值相同的全局最优解。如果 $Q$ 是非正定的，目标函数是非凸的，可能存在多个局部最优解，求解全局最优解通常是 NP-hard</p>
 
 </section>
 
@@ -627,25 +581,6 @@ $$</p>
             
                 
 <article class="has-image">
-    <a href="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_05_machine_learning_abstractions_and_numerical_optimization" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 05 机器学习抽象和数值优化</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/ml_04_support_vector_machine/">
         
         
@@ -658,6 +593,25 @@ $$</p>
 
         <div class="article-details">
             <h2 class="article-title">机器学习 04 支持向量机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>
