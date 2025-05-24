@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 
-<link rel="stylesheet" href="/scss/style.min.d6c8ab28c73d60c0a3467a3c7ced3b0f73dd12a473e3c8a9d5fed36dbc4016c3.css"><meta property='og:title' content="机器学习 05 机器学习抽象和数值优化">
+<link rel="stylesheet" href="/scss/style.min.a3e50e5d46cde6441587cd564fe08846f201982bd0f1392b3c98bd1f9f2438c8.css"><meta property='og:title' content="机器学习 05 机器学习抽象和数值优化">
 <meta property='og:description' content="机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划">
 <meta property='og:url' content='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -732,6 +732,10 @@
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
+  .twikoo input:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
+  }
 
   
   .twikoo svg {
@@ -746,10 +750,14 @@
   }
   .twikoo .el-textarea__inner {
     border-radius: 15px;
-    border-color: var(--twikoo-input-background);
   }
   .twikoo .tk-preview-container {
     border-radius: 15px;
+    border: 1px solid var(--accent-color) !important;
+  }
+  .twikoo textarea:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
   }
 
   
@@ -759,12 +767,13 @@
   }
   .twikoo .el-button.tk-preview {
     font-weight: bold;
-    background-color: var(--twikoo-input-background);
+    color: #fff !important;
+    background-color: #e66351 !important;
   }
   .twikoo .el-button.tk-send {
     font-weight: bold;
     color: #fff !important;
-    background-color: #1f466d;
+    background-color: var(--accent-color) !important;
   }
 
   .twikoo .tk-comments-title {

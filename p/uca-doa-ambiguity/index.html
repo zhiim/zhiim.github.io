@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/uca-doa-ambiguity/'>
 
-<link rel="stylesheet" href="/scss/style.min.d6c8ab28c73d60c0a3467a3c7ced3b0f73dd12a473e3c8a9d5fed36dbc4016c3.css"><meta property='og:title' content="DOA估计中均匀圆阵的模糊问题">
+<link rel="stylesheet" href="/scss/style.min.a3e50e5d46cde6441587cd564fe08846f201982bd0f1392b3c98bd1f9f2438c8.css"><meta property='og:title' content="DOA估计中均匀圆阵的模糊问题">
 <meta property='og:description' content="在使用MUSIC算法进行DOA估计时，必须保证流型矩阵中各个导向矢量线性无关，否则可能出现虚假谱峰值。本文讨论了均匀线阵和均匀线阵的DOA估计中，出现峰值模糊的条件。">
 <meta property='og:url' content='https://zhiim.github.io/p/uca-doa-ambiguity/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -622,6 +622,10 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
+  .twikoo input:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
+  }
 
   
   .twikoo svg {
@@ -636,10 +640,14 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
   }
   .twikoo .el-textarea__inner {
     border-radius: 15px;
-    border-color: var(--twikoo-input-background);
   }
   .twikoo .tk-preview-container {
     border-radius: 15px;
+    border: 1px solid var(--accent-color) !important;
+  }
+  .twikoo textarea:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
   }
 
   
@@ -649,12 +657,13 @@ $$\phi_{m+1}=sin(\frac{\theta+\hat{\theta}}{2}-m\frac{2\pi}{M})=\phi_mcos\frac{2
   }
   .twikoo .el-button.tk-preview {
     font-weight: bold;
-    background-color: var(--twikoo-input-background);
+    color: #fff !important;
+    background-color: #e66351 !important;
   }
   .twikoo .el-button.tk-send {
     font-weight: bold;
     color: #fff !important;
-    background-color: #1f466d;
+    background-color: var(--accent-color) !important;
   }
 
   .twikoo .tk-comments-title {

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/python_package_doa_estimation/'>
 
-<link rel="stylesheet" href="/scss/style.min.d6c8ab28c73d60c0a3467a3c7ced3b0f73dd12a473e3c8a9d5fed36dbc4016c3.css"><meta property='og:title' content="用于 DOA 估计的 Python 包 DOA_py">
+<link rel="stylesheet" href="/scss/style.min.a3e50e5d46cde6441587cd564fe08846f201982bd0f1392b3c98bd1f9f2438c8.css"><meta property='og:title' content="用于 DOA 估计的 Python 包 DOA_py">
 <meta property='og:description' content="为了方便 DOA 估计的研究，我开发了一个 Python 包 DOA_py，实现了一些经典的DOA估计算法，支持均匀线阵、均匀圆阵和宽带DOA估计。">
 <meta property='og:url' content='https://zhiim.github.io/p/python_package_doa_estimation/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -1005,6 +1005,10 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
+  .twikoo input:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
+  }
 
   
   .twikoo svg {
@@ -1019,10 +1023,14 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
   }
   .twikoo .el-textarea__inner {
     border-radius: 15px;
-    border-color: var(--twikoo-input-background);
   }
   .twikoo .tk-preview-container {
     border-radius: 15px;
+    border: 1px solid var(--accent-color) !important;
+  }
+  .twikoo textarea:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
   }
 
   
@@ -1032,12 +1040,13 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
   }
   .twikoo .el-button.tk-preview {
     font-weight: bold;
-    background-color: var(--twikoo-input-background);
+    color: #fff !important;
+    background-color: #e66351 !important;
   }
   .twikoo .el-button.tk-send {
     font-weight: bold;
     color: #fff !important;
-    background-color: #1f466d;
+    background-color: var(--accent-color) !important;
   }
 
   .twikoo .tk-comments-title {

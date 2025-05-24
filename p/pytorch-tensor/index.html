@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/pytorch-tensor/'>
 
-<link rel="stylesheet" href="/scss/style.min.d6c8ab28c73d60c0a3467a3c7ced3b0f73dd12a473e3c8a9d5fed36dbc4016c3.css"><meta property='og:title' content="PyTorch基础 （一）Tensors">
+<link rel="stylesheet" href="/scss/style.min.a3e50e5d46cde6441587cd564fe08846f201982bd0f1392b3c98bd1f9f2438c8.css"><meta property='og:title' content="PyTorch基础 （一）Tensors">
 <meta property='og:description' content="PyTorch学习笔记，Tensor的创建、Tensor的属性和Tensor的数学运算">
 <meta property='og:url' content='https://zhiim.github.io/p/pytorch-tensor/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -957,6 +957,10 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
+  .twikoo input:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
+  }
 
   
   .twikoo svg {
@@ -971,10 +975,14 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
   }
   .twikoo .el-textarea__inner {
     border-radius: 15px;
-    border-color: var(--twikoo-input-background);
   }
   .twikoo .tk-preview-container {
     border-radius: 15px;
+    border: 1px solid var(--accent-color) !important;
+  }
+  .twikoo textarea:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
   }
 
   
@@ -984,12 +992,13 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
   }
   .twikoo .el-button.tk-preview {
     font-weight: bold;
-    background-color: var(--twikoo-input-background);
+    color: #fff !important;
+    background-color: #e66351 !important;
   }
   .twikoo .el-button.tk-send {
     font-weight: bold;
     color: #fff !important;
-    background-color: #1f466d;
+    background-color: var(--accent-color) !important;
   }
 
   .twikoo .tk-comments-title {

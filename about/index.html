@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/about/'>
 
-<link rel="stylesheet" href="/scss/style.min.d6c8ab28c73d60c0a3467a3c7ced3b0f73dd12a473e3c8a9d5fed36dbc4016c3.css"><meta property='og:title' content="About">
+<link rel="stylesheet" href="/scss/style.min.a3e50e5d46cde6441587cd564fe08846f201982bd0f1392b3c98bd1f9f2438c8.css"><meta property='og:title' content="About">
 <meta property='og:description' content="“迷途的羔羊”\n在夏目漱石的《三四郎》里\n与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。\n“时间，记忆与自我欺骗”\n出自石黑一雄的《长日将尽》，书中的史蒂文斯，总在遮遮掩掩，又总在回忆和幻想中自我欺骗。我想我即是如此。\n">
 <meta property='og:url' content='https://zhiim.github.io/about/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -508,6 +508,10 @@
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
+  .twikoo input:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
+  }
 
   
   .twikoo svg {
@@ -522,10 +526,14 @@
   }
   .twikoo .el-textarea__inner {
     border-radius: 15px;
-    border-color: var(--twikoo-input-background);
   }
   .twikoo .tk-preview-container {
     border-radius: 15px;
+    border: 1px solid var(--accent-color) !important;
+  }
+  .twikoo textarea:focus {
+    background-color: #fff !important;
+    border: 2px solid var(--accent-color) !important;
   }
 
   
@@ -535,12 +543,13 @@
   }
   .twikoo .el-button.tk-preview {
     font-weight: bold;
-    background-color: var(--twikoo-input-background);
+    color: #fff !important;
+    background-color: #e66351 !important;
   }
   .twikoo .el-button.tk-send {
     font-weight: bold;
     color: #fff !important;
-    background-color: #1f466d;
+    background-color: var(--accent-color) !important;
   }
 
   .twikoo .tk-comments-title {
