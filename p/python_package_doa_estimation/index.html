@@ -973,6 +973,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     border-radius: 10px;
   }
 
+  
   .twikoo .tk-row .tk-avatar {
     height: 5rem;
     width: 5rem;
@@ -1005,7 +1006,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     border-bottom-right-radius: 10px;
     background-color: var(--twikoo-input-background);
   }
-  .twikoo input:focus {
+  .twikoo .tk-meta-input input.el-input__inner:focus {
     background-color: #fff !important;
     border: 2px solid var(--accent-color) !important;
   }
@@ -1028,7 +1029,7 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     border-radius: 15px;
     border: 1px solid var(--accent-color) !important;
   }
-  .twikoo textarea:focus {
+  .twikoo textarea.el-textarea__inner:focus {
     background-color: #fff !important;
     border: 2px solid var(--accent-color) !important;
   }
@@ -1060,6 +1061,10 @@ s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
     padding: 5px 10px;
     background-color: var(--body-background);
     border-radius: 10px;
+  }
+
+  .twikoo .tk-admin-container input.el-input__inner:focus {
+    background-color: var(--accent-color) !important;
   }
 </style><script>
   twikoo.init({
