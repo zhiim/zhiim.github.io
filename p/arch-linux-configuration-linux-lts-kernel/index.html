@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/arch-linux-configuration-linux-lts-kernel/'>
 
-<link rel="stylesheet" href="/scss/style.min.0831ac76d5aa234e9ed245220ff4378ba5505e933c78ad8b9dee40c24e35fef7.css"><meta property='og:title' content="Arch Linux 配置 -- 安装linux-lts备用内核">
+<link rel="stylesheet" href="/scss/style.min.5e2195591f825dec02eea1f06e8794053bfec3d5d10c6999ef1541080b83476a.css"><meta property='og:title' content="Arch Linux 配置 -- 安装linux-lts备用内核">
 <meta property='og:description' content="Arch Linux 滚动更新的特性，让我们总能够体验最新的内核和软件，但有时候也会由于更新导致系统出现故障。本文记录了如何安装linux-lts备用内核，并配置GRUB和rEFInd从而方便地选择不同内核">
 <meta property='og:url' content='https://zhiim.github.io/p/arch-linux-configuration-linux-lts-kernel/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -840,16 +840,24 @@
     background-color: #528fab !important;
   }
 
+  
   .twikoo .tk-comments-title {
     font-size: 2rem;
   }
 
+  
+  .twikoo .el-loading-mask circle {
+    stroke: var(--accent-color) !important;
+  }
+
+  
   .twikoo .tk-meta {
     padding: 5px 10px;
     background-color: var(--body-background);
     border-radius: 10px;
   }
 
+  
   .twikoo .tk-admin-container input.el-input__inner:focus {
     color: var(--accent-color) !important;
     background-color: var(--accent-color-text) !important;
