@@ -962,6 +962,10 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
     background-color: var(--card) !important;
     border: 2px solid var(--accent-color) !important;
   }
+  .twikoo .tk-meta-input .el-input input:invalid {
+    background-color: var(--card) !important;
+    border: 2px solid #e66351 !important;
+  }
 
   
   .twikoo svg {
@@ -1023,9 +1027,8 @@ tensor创建时默认处于CPU中，如果要使用GPU进行tensor计算需要�
   }
 
   
-  .twikoo .tk-admin-container input.el-input__inner:focus {
+  .twikoo .tk-admin-container input.el-input__inner {
     color: var(--accent-color) !important;
-    background-color: var(--accent-color-text) !important;
   }
 </style><script>
   twikoo.init({
