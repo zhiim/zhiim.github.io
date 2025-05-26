@@ -6,25 +6,7 @@
         <description>Recent content in Pages on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 14 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zhiim.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>About</title>
-        <link>https://zhiim.github.io/about/</link>
-        <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://zhiim.github.io/about/</guid>
-        <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;br&gt;
-在夏目漱石的《三四郎》里&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;“时间，记忆与自我欺骗”&lt;/strong&gt;&lt;br&gt;
-出自石黑一雄的《长日将尽》，书中的史蒂文斯，总在遮遮掩掩，又总在回忆和幻想中自我欺骗。我想我即是如此。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;为什么，史蒂文斯先生，为什么，为什么，为什么你总是要去假装呢？”&lt;/p&gt;&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;的确——我又何必再遮遮掩掩？——在那一刻，我的心都碎了。&lt;/p&gt;&lt;/blockquote&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://zhiim.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Archives</title>
         <link>https://zhiim.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -33,13 +15,26 @@
         <description></description>
         </item>
         <item>
+        <title>About</title>
+        <link>https://zhiim.github.io/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zhiim.github.io/about/</guid>
+        <description>&lt;p&gt;&lt;strong&gt;“迷途的羔羊”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在夏目漱石的《三四郎》里&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;与次郎把三四郎的笔记拉到面前俯视一番，只见本子里乱七八糟地写满了“迷途的羔羊”。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;关于本博客&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一个记录所学所想的地方，包含一些学习笔记和杂乱的随记。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Links</title>
         <link>https://zhiim.github.io/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://zhiim.github.io/links/</guid>
-        <description>&lt;p&gt;交换友链请留言或者&lt;a class=&#34;link&#34; href=&#34;https://t.me/zhiim_0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Telegram&lt;/a&gt;联系，友链格式请参考本站信息：&lt;/p&gt;
+        <description>&lt;p&gt;如果想交换友链的话请在下方留言，友链的格式可以参考本站信息：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
