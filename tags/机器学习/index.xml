@@ -133,7 +133,7 @@ $\Rightarrow$ 椭球面是轴对齐的，并且 $\Sigma$ 的对角元素等于�
 &lt;/figure&gt;
 
 &lt;p&gt;等价于最大化&lt;/p&gt;
-&lt;p&gt;$$Q_C(x) = \ln\left( (\sqrt{2\pi})^d f_{X|Y=C}(x) \right)=-\frac{||x - \mu_C||^2}{2\sigma_C^2}-d\ln\sigma_C + \ln\pi_C$$&lt;/p&gt;
+&lt;p&gt;$$Q_C(x) = \ln\left( (\sqrt{2\pi})^d f_{X|Y=C}(x) \pi_C \right)=-\frac{||x - \mu_C||^2}{2\sigma_C^2}-d\ln\sigma_C + \ln\pi_C$$&lt;/p&gt;
 &lt;p&gt;$Q_C(x)$ 是一个关于 $x$ 的二次函数&lt;/p&gt;
 &lt;h3 id=&#34;二次判别分析-quadratic-discriminant-analysis-qda&#34;&gt;二次判别分析 Quadratic Discriminant Analysis (QDA)
 &lt;/h3&gt;&lt;p&gt;假设只有两个类别 $C$ 和 $D$，那么贝叶斯分类器为&lt;/p&gt;
@@ -746,6 +746,7 @@ $$&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
+&lt;!-- ![决策边界](decision_boudaries.webp) --&gt;
 &lt;p&gt;&lt;em&gt;决策边界&lt;/em&gt;：分类器选择的可以将样例分成不同类别的边界&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;过拟合&lt;/em&gt;：决策边界拟合得太好，以至于无法用于未来样本的分类&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;决策函数&lt;/em&gt;：将一个点映射到一个值，例如&lt;/p&gt;
