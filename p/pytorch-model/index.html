@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/pytorch-model/'>
 
-<link rel="stylesheet" href="/scss/style.min.fa33e2280465eff19bdff8b0b18548c53ccaf97aa2c874588def9befedc8f4f4.css"><meta property='og:title' content="PyTorch基础 （三）网络模型">
+<link rel="stylesheet" href="/scss/style.min.868e3b3446ec25da97dfe780df0e59e288eb3bfde54b5becb9eb6b215ab04eda.css"><meta property='og:title' content="PyTorch基础 （三）网络模型">
 <meta property='og:description' content="在PyTorch中建立神经网络模型，初始化和查看模型参数">
 <meta property='og:url' content='https://zhiim.github.io/p/pytorch-model/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -457,20 +457,20 @@
 <ul>
 <li><em>Binary</em> 输入为正数时神经元输出1，输入为负数时神经元输出0
 $$
-f(x)= \small\begin{cases} 0, &amp; \text{if } x &lt; 0 \newline 1, &amp; \text{if } x\geq 0 \end{cases}
-$$</li>
+    f(x)= \small\begin{cases} 0, & \text{if } x < 0 \newline 1, & \text{if } x\geq 0 \end{cases}
+    $$</li>
 <li><em>Sigmod</em> 由输入值得到0和1之间的连续输出值
 $$
-f(x) = {\large \frac{1}{1+e^{-x}}}
-$$</li>
+    f(x) = {\large \frac{1}{1+e^{-x}}}
+    $$</li>
 <li><em>Tanh</em> 由输入值得到-1和1之间的连续输出值
 $$
-f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$</li>
+    f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
+    $$</li>
 <li><em>ReLU</em> 当输入为负数时输出为0，输入为正数时保持输入值
 $$
-f(x)= \small \begin{cases} 0, &amp; \text{if } x &lt; 0\newline x, &amp; \text{if } x\geq 0 \end{cases}
-$$</li>
+    f(x)= \small \begin{cases} 0, & \text{if } x < 0\newline x, & \text{if } x\geq 0 \end{cases}
+    $$</li>
 </ul>
 </li>
 <li><strong>权重 Weights</strong>
@@ -491,10 +491,9 @@ $$</li>
 		data-flex-basis="439px"
 	
 ></p>
-<p>$$
+$$
 output=activation function(\sum{(weights * inputs) + bias})
-$$</p>
-<h2 id="在pytorch中建立神经网络">在PyTorch中建立神经网络
+$$<h2 id="在pytorch中建立神经网络">在PyTorch中建立神经网络
 </h2><p><code>torch.nn</code>提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是<code>nn.Module</code>的子类。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

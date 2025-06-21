@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/ml_06_decision_theory/'>
 
-<link rel="stylesheet" href="/scss/style.min.fa33e2280465eff19bdff8b0b18548c53ccaf97aa2c874588def9befedc8f4f4.css"><meta property='og:title' content="机器学习 06 决策理论">
+<link rel="stylesheet" href="/scss/style.min.868e3b3446ec25da97dfe780df0e59e288eb3bfde54b5becb9eb6b215ab04eda.css"><meta property='og:title' content="机器学习 06 决策理论">
 <meta property='og:description' content="决策理论，也称为风险最小化：贝叶斯决策规则和贝叶斯风险；生成模型与判别模型">
 <meta property='og:url' content='https://zhiim.github.io/p/ml_06_decision_theory/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -429,9 +429,8 @@
     <h2 id="决策理论亦风险最小化">决策理论亦风险最小化
 </h2><p>如果多个属于不同类别的样本点可能处于同一个位置（例如训练数据中，升高为 1.70m 的样本，可能男性和女性同样存在），此时我们没法通过一个分类器直接将样本划分为某一种类别，所以我们需要一个概率分类器，输出当前样本为某种类别的概率</p>
 <p>贝叶斯定理：</p>
-<p>$$P(Y| X) = \frac{P(X| Y) P(Y)}{P(X)}$$</p>
-<p>其中 $P(Y | X)$ 表示观测到 $X$ 的条件下事件 $Y$ 发生的后验概率，$ P(Y)$ 表示事件发生的先验概率。</p>
-<p>例如，假设人群中 $10%$ 的人患有癌症，$90%$ 的人没有癌症，不同职业的人患有癌症的概率分布为</p>
+$$P(Y| X) = \frac{P(X| Y) P(Y)}{P(X)}$$<p>其中 $P(Y | X)$ 表示观测到 $X$ 的条件下事件 $Y$ 发生的后验概率，$ P(Y)$ 表示事件发生的先验概率。</p>
+<p>例如，假设人群中 $10\%$ 的人患有癌症，$90\%$ 的人没有癌症，不同职业的人患有癌症的概率分布为</p>
 <div class="table-wrapper"><table>
   <thead>
       <tr>
@@ -444,54 +443,49 @@
   <tbody>
       <tr>
           <td>cancer ${} (Y = 1)$</td>
-          <td>20%</td>
-          <td>50%</td>
-          <td>30%</td>
+          <td>$20\%$</td>
+          <td>$50\%$</td>
+          <td>$30\%$</td>
       </tr>
       <tr>
           <td>no cancer $(Y = -1)$</td>
-          <td>1%</td>
-          <td>10%</td>
-          <td>89%</td>
+          <td>$1\%$</td>
+          <td>$10\%$</td>
+          <td>$89\%$</td>
       </tr>
   </tbody>
 </table></div>
 <p>我们可以计算出，农民没有癌症的概率为</p>
-<p>$$P(Y = -1 | X = 0) = \frac{P(X = 0 | Y = -1) P (Y = -1)}{P(X = 0)}=\frac{0.1 \times 0.9}{0.1 \times 0.5 + 0.9 \times 0.1} = \frac{9}{14}$$</p>
-<p>在我们的概率分类器中，可能不同的错误判决类型带来的影响不同。例如将癌症判决为假阴性（本来有癌症但被判决为没有癌症）和假阳性（本来没有被判决为有）的后果差别非常大，前者会造成癌症被忽视，后者只会带来额外的检查开销。此时，我们可以通过损失函数衡量不同错误的代价</p>
-<p>$$
+$$P(Y = -1 | X = 0) = \frac{P(X = 0 | Y = -1) P (Y = -1)}{P(X = 0)}=\frac{0.1 \times 0.9}{0.1 \times 0.5 + 0.9 \times 0.1} = \frac{9}{14}$$<p>在我们的概率分类器中，可能不同的错误判决类型带来的影响不同。例如将癌症判决为假阴性（本来有癌症但被判决为没有癌症）和假阳性（本来没有被判决为有）的后果差别非常大，前者会造成癌症被忽视，后者只会带来额外的检查开销。此时，我们可以通过损失函数衡量不同错误的代价</p>
+$$
 L(\hat{y}, y) = \begin{cases}
-1 &amp; \text{if } \hat{y} = 1, y = -1  \\
-5 &amp; \text{if } \hat{y} = -1, y = 1 \\
-0 &amp; \text{if } \hat{y} = y
+1 & \text{if } \hat{y} = 1, y = -1  \\
+5 & \text{if } \hat{y} = -1, y = 1 \\
+0 & \text{if } \hat{y} = y
 \end{cases}
-$$</p>
-<p>其中 $\hat{y}$ 表示预测的类别，$y$ 表示真实的类别， 假阴性在损失函数中被施加了更多的权重，上述损失函数被称为是<em>非对称</em>的</p>
+$$<p>其中 $\hat{y}$ 表示预测的类别，$y$ 表示真实的类别， 假阴性在损失函数中被施加了更多的权重，上述损失函数被称为是<em>非对称</em>的</p>
 <p>相反的，一个对称的<em>0-1 损失函数</em>可以表示为</p>
-<p>$$
+$$
 L(\hat{y}, y) = \begin{cases}
-1 &amp; \text{if } \hat{y} \neq y \\
-0 &amp; \text{if } \hat{y} = y
+1 & \text{if } \hat{y} \neq y \\
+0 & \text{if } \hat{y} = y
 \end{cases}
-$$</p>
-<p>定义 $r: \mathbb{R}^d \rightarrow \pm 1$ 是一个<em>决策规则</em>，也被称为<em>分类器</em>，它表示一个将特征向量 $x$ 映射到 1 或 -1 的函数</p>
+$$<p>定义 $r: \mathbb{R}^d \rightarrow \pm 1$ 是一个<em>决策规则</em>，也被称为<em>分类器</em>，它表示一个将特征向量 $x$ 映射到 1 或 -1 的函数</p>
 <p><strong>$r$ 的<em>风险</em>指在所有的可能的数据点 $(x, y)$ 上的期望损失</strong></p>
-<p>$$
+$$
 \begin{align*}
-R(r) &amp;= E[L(r(X), Y)] \\
-&amp;= \sum_x \left( L(r(x), 1)P(Y = 1 | X = x) + L(r(x), -1)P(Y = -1 | X = x) \right) P(X = x) \\
-&amp;= P(Y = 1) \sum_{x} L(r(x), 1) P(X = x | Y = 1) +\\
-&amp; \quad P(Y = -1) \sum_x L(r(x), -1) P(X = x | Y = -1)
+R(r) &= E[L(r(X), Y)] \\
+&= \sum_x \left( L(r(x), 1)P(Y = 1 | X = x) + L(r(x), -1)P(Y = -1 | X = x) \right) P(X = x) \\
+&= P(Y = 1) \sum_{x} L(r(x), 1) P(X = x | Y = 1) +\\
+& \quad P(Y = -1) \sum_x L(r(x), -1) P(X = x | Y = -1)
 \end{align*}
-$$</p>
-<p><em>贝叶斯决策规则</em>（贝叶斯分类器）就是可以最小化风险函数 $R(r)$ 的函数 $r^*$，当 $L(1, 1) = L(-1, -1) = 0$，即预测正确损失函数为 0 的情况下</p>
-<p>$$
+$$<p><em>贝叶斯决策规则</em>（贝叶斯分类器）就是可以最小化风险函数 $R(r)$ 的函数 $r^*$，当 $L(1, 1) = L(-1, -1) = 0$，即预测正确损失函数为 0 的情况下</p>
+$$
 r^* (x) = \begin{cases}
-1 &amp; \text{if } L(-1, 1)P(Y = 1 | X = x) &gt; L(1, -1)P(Y = -1 | X = x) \\
--1 &amp; \text{otherwise}
+1 & \text{if } L(-1, 1)P(Y = 1 | X = x) > L(1, -1)P(Y = -1 | X = x) \\
+-1 & \text{otherwise}
 \end{cases}
-$$</p>
-<p>当损失函数 $L$ 是对称的时，$r^*$ 就是<strong>选择后验概率最大的类别</strong></p>
+$$<p>当损失函数 $L$ 是对称的时，$r^*$ 就是<strong>选择后验概率最大的类别</strong></p>
 <p>如果我们可以知道真实的概率分布，可以直接根据上式构建一个理想的概率分类器 $r^*$。但是真实场景中，我们只能通过一些统计手段估计概率分布</p>
 <p><strong>获得使风险函数最小的 $r^*$ 的过程被称为<em>风险最小化</em></strong></p>
 <h3 id="连续概率分布">连续概率分布
@@ -508,13 +502,12 @@ $$</p>
 <li>$X$ 的均值为 $\mu = E[X] = \int_{-\infty}^{\infty}x f(x)dx$，方差为 $\sigma^2 = E[(X - \mu)^2] = E[X^2] - \mu^2$</li>
 </ul>
 <p>假设我们使用 0-1 损失函数，在连续概率分布的情况下，此时贝叶斯决策规则为</p>
-<p>$$
+$$
 r^* (x) = \begin{cases}
-1 &amp; \text{if } f_{X | Y = 1}(x)P(Y = 1) &gt; f_{X | Y = -1}(x)P(Y = -1) \\
--1 &amp; \text{otherwise}
+1 & \text{if } f_{X | Y = 1}(x)P(Y = 1) > f_{X | Y = -1}(x)P(Y = -1) \\
+-1 & \text{otherwise}
 \end{cases}
-$$</p>
-<p>上式表示，在观测到数据 $x$ 时，如果它有更多的可能为类别 1 则被判别为类别 1，反之不为类别 1</p>
+$$<p>上式表示，在观测到数据 $x$ 时，如果它有更多的可能为类别 1 则被判别为类别 1，反之不为类别 1</p>
 <p>我们可以画出 $f_{X | Y = 1}(x)P(Y = 1)$ 和 $f_{X | Y = -1}(x)P(Y = -1)$ 的概率密度曲线</p>
 <figure><img src="/p/ml_06_decision_theory/872da1136c31970df2a4dc704d3e39fe.png" width="600"><figcaption>
       <h4>贝叶斯最优决策边界</h4>
@@ -524,16 +517,15 @@ $$</p>
 <p>贝叶斯决策规则对应了一个<em>贝叶斯最优决策边界</em>，即 $f_{X | Y = 1}(x)P(Y = 1) = f_{X | Y = -1}(x)P(Y = -1)$，它是两个概率密度函数的交点。在贝叶斯最优边界左边的点 $x$ 会被判别为类别 1，右边的点 $x$ 会被判别为类别 -1</p>
 <p>贝叶斯最优决策边界是两个后验概率密度函数相交的边界，在这个边界上两者的概率密度相等，所以贝叶斯最优决策边界为 $\{ x: P(Y = 1 | X = x) = 0.5 \}$</p>
 <p>在连续概率分布下，风险函数可以写成</p>
-<p>$$
+$$
 \begin{align*}
-R(r) &amp;= E[L(r(X), Y)] \\
-&amp;= P(Y = 1) \int L(r(x), 1) f_{X | Y = 1}(x) dx + \\
-&amp; \quad P(Y = -1) \int L(r(x), -1) f_{X | Y = -1}(x) dx
+R(r) &= E[L(r(X), Y)] \\
+&= P(Y = 1) \int L(r(x), 1) f_{X | Y = 1}(x) dx + \\
+& \quad P(Y = -1) \int L(r(x), -1) f_{X | Y = -1}(x) dx
 \end{align*}
-$$</p>
-<p>在 $r$ 为贝叶斯决策规则 $r^*$ 的条件下，贝叶斯风险就是两个概率密度函数重合部分的面积
-$$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$</p>
-<h2 id="构建分类器的三种方法">构建分类器的三种方法
+$$<p>在 $r$ 为贝叶斯决策规则 $r^*$ 的条件下，贝叶斯风险就是两个概率密度函数重合部分的面积
+</p>
+$$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$<h2 id="构建分类器的三种方法">构建分类器的三种方法
 </h2><p>现在我们可以总结出三种构建分类器的方法：</p>
 <ol>
 <li>生成模型 Generative models（例如LDA）
@@ -627,6 +619,25 @@ $$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$</p>
             
                 
 <article class="has-image">
+    <a href="/p/ml_09_anisotropic_gaussian_discriminant_analysis/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_09_anisotropic_gaussian_discriminant_analysis" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 09 高斯判别分析（各向异性）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/ml_08_eigenvectors_and_multivariate_normal/">
         
         
@@ -657,7 +668,7 @@ $$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">机器学习 07 高斯判别分析</h2>
+            <h2 class="article-title">机器学习 07 高斯判别分析（各向同性）</h2>
         </div>
     </a>
 </article>
@@ -696,25 +707,6 @@ $$R(r^*) = \int \min_{y = \pm 1} L(-y, y) f_{X |Y=y}(x) P(Y = y) dx$$</p>
 
         <div class="article-details">
             <h2 class="article-title">机器学习 04 支持向量机</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>

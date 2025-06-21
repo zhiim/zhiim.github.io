@@ -51,16 +51,16 @@
 $\bf{X} = \bf{A} \bf{S}$&lt;/p&gt;
 &lt;p&gt;其中：
 $\bf{X} = \begin{bmatrix}
-x_1(t) &amp;amp; x_2(t) &amp;amp; \dots &amp;amp; x_M(t)
+x_1(t) &amp; x_2(t) &amp; \dots &amp; x_M(t)
 \end{bmatrix}^T$ 是一个$M\times 1$维的向量，表示阵列接收到的信号&lt;/p&gt;
 &lt;p&gt;$\bf{A} = \begin{bmatrix}
-\bf{a}(\theta_1) &amp;amp; \bf{a}(\theta_2) &amp;amp; \dots &amp;amp; \bf{a}(\theta_N)
+\bf{a}(\theta_1) &amp; \bf{a}(\theta_2) &amp; \dots &amp; \bf{a}(\theta_N)
 \end{bmatrix}$ 是一个$M \times N$维的矩阵，表示阵列的流型矩阵&lt;br&gt;
 $\bf{a}(\theta_n) =\begin{bmatrix}
-e^{-j \omega_0 \tau_{1n}} &amp;amp; e^{-j \omega_0 \tau_{2n}} \dots &amp;amp; e^{-j \omega_0 \tau_{Mn}}
+e^{-j \omega_0 \tau_{1n}} &amp; e^{-j \omega_0 \tau_{2n}} \dots &amp; e^{-j \omega_0 \tau_{Mn}}
 \end{bmatrix}^T$是与入射角度对应的导向矢量&lt;/p&gt;
 &lt;p&gt;$\bf{X} = \begin{bmatrix}
-s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
+s_1(t) &amp; s_2(t) &amp; \dots &amp; s_N(t)
 \end{bmatrix}^T$ 是一个$N\times 1$维的向量，表示入射的信号&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -577,20 +577,20 @@ s_1(t) &amp;amp; s_2(t) &amp;amp; \dots &amp;amp; s_N(t)
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Binary&lt;/em&gt; 输入为正数时神经元输出1，输入为负数时神经元输出0
 $$
-f(x)= \small\begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0 \newline 1, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/li&gt;
+    f(x)= \small\begin{cases} 0, &amp; \text{if } x &lt; 0 \newline 1, &amp; \text{if } x\geq 0 \end{cases}
+    $$&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Sigmod&lt;/em&gt; 由输入值得到0和1之间的连续输出值
 $$
-f(x) = {\large \frac{1}{1+e^{-x}}}
-$$&lt;/li&gt;
+    f(x) = {\large \frac{1}{1+e^{-x}}}
+    $$&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Tanh&lt;/em&gt; 由输入值得到-1和1之间的连续输出值
 $$
-f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
-$$&lt;/li&gt;
+    f(x) = {\large \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}}
+    $$&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;ReLU&lt;/em&gt; 当输入为负数时输出为0，输入为正数时保持输入值
 $$
-f(x)= \small \begin{cases} 0, &amp;amp; \text{if } x &amp;lt; 0\newline x, &amp;amp; \text{if } x\geq 0 \end{cases}
-$$&lt;/li&gt;
+    f(x)= \small \begin{cases} 0, &amp; \text{if } x &lt; 0\newline x, &amp; \text{if } x\geq 0 \end{cases}
+    $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;权重 Weights&lt;/strong&gt;
@@ -611,10 +611,9 @@ $$&lt;/li&gt;
 		data-flex-basis=&#34;439px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;$$
+$$
 output=activation function(\sum{(weights * inputs) + bias})
-$$&lt;/p&gt;
-&lt;h2 id=&#34;在pytorch中建立神经网络&#34;&gt;在PyTorch中建立神经网络
+$$&lt;h2 id=&#34;在pytorch中建立神经网络&#34;&gt;在PyTorch中建立神经网络
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;torch.nn&lt;/code&gt;提供了建立神经网络需要的组件，在PyTorch中神经网络是一个module，一个神经网络由多个同样是module的网络层组成。所有的神经网络模型都是&lt;code&gt;nn.Module&lt;/code&gt;的子类。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

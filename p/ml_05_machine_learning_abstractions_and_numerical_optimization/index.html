@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 
-<link rel="stylesheet" href="/scss/style.min.fa33e2280465eff19bdff8b0b18548c53ccaf97aa2c874588def9befedc8f4f4.css"><meta property='og:title' content="机器学习 05 机器学习抽象和数值优化">
+<link rel="stylesheet" href="/scss/style.min.868e3b3446ec25da97dfe780df0e59e288eb3bfde54b5becb9eb6b215ab04eda.css"><meta property='og:title' content="机器学习 05 机器学习抽象和数值优化">
 <meta property='og:description' content="机器学习的抽象层级：数据、模型、优化问题、优化算法；几种常见的优化问题：无约束优化、线性规划和二次规划">
 <meta property='og:url' content='https://zhiim.github.io/p/ml_05_machine_learning_abstractions_and_numerical_optimization/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
@@ -478,8 +478,7 @@
 </h3><p>线性目标函数 + 线性约束函数</p>
 <p>目标：寻找 $w$ 最大化（或者最小化）$c \cdot w$，并满足 $Aw \le b$<br>
 其中 $A$ 是一个 $n \times d$ 维度的矩阵，$b \in \mathbb{R}^n$。所以上述不等式包含了 $n$ 个线性约束</p>
-<p>$$A_i \cdot w \le b_i, \quad i \in [1, n]$$</p>
-<figure><img src="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/dc81dbe98ddeaa023a6b39498a59a4f0.png" width="800"><figcaption>
+$$A_i \cdot w \le b_i, \quad i \in [1, n]$$<figure><img src="/p/ml_05_machine_learning_abstractions_and_numerical_optimization/dc81dbe98ddeaa023a6b39498a59a4f0.png" width="800"><figcaption>
       <h4>线性规划</h4>
     </figcaption>
 </figure>
@@ -487,7 +486,7 @@
 <p>满足所有约束条件的 $w$ 的集合是一个<em>凸多面体</em>，被称为<em>可行域</em>$F$。优化过程是在 $F$ 中寻找一个沿方向 $c$ 最远的点</p>
 <p><em>凸多面体</em>：对于任意 $p,q \in P$，连接 $p,q$ 的线段完全在 $P$ 内</p>
 <p>在线性规划中，最优点通常位于边界或者顶点上，所以某些等式形式的约束被称为<em>积极约束</em>，积极约束对应的对偶变量通常非零。</p>
-<p>在支持向量机中，在对偶问题中如果 $a_i &gt; 0$，则原始问题中 $y_i (w^T x_i + b) = 1 - \xi_i$，所以支持向量在活跃约束上</p>
+<p>在支持向量机中，在对偶问题中如果 $a_i > 0$，则原始问题中 $y_i (w^T x_i + b) = 1 - \xi_i$，所以支持向量在活跃约束上</p>
 <p>线性规划最著名的算法是<em>单纯性算法</em>（simplex algorithm）</p>
 <h3 id="二次规划">二次规划
 </h3><p>二次凸目标函数 + 线性不等式约束</p>
@@ -562,6 +561,25 @@
             
                 
 <article class="has-image">
+    <a href="/p/ml_09_anisotropic_gaussian_discriminant_analysis/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_09_anisotropic_gaussian_discriminant_analysis" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 09 高斯判别分析（各向异性）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/ml_08_eigenvectors_and_multivariate_normal/">
         
         
@@ -592,7 +610,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">机器学习 07 高斯判别分析</h2>
+            <h2 class="article-title">机器学习 07 高斯判别分析（各向同性）</h2>
         </div>
     </a>
 </article>
@@ -631,25 +649,6 @@
 
         <div class="article-details">
             <h2 class="article-title">机器学习 04 支持向量机</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>

@@ -2,17 +2,17 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计">
-<title>机器学习 07 高斯判别分析</title>
+<title>机器学习 07 高斯判别分析（各向同性）</title>
 
 <link rel='canonical' href='https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/'>
 
-<link rel="stylesheet" href="/scss/style.min.fa33e2280465eff19bdff8b0b18548c53ccaf97aa2c874588def9befedc8f4f4.css"><meta property='og:title' content="机器学习 07 高斯判别分析">
+<link rel="stylesheet" href="/scss/style.min.868e3b3446ec25da97dfe780df0e59e288eb3bfde54b5becb9eb6b215ab04eda.css"><meta property='og:title' content="机器学习 07 高斯判别分析（各向同性）">
 <meta property='og:description' content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计">
 <meta property='og:url' content='https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:published_time' content='2025-05-23T23:21:38&#43;08:00'/><meta property='article:modified_time' content='2025-05-23T23:21:38&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 07 高斯判别分析">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="机器学习 07 高斯判别分析（各向同性）">
 <meta name="twitter:description" content="高斯判别分析，包括二次判别分析（QDA）和线性判别分析（LDA）；统计模型参数的最大似然估计"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/p/ml_01_introduction/ml_header.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
@@ -337,8 +337,8 @@
     </li>
     <li><a href="#概率分布的参数估计">概率分布的参数估计</a>
       <ol>
-        <li><a href="#估计前验概率-pi_c">估计前验概率 $\pi_C$</a></li>
-        <li><a href="#估计均值-mu_c-和方差-sigma_c2">估计均值 $\mu_C$ 和方差 $\sigma_C^2$</a></li>
+        <li><a href="#估计前验概率">估计前验概率 </a></li>
+        <li><a href="#估计均值--和方差">估计均值  和方差 </a></li>
       </ol>
     </li>
   </ol>
@@ -357,7 +357,7 @@
         <div class="article-image">
             <a href="/p/ml_07_gaussian_discriminant_analysis/">
                 
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 07 高斯判别分析" />
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" alt="Featured image of post 机器学习 07 高斯判别分析（各向同性）" />
                 
             </a>
         </div>
@@ -376,7 +376,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ml_07_gaussian_discriminant_analysis/">机器学习 07 高斯判别分析</a>
+            <a href="/p/ml_07_gaussian_discriminant_analysis/">机器学习 07 高斯判别分析（各向同性）</a>
         </h2>
     
         
@@ -434,8 +434,7 @@
     
     <h2 id="高斯判别分析-gaussian-discriminant-analysis">高斯判别分析 Gaussian Discriminant Analysis
 </h2><p><strong>基本假设</strong>：每个类别服从高斯分布</p>
-<p>$$X \sim \mathcal{N}(\mu, \sigma^2): f(x) = \frac{1}{(\sqrt{2 \pi} \sigma)^d}\exp{\left( -\frac{||x - \mu||^2}{2\sigma^2} \right)}$$</p>
-<p>其中 $x,\mu$ 是向量，$\sigma$ 是标量，$d$ 表示维度。（注：这里使用的正态分布公式是一个简化版本，它假设数据在所有的特征维度上的方差相同，并且不考虑不同特征之间的相关性）</p>
+$$X \sim \mathcal{N}(\mu, \sigma^2): f(x) = \frac{1}{(\sqrt{2 \pi} \sigma)^d}\exp{\left( -\frac{\|x - \mu\|^2}{2\sigma^2} \right)}$$<p>其中 $x,\mu$ 是向量，$\sigma$ 是标量，$d$ 表示维度。（注：这里使用的正态分布公式是一个简化版本，它假设数据在所有的特征维度上的方差相同，并且不考虑不同特征之间的相关性）</p>
 <p>对于每个类别 $C$，假设我们知道了均值 $\mu_C$ 和协方差 $\sigma_C^2$，那么我们就可以根据上述高斯分布公式，将均值和方差代入确定概率密度函数 $f_{X|Y=C}(x)$。同时假设前验概率 $\pi_C=P(Y = C)$ 已知</p>
 <p>在给定观测 $x$ 的条件下，贝叶斯决策准则 $r^*(x)$ 根据最大化 $f_{X|Y=C}(x)$ 来判决类别 $C$</p>
 <figure><img src="/p/ml_07_gaussian_discriminant_analysis/9265fadf674aa9dfce38e558124f5253.png" width="800"><figcaption>
@@ -444,21 +443,21 @@
 </figure>
 
 <p>等价于最大化</p>
-<p>$$Q_C(x) = \ln\left( (\sqrt{2\pi})^d f_{X|Y=C}(x) \pi_C \right)=-\frac{||x - \mu_C||^2}{2\sigma_C^2}-d\ln\sigma_C + \ln\pi_C$$</p>
-<p>$Q_C(x)$ 是一个关于 $x$ 的二次函数</p>
+$$Q_C(x) = \ln\left( (\sqrt{2\pi})^d f_{X|Y=C}(x) \pi_C \right)=-\frac{\|x - \mu_C\|^2}{2\sigma_C^2}-d\ln\sigma_C + \ln\pi_C$$<p>$Q_C(x)$ 是一个关于 $x$ 的二次函数</p>
 <h3 id="二次判别分析-quadratic-discriminant-analysis-qda">二次判别分析 Quadratic Discriminant Analysis (QDA)
 </h3><p>假设只有两个类别 $C$ 和 $D$，那么贝叶斯分类器为</p>
-<p>$$
+$$
 r^*(x) = \begin{cases}
-C &amp; \text{if } Q_C(x) - Q_D(x) &gt; 0 \\
-D &amp; otherwise
+C & \text{if } Q_C(x) - Q_D(x) > 0 \\
+D & otherwise
 \end{cases}
-$$</p>
-<p>决策函数为 $Q_C(x) - Q_D(x)$，贝叶斯决策边界为 $\{ x: Q_C(x) - Q_D(x) = 0 \}$。如果样本点是 $1$ 维的，那么贝叶斯决策边界可能有 $1$ 个或者 $2$ 个点（二次方程的解）；如果样本点是 $d$ 维的，那么贝叶斯决策边界是一个二次曲面。</p>
+$$<p>决策函数为 $Q_C(x) - Q_D(x)$，贝叶斯决策边界为 $\{ x: Q_C(x) - Q_D(x) = 0 \}$。如果样本点是 $1$ 维的，那么贝叶斯决策边界可能有 $1$ 个或者 $2$ 个点（二次方程的解）；如果样本点是 $d$ 维的，那么贝叶斯决策边界是一个二次曲面。</p>
 <p>除了根据贝叶斯规则判别样本点的类别外，也可以得到判别正确的概率，即
-$$P(Y = C | X = x) = \frac{f_{X | Y = C}\pi_C}{f_{X | Y = C}\pi_C + f_{X | Y = D}\pi_D}$$
+</p>
+$$P(Y = C | X = x) = \frac{f_{X | Y = C}\pi_C}{f_{X | Y = C}\pi_C + f_{X | Y = D}\pi_D}$$<p>
 上式也可以进一步写成
-$$P(Y = C | X = x) = \frac{e^{Q_C(x)}}{e^{Q_C(x)} + e^{Q_D(x)}} = s(Q_C(x) - Q_D(x))$$
+</p>
+$$P(Y = C | X = x) = \frac{e^{Q_C(x)}}{e^{Q_C(x)} + e^{Q_D(x)}} = s(Q_C(x) - Q_D(x))$$<p>
 其中 $s(\gamma)=\frac{1}{1 + e^{-\gamma}}$ 是 Logistic 函数也即是 Sigmoid 函数</p>
 <figure><img src="/p/ml_07_gaussian_discriminant_analysis/19ef8537b1068b93b5d7ac865151ebe4.png" width="400"><figcaption>
       <h4>Logistic函数</h4>
@@ -476,13 +475,12 @@ $$P(Y = C | X = x) = \frac{e^{Q_C(x)}}{e^{Q_C(x)} + e^{Q_D(x)}} = s(Q_C(x) - Q_D
 </h3><p>LDA 时 QDA 的一个变种，它有线性的决策边界，相较于 QDA 不容易过拟合</p>
 <p><strong>基本假设</strong>：所有的高斯分布有相同的方差 $\sigma^2$</p>
 <p>此时贝叶斯分类器是一个线性分类器</p>
-<p>$$Q_C(x) - Q_D(x) = \underbrace{\frac{(\mu_C - \mu_D) \cdot x}{\sigma^2}}_{w \cdot x} \underbrace{- \frac{||\mu_C||^2 - ||\mu_D||^2}{2\sigma^2} + \ln\pi_C - \ln\pi_D} _{+ \alpha}$$</p>
-<ul>
+$$Q_C(x) - Q_D(x) = \underbrace{\frac{(\mu_C - \mu_D) \cdot x}{\sigma^2}}_{w \cdot x} \underbrace{- \frac{\|\mu_C\|^2 - \|\mu_D\|^2}{2\sigma^2} + \ln\pi_C - \ln\pi_D} _{+ \alpha}$$<ul>
 <li>决策边界为 $w \cdot x + \alpha = 0$</li>
 <li>前验概率为 $P(Y=C | X= x) = s(w \cdot x + \alpha)$</li>
 </ul>
 <p>特殊情况：如果 $\pi_C = \pi_D = 0.5$，那么决策边界变为 $(\mu_C - \mu_D) \cdot x - (\mu_C - \mu_D) \cdot \left( \frac{\mu_C + \mu_D}{2} \right) = 0$，此时变成了质心法</p>
-<p>多类别 LDA：选择类别 C，最大化线性决策函数 $\frac{\mu_C \cdot x}{\sigma^2} - \frac{||\mu_C||^2}{2\sigma^2} + \ln\pi_C$</p>
+<p>多类别 LDA：选择类别 C，最大化线性决策函数 $\frac{\mu_C \cdot x}{\sigma^2} - \frac{\|\mu_C\|^2}{2\sigma^2} + \ln\pi_C$</p>
 <figure><img src="/p/ml_07_gaussian_discriminant_analysis/823390d4a186991b57d5fe3eb459e2ad.png" width="400"><figcaption>
       <h4>多类别LDA决策边界</h4>
     </figcaption>
@@ -490,35 +488,33 @@ $$P(Y = C | X = x) = \frac{e^{Q_C(x)}}{e^{Q_C(x)} + e^{Q_D(x)}} = s(Q_C(x) - Q_D
 
 <h2 id="概率分布的参数估计">概率分布的参数估计
 </h2><p><em>最大似然估计</em>：通过选择使似然函数 $\mathcal{L}$ 最大化的参数来得到统计模型的参数估计值</p>
-<h3 id="估计前验概率-pi_c">估计前验概率 $\pi_C$
+<h3 id="估计前验概率">估计前验概率 $\pi_C$
 </h3><p>一个不均匀硬币，有概率 $p$ 得到正面，$1 - p$ 的概率得到反面。在 $n$ 次试验中，有 $a$ 次为正面，则似然函数为
-$$\mathcal{L} = C_n^a p^a (1 - p)^{n - a}$$
+</p>
+$$\mathcal{L} = C_n^a p^a (1 - p)^{n - a}$$<p>
 通过最大似然法，使 $\mathcal{L}$ 最大，$\frac{\partial \mathcal{L}}{\partial p} = 0$ ，得到 $p = \frac{a}{n}$</p>
 <p>类似的，如果共有 $n$ 个训练样本点，其中 $a$ 个属于类别 C，则前验概率 $\hat{\pi}_C = a / n$</p>
-<h3 id="估计均值-mu_c-和方差-sigma_c2">估计均值 $\mu_C$ 和方差 $\sigma_C^2$
+<h3 id="估计均值--和方差">估计均值 $\mu_C$ 和方差 $\sigma_C^2$
 </h3><p>根据 $n$ 个样本点 $X_1,X_2,\dots,X_n$ 求出最拟合的高斯分布</p>
 <p>似然函数为
-$$\mathcal{L}(\mu, \sigma;X_1,X_2,\dots,X_n) = f(X_1)f(X_2)\cdots f(X_n)$$
+</p>
+$$\mathcal{L}(\mu, \sigma;X_1,X_2,\dots,X_n) = f(X_1)f(X_2)\cdots f(X_n)$$<p>
 为了方便计算，最大化对数似然函数</p>
-<p>$$
+$$
 \begin{align*}
-l(\mu, \sigma;X_1,\dots,X_n) &amp;= \ln{f(X_1)} + \dots \ln{f(X_n)} \\
-&amp;= \sum_{i = 1}^n \left( -\frac{|| X_i - \mu||^2}{2 \sigma^2} - d\ln{\sqrt{2\pi} -d \ln{\sigma}} \right)
+l(\mu, \sigma;X_1,\dots,X_n) &= \ln{f(X_1)} + \dots \ln{f(X_n)} \\
+&= \sum_{i = 1}^n \left( -\frac{\| X_i - \mu\|^2}{2 \sigma^2} - d\ln{\sqrt{2\pi} -d \ln{\sigma}} \right)
 \end{align*}
-$$</p>
-<p>可得</p>
-<p>$$
+$$<p>可得</p>
+$$
 \begin{align*}
-&amp; \nabla_ul = \sum_{i = 1}^n \frac{X_i - \mu}{\sigma^2} = 0  \quad \Rightarrow \quad \hat{\mu} = \frac{1}{n} \sum_{i = 1}^nX_i \\
-&amp; \frac{\partial l}{\partial \sigma} = \sum_{i = 1}^n \frac{||X_i - \mu||^2 - d\sigma^2}{\sigma^2} = 0 \quad \Rightarrow \quad \hat{\sigma}^2 = \frac{1}{dn} \sum_{i = 1}^n ||X_i - \hat{\mu} ||^2
+& \nabla_ul = \sum_{i = 1}^n \frac{X_i - \mu}{\sigma^2} = 0  \quad \Rightarrow \quad \hat{\mu} = \frac{1}{n} \sum_{i = 1}^nX_i \\
+& \frac{\partial l}{\partial \sigma} = \sum_{i = 1}^n \frac{\|X_i - \mu\|^2 - d\sigma^2}{\sigma^2} = 0 \quad \Rightarrow \quad \hat{\sigma}^2 = \frac{1}{dn} \sum_{i = 1}^n \|X_i - \hat{\mu} \|^2
 \end{align*}
-$$</p>
-<p>对于 QDA，分别使用类别内的数据点每个类别 C 的均值和方差，使用所有数据点估计前验概率 $\hat{\pi_C} = \frac{n_C}{\sum_D n_D}$</p>
+$$<p>对于 QDA，分别使用类别内的数据点每个类别 C 的均值和方差，使用所有数据点估计前验概率 $\hat{\pi}_C = \frac{n_C}{\sum_D n_D}$</p>
 <p>对于 LDA，使用同样的方法估计每个类别的均值以及前验概率，然后使用所有数据估计方差
-$$\hat{\sigma}^2 = \frac{1}{dn} \sum_C \sum_{\{i:y_i = c\}} ||X_i - \hat{\mu}_C||^2$$</p>
-<p>$$
-$$</p>
-
+</p>
+$$\hat{\sigma}^2 = \frac{1}{dn} \sum_C \sum_{\{i:y_i = c\}} \|X_i - \hat{\mu}_C\|^2$$
 </section>
 
 
@@ -583,6 +579,25 @@ $$</p>
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/ml_09_anisotropic_gaussian_discriminant_analysis/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_09_anisotropic_gaussian_discriminant_analysis" data-hash="/p/ml_01_introduction/ml_header.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习 09 高斯判别分析（各向异性）</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -655,25 +670,6 @@ $$</p>
 
         <div class="article-details">
             <h2 class="article-title">机器学习 04 支持向量机</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/ml_01_introduction/ml_header.webp" loading="lazy" data-key="ml_03_perceptron_learning_and_maximum_margin_classifiers" data-hash="/p/ml_01_introduction/ml_header.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">机器学习 03 感知机学习和最大间隔分类器</h2>
         </div>
     </a>
 </article>
