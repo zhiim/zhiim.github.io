@@ -458,6 +458,15 @@
 </span></span><span class="line"><span class="cl"><span class="nv">GRUB_SAVEDEFAULT</span><span class="o">=</span><span class="nb">true</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>修改完成后重新更新引导配置即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h2 id="配置refind">配置rEFInd
 </h2><p>rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。</p>
 <p>通过更改rEFInd配置文件，我们可以实现默认加载进入linux内核，然后通过子选单选择加载linux-lts内核。同时我们也可以选择附加内核参数，使得每次加载内核的同时加载微码，防止出现一些意外奔溃。</p>
@@ -569,9 +578,9 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ sudo lsblk -o name,mountpoint,label,size,uuid
 </span></span><span class="line"><span class="cl">NAME          MOUNTP LABEL         SIZE UUID
-</span></span><span class="line"><span class="cl">nvme0n1                            476.9G 
+</span></span><span class="line"><span class="cl">nvme0n1                            476.9G
 </span></span><span class="line"><span class="cl">├─nvme0n1p1        SYSTEM_DRV    260M C2B6-5B79
-</span></span><span class="line"><span class="cl">├─nvme0n1p2                      16M 
+</span></span><span class="line"><span class="cl">├─nvme0n1p2                      16M
 </span></span><span class="line"><span class="cl">├─nvme0n1p3        Windows-SSD   175.7G 9292B82A92B81527
 </span></span><span class="line"><span class="cl">├─nvme0n1p4        Windows       50G B88EF24F8EF20622
 </span></span><span class="line"><span class="cl">├─nvme0n1p5        WINRE_DRV     1000M D800BC7600BC5CE6

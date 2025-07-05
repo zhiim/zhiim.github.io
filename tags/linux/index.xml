@@ -433,6 +433,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;GRUB_SAVEDEFAULT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改完成后重新更新引导配置即可&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;配置refind&#34;&gt;配置rEFInd
 &lt;/h2&gt;&lt;p&gt;rEFInd每次会默认加载最后安装的内核，所以如果不按F2进入子选单选择linux内核就会自动加载linux-lts内核。&lt;/p&gt;
 &lt;p&gt;通过更改rEFInd配置文件，我们可以实现默认加载进入linux内核，然后通过子选单选择加载linux-lts内核。同时我们也可以选择附加内核参数，使得每次加载内核的同时加载微码，防止出现一些意外奔溃。&lt;/p&gt;
@@ -544,9 +553,9 @@
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sudo lsblk -o name,mountpoint,label,size,uuid
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;NAME          MOUNTP LABEL         SIZE UUID
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nvme0n1                            476.9G 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nvme0n1                            476.9G
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p1        SYSTEM_DRV    260M C2B6-5B79
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p2                      16M 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p2                      16M
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p3        Windows-SSD   175.7G 9292B82A92B81527
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p4        Windows       50G B88EF24F8EF20622
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├─nvme0n1p5        WINRE_DRV     1000M D800BC7600BC5CE6
@@ -849,7 +858,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo bash -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/bobafetthotmail/refind-theme-regular/master/install.sh&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;官方默认安装主题到&lt;code&gt;/boot/efi/EFI/refind/themes/refind-theme-regular/theme.conf&lt;/code&gt;，如果在安装Arch时选择将ESP分区挂在在&lt;code&gt;/efi&lt;/code&gt;的话，需要按照官方的手动安装指导将主题安装到&lt;code&gt;/efi/EFI/refind/themes/refind-theme-regular/theme.conf&lt;/code&gt;。 最终的主题效果如下&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;官方默认安装主题到&lt;code&gt;/boot/efi/EFI/refind/themes/refind-theme-regular&lt;/code&gt;，如果在安装Arch时选择将ESP分区挂在在&lt;code&gt;/efi&lt;/code&gt;的话，需要按照官方的手动安装指导将主题安装到&lt;code&gt;/efi/EFI/refind/themes/refind-theme-regular&lt;/code&gt;。 最终的主题效果如下&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://zhiim.github.io/p/arch-linux-configuration-driver-and-software/refind.webp&#34;
 	width=&#34;854&#34;
 	height=&#34;480&#34;
