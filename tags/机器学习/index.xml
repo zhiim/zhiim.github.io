@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sun, 22 Jun 2025 20:29:21 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>机器学习 10 回归</title>
+        <title>机器学习 10 回归 I：最小二乘回归和逻辑回归</title>
         <link>https://zhiim.github.io/p/ml_10_regression/</link>
         <pubDate>Sun, 22 Jun 2025 20:29:21 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_10_regression/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 10 回归" /&gt;&lt;h2 id=&#34;回归问题&#34;&gt;回归问题
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 10 回归 I：最小二乘回归和逻辑回归" /&gt;&lt;h2 id=&#34;回归问题&#34;&gt;回归问题
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;分类问题：给定样本点 $x$，预测类别&lt;/li&gt;
 &lt;li&gt;回归问题：给定样本点 $x$，预测数值&lt;/li&gt;
@@ -101,12 +101,12 @@ $$&lt;p&gt;对于线性可分数据，逻辑回归的梯度下降法虽然能保
 </description>
         </item>
         <item>
-        <title>机器学习 09 高斯判别分析（各向异性）</title>
+        <title>机器学习 09 高斯判别分析 IV：各向异性高斯</title>
         <link>https://zhiim.github.io/p/ml_09_anisotropic_gaussian_discriminant_analysis/</link>
         <pubDate>Sat, 21 Jun 2025 20:02:09 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_09_anisotropic_gaussian_discriminant_analysis/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 09 高斯判别分析（各向异性）" /&gt;&lt;p&gt;我们已经定义了多维正态分布&lt;/p&gt;
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 09 高斯判别分析 IV：各向异性高斯" /&gt;&lt;p&gt;我们已经定义了多维正态分布&lt;/p&gt;
 $$
 f(x)=n(q(x)),\quad n(q) = \frac{1}{\sqrt{(2\pi)^d|\Sigma|}}e^{-q/2},\quad q(x)=(x-\mu)^T \Sigma^{-1} (x-\mu)
 $$&lt;p&gt;其中有三个重要的矩阵：&lt;/p&gt;
@@ -211,12 +211,12 @@ $$&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_09_anisotropic_gau
 </description>
         </item>
         <item>
-        <title>机器学习 08 特征向量和多维正态分布</title>
+        <title>机器学习 08 高斯判别分析 III：特征向量和多维正态分布</title>
         <link>https://zhiim.github.io/p/ml_08_eigenvectors_and_multivariate_normal/</link>
         <pubDate>Wed, 18 Jun 2025 20:45:13 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_08_eigenvectors_and_multivariate_normal/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 08 特征向量和多维正态分布" /&gt;&lt;h2 id=&#34;特征向量&#34;&gt;特征向量
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 08 高斯判别分析 III：特征向量和多维正态分布" /&gt;&lt;h2 id=&#34;特征向量&#34;&gt;特征向量
 &lt;/h2&gt;&lt;p&gt;给定一个方阵 $A$，如果存在一个向量 $v \neq 0$ 和常量 $\lambda$，满足 $Av = \lambda v$，那么 $v$ 是 $A$ 的一个&lt;em&gt;特征向量&lt;/em&gt;，$\lambda$ 是与其对应的 $A$ 的&lt;em&gt;特征值&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;特征向量乘以 $A$ 后，仍然指向相同的或者相反的方向&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_08_eigenvectors_and_multivariate_normal/a7a757292e2db8db86aa71b068909864.png&#34; width=&#34;800&#34;&gt;
@@ -318,12 +318,12 @@ $\Rightarrow$ 椭球面是轴对齐的，并且 $\Sigma$ 的对角元素等于�
 </description>
         </item>
         <item>
-        <title>机器学习 07 高斯判别分析（各向同性）</title>
+        <title>机器学习 07 高斯判别分析 II：各向同性高斯</title>
         <link>https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/</link>
         <pubDate>Fri, 23 May 2025 23:21:38 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_07_gaussian_discriminant_analysis/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 07 高斯判别分析（各向同性）" /&gt;&lt;h2 id=&#34;高斯判别分析-gaussian-discriminant-analysis&#34;&gt;高斯判别分析 Gaussian Discriminant Analysis
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 07 高斯判别分析 II：各向同性高斯" /&gt;&lt;h2 id=&#34;高斯判别分析-gaussian-discriminant-analysis&#34;&gt;高斯判别分析 Gaussian Discriminant Analysis
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;基本假设&lt;/strong&gt;：每个类别服从高斯分布&lt;/p&gt;
 $$X \sim \mathcal{N}(\mu, \sigma^2): f(x) = \frac{1}{(\sqrt{2 \pi} \sigma)^d}\exp{\left( -\frac{\|x - \mu\|^2}{2\sigma^2} \right)}$$&lt;p&gt;其中 $x,\mu$ 是向量，$\sigma$ 是标量，$d$ 表示维度。（注：这里使用的正态分布公式是一个简化版本，它假设数据在所有的特征维度上的方差相同，并且不考虑不同特征之间的相关性）&lt;/p&gt;
 &lt;p&gt;对于每个类别 $C$，假设我们知道了均值 $\mu_C$ 和协方差 $\sigma_C^2$，那么我们就可以根据上述高斯分布公式，将均值和方差代入确定概率密度函数 $f_{X|Y=C}(x)$。同时假设前验概率 $\pi_C=P(Y = C)$ 已知&lt;/p&gt;
@@ -408,12 +408,12 @@ $$&lt;p&gt;对于 QDA，分别使用类别内的数据点每个类别 C 的均�
 $$\hat{\sigma}^2 = \frac{1}{dn} \sum_C \sum_{\{i:y_i = c\}} \|X_i - \hat{\mu}_C\|^2$$</description>
         </item>
         <item>
-        <title>机器学习 06 决策理论</title>
+        <title>机器学习 06 高斯判别分析 I：决策理论</title>
         <link>https://zhiim.github.io/p/ml_06_decision_theory/</link>
         <pubDate>Fri, 23 May 2025 14:43:55 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_06_decision_theory/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 06 决策理论" /&gt;&lt;h2 id=&#34;决策理论亦风险最小化&#34;&gt;决策理论亦风险最小化
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 06 高斯判别分析 I：决策理论" /&gt;&lt;h2 id=&#34;决策理论亦风险最小化&#34;&gt;决策理论亦风险最小化
 &lt;/h2&gt;&lt;p&gt;如果多个属于不同类别的样本点可能处于同一个位置（例如训练数据中，升高为 1.70m 的样本，可能男性和女性同样存在），此时我们没法通过一个分类器直接将样本划分为某一种类别，所以我们需要一个概率分类器，输出当前样本为某种类别的概率&lt;/p&gt;
 &lt;p&gt;贝叶斯定理：&lt;/p&gt;
 $$P(Y| X) = \frac{P(X| Y) P(Y)}{P(X)}$$&lt;p&gt;其中 $P(Y | X)$ 表示观测到 $X$ 的条件下事件 $Y$ 发生的后验概率，$ P(Y)$ 表示事件发生的先验概率。&lt;/p&gt;
@@ -792,12 +792,12 @@ $$&lt;p&gt;此时我们可以在核函数 $K(x, z)$ 对应的高维特征空间 
 </description>
         </item>
         <item>
-        <title>机器学习 03 感知机学习和最大间隔分类器</title>
+        <title>机器学习 03 感知机 II：感知机学习和最大间隔分类器</title>
         <link>https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/</link>
         <pubDate>Mon, 19 May 2025 16:29:23 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_03_perceptron_learning_and_maximum_margin_classifiers/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 03 感知机学习和最大间隔分类器" /&gt;&lt;h2 id=&#34;感知机算法&#34;&gt;感知机算法
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 03 感知机 II：感知机学习和最大间隔分类器" /&gt;&lt;h2 id=&#34;感知机算法&#34;&gt;感知机算法
 &lt;/h2&gt;&lt;p&gt;在 &lt;a class=&#34;link&#34; href=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/#%e6%84%9f%e7%9f%a5%e6%9c%ba&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;机器学习 02 线性分类器和感知机——感知机&lt;/a&gt;中，我们将在 $x-$ 空间寻找分类超平面的问题转换为在 $w-$ 空间寻找一个最优点 $w$ 的问题。&lt;/p&gt;
 &lt;table&gt;
@@ -914,12 +914,12 @@ $$&lt;p&gt;上述问题被称为在 $d + 1$ 维空间中，有 $n$ 个约束的�
 </description>
         </item>
         <item>
-        <title>机器学习 02 线性分类器和感知机</title>
+        <title>机器学习 02 感知机 I：线性分类器和感知机</title>
         <link>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</link>
         <pubDate>Sun, 18 May 2025 16:32:02 +0800</pubDate>
         
         <guid>https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/</guid>
-        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 02 线性分类器和感知机" /&gt;&lt;h2 id=&#34;分类器&#34;&gt;分类器
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 02 感知机 I：线性分类器和感知机" /&gt;&lt;h2 id=&#34;分类器&#34;&gt;分类器
 &lt;/h2&gt;&lt;p&gt;假设我们有 $n$ 个观测样例（bofservations），每个观测样例有 $d$ 个特征（features），有些样例属于类别 C，有些不是&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_02_linear_classifiers_and_perceptrons/decision_boudaries.webp&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
       &lt;h4&gt;不同的决策边界&lt;/h4&gt;
