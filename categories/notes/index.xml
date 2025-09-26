@@ -6,7 +6,654 @@
         <description>Recent content in Notes on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 22 Jun 2025 20:29:21 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 26 Sep 2025 20:03:09 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>机器学习 20 kNN</title>
+        <link>https://zhiim.github.io/p/ml_20_knn/</link>
+        <pubDate>Fri, 26 Sep 2025 20:03:09 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_20_knn/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 20 kNN" /&gt;&lt;h2 id=&#34;nearest-neighbor-classification&#34;&gt;Nearest Neighbor Classification
+&lt;/h2&gt;&lt;p&gt;给定一个查询样本 $q$，找到 k 个离 $q$ 最近的样本点。对于回归任务，返回这 k 个点的均值；对于分类任务，返回数量最多的类别或者分布表&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_20_knn/cb3a4fc2eecf909ffb846ee32153a2dc.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;随着超参数 k 的数值增大，kNN 一般会由过拟合变为欠拟合&lt;/p&gt;
+&lt;h3 id=&#34;exhaustive-k-nn-算法&#34;&gt;Exhaustive k-NN 算法
+&lt;/h3&gt;&lt;p&gt;给定一个样本点 $q$，计算所有的 n 个训练样本点到 $q$ 的距离，维护一个距离的小顶堆得到最小的 k 个距离&lt;/p&gt;
+&lt;p&gt;k-NN 的训练复杂度为 0, 运行复杂度为 $O(nd + n\log k)$&lt;/p&gt;
+&lt;h3 id=&#34;voronoi-diagrams&#34;&gt;Voronoi Diagrams
+&lt;/h3&gt;&lt;p&gt;设 $X$ 是一个点集，对于 $w \in X$，它的 Voronoi cell 定义为&lt;/p&gt;
+$$Vor(w) = \{ p \in \mathbb{R}^d : \|p - w\| \le \|p - v\|, \forall v \in X \}$$&lt;p&gt;$X$ 中 所有的 Voronoi cell 就是 Voronoi diagram&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_20_knn/6430250960958b92ba61c74efaa5a8b4.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Voronoi diagram 的空间复杂度为 $O(n^{[d / 2]}$（用边来衡量），当维度 d 增加是空间复杂度会稍微低于这个公式，但是仍然是指数级增长，所以不适合于高维数据。但是在实际应用中复杂度一般都是 $O(n)$&lt;/p&gt;
+&lt;p&gt;在运行时，给定一个点 $q$，找出一个点 $w$ 使得 $q \in Var(w)$，那么我们就可以使用 $w$ 的属性来预测 $q$&lt;/p&gt;
+&lt;p&gt;对于二维数据，在训练时需要 $O(n\log n)$ 的复杂度计算 Voronoi diagram，并使用一个梯形图（trapezoidal map）存储数据；运行时查找 Voronoi cell 的复杂度为 $O(\log n)$。对于高维数据需要使用 binary space partition tree 来存储，并且复杂度难以衡量&lt;/p&gt;
+&lt;p&gt;Voronoi 只是用了一个邻近点来估计 $q$，所以是一种 1-NN 算法，虽然可以推广到 k 阶，但是计算复杂度较大且难以实现&lt;/p&gt;
+&lt;h3 id=&#34;k-d-trees&#34;&gt;k-d Trees
+&lt;/h3&gt;&lt;p&gt;k-d Tree 使用类似决策树的方式来进行 NN 搜索，但是使用和决策树不同的准则来选择最优划分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择宽度最大的特征 $w$ 用于划分，即特征 i that $\max_{i, j,k}(X_{ji} - X_{ki})$，因为我们不希望一个样本点发散出去的邻接区跨越多个 box 区域，所以在宽度较大的特征上进行切分可以让 box 接近正方形&lt;/li&gt;
+&lt;li&gt;选择特征的中位数或者中值作为划分边界。使用中位数可以保证树的深度为 $\log_2 n$，建树复杂度为 $O(nd \log n)$；如果使用中值可能导致树失衡&lt;/li&gt;
+&lt;li&gt;每个中间节点都会存储一个训练数据点，所以每次搜索的时候不用下降到叶节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_20_knn/74f6575d219af2056137a8ae78e32041.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;在运行时，给定一个点 $q$，寻找一个训练样本点 $w$ 满足 $\|q - w \| \le (1 + \epsilon) \|q - u\|$，其中 $u$ 是训练样本中距离 $q$ 最近的距离，也就是我们找到的样本点 $w$ 不能远于最小距离的 $1+\epsilon$ 倍&lt;/p&gt;
+&lt;p&gt;在搜索时，我们需要计算 $q$ 到区域 B 的最小距离 $dist(q, B) = \min_{z \in B} \|q - z\|$&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_20_knn/41de3b27aac7e077137e5c8caec7d046.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;搜索过程中需要维护一个小顶堆，用来保存在还没有搜索的 box 的距离。每次搜索的时候优先搜索离 $q$ 最近的 box。如果当前搜索的 box 离 $q$ 的距离的 $1 + \epsilon$ 倍小于下一个最近 box 则继续，反之停止搜索&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_20_knn/2422184e4d1774c17980fa124dd54f2d.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;1-NN 算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将根节点的距离设置为 0，推入小顶堆 $Q$&lt;/li&gt;
+&lt;li&gt;将当前距离 $r$ 设置为 $\infty$&lt;/li&gt;
+&lt;li&gt;如果 $Q$ 不为空，并且 $(1 + \epsilon) \cdot \text{minkey}(Q) &gt; r$
+&lt;ul&gt;
+&lt;li&gt;将 $Q$ 中节点弹出，它对应的 box 是 $B$&lt;/li&gt;
+&lt;li&gt;取出 $B$ 中的训练样本 v，如果 $\|q - v\| &lt; r$，那么 $w \leftarrow v; r \leftarrow \|q - v\|$&lt;/li&gt;
+&lt;li&gt;继续查看子节点对应的区域 $B&#39;$ 和 $B&#39;&#39;$
+&lt;ul&gt;
+&lt;li&gt;如果 $(1 + \epsilon) \cdot dist(q, B&#39;) &lt; r$，将 $B&#39;$ 和距离插入 $Q$&lt;/li&gt;
+&lt;li&gt;如果 $(1 + \epsilon) \cdot dist(q, B&#39;&#39;) &lt; r$，将 $B&#39;&#39;$ 和距离插入 $Q$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;返回 $w$&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 19 AdaBoost</title>
+        <link>https://zhiim.github.io/p/ml_19_adaboost/</link>
+        <pubDate>Fri, 26 Sep 2025 19:59:30 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_19_adaboost/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 19 AdaBoost" /&gt;&lt;h2 id=&#34;adaboost&#34;&gt;AdaBoost
+&lt;/h2&gt;&lt;p&gt;AdaBoost 是一个集成学习方法，它可以降低偏差（Bagging 法可以降低方差）&lt;/p&gt;
+&lt;p&gt;AdaBoost 使用不同权重的训练样本训练学习器，如果某个样本被错误分类，那么它的权重将增加；并且对每个学习器使用不同的权重，更加准确的学习器施加更大的权重&lt;/p&gt;
+&lt;p&gt;假设我们训练 T 个分类器 $G_1, \dots, G_T$，训练样本 $X_i$ 在训练 $G_t$ 是的权重取决于 $G_1, \dots, G_{t-1}$ 错误分类它的次数，此外如果 $X_t$ 被一个非常精准的分类器分类错误，它的权重将会增加的更多，每次 $X_i$ 被正确分类，它的权重也会相应缩小。&lt;/p&gt;
+&lt;p&gt;组合学习器（Metalearner）是所有学习器的线性组合，即 $M(z) = \sum_{t = 1}^T \beta_t G_t(z)$，虽然每个学习器 $G_t$ 的输出是二元的分类，但是组合学习器的输出是连续的值&lt;/p&gt;
+&lt;p&gt;在第 T 步时，我们需要选择一个新的学习器 $G_T$ 和对应的权重 $\beta_T$，为了实现最优选择，首先选定风险为&lt;/p&gt;
+$$Risk = \frac{1}{n} \sum_{i = 1}^n L(M(X_i), y_i)$$&lt;p&gt;其中 AdaBoost 的损失函数为&lt;/p&gt;
+$$
+L(\hat{\lambda}, \lambda) = e^{- \hat{\lambda}\lambda} = \begin{cases}
+e^{-\hat{\lambda}} \quad \lambda = + 1 \\
+e^{\hat{\lambda}} \quad \lambda = -1
+\end{cases}
+$$&lt;p&gt;我们对风险推导可得&lt;/p&gt;
+$$
+\begin{align*}
+n \cdot Risk &amp;= \sum_{i = 1}^n L(M(X_i), y_i) = \sum_{i = 1}^n e^{-y_i M(X_i)} \\
+&amp;= \sum_{i = 1}^n \exp \left( -y_i\sum_{i = 1}^T \beta_t G_t(X_i) \right) = \sum_{i = 1}^n \prod_{t = 1}^T e^{-\beta_t y_i G_t(X_i)} \\
+&amp;= \sum_{i = 1}^n w_i^{(T)} e^{-\beta_T y_i G_T(X_i)} , \quad where \quad w_i^{(T)} = \prod_{t = 1}^{T - 1} e^{-\beta_t y_i G_t(X_i)} \\
+&amp;= e^{-\beta_T} \sum_{y_i = G_T(X_i)} w_i^{(T)} + e^{\beta T} \sum_{y_i \ne G_T(X_i)} w_i^{(T)} \\
+&amp;= e^{-\beta_T} \sum_{i = 1}^n w_i^{(T)} + (e^{\beta_T} - e^{-\beta_T}) \sum_{y_i \ne G_T(X_i)} w_i^{(T)}
+\end{align*}
+$$&lt;p&gt;其中 $w_i^{(T)} = \prod_{t = 1}^{T - 1} e^{-\beta_t y_i G_t(X_i)}$ 只与 $G_1, \dots, G_{T -1}$ 有关，可以看作风险中每个样本的权重，并且该样本在前面几轮中被分错的次数越多，$w_i^{(T)}$ 越大&lt;/p&gt;
+&lt;p&gt;同时，我们也可以得到 $w_i^{(T)}$ 的递推公式&lt;/p&gt;
+$$
+w_i^{(T + 1)} = w_i^{(T)} e^{-\beta_T y_i G_T(X_i)} = \begin{cases}
+w_i^{(T)} e^{-\beta T} \quad y_i = G_T(X_i) \\
+w_i^{(T)} e^{\beta_T} \quad y_i \ne G_T(X_i)
+\end{cases}
+$$&lt;p&gt;在风险的最终形态中，第一项 $e^{-\beta T} \sum_{i = 1}^n w_i^{(T)}$ 只与上面的几个分类器有关，所以在第 T 轮想要风险最小，就要最小化第二项中的 $\sum_{y_i \ne G_T(X_i)} w_i^{(T)}$，也就是所有被分类错误的样本的权重 $w_i^{(T)}$。&lt;strong&gt;所以在每一轮中选择 $G_T$ 的准则就是让分类错误的样本的权重之和最小&lt;/strong&gt;。虽然决策树一般可以将所有的样本点都分类正确，但是 boosting 中一般只会使用较短、非理想的决策树&lt;/p&gt;
+&lt;p&gt;在选择 $\beta_T$ 时，令 $\frac{d}{d \beta_T}Risk = 0$, 即
+&lt;/p&gt;
+$$0 = -e^{\beta_T} \sum_{i = 1}^n w_ii^{(T)} + (e^{\beta_T} + e^{-\beta_T}) \sum_{y_i \ne G_T(X_i)} w_i^{(T)}$$&lt;p&gt;
+令
+&lt;/p&gt;
+$$err_T = \frac{\sum_{y_i \ne G_T(X_i)}w_i^{(T)}}{\sum_{i=1}^n w_i^{(T)}}$$&lt;p&gt;
+将 $err_T$ 称为 weighted error rate，可以算出
+&lt;/p&gt;
+$$\beta_T = \frac{1}{2} \ln \left( \frac{1 - err_T}{err_T} \right)$$&lt;p&gt;从上式可以看出，如果 $err_T = 0$ 那么 $\beta_T = \infty$，如果 $err_T = 1 / 2$ 那么 $\beta_T = 0$，也就是说如果一个学习器的 error 为 50%, 则它将对组合学习器无贡献&lt;/p&gt;
+&lt;p&gt;更具上面的讨论我们就可以得到 AdaBoost 算法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始每个训练样本的权重 $w_i \leftarrow \frac{1}{n},\forall{i} \in [1, n]$&lt;/li&gt;
+&lt;li&gt;for 循环 1 至 T
+&lt;ol&gt;
+&lt;li&gt;计算加权错误率 $err = \frac{\sum_{mis} w_i}{\sum_{all} w_i}$，以及系数 $\beta_t = \frac{1}{2} \ln \left( \frac{1 - err}{err} \right)$&lt;/li&gt;
+&lt;li&gt;更新权重 $w_i \leftarrow w_i \cdot \begin{cases} e^{\beta_T}, \quad G_t(X_i) \ne y_i \\ e^{-\beta_t}, \quad other \end{cases} = w_i \cdot \begin{cases} \sqrt{\frac{1 - err}{err}} \\ \sqrt{\frac{err}{1 - err}} \end{cases}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;返回组合学习器 $h(z) = sign\left( \sum_{t = 1}^T \beta_t G_t(z) \right)$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_19_adaboost/d4cd3fea6576cbd89df241142d3e2524.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如上图所示，初始时我们为每个训练样本施加相同的权重，然后根据分类器分类正确与错误的情况减小或者增加权重&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为何 boost 往往搭配决策树，并且使用较短的树结构&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Boosting 可以减小偏差，但是不一定会减小方差，使用较短的树结构主要是为了防止过拟合&lt;/li&gt;
+&lt;li&gt;树的训练一般较快，而在 boosting 法下我们需要训练多个学习器&lt;/li&gt;
+&lt;li&gt;决策树不需要超参数&lt;/li&gt;
+&lt;li&gt;AdaBoost 加上短树相当于是一种特征子集选择，无法提高 metalearning 估计能力的特征完全没有使用（err 为 50% 的）&lt;/li&gt;
+&lt;li&gt;线性决策边界和 boost 的组合并不好&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 18 主成分分析</title>
+        <link>https://zhiim.github.io/p/ml_18_principal_components_analysis/</link>
+        <pubDate>Fri, 26 Sep 2025 19:57:00 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_18_principal_components_analysis/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 18 主成分分析" /&gt;&lt;h2 id=&#34;无监督学习&#34;&gt;无监督学习
+&lt;/h2&gt;&lt;p&gt;有时候我们的训练数据里面没有标签，但是我们还是希望寻找数据的结构信息&lt;/p&gt;
+&lt;p&gt;无监督学习的应用主要分为如下几个大类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;聚类（clustering）：将数据划分成几个相似的点集&lt;/li&gt;
+&lt;li&gt;数据降维（dimensionality reduction）：数据一般分布在特征空间的低纬子空间，或者矩阵一般有低阶秩近似&lt;/li&gt;
+&lt;li&gt;分布学习（density estimation）：使用离散数据拟合一个连续概率分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主成分分析-principal-components-analysis&#34;&gt;主成分分析 Principal Components Analysis
+&lt;/h2&gt;&lt;p&gt;目标：给定一些 $\mathbb{R}^d$ 中的样本点，寻找 k 个方向，可以捕获大部分特征变化&lt;/p&gt;
+&lt;p&gt;主成分分析一般有以下几个目的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;降低维度可以降低计算复杂度&lt;/li&gt;
+&lt;li&gt;移除了干扰维度可以防止过拟合，和特征子集选择类似，但是此时选出来的特征是其他特征的线性组合&lt;/li&gt;
+&lt;li&gt;寻找一个较小的可以表征复杂变化的基&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;假设 $X$ 是一个 $n \times d$ 的设计矩阵，并且 $X$ 的均值为 0。假设有一些正交基 ${} v_1, \dots, v_k {}$，那么 x 可以在正交基下表示为 $\widetilde{x} = \sum_{i = 1}^k (x \cdot v_i) v_i$，其中 $x \cdot v_i$ 表示主坐标，是 x 在 $v_i$ 方向投影的长度&lt;/p&gt;
+&lt;p&gt;在降维的时候我们希望最大程度保留原始信息，在主成分分析中信息被定义为方差，所以最佳的方向就是协方差矩阵 $X^TX$ 的特征向量。&lt;/p&gt;
+&lt;p&gt;假设 $X^TX$ 的特征特征值为 $0 \le \lambda_1 \le \lambda_2 \le \dots \le \lambda_d$，对应到特征向量 $v_1, v_2, \dots, v_k$ 就是主成分。计算每个数据点在主成分下的主坐标，就是实现了对数据的降维&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 17 神经网络 II：梯度消失和爆炸</title>
+        <link>https://zhiim.github.io/p/ml_17_gradient_vanish/</link>
+        <pubDate>Fri, 26 Sep 2025 19:51:29 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_17_gradient_vanish/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 17 神经网络 II：梯度消失和爆炸" /&gt;&lt;h2 id=&#34;梯度消失与爆炸&#34;&gt;梯度消失与爆炸
+&lt;/h2&gt;&lt;p&gt;当使用 sigmoid 函数时，如果 sigmoid 的输出接近 0 或 1，那么梯度 $s&#39; = s(1 - s) \approx 0$，此时梯度更新将会特别缓慢，这个问题被称为&lt;em&gt;梯度消失&lt;/em&gt;，在深层网络中，反向传播会使得梯度消失加剧&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_17_gradient_vanish/a9c103ee0fbac66eb94e884e5db1952b.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;将激活函数换为 ReLU 将会缓解梯度消失，ReLU 的定义为 $r(\gamma) = max\{0, \gamma\}$，它的导数为&lt;/p&gt;
+$$
+r&#39;(\gamma) = \begin{cases}
+1, \quad \gamma \ge 0,  \\
+0, \quad \gamma &lt; 0
+\end{cases}
+$$&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_17_gradient_vanish/c1b654a499edbf6249026f47069ba571.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;在现代神经网络中，ReLU 一般被用于中间层的激活函数，因为 ReLU 的梯度很少全部为 0，更多的情况是部分神经元的梯度为 0&lt;/p&gt;
+&lt;p&gt;然而 ReLU 的输出可以无限大，带了&lt;em&gt;梯度爆炸&lt;/em&gt;问题，特别是在深层网络中，大输入造成了梯度随着网络深度不断变大&lt;/p&gt;
+&lt;h2 id=&#34;输出层&#34;&gt;输出层
+&lt;/h2&gt;&lt;p&gt;ReLU 一般被使用于隐藏层，而在输出层一般为线性单元（回归问题）或者 sigmoid/softmax 单元（分类问题），分别对应了线性回归、logistic 回归和 softmax 回归&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 16 神经网络 I：神经网络与梯度计算</title>
+        <link>https://zhiim.github.io/p/ml_16_neural_network/</link>
+        <pubDate>Fri, 26 Sep 2025 19:41:36 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_16_neural_network/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 16 神经网络 I：神经网络与梯度计算" /&gt;&lt;h2 id=&#34;神经网络&#34;&gt;神经网络
+&lt;/h2&gt;&lt;p&gt;单个的、基础的感知机存在严重局限性，无法解决像 XOR（异或）这样看似简单但非线性的问题。如下图，异或的二维输入和输出表示了三维空间的点，无法被线性分类器分类&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/xor_probelm.png&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如果添加一个二次特征 $x_1x_2$，那么 XOR 将在 3 维空间线性可分&lt;/p&gt;
+&lt;p&gt;当然，我们也有更佳的方法，通过多个单层线性分类器的叠加可以实现类似电路的逻辑连接，此外在每个线性分类器的输出添加一个非线性的函数 $s$ 可以实现类似电路逻辑门。所以通过多个线性连接+非线性函数（一般为 logistic 函数）可以轻易实现异或，其中每个线性线性连接+非线性函数组成了一个神经元&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/aa65087cd7ec36ba247340feba9e24f2.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;一层隐藏层的网络&#34;&gt;一层隐藏层的网络
+&lt;/h3&gt;&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/fcc46df680c9253fabfe67759b5c9de1.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;多个神经元组成的三层网络如同&lt;/p&gt;
+&lt;p&gt;集合函数 $s(\gamma) = \frac{1}{1 + e^{-\gamma}}$，被称为激活函数。对于一个向量 $u$，定义 $s(u) =\begin{bmatrix}s(u_1) \\ s(u_2) \\ \vdots\end{bmatrix}$，$s_1(u) = \begin{bmatrix} s(u_1) \\ s(u_2) \\ \vdots \\ 1\end{bmatrix}$ 表示包含偏置的形式&lt;/p&gt;
+&lt;p&gt;那么有&lt;/p&gt;
+$$
+\begin{align*}
+h &amp;= s_1(Vx) \\
+\hat{y} &amp;= s(Wh) = s(Ws_1(Vx))
+\end{align*}
+$$&lt;p&gt;神经网络可以有多个输出节点，所以我们可以基于相同的隐状态训练多个分类器，有时候不同的分类器可以使用不同隐藏层神经元，并且多个分类器的结果可以互相补充&lt;/p&gt;
+&lt;h3 id=&#34;训练&#34;&gt;训练
+&lt;/h3&gt;&lt;p&gt;神经网络的训练一般使用随机梯度下降或者批梯度下降&lt;/p&gt;
+&lt;p&gt;选择损失函数 $L(\hat{y}, y)$，例如 $L(\hat{y},y) = \|\hat{y} - y\|^2$, 寻找 $V$ 和 $W$ 可以最小化成本函数 $J(V,W) = \frac{1}{n} \sum_{i = 1}^n L(\hat{y}(X_i), Y_i)$&lt;/p&gt;
+&lt;p&gt;神经网络的成本函数一般不是凸函数，存在非常多的局部最小值（local minima），一般可以通过增加更多的隐藏节点缓解这个问题&lt;/p&gt;
+&lt;p&gt;神经网络的节点具有对称性，不同神经元之间结构一致，如果所有的神经元都初始化为相同点权重，那么所有的输出和梯度都一致，所有的神经元在参数更新中都会保持一致，所以一般使用随机权重初始化神经元&lt;/p&gt;
+&lt;p&gt;神经元的权重不能初始化为过大或者过小，否则会处于 logistic 函数的饱和区，梯度过小&lt;/p&gt;
+&lt;h3 id=&#34;梯度计算&#34;&gt;梯度计算
+&lt;/h3&gt;&lt;p&gt;我们可以使用链式法则求每个节点的梯度&lt;/p&gt;
+&lt;p&gt;对于公式 $f=((a + b) c)^2$，可以将其拆解成链式传播的形式，然后从 $f$ 开始逐次求解每个节点的梯度&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/55c5081feacddfc77a55a222e6f28a39.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;对于多元数据，同样可以使用多元微分
+&lt;/p&gt;
+$$\frac{\partial}{\partial \alpha} L(y_1(\alpha), y_2(\alpha)) = \frac{\partial L}{\partial y_1} \frac{\partial y_1}{\partial \alpha} + \frac{\partial L}{\partial y_2} \frac{\partial y_2}{\partial \alpha} = \nabla_y L\cdot \frac{\partial}{\partial \alpha} y$$&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/9c52dfcaeb7a9de6094621b6674aed24.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;同样我们也可以通过链式法则求成本函数，梯度计算是从后往前进行的，被称为反向传播算法&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_16_neural_network/a8519d1a53f7e4ba5259464c6d5a05c9.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+</description>
+        </item>
+        <item>
+        <title>机器学习 15 决策树 II：决策树扩展</title>
+        <link>https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/</link>
+        <pubDate>Fri, 26 Sep 2025 19:32:13 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 15 决策树 II：决策树扩展" /&gt;&lt;h2 id=&#34;决策树的变种&#34;&gt;决策树的变种
+&lt;/h2&gt;&lt;h3 id=&#34;决策树回归&#34;&gt;决策树回归
+&lt;/h3&gt;&lt;p&gt;决策树回归就是通过一系列是否问题，创建了一个分段常数函数（Piecewise Constant Regression Fn），在函数的每一段，决策树的预测是一个固定的常数&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/1379e6faa8e219b3268c2a4bd72f1101.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;上图左边是一个对特征维度为 2 的样本进行决策回归的过程，数据顺着路径到达某一个叶子节点得到最终的预测值&lt;/li&gt;
+&lt;li&gt;中间的图表示决策树将整个特征空间划分成多个区块，每个区块对应一个叶子节点&lt;/li&gt;
+&lt;li&gt;右图表示对应的分段常数函数，每个特征空间中的区块都对应了一个常数的叶子节点预测值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每一个叶子节点的预测值，由落入这个叶子节点的所有样本的值的平均决定，即&lt;/p&gt;
+$$\mu_S = \frac{1}{|S|}\sum_{i \in S}y_i$$&lt;p&gt;其中 $S$ 表示落入某个节点的样本索引的集合&lt;/p&gt;
+&lt;p&gt;决策树的目标是使分裂后的子区域纯度尽可能高。对于分类数，目标是让子区域的类别尽可能一致；对于回归树，我们希望让子区域的样本真实值 $y$ 尽可能接近&lt;/p&gt;
+&lt;p&gt;所以我们可以使用子区域内样本的方差作为 cost&lt;/p&gt;
+$$J(S) = Var(\{ y_i: i\in S \}) = \frac{1}{|S|} \sum_{i \in S} (y_i - \mu_S)^2$$&lt;p&gt;所以每次选择可以使得划分出的两个子集方差的加权平均（根据样本点树加权）最小的划分点&lt;/p&gt;
+&lt;h3 id=&#34;早停&#34;&gt;早停
+&lt;/h3&gt;&lt;p&gt;在构造决策树的时候，没必要让每个叶节点到达纯净，可以实现加速以及防止过拟合&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/877b1a22fcc1f8be2e6752cca6dc733e.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;对于上图两个重合非常大的概率分布，得到一个叶子节点的纯净决策树一定会造成过拟合&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/2a6c07a89432ebc2b635c349581577d5.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;此外叶子节点不那么纯净，往往能包含更加丰富的信息。例如，对于上图的决策树划分，我们可以通过统计每个子区域内不同类别的点数，得到某种类别被分到该叶子节点的概率。对于分类树，直接去概率最大的类别最为叶子节点输出的类别；对于回归树，使用平均值作为叶子节点的预测值&lt;/p&gt;
+&lt;p&gt;决策树可以使用的早停策略包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;继续划分不再降低熵或者误差（有可能一直划分到纯净节点）&lt;/li&gt;
+&lt;li&gt;大多数（例如大于 90%）节点类别相同&lt;/li&gt;
+&lt;li&gt;节点包含的样本点过少（例如小于 10）&lt;/li&gt;
+&lt;li&gt;子区域过小&lt;/li&gt;
+&lt;li&gt;树的深度太大&lt;/li&gt;
+&lt;li&gt;使用验证集检验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;剪枝&#34;&gt;剪枝
+&lt;/h3&gt;&lt;p&gt;如果树太大，可以通过移除一些划分来提高在验证集的表现&lt;/p&gt;
+&lt;p&gt;剪枝往往比早停更加有效，因为有时候某次划分带来的提升不明显，但是接下来可能出现提升明显的划分&lt;/p&gt;
+&lt;p&gt;在剪枝时，如果每次去除一个分割后重新从头计算验证集指标会造成非常大的开销。相反，我们应该在构建深度树的时候记录下每个节点中包含了哪些样本，这样剪枝的时候只需将子节点的样本合并到父节点&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/09402d778b86912a85e12ed8bc37d0f4.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;多变量划分&#34;&gt;多变量划分
+&lt;/h3&gt;&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_15_decision_tree_and_ensemble_learning/0c9125da35eb1f9b9da75261f0290f7a.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;一个标准的决策树一次只对一个特征进行划分（如左图），对于 SVM 可以轻易区分的斜线，决策树需要学习一个非常复杂的规则&lt;/p&gt;
+&lt;p&gt;如果想要使用多个特征进行划分，可以在每个节点使用例如 SVM、逻辑回归和高斯判别分析，这些分类器通过决策树的层级结构可以学习到非线性的决策边界&lt;/p&gt;
+&lt;h2 id=&#34;集成学习-ensemble-learning&#34;&gt;集成学习 Ensemble Learning
+&lt;/h2&gt;&lt;p&gt;决策树快、简单并且可以解释性强，但是方差较大。例如，如果将两个数据集分成两份，分别训练两个决策树，这两个决策树可能差异非常大，特别是如果根节点选择的划分特征不同的时候&lt;/p&gt;
+&lt;p&gt;我们可以通过集合多个弱估计器，来得到一个强估计器，如果一个弱估计器的方差较大，那么将多个弱估计器组合去平均将会大大降低方差&lt;/p&gt;
+&lt;p&gt;为了得到一个强估计器，可以使用不同的方法取平均：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不同的学习算法&lt;/li&gt;
+&lt;li&gt;使用不同数据集训练的同一算法&lt;/li&gt;
+&lt;li&gt;bagging 法：使用一个数据集的不同随机子采样训练同一算法&lt;/li&gt;
+&lt;li&gt;随机森林：使用一个数据集的不同随机子采样训练随机决策树&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;平均可以很好的降低方差，但是无法降低偏差，所以我们需要在平均之前得到一些小偏差的估计器（即使存在一定程度的过拟合也没问题）&lt;/p&gt;
+&lt;h3 id=&#34;bagging&#34;&gt;Bagging
+&lt;/h3&gt;&lt;p&gt;Bagging 是一种使用一个数据集训练多个不同学习器的方法，它对大多数算法都有效（kNN 除外）&lt;/p&gt;
+&lt;p&gt;给定一个 $n$ 点的训练样本集，从里面又放回地随机选取 $n&#39;$ 个样本，这意味着某些样本被多次采样。如果 $n&#39; = n$，那么大概有 63.2%的样本被采样&lt;/p&gt;
+&lt;p&gt;Bagging 法存在一个问题：某些样本被采样了 $j$ 次，所以他们在训练数据中占有更大的比重&lt;/p&gt;
+&lt;h3 id=&#34;随机森林&#34;&gt;随机森林
+&lt;/h3&gt;&lt;p&gt;仅仅使用 Bagging 法加上决策树仍然不够，因为可能不同的树模型非常相似。例如，某个特征非常强，那么不同的树都会从它开始划分&lt;/p&gt;
+&lt;p&gt;为了得到不同的决策树，对于每个节点，随机选取 $m$ 个特征，从这 $m$ 个特征中一个可以最佳划分的特征。其中 $m$ 是超参数，$m$ 越小越随机，不同树之间越不相关，偏差更大&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 14 决策树 I：决策树基础</title>
+        <link>https://zhiim.github.io/p/ml_14_decision_tree/</link>
+        <pubDate>Fri, 26 Sep 2025 17:42:31 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_14_decision_tree/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 14 决策树 I：决策树基础" /&gt;&lt;p&gt;决策树是一种用于分类和回归的非线性方法&lt;/p&gt;
+&lt;p&gt;决策树有两种节点状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内部节点：对特征值进行测试（通常是一个），并决定走向哪个分支&lt;/li&gt;
+&lt;li&gt;叶节点：确定最终的类别&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/f5d21c304134513e4142469b65c70576.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;决策树对类别特征和数值特征都较为有效，并且可解释性强，上图是决策树的工作模式。如右图所示，决策树将 x-空间划分成了长方形区块，不过不同程度的分支组合，决策树的决策边界可以任意复杂&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/409c50b8f09006bfd345a7940d5385d5.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;设 $X$ 是一个 $n\times d$ 设计矩阵，$y\in \mathbb{R}^n$ 是标签，$S \in \{ 1, 2, \dots, n\}$ 是采样点的索引&lt;/p&gt;
+&lt;p&gt;决策树的构造&lt;/p&gt;
+$$
+\begin{aligned}
+&amp;\text{Build Decision Tree} \\
+&amp;\text{Procedure } GrowTree(S) \\
+&amp;\quad \text{if }(y_i = C \text{ for all } i \in S) \\
+&amp;\quad \quad \text{return new } Leaf(C) \\
+&amp;\quad \text{else} \\
+&amp;\quad \quad \text{choose best splitting feature } j \text{ and splitting value } \beta \\
+&amp;\quad \quad S_l = \{i \in S: X_{ij} &lt; \beta\} \\
+&amp;\quad \quad S_r = \{i \in S: X_{ij} \ge \beta \} \\
+&amp;\quad \quad \text{return new } node(j, \beta, GrowTree(S_l), GrowTree(S_r) \\
+&amp;\quad \text{end if} \\
+&amp;\text{end procedure} \\
+\end{aligned}
+$$&lt;p&gt;其中的关键是如何选择最优的划分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;尝试所有可能的划分&lt;/li&gt;
+&lt;li&gt;对于一个集合 $S$，定义它的&lt;em&gt;成本&lt;/em&gt;为 $J(S)$ （用来衡量 S 的混乱程度，目标是划分后，子集尽可能纯洁）&lt;/li&gt;
+&lt;li&gt;选择一个划分可以最小化 $J(S_l) + J(S_r)$ （或加权平均 $\frac{|S_l|J(S_l) + |S_r|J(S_r)}{|S_l| + |S_r|}$）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;现在我们只需要确定如何计算成本 $J (S)$&lt;/p&gt;
+&lt;p&gt;方案一：假设 $S$ 中类别最多的类别是 $C$，那么定义 $J (S)$ 为 $S$ 中不属于类别 $C$ 的样本个数&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/1b92b4914ea2aa31f10cfd28040df325.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;但是对于上图这种划分，最后都能得到 $J(S_l) + J(S_r) = 10$ 的结果，但是左边的更好（划分后类别更纯净）， $\frac{|S_l|J(S_l) + |S_r|J(S_r)}{|S_l| + |S_r|}$ 甚至会优先选择右边&lt;/p&gt;
+&lt;p&gt;方案二：衡量熵&lt;/p&gt;
+&lt;p&gt;假设 $Y$ 是一个随机类别变量，$P (Y = C) = p_C$，那么 $Y$ 属于 $C$ 的惊讶度（degree of suprise）是 $-\log_2p_C$（如果一个非常可能发生的事发生了，我们并不惊讶；如果不太可能发生的事发生了，我们非常惊讶，它的信息量更大）&lt;/p&gt;
+&lt;p&gt;那么集合 $S$ 的熵为&lt;/p&gt;
+$$H(S) = - \sum p_C \log_2 p_C, \quad p_C = \frac{|\{ i \in S: y_i = C\}|}{|S|}$$&lt;p&gt;熵代表了在均匀分布下随机采样的子集 $S$ 中，为了正确识别它的类别，我们需要传输的信息量&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/f95b243606fb48d31c4fbbd3dbcf6239.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图分别是两个类别和三个类别的条件下，熵随着类别概率变化的曲线，可以看出如果一个集合中类别约纯净，它的熵越小&lt;/p&gt;
+&lt;p&gt;在每次划分时，我们可以计算划分后的平均熵&lt;/p&gt;
+$$H_{after} = \frac{|S_l|H(S_l) + |S_r|H(S_r)}{|S_l| + |S_r|}$$&lt;p&gt;那么我们选择划分的准则就是最大化&lt;em&gt;信息增益&lt;/em&gt; $H(S) - H_{after}$，也就是最小化 $H_{after}$&lt;/p&gt;
+&lt;p&gt;信息增益将会永远大于等于 0，当某一个子集为空或者所有子集内部类别分布完全一致时，信息增益为 0&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/4bc92ff374632d67db16ca4381ad90b7.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;左图是使用熵作为成本函数的划分，可以看到，熵随 $p_C$ 的变化曲线是严格凸的，父节点的熵永远大于两个自节点熵的加权平均；左图是使用 $J(S)$ 作为成本函数的曲线，在很多情况下划分前后的成本相同，无法衡量划分好坏&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于二元特征 $x_i$，直接划分成 $x_i = 0$ 和 $x_i = 1$ 两类&lt;/li&gt;
+&lt;li&gt;如果 $x_i$ 有三个或者以上的离散值，可以二元分裂，也可以多元分裂&lt;/li&gt;
+&lt;li&gt;如果 $x_i$ 是一个数值，需要在每两个不同值间尝试分裂点&lt;br&gt;
+为了加速计算，我们首先对数值进行排序（如下图），每两个不同值之间都存在一个分裂点（竖线），使用不同的分裂点只会将一个样本从右侧移动到左侧，所以只需初始一次排序，后续记录不同类别的数量变化，这样从左到右改变分裂点时只需要 $O (1)$ 的时间重新计算熵
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_14_decision_tree/75bb6cce5d0feffa5abde2e830f73ded.png&#34; width=&#34;800&#34;&gt;
+  &lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;决策树的计算复杂度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在测试阶段。从根节点到叶节点，最多走完树的深度，复杂度 $\le O(\log n)$&lt;/li&gt;
+&lt;li&gt;在训练阶段。
+&lt;ul&gt;
+&lt;li&gt;对于每个节点。如果是二元特征，每个节点需要依次尝试利用 $d$ 个特征划分，复杂度为 $O (d)$；如果是数值特征，每个特征如果有 $n&#39;$ 个分裂点，那么复杂度为 $O (n&#39;d)$&lt;/li&gt;
+&lt;li&gt;对于整个树。每个样本点参与 $O (depth)$ 个节点（从上至下），每个样本点在每个节点的计算复杂度为 $O(d)$（$n&#39;d$ 平均到 $n&#39;$ 个点），总共有 $n$ 个样本点，所以训练复杂度 $\le O(nd \cdot depth)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 13 回归 IV：正则化</title>
+        <link>https://zhiim.github.io/p/ml_13_regularization/</link>
+        <pubDate>Fri, 26 Sep 2025 17:15:20 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_13_regularization/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 13 回归 IV：正则化" /&gt;&lt;h2 id=&#34;岭回归-ridge-regression&#34;&gt;岭回归 Ridge Regression
+&lt;/h2&gt;&lt;p&gt;岭回归即是最小二乘线性规划加上 $l_2$ 正则化，可以描述为：&lt;br&gt;
+寻找一个 $w$，最小化 $J(w) = \|Xw - y\|^2 + \lambda \|w&#39;\|^2$&lt;br&gt;
+其中，$w&#39;$ 是使用 0 替代了 $w$ 中对应常数项权重的 $\alpha$ （不用对常数项进行惩罚）&lt;/p&gt;
+&lt;p&gt;加入 $l_2$ 范数惩罚 $\lambda \|w&#39;\|^2$ 会鼓励参数学习向着 $\|w&#39;\|$ 较小的方向进行，原因如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;保证了代价函数是一个正定二次型，从而有唯一最优解&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;通过降低方差防止过拟合&lt;br&gt;
+如果权重过大，细微的数据动荡将会造成较大的变化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_13_regularization/02e72d7ed10bd0b1534d3cf0c3147e93.png&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图中红色的表示 $\|Xw - y\|^2$ 的等值线，蓝色的表示 $\|w\|$ 的等值线，红色等值线第一次和蓝色等值线相交的点就是岭回归的解&lt;/p&gt;
+&lt;p&gt;可以通过使代价函数的梯度为 0 得到最优 $w$，即求解线性方程组&lt;/p&gt;
+$$(X^TX + \lambda I&#39;)w = X^T y$$&lt;p&gt;其中 $I&#39;$ 是一个特殊的单位矩阵，它的右下角元素被设为 0（不对常数项偏置惩罚）&lt;/p&gt;
+&lt;p&gt;岭回归的方差为 $Var(z^T(X^TX + \lambda I&#39;)^{-1} X^T e)$，可以看出 $\lambda$ 增大时，方差减小，但是偏差会增大&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_13_regularization/61bc163d627382dd809faf4c337ef1c1.png&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;岭回归的贝叶斯解释&#34;&gt;岭回归的贝叶斯解释
+&lt;/h3&gt;&lt;p&gt;假设$w&#39;$的先验概率满足 $w&#39; \sim \mathcal{N}(0, \varsigma^2)$，则概率密度函数为 $f(w&#39;) \propto e^{- \|w&#39;\|^2 / (2 \varsigma^2)}$&lt;/p&gt;
+&lt;p&gt;可以计算出后验概率为&lt;/p&gt;
+$$f_{W|X,Y}(w) = \frac{f_{Y| X, W}(y)f(w&#39;)}{f_{Y|X}(y)}$$&lt;p&gt;后验概率的对数形式&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;为&lt;/p&gt;
+$$
+\begin{align*}
+\ln f_{W|X,Y}(w) &amp;= \ln f_{Y| X, W}(y) + \ln f(w&#39;) - \text{const} \\
+&amp; = -\text{const} \|Xw - y\|^2 - \text{const} \|w&#39;\|^2 -\text{const}
+\end{align*}
+$$&lt;p&gt;最大化后验概率，即最小化 $\|Xw - y\|^2 + \|w&#39;\|^2$&lt;/p&gt;
+&lt;p&gt;最大似然估计：寻找参数 $w$，使得在该参数下，当前观测样本出现的概率最大&lt;/p&gt;
+&lt;p&gt;最大后验概率估计：寻找参数 $w$，使得在观察到当前样本的前提下，参数的后验概率最大&lt;/p&gt;
+&lt;p&gt;Ref: &lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/506449599&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zhuanlan.zhihu.com/p/506449599&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;特征子集选择&#34;&gt;特征子集选择
+&lt;/h2&gt;&lt;p&gt;添加特征会增加方差，但是不一定会降低偏差，通过去除难以预测的特征，可以降低偏差&lt;/p&gt;
+&lt;p&gt;最直接的方法是，我们可是使用 $d$ 个特征的 $2^d - 1$ 个特征子集，训练不同的模型，然后通过交叉检验选择最优的模型。但是计算开销过大&lt;/p&gt;
+&lt;p&gt;前向逐步选择：从 0 特征开始，每次加入一个最优的特征，直到验证集的误差开始升高。最优特征的选择，可以通过依次遍历不同的特征，并通过交叉检验获得。只需要训练 $O (d^2)$ 个模型，但是可能会错过组合在一起最优的多个特征&lt;/p&gt;
+&lt;p&gt;后向逐步选择：从 d 个特征开始，逐渐移除特征，每次选择可以使验证集性能下降最小的特征&lt;/p&gt;
+&lt;h2 id=&#34;lasso&#34;&gt;LASSO
+&lt;/h2&gt;&lt;p&gt;最小二乘线性回归 + $l_1$ 惩罚平均损失&lt;/p&gt;
+&lt;p&gt;LASSO 和岭回归一样，都是在最小二乘回归的基础上正则项，但是 LASSO 的 $l_1$ 会使某些维度的权重接近 0&lt;/p&gt;
+&lt;p&gt;寻找 $w$ 可以最小化 $\|Xw-y\|^2 + \lambda \|w&#39;\|_1$，其中 $\|w&#39;\|_1 = \sum_{i = 1}^d|w_i|$（不对常数项 $\alpha$ 惩罚）&lt;/p&gt;
+&lt;p&gt;岭回归的正则项 $\|w&#39;\|^2$ 是一个超球面，而 $\|w&#39;\|_1$ 对应的是一个正多面体&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_13_regularization/2ed62fd7cb9d7249c919fc7048d2729a.png&#34; width=&#34;600&#34;&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_13_regularization/f4e3ee03d617d3bc3414a5c1e7f5f27e.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图中，红色的椭圆形表示 $\|Xw - y\|^2$，其中最小二乘法的解为中心的红点。左边蓝色的四边形表示 $l_1$ 正则项，如果 $\lambda$ 较大，对应的四边形约小，两个图形的第一次相交于竖轴，此时特征 $w_1$ 对应的权重为 0，这种方法可以用于去除无用特征&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;$\|Xw - y\|^2$ 中的二次型是 $w^T(X^TX)w$，$\lambda \|w&#39;\|^2$ 中的二次型是 $\lambda w^T I w$，相当于加入一个一定为正的对角矩阵&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;由于 $y = Xw + e$，其中噪声 $e$ 符合高斯分布，所以 $y$ 符合均值为 $Xw$ 的高斯分布，即 $f_{Y| X, W}(y) \propto \exp(-(y - Xw)^2) / 2 \sigma^2$，所以 ${} \ln f_{Y| X, W}(y) =-\text{const} \|Xw - y\|^2 {}$&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 12 回归 III：回归的统计解释</title>
+        <link>https://zhiim.github.io/p/ml_12_statistical_justifications_for_regression/</link>
+        <pubDate>Fri, 26 Sep 2025 17:05:20 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_12_statistical_justifications_for_regression/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 12 回归 III：回归的统计解释" /&gt;&lt;h2 id=&#34;统计解释&#34;&gt;统计解释
+&lt;/h2&gt;&lt;p&gt;一种典型的模型假设：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;采样点来自一个未知的概率分布，即 $X_i \sim D$&lt;/li&gt;
+&lt;li&gt;标签 y 的值是一个未知的非随机函数 $g$ 的结果加上随机噪声，即&lt;br&gt;
+$\forall X_i, \quad y_i = g(X_i) + \varepsilon_i, \quad \varepsilon_i \sim D&#39;$，其中 $D&#39;$ 的均值为 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;回归问题的目标：找到一个映射 $h$ 来近似 $g$&lt;br&gt;
+理想的途径是，选择 $h(x) = E_Y[Y|X=x] = g(x) + E[\varepsilon] = g(x)$&lt;/p&gt;
+&lt;h3 id=&#34;从最大似然法推导最小平方代价函数&#34;&gt;从最大似然法推导最小平方代价函数
+&lt;/h3&gt;&lt;p&gt;假设 $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$，那么 $y_i \sim \mathcal{N}(g(X_i), \sigma^2)$，那么 $y_i$ 的概率密度函数的对数形式为&lt;/p&gt;
+$$\ln f(y_i) = -\frac{(y_i - g(X_i))^2}{2\sigma^2} - C$$&lt;p&gt;其中 $C$ 表示一个常量&lt;/p&gt;
+&lt;p&gt;于是对数似然为&lt;/p&gt;
+$$l(g;X,y) = \ln (f(y_1)f(y_2) \cdots f(y_n)) = -\frac{1}{2\sigma^2}\sum(y_i - g(X_i))^2 - C&#39;$$&lt;p&gt;从上式可以看出，最大化似然 $l (g; X, y)$，等价于选择一个函数 $g$，可以最小化 $\sum(y_i - g(X_i))^2$&lt;/p&gt;
+&lt;h3 id=&#34;经验风险&#34;&gt;经验风险
+&lt;/h3&gt;&lt;p&gt;假设 $h$ 的&lt;em&gt;风险&lt;/em&gt;是在联合概率分布 $(X, Y)$ 上的损失的期望，即 $R(h) = E[L]$&lt;/p&gt;
+&lt;p&gt;如果我们知道 $X$ 的分布，我们可以通过生成模型估计 $X$ 和 $Y$ 的联合概率分布。但是实际分布通常未知，只能假设所有的样本点都满足实际概率分布，然后最小化&lt;em&gt;经验风险&lt;/em&gt;&lt;/p&gt;
+$$\hat{R}(h) = \frac{1}{n} \sum_{i = 1}^n L(h(X_i), y_i)$$&lt;p&gt;理论上，当样本数量 $n\rightarrow \infty$ 时，经验风险将会收敛到实际风险。通过最小化 $\hat{R}(h)$ 来选择 $h$ 的过程被称为&lt;em&gt;经验风险最小化&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;从最大似然推导-logistic-损失&#34;&gt;从最大似然推导 logistic 损失
+&lt;/h3&gt;&lt;p&gt;设样本点 $X_i$ 属于类别 C 的实际概率为 $y_i$，预测概率为 $h (X_i)$&lt;/p&gt;
+&lt;p&gt;假设总共有 $\beta$ 个和 $X_i$ 相同的数据点，那么将有 $y_i \beta$ 个属于类别 $C$，$(1-y_i)\beta$ 个不属于 $C$&lt;/p&gt;
+&lt;p&gt;那么似然为&lt;/p&gt;
+$$\prod_{i = 1} ^n h(X_i)^{y_i \beta}(1 - h(X_i))^{(1 - y_i)\beta}$$&lt;p&gt;对数似然为&lt;/p&gt;
+$$
+\begin{align*}
+l(h) &amp; = \ln \mathcal{L}(h) \\
+&amp; = \beta \sum_i
+\underbrace{\left( y_i \ln h(X_i) + (1 - y_i) \ln (1 - h(X_i)) \right)}_{\text{logistic loss}}
+\end{align*}
+$$&lt;p&gt;最大化似然，等价于最小化 logistic 损失之和&lt;/p&gt;
+&lt;h2 id=&#34;偏差-方差分解&#34;&gt;偏差-方差分解
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;偏差&lt;/em&gt;：由于 $h$ 无法完美拟合 $g$ 导致的误差&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;方差&lt;/em&gt;：由于拟合数据中的随机噪声造成的误差&lt;/p&gt;
+&lt;p&gt;由于训练数据 $X$ 和 $y$ 来自一个联合概率分布，我们用这些数据来选择一个权重，所以最终选择的拟合函数 $h$ 也来自一个概率分布&lt;/p&gt;
+&lt;p&gt;对风险进行分解（$\gamma$ 和 $h(z)$ 互相独立）&lt;/p&gt;
+$$
+\begin{align*}
+R(h) &amp;= E[L(h(z), \gamma)] \\
+&amp; = E[(h(z) - \gamma)^2] \\
+&amp; = E[h^2(z)] + E[\gamma^2] - 2 E[\gamma h(z)] \\
+&amp; = (Var(h(z)) + E[h(z)]^2) + (Var(\gamma) + E[\gamma]^2) - 2 E[\gamma]E[h(z)] \\
+&amp; = \underbrace{(E[h(z)] - E[\gamma])^2}_{偏差的平方} + \underbrace{Var(h(z))}_{方差} + \underbrace{Var(\varepsilon)}_{噪声}
+\end{align*}
+$$&lt;p&gt;上式被称为风险函数的&lt;em&gt;偏差-方差分解&lt;/em&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_12_statistical_justifications_for_regression/d8e36849ec7632e77e8fc9709fd67052.png&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;偏差-方差分解&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;上图中，左侧的 sine 曲线时实际函数 $g$，黑色直线是 50 条使用最小二乘线性回归拟合的结果 $h$，模型的风险可以分成右侧偏差、方差和噪声三个部分&lt;/p&gt;
+&lt;p&gt;基于偏差-方差分解，我们可以得到如下结论：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;欠拟合意味着偏差过大&lt;/li&gt;
+&lt;li&gt;大多数情况下，过拟合是由于方差过大&lt;/li&gt;
+&lt;li&gt;训练误差一般反映偏差但是体现不出方差，但是测试误差可以体现两者&lt;/li&gt;
+&lt;li&gt;对于大多数分布来说，当训练数量量 $n\rightarrow \infty$ 时，方差趋近于 0&lt;/li&gt;
+&lt;li&gt;如果 $h$ 可以很好地拟合 $g$，那么对于大多数分布而言，当训练数量量 $n\rightarrow \infty$ 时，偏差趋近于 0&lt;/li&gt;
+&lt;li&gt;如果 $h$ 不能很好地拟合 $g$，那么对于大多数样本点，偏差较大&lt;/li&gt;
+&lt;li&gt;添加一个好的特征可以降低偏差，但是添加一个坏的特征很少会增加偏差&lt;/li&gt;
+&lt;li&gt;添加特征通常会增加偏差&lt;/li&gt;
+&lt;li&gt;噪声误差无法去除&lt;/li&gt;
+&lt;li&gt;在测试集中，噪声只影响 $Var (\varepsilon)$；在训练集中，噪声同时影响偏差和方差&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_12_statistical_justifications_for_regression/768e12a5f7e9de77d1e229b0d99807f4.png&#34; width=&#34;800&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;左图中黑色线条为真实的函数，所有点在真实的分布上添加噪声采样而得，不同颜色的曲线分别是使用不同阶数拟合数据得到的曲线。中间灰色的曲线表示训练误差随模型阶数变化的曲线，红色的是测试误差随训练阶数变化的曲线。右边红色曲线是测试集上的平方误差（包含了偏差和方差）随结束变化的曲线，绿色的表示偏差，红色的表示方差&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>机器学习 11 回归 II：牛顿法和ROC曲线</title>
+        <link>https://zhiim.github.io/p/ml_11_newtons_method_and_roc_curve/</link>
+        <pubDate>Fri, 26 Sep 2025 16:50:48 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/p/ml_11_newtons_method_and_roc_curve/</guid>
+        <description>&lt;img src="https://zhiim.github.io/p/ml_01_introduction/ml_header.webp" alt="Featured image of post 机器学习 11 回归 II：牛顿法和ROC曲线" /&gt;&lt;h2 id=&#34;最小二乘多项式回归&#34;&gt;最小二乘多项式回归
+&lt;/h2&gt;&lt;p&gt;我们可以使用一个非线性的多项式特征 $\Phi(X_i)$ 来替代 $X_i$，例如
+&lt;/p&gt;
+$$\Phi(X_i) = \begin{bmatrix}X_{i1}^2 &amp; X_{i1}X_{i2} &amp; X_{i2}^2 &amp; X_{i1} &amp; X_{i2} &amp; 1\end{bmatrix}$$&lt;p&gt;一旦我们创建了多项式特征向量，接下来的流程将和线性回归或 logistic 回归一致&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_11_newtons_method_and_roc_curve/cf75b6b805ca2a0356e57df81c422205.png&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;不同次数的拟合效果&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;如果多项式的次数过大，非常容易过拟合&lt;/p&gt;
+&lt;h2 id=&#34;加权最小二乘回归&#34;&gt;加权最小二乘回归
+&lt;/h2&gt;&lt;p&gt;如果某些样本点比其他的样本更加可信，或者有些样本点我们希望更好地拟合，那么我们可以对这些点施加更高的权重，而对异常点施加更低的权重&lt;/p&gt;
+&lt;p&gt;为每个样本点设定一个权重 $\omega_i$，$n$ 个权重组成一个对角矩阵 $\Omega$。于是加权的条件下问题描述变成：&lt;br&gt;
+寻找一个 $w$ 使得可以最小化 $(Xw - y)^T \Omega (Xw - y) = \sum_{i = 1}^n \omega_i (X_i \cdot w - y_i)^2$&lt;/p&gt;
+&lt;p&gt;同样，我们可以通过计算梯度为 0 的点求解 $w$，即 $X^T\Omega X w = X^T \Omega y$&lt;/p&gt;
+&lt;h2 id=&#34;牛顿法&#34;&gt;牛顿法
+&lt;/h2&gt;&lt;p&gt;牛顿法是一种迭代寻找函数 $J(w)$ 的最优解的方法（$J(w)$ 必须是光滑的），通常比梯度下降更快&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_11_newtons_method_and_roc_curve/2fd9b53968905775ad1c3b725df770c4.png&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;牛顿法的迭代过程&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;牛顿法的核心是通过二次函数（抛物线）来局部逼近最优解，每次都移动到抛物线的顶点（上图中棕色曲线是用于近似的二次曲线，从左到右棕色曲线的顶点逐渐逼近最优点）：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;给定一个点 $v$，使用二次函数在 $v$ 附近近似 $J(w)$&lt;/li&gt;
+&lt;li&gt;跳转到二次函数的顶点&lt;/li&gt;
+&lt;li&gt;重复上述步骤直到到达停止条件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在每一次迭代中寻找顶点的方式如下：&lt;br&gt;
+以 $v$ 为基准，在 $w$ 处梯度的泰勒展开为&lt;/p&gt;
+$$\nabla J(w) = \nabla J(v) + (\nabla^2 J(v)) (w - v) + O(\| w - v \|^2)$$&lt;p&gt;其中 $\nabla^2 J(v)$ 是&lt;em&gt;Hessian 矩阵&lt;/em&gt;，通过计算梯度为 0 的点得到顶点&lt;/p&gt;
+$$w \approx v - (\nabla^2 J(v))^{-1} \nabla J(v)$$&lt;p&gt;上式中存在计算矩阵的逆的过程，直接计算矩阵的逆通常计算量非常大并且不稳定，一般将其转换为一个线性方程组求解，即 $(\nabla^2 J(w))e = - \nabla j(w)$&lt;/p&gt;
+&lt;p&gt;牛顿法的算法流程可以表述如下：&lt;/p&gt;
+$$
+\begin{align*}
+&amp; \text{pick starting point } w \\
+&amp; \text{repeat until convergence} \\
+&amp; \quad e \leftarrow \text{ solution to liner system } (\nabla^2 J(w))e = - \nabla j(w) \\
+&amp; \quad w \leftarrow w + e
+\end{align*}
+$$&lt;p&gt;牛顿法无法区分最小值点、最大值点和鞍点，所以初始点需要足够接近目标点&lt;/p&gt;
+&lt;p&gt;如果目标函数是一个二次函数，牛顿法只需要一步就可以找到精确解，$J$ 越接近二次函数，牛顿法越快收敛&lt;/p&gt;
+&lt;p&gt;对于某些优化问题，牛顿法相比梯度下降可以更快收敛。首先，牛顿法会寻找到达最小值的正确步长，而不是任意距离；其次，牛顿法会尝试寻找最优的下降方向，而不是梯度最陡的方向&lt;/p&gt;
+&lt;p&gt;然而，牛顿法也有一些缺点。牛顿法需要计算 Hessian 矩阵，在维度较高的时候计算开销非常大，所以神经网络一般不使用牛顿法。此外，牛顿法要求目标函数必须光滑，例如感知机的风险函数就无法使用牛顿法&lt;/p&gt;
+&lt;h2 id=&#34;使用牛顿法优化-logistic-回归&#34;&gt;使用牛顿法优化 Logistic 回归
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;Notes/%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0/CS189/10%20%e5%9b%9e%e5%bd%92I%ef%bc%9a%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e5%9b%9e%e5%bd%92%e5%92%8c%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92.md##%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92&#34; &gt;10 回归I：最小二乘回归和逻辑回归&lt;/a&gt;中已经计算了 $\nabla J(w) = - X^T (y - s)$ ，可以进一步计算牛顿法需要的二阶梯度（Hessian 矩阵）
+&lt;/p&gt;
+$$\nabla_w^2 J(w) = \sum_{i = 1} ^ n s_i (1 - s_i) X_i X_i^T = X^T \Omega X$$&lt;p&gt;
+其中&lt;/p&gt;
+$$
+\Omega = \begin{bmatrix}
+s_1(1 - s_1) &amp; 0 &amp; \dots &amp; 0  \\
+0 &amp; s_2(1 - s_2) &amp; &amp; 0  \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \dots &amp; s_n(1 - s_n)
+\end{bmatrix}
+$$&lt;p&gt;$s_i \in (0,1)$ （logistic 函数的输出），所以 $\Omega$ 对于任意 $w$ 是正定的&lt;br&gt;
+$\Rightarrow$ Hessian 矩阵 $\nabla_w^2 J(w) =X^T \Omega X$ 是半正定的&lt;br&gt;
+$\Rightarrow$ 函数 $J$ 是凸函数 （二阶导数大于等于零，Hessian 矩阵半正定）&lt;/p&gt;
+&lt;p&gt;由于 logistic 函数的代价函数 $J (w)$ 是凸的，所以如果可以收敛的话，牛顿法可以找到全局最优点&lt;/p&gt;
+&lt;p&gt;logistic 回归的牛顿法优化可以表示成：&lt;/p&gt;
+$$
+\begin{align*}
+&amp; w \leftarrow 0 \\
+&amp; \text{repeat until convergence} \\
+&amp; \quad e \leftarrow \text{solution to normal equations} (X^T\Omega X) e = X^T (y - s) \\
+&amp; \quad w \leftarrow w + e
+\end{align*}
+$$&lt;p&gt;牛顿法优化 logistic 回归是，$e$ 受远离决策边界且被分类错误的点影响最大（$y_i - s_i$ 最大），受远离决策边界且被分类正确的点影响最小（$y_i - s_i$ 最小）&lt;/p&gt;
+&lt;p&gt;如果数据集非常大，为了加快训练，开始可以失效所以样本点的子集（初期的更新比较粗略），随着迭代进行逐渐增大子集的大小（后期需要精细的参数更新）&lt;/p&gt;
+&lt;h3 id=&#34;lda-和-logistic-回归对比&#34;&gt;LDA 和 logistic 回归对比
+&lt;/h3&gt;&lt;p&gt;LDA 的优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于可以很好分离的类别，LDA 很稳定，而 logistic 回归不稳定&lt;/li&gt;
+&lt;li&gt;对于大于 2 个类别的情况，LDA 仍然简洁，而 logistic 回归需要改为 softmax 回归&lt;/li&gt;
+&lt;li&gt;LDA 一般对于样本符合高斯分布的情况表现更好，特别是样本量 $n$ 较小的情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;logistic 回归的优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;logistic 回归更加强调决策边界
+logistic 回归对于距离边界不同距离的点施加的权重不同，而 LDA 会一视同仁。所以 logistic 回归能够更好地降低训练损失，但是对异常数据更敏感&lt;/li&gt;
+&lt;li&gt;logistic 回归对非高斯数据的鲁棒性更好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;roc-曲线&#34;&gt;ROC 曲线
+&lt;/h2&gt;&lt;figure&gt;&lt;img src=&#34;https://zhiim.github.io/p/ml_11_newtons_method_and_roc_curve/5c9e60da29954ce37ea6a4c984ed5340.png&#34; width=&#34;800&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;ROC曲线&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;ROC 曲线展示了在不同的判别门限设置下，假阳性和真阳性的比例变化的曲线，ROC 曲线可以通过在不同的判别门限下测试得到&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x 轴表示假阳性（负类别别判别成正类别）的比例&lt;/li&gt;
+&lt;li&gt;y 轴表示真阳性的比例&lt;/li&gt;
+&lt;li&gt;曲线到顶部的垂直距离表示假阴性的比例&lt;/li&gt;
+&lt;li&gt;曲线到右边的水平距离表示真阴性的比例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;右上角的点表示永远被判别为正例，左下角的点表示永远被判别为负例，对角线表示一个随机分类器&lt;/p&gt;
+&lt;p&gt;通过计算 ROC 曲面下的面积可以衡量一个分类器的好坏，面积为 1 表示分类器永远可以正确分类，面积为 0.5 表示一个随机分类器&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>机器学习 10 回归 I：最小二乘回归和逻辑回归</title>
         <link>https://zhiim.github.io/p/ml_10_regression/</link>
         <pubDate>Sun, 22 Jun 2025 20:29:21 +0800</pubDate>
