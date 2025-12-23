@@ -137,7 +137,8 @@ $$\beta_T = \frac{1}{2} \ln \left( \frac{1 - err_T}{err_T} \right)$$&lt;p&gt;从
 &lt;li&gt;决策树不需要超参数&lt;/li&gt;
 &lt;li&gt;AdaBoost 加上短树相当于是一种特征子集选择，无法提高 metalearning 估计能力的特征完全没有使用（err 为 50% 的）&lt;/li&gt;
 &lt;li&gt;线性决策边界和 boost 的组合并不好&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
