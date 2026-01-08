@@ -6,7 +6,15 @@
         <description>Recent content in Tags on Zhiim&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 26 Sep 2025 20:03:09 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 08 Jan 2026 10:04:27 +0800</lastBuildDate><atom:link href="https://zhiim.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux</title>
+        <link>https://zhiim.github.io/tags/linux/</link>
+        <pubDate>Thu, 08 Jan 2026 10:04:27 +0800</pubDate>
+        
+        <guid>https://zhiim.github.io/tags/linux/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>机器学习</title>
         <link>https://zhiim.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
         <pubDate>Fri, 26 Sep 2025 20:03:09 +0800</pubDate>
@@ -44,14 +52,6 @@
         <pubDate>Tue, 26 Sep 2023 12:08:08 +0800</pubDate>
         
         <guid>https://zhiim.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Linux</title>
-        <link>https://zhiim.github.io/tags/linux/</link>
-        <pubDate>Tue, 11 Jul 2023 14:54:53 +0800</pubDate>
-        
-        <guid>https://zhiim.github.io/tags/linux/</guid>
         <description></description>
         </item>
         

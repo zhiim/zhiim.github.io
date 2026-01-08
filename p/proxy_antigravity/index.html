@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用">
-<title>Telegram Bot（一）Python库pyTelegramBotAPI的使用</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在 Linux 桌面无需使用 Clash 的 TUN 模式，即可为 Antigravity 设置代理">
+<title>Linux 桌面在非 TUN 模式下给 Antigravity 设置代理</title>
 
-<link rel='canonical' href='https://zhiim.github.io/p/telegram-bot/'>
+<link rel='canonical' href='https://zhiim.github.io/p/proxy_antigravity/'>
 
-<link rel="stylesheet" href="/scss/style.min.ac431fe10688ef9b9238e997beeca03518549e89f1fd31a34bd20d1272b5a349.css"><meta property='og:title' content="Telegram Bot（一）Python库pyTelegramBotAPI的使用">
-<meta property='og:description' content="通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用">
-<meta property='og:url' content='https://zhiim.github.io/p/telegram-bot/'>
+<link rel="stylesheet" href="/scss/style.min.ac431fe10688ef9b9238e997beeca03518549e89f1fd31a34bd20d1272b5a349.css"><meta property='og:title' content="Linux 桌面在非 TUN 模式下给 Antigravity 设置代理">
+<meta property='og:description' content="在 Linux 桌面无需使用 Clash 的 TUN 模式，即可为 Antigravity 设置代理">
+<meta property='og:url' content='https://zhiim.github.io/p/proxy_antigravity/'>
 <meta property='og:site_name' content='Zhiim&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='article:modified_time' content='2023-01-10T19:39:43&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2026-01-08T10:04:27&#43;08:00'/><meta property='article:modified_time' content='2026-01-08T10:04:27&#43;08:00'/><meta property='og:image' content='https://zhiim.github.io/img/default.webp' />
 <meta name="twitter:site" content="@zhiim_0">
-    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Telegram Bot（一）Python库pyTelegramBotAPI的使用">
-<meta name="twitter:description" content="通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@zhiim_0"><meta name="twitter:title" content="Linux 桌面在非 TUN 模式下给 Antigravity 设置代理">
+<meta name="twitter:description" content="在 Linux 桌面无需使用 Clash 的 TUN 模式，即可为 Antigravity 设置代理"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://zhiim.github.io/img/default.webp' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
@@ -315,20 +315,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#准备">准备</a>
-      <ol>
-        <li><a href="#创建bot">创建Bot</a></li>
-        <li><a href="#安装pytelegrambotapi">安装pyTelegramBotAPI</a></li>
-      </ol>
-    </li>
-    <li><a href="#bot的运行原理">Bot的运行原理</a></li>
-    <li><a href="#pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用</a>
-      <ol>
-        <li><a href="#新建bot对象">新建bot对象</a></li>
-        <li><a href="#message对象">message对象</a></li>
-        <li><a href="#message-handler">message handler</a></li>
-      </ol>
-    </li>
+    <li><a href="#主体应用代理">主体应用代理</a></li>
+    <li><a href="#language_server-代理">language_server 代理</a></li>
+    <li><a href="#linux-antigravity-残旧进程">Linux Antigravity 残旧进程</a></li>
   </ol>
 </nav>
         </div>
@@ -356,12 +345,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/telegram-bot/">Telegram Bot（一）Python库pyTelegramBotAPI的使用</a>
+            <a href="/p/proxy_antigravity/">Linux 桌面在非 TUN 模式下给 Antigravity 设置代理</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            通过Telegram提供的Bot API可以实现Bot和用户的交互，Python库pyTelegramBotAPI对Bot API进行了封装，使得我们可以通过调用Python函数的形式对API进行调用
+            在 Linux 桌面无需使用 Clash 的 TUN 模式，即可为 Antigravity 设置代理
         </h3>
         
     </div>
@@ -382,7 +371,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 10, 2023</time>
+                <time class="article-time--published">Jan 08, 2026</time>
             </div>
         
 
@@ -397,7 +386,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -412,128 +401,133 @@
     <section class="article-content">
     
     
-    <p>基于Python的Telegram Bot，使用<a class="link" href="https://github.com/eternnoir/pyTelegramBotAPI"  target="_blank" rel="noopener"
-    >pyTelegramBotAPI</a>库。</p>
-<h2 id="准备">准备
-</h2><h3 id="创建bot">创建Bot
-</h3><p>点击START私聊<a class="link" href="https://t.me/botfather"  target="_blank" rel="noopener"
-    >@BotFather</a>，输入/newbot开始创建Bot。</p>
-<p><img src="/p/telegram-bot/newBot.webp"
-	width="835"
-	height="635"
-	
-	loading="lazy"
-	
-		alt="新建Bot"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="131"
-		data-flex-basis="315px"
-	
-></p>
-<p>等到BotFather回复后输入想要创建的Bot名称，BotFather再次回复后输入Bot的username，注意username必须以_bot结尾。</p>
-<p>创建完Bot后就可以获取到Bot的token，Telegram Bot API的调用必须提供token。</p>
-<h3 id="安装pytelegrambotapi">安装pyTelegramBotAPI
-</h3><p>使用pip安装pyTelegramBotAPI。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="n">pyTelegramBotAPI</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="bot的运行原理">Bot的运行原理
-</h2><p>Bot和一般的用户一样，都有名称和id，可以通过@username查找到Bot。Bot的运行是通过和所有者服务器上的脚本联合实现的，用户通过Telegram向Bot发送信息，Bot的脚本根据Bot的token，就可以在服务器上通过Telegram提供的Bot API获取到用户发送给Bot的信息，从而实现根据用户发送的信息返回给用户相应的回复。</p>
-<p>pyTelegramBotAPI是一个Python库，对Telegram Bot API进行了封装。使得开发者不用对API直接调用，使用pyTelegramBotAPI提供的函数和类就可以实现Telegram Bot API的各种功能。</p>
-<h2 id="pytelegrambotapi的基础使用">pyTelegramBotAPI的基础使用
-</h2><h3 id="新建bot对象">新建bot对象
-</h3><p>pyTelegramBotAPI中调用API的methods全部定义在TeleBot类中，通过传入Bot token新建bot对象。</p>
+    <p><a class="link" href="https://antigravity.google"  target="_blank" rel="noopener"
+    >Antigravity</a> 是 Google 推出的 AI IDE，凭借慷慨的 AI 额度广受欢迎。然而在国内的网络环境下，目前使用 Antigravity 一般需要通过 Clash TUN 模式设置全局代理，这势必会对整个系统的网络造成负面影响。Windows、Mac 系统下如何不使用 TUN 模式实现 Antigravity 代理的方案，在 LINUX DO 等论坛已广为讨论。本文探究了在 Linux 桌面中，如何为 Antigravity 设置代理以在国内正常使用，而不使用 TUN 全局代理模式</p>
+<p>Antigravity 的代理需要代理两个组件，一个是主体应用，一个是 <code>language_server</code> 进程。主体应用基于 VS Code 开发，使用 Electron 技术栈，可以通过传入启动参数设置代理；<code>language_server</code> 使用 Go 语言开发，不受启动参数和系统代理的影响，需要借助 <code>graftcp</code> 实现代理</p>
+<h2 id="主体应用代理">主体应用代理
+</h2><p>因为 Antigravity 是一个 electron 应用，我们可以通过启动参数在启动时为应用设定代理。为了每次启动应用时自动应用代理配置，可以修改 <code>.desktop</code> 启动文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.local/share/applications
+</span></span><span class="line"><span class="cl">cat /usr/bin/applications/antigravity.desktop &gt; ~/.local/share/applications/antigravity.desktop
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后编辑 <code>antigravity.desktop</code> 设定启动参数，添加 <code>--proxy-server=http://127.0.0.1:7890</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Desktop Entry]
+</span></span><span class="line"><span class="cl">Name=Antigravity
+</span></span><span class="line"><span class="cl">Comment=Experience liftoff
+</span></span><span class="line"><span class="cl">GenericName=Text Editor
+</span></span><span class="line"><span class="cl">Exec=/opt/Antigravity/antigravity --proxy-server=http://127.0.0.1:7890 %F
+</span></span><span class="line"><span class="cl">Icon=antigravity
+</span></span><span class="line"><span class="cl">Type=Application
+</span></span><span class="line"><span class="cl">StartupNotify=false
+</span></span><span class="line"><span class="cl">StartupWMClass=Antigravity
+</span></span><span class="line"><span class="cl">Categories=TextEditor;Development;IDE;
+</span></span><span class="line"><span class="cl">MimeType=application/x-antigravity-workspace;
+</span></span><span class="line"><span class="cl">Actions=new-empty-window;
+</span></span><span class="line"><span class="cl">Keywords=vscode;
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">,</span> <span class="n">parse_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># You can set parse_mode by default. HTML or MARKDOWN</span>
+</span></span><span class="line"><span class="cl">[Desktop Action new-empty-window]
+</span></span><span class="line"><span class="cl">Name=New Empty Window
+</span></span><span class="line"><span class="cl">Name[cs]=Nové prázdné okno
+</span></span><span class="line"><span class="cl">Name[de]=Neues leeres Fenster
+</span></span><span class="line"><span class="cl">Name[es]=Nueva ventana vacía
+</span></span><span class="line"><span class="cl">Name[fr]=Nouvelle fenêtre vide
+</span></span><span class="line"><span class="cl">Name[it]=Nuova finestra vuota
+</span></span><span class="line"><span class="cl">Name[ja]=新しい空のウィンドウ
+</span></span><span class="line"><span class="cl">Name[ko]=새 빈 창
+</span></span><span class="line"><span class="cl">Name[ru]=Новое пустое окно
+</span></span><span class="line"><span class="cl">Name[zh_CN]=新建空窗口
+</span></span><span class="line"><span class="cl">Name[zh_TW]=開新空視窗
+</span></span><span class="line"><span class="cl">Exec=/opt/Antigravity/antigravity --new-window --proxy-server=http://127.0.0.1:7890 %F
+</span></span><span class="line"><span class="cl">Icon=antigravity
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>TeleBot类中的函数和Telegram Bot API提供的method同名，但是更改了命名规则，例如API中的<code>getMe</code>在TeleBot类对应于<code>get_me</code>，API中的<code>sendMessage</code>被命名为<code>send_message</code>。</p>
-<p>Bot提供给用户的回复是通过handler实现的，对于用户发送给Bot的消息，使用message handler进行处理。</p>
+</div><h2 id="language_server-代理">language_server 代理
+</h2><p>虽然 Antigravity 的大部分组件都可以通过启动参数走代理，但是最重要的模型调用程序 <code>language_server</code> 是 Go 语言开发的，不受启动参数的影响，会导致模型加载不出来</p>
+<p>此外 Go 语言程序没法用 <code>proxychains</code> 强制代理，参考<a class="link" href="https://linux.do/t/topic/1403119"  target="_blank" rel="noopener"
+    >解决远程linux服务器使用谷歌Antigravity反重力IDE登录问题</a>，使用 <code>graftcp</code> 实现 <code>language_server</code> 代理</p>
+<p>首先安装 <code>graftcp</code>，可以参考<a class="link" href="https://github.com/hmgle/graftcp"  target="_blank" rel="noopener"
+    >官方仓库</a>安装，如果是 Arch 的话直接通过 AUR 安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">paru -S graftcp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>找到 <code>language_server</code> 的路径</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps aux <span class="p">|</span> grep  <span class="s2">&#34;.*antigravity.*language_server&#34;</span> <span class="p">|</span> grep -v grep
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到其中有一条类似</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xu       <span class="m">2230564</span>  0.0  0.0   <span class="m">2896</span>  <span class="m">1928</span> ?        S    11:37   0:00 /usr/bin/graftcp /opt/Antigravity/resources/app/extensions/antigravity/bin/language_server_linux_x64 --enable_lsp --extension_server_port <span class="m">40671</span> --csrf_token d54fd753-5170-456b-99e0-7c191b58ce31 --random_port --workspace_id file_home_xu_Documents_codes_silverbullet --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /tmp/server_c1a467ac4ea0e046
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>说明我的 <code>language_server</code> 在 <code>/opt/Antigravity/resources/app/extensions/antigravity/bin</code> 文件夹下</p>
+<p>先将原始 <code>language_server</code> 程序备份</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_welcome</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;Howdy, how are you doing?&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /opt/Antigravity/resources/app/extensions/antigravity/bin
+</span></span><span class="line"><span class="cl">sudo mv language_server_linux_x64 language_server_linux_x64.bak
+</span></span><span class="line"><span class="cl">sudo touch language_server_linux_x64
+</span></span><span class="line"><span class="cl">sudo chmod +x language_server_linux_x64
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>上述代码中表示对于用户发送给Bot的消息，定义一个<code>message_handler</code>，这个<code>message_handler</code>在用户发送了指令/start或/help时执行<code>send_welcome</code>函数，产生对用户的回复”Howdy, how are you doing?“。</p>
-<h3 id="message对象">message对象
-</h3><p>用户对Bot发送消息后，通过Telegram Bot API获得到的是一个名为<a class="link" href="https://core.telegram.org/bots/api#message"  target="_blank" rel="noopener"
-    >message</a>的JSON对象，包含了消息内容，用户id等相关信息，详情可参考Telegram官方文档。</p>
-<p>在上述给出的<code>message_handler</code>示例代码中，<code>send_welcome</code>函数传入参数message对象，<code>reply_to</code>通过message中包含的属性<code>chat.id</code>等获取用户id，从而向用户发送回复信息。</p>
-<p>需要注意的是，由于<code>from</code>是Python中的保留字，在pyTelegramBotAPI中，<code>message</code>的属性名<code>from</code>被替换为<code>from_user</code>。</p>
-<h3 id="message-handler">message handler
-</h3><p>message handler用来对用户发送的message类消息做出反应（用户发送的消息一般都为message，除此之外还有投票poll、频道推文channel post等其他类型），用于处理其他类消息的handler还有poll handler、channel post handler等。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">bot</span><span class="o">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&#34;This is a message handler&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>在message handler的一般形式中，<code>filters</code>用来对message进行筛选，使该<code>message_handler</code>只对特定类型的message进行响应。<code>filters</code>的一般格式为<code>name=argument</code>，name表示筛选类型，argument代表筛选范围。例如<code>commands=['start', 'help']</code>表示只对命令/start和/help做出反应。</p>
-<p>官方给出的filters支持的类型如下：</p>
-<div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>name</th>
-          <th>argument</th>
-          <th>Condition</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>content_types</td>
-          <td>list of strings (default [&rsquo;text&rsquo;])</td>
-          <td>True if message.content_type is in the list of strings.</td>
-      </tr>
-      <tr>
-          <td>regexp</td>
-          <td>a regular expression as a string</td>
-          <td>True if re.search(regexp_arg) returns True and message.content_type == &rsquo;text&rsquo; (See https://docs.python.org/2/library/re.html)</td>
-      </tr>
-      <tr>
-          <td>commands</td>
-          <td>list of strings</td>
-          <td>True if message.content_type == &rsquo;text&rsquo; and message.text starts with a command that is in the list of strings.</td>
-      </tr>
-      <tr>
-          <td>chat_types</td>
-          <td>list of chat types</td>
-          <td>True if message.chat.type in your filter</td>
-      </tr>
-      <tr>
-          <td>func</td>
-          <td>a function (lambda or function reference)</td>
-          <td>True if the lambda or function reference returns True</td>
-      </tr>
-  </tbody>
-</table></div>
+</div><p>编辑刚刚创建的 <code>language_server_linux_x64</code> 文件，写入脚本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -568,53 +562,97 @@
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">telebot</span>
-</span></span><span class="line"><span class="cl"><span class="n">bot</span> <span class="o">=</span> <span class="n">telebot</span><span class="o">.</span><span class="n">TeleBot</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ================= 配置区域 =================</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. Graftcp 安装目录</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GRAFTCP</span><span class="o">=</span><span class="s2">&#34;/usr/bin/graftcp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GRAFTCP_LOCAL</span><span class="o">=</span><span class="s2">&#34;/usr/bin/graftcp-local&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 只处理命令 &#39;/start&#39; 和 &#39;/help&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;help&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_start_help</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 代理地址</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROXY_URL</span><span class="o">=</span><span class="s2">&#34;127.0.0.1:7890&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ===========================================</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 只处理用户发送内容为“文件”和“音频”的message</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">,</span> <span class="s1">&#39;audio&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_docs_audio</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 调试日志</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">&#34;/tmp/graftcp_wrapper.log&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">] Starting wrapper for </span><span class="nv">$@</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$LOG_FILE</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Handles all text messages that match the regular expression</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">regexp</span><span class="o">=</span><span class="s2">&#34;SOME_REGEXP&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查 graftcp-local 服务是否在运行</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! pgrep -f <span class="s2">&#34;</span><span class="nv">$GRAFTCP_LOCAL</span><span class="s2">&#34;</span> &gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Starting graftcp-local daemon...&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$LOG_FILE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 后台启动，将日志丢入黑洞防止阻塞</span>
+</span></span><span class="line"><span class="cl">nohup <span class="s2">&#34;</span><span class="nv">$GRAFTCP_LOCAL</span><span class="s2">&#34;</span> -socks5<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$PROXY_URL</span><span class="s2">&#34;</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Handles all messages for which the lambda returns True</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">message</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">sleep 0.5
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1. 强制使用系统 DNS (解决解析问题)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GODEBUG</span><span class="o">=</span><span class="nv">netdns</span><span class="o">=</span>cgo
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Which could also be defined as:</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">mime_type</span> <span class="o">==</span> <span class="s1">&#39;text/plain&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">test_message</span><span class="p">,</span> <span class="n">content_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">handle_text_doc</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">pass</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Handlers can be stacked to create a function which will be called if either message_handler is eligible</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># This handler will be called if the message starts with &#39;/hello&#39; OR is some emoji</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@bot.message_handler</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">msg</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="n">SOME_FANCY_EMOJI</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send_something</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 强制关闭 HTTP/2 (解决 EOF 问题)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Go 的 HTTP/2 客户端在代理环境下非常敏感，强制用 HTTP/1.1 通常能解决 EOF</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">GODEBUG</span><span class="o">=</span><span class="nv">$GODEBUG</span>,http2client<span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 graftcp 启动真正的程序</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># &#34;$0.bak&#34; 是原程序的备份</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exec</span> <span class="s2">&#34;</span><span class="nv">$GRAFTCP</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$0</span><span class="s2">.bak&#34;</span> <span class="s2">&#34;</span><span class="nv">$@</span><span class="s2">&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>现在直接打开 Antigravity 就可以直接使用了</p>
+<h2 id="linux-antigravity-残旧进程">Linux Antigravity 残旧进程
+</h2><p>目前 Antigravity 的 Linux 版本存在进程 bug （至少在 Arch Linux 如此），退出应用后还会存在大量未退出进程，需要使用一个 wrapper 脚本在退出时自动杀死所有 Antigravity 进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">UNIT_NAME</span><span class="o">=</span><span class="s2">&#34;antigravity-</span><span class="k">$(</span>date +%s<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">ARGS_ESCAPED</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">&#34;%q &#34;</span> <span class="s2">&#34;</span><span class="nv">$@</span><span class="s2">&#34;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">APP_BIN</span><span class="o">=</span><span class="s2">&#34;/opt/Antigravity/antigravity --proxy-server=http://127.0.0.1:7890 --verbose </span><span class="nv">$ARGS_ESCAPED</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">TRIGGER</span><span class="o">=</span><span class="s2">&#34;Lifecycle#onWillShutdown - end &#39;antigravityAnalytics&#39;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[*] Start as: </span><span class="nv">$UNIT_NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">systemd-run --user <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --scope <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --unit<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$UNIT_NAME</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --property<span class="o">=</span><span class="nv">KillMode</span><span class="o">=</span>control-group <span class="se">\
+</span></span></span><span class="line"><span class="cl">    /bin/bash -c <span class="s2">&#34;exec prlimit --core=0 </span><span class="si">${</span><span class="nv">APP_BIN</span><span class="si">}</span><span class="s2"> 2&gt;&amp;1 | systemd-cat --identifier=</span><span class="nv">$UNIT_NAME</span><span class="s2">&#34;</span> <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">journalctl --user --identifier<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$UNIT_NAME</span><span class="s2">&#34;</span> --follow <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    grep --line-buffered --max-count<span class="o">=</span><span class="m">1</span> <span class="s2">&#34;</span><span class="nv">$TRIGGER</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    systemctl --user <span class="nb">kill</span> --signal<span class="o">=</span>SIGKILL <span class="s2">&#34;</span><span class="nv">$UNIT_NAME</span><span class="s2">.scope&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;[*] Remaining processes are killed.&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div><p>在 <code>antigravity.desktop</code> 里用脚本替换 Antigravity 的可执行文件即可。此脚本已经考虑了代理参数，所以在 <code>antigravity.desktop</code> 里可以一并移除代理参数设置</p>
+
 </section>
 
 
@@ -622,7 +660,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/python/">Python</a>
+            <a href="/tags/linux/">Linux</a>
         
     </section>
 
@@ -681,84 +719,84 @@
         <div class="flex article-list--tile">
             
                 
+<article class="has-image">
+    <a href="/p/arch-linux-configuration-btrfs-and-system-backup/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/arch-linux-configuration-driver-and-software/arch.webp" loading="lazy" data-key="arch-linux-configuration-btrfs-and-system-backup" data-hash="/p/arch-linux-configuration-driver-and-software/arch.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arch Linux 配置 — Btrfs与系统备份</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/arch-linux-configuration-linux-lts-kernel/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/p/arch-linux-configuration-driver-and-software/arch.webp" loading="lazy" data-key="arch-linux-configuration-linux-lts-kernel" data-hash="/p/arch-linux-configuration-driver-and-software/arch.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arch Linux 配置 -- 安装linux-lts备用内核</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/arch-linux-configuration-driver-and-software/">
+        
+        
+            <div class="article-image">
+                <img src="/p/arch-linux-configuration-driver-and-software/arch.0434590804c2a9cfa641e4ba9302bb60.webp" 
+                        width="4838" 
+                        height="2067" 
+                        loading="lazy"
+                        alt="Featured image of post Arch Linux 配置 -- 驱动和软件安装"
+                        data-key="arch-linux-configuration-driver-and-software" 
+                        data-hash="md5-BDRZCATCqc&#43;mQeS6kwK7YA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Arch Linux 配置 -- 驱动和软件安装</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
 <article class="">
-    <a href="/p/python_package_doa_estimation/">
+    <a href="/p/manjaro-linux-matlab/">
         
         
             
             <div class="article-image">
                 <img src="/img/default.webp" 
                     loading="lazy"
-                    alt="Featured image of post 用于 DOA 估计的 Python 包 DOA_py"
-                    data-key="python_package_doa_estimation" 
+                    alt="Featured image of post Manjaro Linux 安装 MATLAB"
+                    data-key="manjaro-linux-matlab" 
                     >
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">用于 DOA 估计的 Python 包 DOA_py</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/pytorch-model/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" data-key="pytorch-model" data-hash="/p/pytorch-tensor/pytorch.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PyTorch基础 （三）网络模型</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/pytorch-dataset/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/p/pytorch-tensor/pytorch.webp" loading="lazy" data-key="pytorch-dataset" data-hash="/p/pytorch-tensor/pytorch.webp"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PyTorch基础 （二）Dataset和DataLoader</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/pytorch-tensor/">
-        
-        
-            <div class="article-image">
-                <img src="/p/pytorch-tensor/pytorch.7899a0b479e389b343b4120312b0ff14.webp" 
-                        width="1200" 
-                        height="500" 
-                        loading="lazy"
-                        alt="Featured image of post PyTorch基础 （一）Tensors"
-                        data-key="pytorch-tensor" 
-                        data-hash="md5-eJmgtHnjibNDtBIDErD/FA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PyTorch基础 （一）Tensors</h2>
+            <h2 class="article-title">Manjaro Linux 安装 MATLAB</h2>
         </div>
     </a>
 </article>
